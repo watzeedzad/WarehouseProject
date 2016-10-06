@@ -24,7 +24,12 @@
             <input type="submit" value="Login">
             <br>
             <br>
+            <%
+                if (request.getParameter("username") != null) {
+            %>
             ${message}
+            <%                }
+            %>
         </form>
     </body>
 </html>
