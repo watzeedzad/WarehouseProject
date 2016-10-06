@@ -31,17 +31,19 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String user = request.getParameter("username");
+        String pass = request.getParameter("password");
         String target = "/logon.jsp";
         String message = "";
-        if (Login.login(username, password) == true) {
+        HttpSession s = request.getSession();
+        if (Login.login(user, pass) == true) {
             target = "/homepage.jsp";
+            s.setAttribute("user", user);
         } else {
-            if (Login.isUserExit(username)) {
+            if (Login.isUserExit(user)) {
                 message = "Wrong password !";
             } else {
-                message = "Username " + username + " does not exit !";
+                message = "Username " + user + " does not exit !";
             }
         }
         request.setAttribute("message", message);

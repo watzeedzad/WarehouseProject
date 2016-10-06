@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -20,26 +21,33 @@ import javax.servlet.http.HttpSession;
  * @author jiraw
  */
 public class AuthenticationFilter implements Filter {
-    FilterConfig config ;
+
+    FilterConfig config;
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        config = filterConfig ;
+        config = filterConfig;
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpSession s = ((HttpServletRequest) request).getSession(false) ;
-        String target = ((HttpServletRequest) request).getRequestURI() ;
-        target = target.substring(target.indexOf("/", 1)+1); //           /wpg3/xxxxxx
-        if (s==null || s.getAttribute("user")==null) {
-            config.getServletContext().getRequestDispatcher("/login?target="+ target).forward(request, response);
-        } else {
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
+        HttpSession session = request.getSession(false);
+        String loginURI = request.getContextPath() + "/login";
+
+        boolean loggedIn = session != null && session.getAttribute("user") != null;
+        boolean loginRequest = request.getRequestURI().equals(loginURI);
+
+        if (loggedIn || loginRequest) {
             chain.doFilter(request, response);
+        } else {
+            response.sendRedirect(loginURI);
         }
     }
 
     @Override
     public void destroy() {
     }
-    
+
 }
