@@ -1,0 +1,97 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ * Author:  jiraw
+ * Created: Oct 6, 2016
+ */
+create table PRODUCT
+(	ID BIGINT not null primary key,
+	NAME VARCHAR(255),
+	PRICE INTEGER,	
+	TYPE VARCHAR(255),
+	CANCLE_STATUS BOOLEAN,		
+	STAFF_ID INTEGER not null	
+)
+
+create table STAFF
+(	ID INTEGER not null,
+	FNAME VARCHAR(255),
+        LNAME VARCHAR(255),
+	ADDRESS VARCHAR(255),		
+	CITIZEN_NUMBER BIGINT not null,		
+	POSITION VARCHAR(255),		
+	EMAIL VARCHAR(255),
+        WAREHOUSE_ID INTEGER not null,
+        primary key (ID)
+)
+
+create table ACCOUNT_STAFF
+(	USERNAME VARCHAR(255) not null,		
+	PASSWORD VARCHAR(255) not null,		
+	STAFF_ID INTEGER not null,		
+	primary key (USERNAME)
+)
+
+create table RECIEPT_BUY
+(
+        PROD_ID BIGINT not null,	
+	STAFF_ID INTEGER not null,			
+	DATE_BUY DATE,				
+	PRICE INTEGER,				
+	BUY_PRICE BIGINT,				
+	AMOUNT INTEGER,				
+	primary key (PROD_ID, STAFF_ID)
+)
+
+create table RECIEPT_SELL
+(	PROD_ID BIGINT not null,			
+	STAFF_ID INTEGER not null,			
+	DATE_SELL DATE,				
+	PRICE INTEGER,				
+	SELL_PRICE BIGINT,				
+	AMOUNT INTEGER,				
+	primary key (PROD_ID, STAFF_ID)
+)
+
+create table WAREHOUSE
+(
+        ID INTEGER not null,
+        PROD_ID BIGINT not null,
+        PROD_AMOUNT INTEGER not null,
+        primary key (ID)
+)
+
+ALTER TABLE PRODUCT
+ADD FOREIGN KEY (STAFF_ID)
+REFERENCES STAFF(ID)
+
+ALTER TABLE WAREHOUSE
+ADD FOREIGN KEY (PROD_ID)
+REFERENCES PRODUCT(ID)
+
+ALTER TABLE ACCOUNT_STAFF
+ADD FOREIGN KEY (STAFF_ID)
+REFERENCES STAFF(ID)
+
+ALTER TABLE RECIEPT_BUY
+ADD FOREIGN KEY (PROD_ID)
+REFERENCES PRODUCT(ID)
+
+ALTER TABLE RECIEPT_BUY
+ADD FOREIGN KEY (STAFF_ID)
+REFERENCES STAFF(ID)
+
+ALTER TABLE RECIEPT_SELL
+ADD FOREIGN KEY (PROD_ID)
+REFERENCES PRODUCT(ID)
+
+ALTER TABLE RECIEPT_SELL
+ADD FOREIGN KEY (STAFF_ID)
+REFERENCES STAFF(ID)
+
+ALTER TABLE STAFF
+ADD FOREIGN KEY (WAREHOUSE_ID)
+REFERENCES WAREHOUSE(ID)
