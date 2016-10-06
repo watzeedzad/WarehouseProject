@@ -31,24 +31,21 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = "";
-        String password = "";
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String target = "/logon.jsp";
         String message = "";
-        boolean loginStatus;
-        username = request.getParameter("username");
-        password = request.getParameter("password");
-        HttpSession s = request.getSession();
-        if (Login.Login(username, password) == true) {
-            loginStatus = true;
-            s.setAttribute("loginStatus", loginStatus);
-            getServletContext().getRequestDispatcher("/homepage.jsp").forward(request, response);
+        if (Login.login(username, password) == true) {
+            target = "/homepage.jsp";
         } else {
-            message = "Wrong username or password !";
-            loginStatus = false;
-            s.setAttribute("loginStatus", loginStatus);
-            getServletContext().getRequestDispatcher("/logon.jsp").forward(request, response);
+            if (Login.isUserExit(username)) {
+                message = "Wrong password !";
+            } else {
+                message = "Username " + username + " does not exit !";
+            }
         }
-        s.setAttribute("message", message);
+        request.setAttribute("message", message);
+        getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

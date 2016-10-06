@@ -32,7 +32,7 @@ public class AuthenticationFilter implements Filter {
         String target = ((HttpServletRequest) request).getRequestURI() ;
         target = target.substring(target.indexOf("/", 1)+1); //           /wpg3/xxxxxx
         if (s==null || s.getAttribute("user")==null) {
-            config.getServletContext().getRequestDispatcher("/Login?target="+ target).forward(request, response);
+            config.getServletContext().getRequestDispatcher("/login?target="+ target).forward(request, response);
         } else {
             chain.doFilter(request, response);
         }
