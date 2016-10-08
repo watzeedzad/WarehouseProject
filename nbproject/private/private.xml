@@ -6,6 +6,7 @@
             <file>file:/D:/NetbeansProject/WarehouseProject/web/logon.jsp</file>
             <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/filter/AuthenticationFilter.java</file>
             <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/controller/LoginServlet.java</file>
+            <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/model/Login.java</file>
         </group>
     </open-files>
 </project-private>
