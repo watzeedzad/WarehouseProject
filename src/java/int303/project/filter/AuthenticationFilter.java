@@ -35,12 +35,14 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/login";
+        String homePage = request.getContextPath() + "/index.jsp";
 
         boolean loggedIn = session != null && session.getAttribute("user") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
 
         if (loggedIn || loginRequest) {
             chain.doFilter(request, response);
+            request.getRequestDispatcher("homepage.jsp").forward(req, res);
         } else {
             response.sendRedirect(loginURI);
         }

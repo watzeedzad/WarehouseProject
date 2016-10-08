@@ -35,10 +35,10 @@ public class LoginServlet extends HttpServlet {
         String pass = request.getParameter("password");
         String target = "/index.jsp";
         String message = "";
-        HttpSession s = request.getSession();
+        HttpSession session = request.getSession();
         if (Login.login(user, pass) == true) {
             target = "/homepage.jsp";
-            s.setAttribute("user", user);
+            session.setAttribute("user", user);
         } else {
             if (Login.isUserExit(user)) {
                 message = "Wrong password !";
