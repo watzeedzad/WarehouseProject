@@ -12,6 +12,25 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>::: Welcome to Warehouse System :::</h1>
+        <h1>Please login before process next step</h1>
+        <form action="login" method="POST">
+            <br>
+            Username : <input type="text" name="username">
+            <br>
+            <br>
+            Password : <input type="password" name="password">
+            <br>
+            <br>
+            <input type="submit" value="Login">
+            <br>
+            <br>
+            <%
+                if (request.getParameter("username") != null) {
+            %>
+            ${message}
+            <%                }
+            %>
+        </form>
     </body>
 </html>

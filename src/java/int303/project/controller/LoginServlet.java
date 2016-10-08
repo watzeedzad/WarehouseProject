@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("username");
         String pass = request.getParameter("password");
-        String target = "/logon.jsp";
+        String target = "/index.jsp";
         String message = "";
         HttpSession s = request.getSession();
         if (Login.login(user, pass) == true) {
