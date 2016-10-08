@@ -12,6 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            if (session.getAttribute("user") != null) {
+                getServletContext().getRequestDispatcher("/homepage.jsp").forward(request, response);
+            }
+        %>
         <h1>::: Welcome to Warehouse System :::</h1>
         <h1>Please login before process next step</h1>
         <form action="login" method="POST">
