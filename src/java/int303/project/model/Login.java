@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +18,7 @@ import java.sql.SQLException;
  */
 public class Login {
 
+    private static int id;
     private static String username;
     private static String password;
     private static boolean loginStatus;
@@ -28,12 +31,12 @@ public class Login {
         return password;
     }
 
-    private static final String LOGIN_SQL = "SELECT * FROM ACCOUNT_STAFF WHERE USERNAME = ? AND PASSWORD = ?";
-    private static final String FIND_USER_SQL = "SELECT * FROM ACCOUNT_STAFF WHERE USERNAME = ?";
+    private static final String LOGIN_SQL = "SELECT * FROM ACCOUNTS WHERE USERNAME = ? AND PASSWORD = ?";
+    private static final String FIND_USER_SQL = "SELECT * FROM ACCOUNTS WHERE USERNAME = ?";
 
     public static boolean login(String user, String pass) {
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilderMySql.getConnection();
             username = user;
             password = pass;
             PreparedStatement pstm = conn.prepareStatement(LOGIN_SQL);
@@ -50,6 +53,8 @@ public class Login {
             conn.close();
         } catch (SQLException ex) {
             System.err.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
         }
         return loginStatus;
     }
@@ -57,7 +62,7 @@ public class Login {
     public static boolean isUserExit(String user) {
         boolean status = false;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilderMySql.getConnection();
             PreparedStatement pstm = conn.prepareStatement(FIND_USER_SQL);
             pstm.setString(1, user);
             ResultSet rs = pstm.executeQuery();
@@ -66,8 +71,13 @@ public class Login {
             } else {
                 status = false;
             }
-        } catch (SQLException e) {
-            System.err.println("");
+            pstm.close();
+            rs.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
         }
         return status;
     }
