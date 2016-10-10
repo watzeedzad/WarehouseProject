@@ -7,7 +7,7 @@
  * Author:  jiraw
  * Created: Oct 6, 2016
  */
-create table "INT303".ACCOUNTS
+create table ACCOUNTS
 (
 	ID INTEGER not null primary key,
 	USERNAME VARCHAR(255) not null,
@@ -15,14 +15,14 @@ create table "INT303".ACCOUNTS
 	STAFF_ID INTEGER not null
 )
 
-create table "INT303".COMPANIES
+create table COMPANIES
 (
 	COMPANY_ID INTEGER not null primary key,
 	COMPANY_NAME VARCHAR(255) not null,
 	COMPANY_DESCRIPTION VARCHAR(255)
 )
 
-create table "INT303".ORDERDETAIL
+create table ORDERDETAIL
 (
 	ID INTEGER not null,
 	ORDER_ID INTEGER not null,
@@ -32,7 +32,7 @@ create table "INT303".ORDERDETAIL
 	PRICE DOUBLE not null
 )
 
-create table "INT303".ORDERS
+create table ORDERS
 (
 	ORDER_ID INTEGER not null primary key,
 	STAFF_ID INTEGER not null,
@@ -40,20 +40,20 @@ create table "INT303".ORDERS
 	DATE_ORDER DATE not null
 )
 
-create table "INT303".ORDERTYPES
+create table ORDERTYPES
 (
 	ORDERTYPEID INTEGER not null primary key,
 	ORDERTYPE VARCHAR(255) not null
 )
 
-create table "INT303".PRODUCT_STATUS
+create table PRODUCT_STATUS
 (
 	ID INTEGER not null primary key,
 	PROD_ID BIGINT not null,
 	CANCLE_STATUS BOOLEAN not null
 )
 
-create table "INT303".PRODUCTS
+create table PRODUCTS
 (
 	PROD_ID BIGINT not null primary key,
 	PROD_NAME VARCHAR(255) not null,
@@ -64,7 +64,7 @@ create table "INT303".PRODUCTS
 	COMPANY_ID INTEGER not null
 )
 
-create table "INT303".STAFFS
+create table STAFFS
 (
 	STAFF_ID INTEGER not null primary key not null,
 	COMPANY_ID INTEGER not null,
@@ -75,7 +75,7 @@ create table "INT303".STAFFS
 	POSITION VARCHAR(255) not null
 )
 
-create table "INT303".WAREHOUSES
+create table WAREHOUSES
 (
 	WAREHOUSE_ID INTEGER not null primary key,
 	WAREHOUSE_NAME VARCHAR(255) not null,
@@ -92,7 +92,7 @@ REFERENCES PRODUCTS(PROD_ID)
 
 ALTER TABLE PRODUCTS
 ADD FOREIGN KEY (WAREHOUSE_ID)
-REFERENCES WAREHOUSEs(WAREHOUSE_ID)
+REFERENCES WAREHOUSES(WAREHOUSE_ID)
 
 ALTER TABLE STAFFS
 ADD FOREIGN KEY (COMPANY_ID)
