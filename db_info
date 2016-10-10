@@ -6,7 +6,8 @@ password : ini303
 ****Please create database in netbeans by youself.
 
 //MySQL DB
+DB Host: 85.10.205.173
+Port: 3306
 Database: warehouse_int303
 Username: int303
 password: int303
-Email: jirawat859@hotmail.com
