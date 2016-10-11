@@ -9,6 +9,6 @@ package int303.project.model;
  *
  * @author jiraw
  */
-public class AddWarehouse {
+public class Product {
     
 }

@@ -5,11 +5,18 @@
  */
 package int303.project.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jiraw
  */
-public class AddStaff {
+public class Staff {
 
     private int staffId;
     private int companyId;
@@ -18,6 +25,15 @@ public class AddStaff {
     private long citizenNo;
     private String address;
     private String position;
+
+    public Staff(ResultSet rs) {
+//        this.staffId = rs.getInt("STAFF_ID");
+//        this.companyId = 
+    }
+
+    public Staff() {
+        
+    }
 
     public int getStaffId() {
         return staffId;
@@ -74,6 +90,6 @@ public class AddStaff {
     public void setPosition(String position) {
         this.position = position;
     }
-    
+
     
 }
