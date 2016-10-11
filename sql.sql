@@ -68,7 +68,7 @@ create table STAFFS
 (
 	STAFF_ID INTEGER not null primary key not null,
 	COMPANY_ID INTEGER not null,
-	FISRTNAME VARCHAR(255) not null,
+	FIRSTNAME VARCHAR(255) not null,
 	LASNAME VARCHAR(255) not null,
 	CITIZENNO NUMERIC(13) not null,
 	ADDRESS VARCHAR(255) not null,

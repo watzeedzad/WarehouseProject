@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -36,7 +34,7 @@ public class Login {
 
     public static boolean login(String user, String pass) {
         try {
-            Connection conn = ConnectionBuilderMySql.getConnection();
+            Connection conn = ConnectionBuilder.getConnection();
             username = user;
             password = pass;
             PreparedStatement pstm = conn.prepareStatement(LOGIN_SQL);
@@ -53,8 +51,6 @@ public class Login {
             conn.close();
         } catch (SQLException ex) {
             System.err.println(ex);
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex);
         }
         return loginStatus;
     }
@@ -62,7 +58,7 @@ public class Login {
     public static boolean isUserExit(String user) {
         boolean status = false;
         try {
-            Connection conn = ConnectionBuilderMySql.getConnection();
+            Connection conn = ConnectionBuilder.getConnection();
             PreparedStatement pstm = conn.prepareStatement(FIND_USER_SQL);
             pstm.setString(1, user);
             ResultSet rs = pstm.executeQuery();
@@ -76,8 +72,6 @@ public class Login {
             conn.close();
         } catch (SQLException ex) {
             System.err.println(ex);
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex);
         }
         return status;
     }

@@ -26,13 +26,18 @@ public class Staff {
     private String address;
     private String position;
 
-    public Staff(ResultSet rs) {
-//        this.staffId = rs.getInt("STAFF_ID");
-//        this.companyId = 
+    public Staff(ResultSet rs) throws SQLException {
+        this.staffId = rs.getInt("STAFF_ID");
+        this.companyId = rs.getInt("COMPANY_ID");
+        this.firstname = rs.getString("FIRSTNAME");
+        this.lastname = rs.getString("LASTNAME");
+        this.citizenNo = rs.getBigDecimal("CITIZENNO").longValue();
+        this.address = rs.getString("ADDRESS");
+        this.position = rs.getString("POSITION");
     }
 
     public Staff() {
-        
+
     }
 
     public int getStaffId() {
@@ -91,5 +96,24 @@ public class Staff {
         this.position = position;
     }
 
-    
+    public static final String VIEW_STAFF_SQL = "SELECT * FROM STAFF WHERE STAFF_ID = ?";
+
+    public static Staff viewStaffData(int staffId) {
+        Staff s = null;
+        try {
+            Connection conn = ConnectionBuilderMySql.getConnection();
+            PreparedStatement pstm = conn.prepareStatement(VIEW_STAFF_SQL);
+            pstm.setInt(1, staffId);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                s = new Staff(rs);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.err.println(ex);
+        }
+
+        return s;
+    }
 }
