@@ -113,7 +113,10 @@ public class Staff {
         } catch (ClassNotFoundException ex) {
             System.err.println(ex);
         }
-
         return s;
+    }
+    
+    public static void editStaff(int staffId) {
+        
     }
 }
