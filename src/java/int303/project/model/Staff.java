@@ -101,7 +101,7 @@ public class Staff {
     public static Staff viewStaffData(int staffId) {
         Staff s = null;
         try {
-            Connection conn = ConnectionBuilderMySql.getConnection();
+            Connection conn = ConnectionBuilder.getConnection();
             PreparedStatement pstm = conn.prepareStatement(VIEW_STAFF_SQL);
             pstm.setInt(1, staffId);
             ResultSet rs = pstm.executeQuery();
@@ -110,13 +110,23 @@ public class Staff {
             }
         } catch (SQLException ex) {
             System.err.println(ex);
-        } catch (ClassNotFoundException ex) {
-            System.err.println(ex);
         }
         return s;
     }
-    
-    public static void editStaff(int staffId) {
-        
+
+    public static final String EDIT_STAFF_SQL = "UPDATE STAFFS SET FIRSTNAME = ?, LASTNAME = ?, ADDRESS = ? WHERE STAFF_ID = ?";
+
+    public static void editStaff(String fName, String lName, String address, int staffId) {
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement(EDIT_STAFF_SQL);
+            pstm.setString(1, fName);
+            pstm.setString(2, lName);
+            pstm.setString(3, address);
+            pstm.setInt(4, staffId);
+            pstm.executeQuery();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
     }
 }
