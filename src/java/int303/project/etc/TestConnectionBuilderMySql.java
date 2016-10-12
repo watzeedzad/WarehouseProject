@@ -5,7 +5,6 @@
  */
 package int303.project.etc;
 
-import int303.project.model.ConnectionBuilderMySql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
