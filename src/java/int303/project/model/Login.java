@@ -21,14 +21,6 @@ public class Login {
     private static String password;
     private static boolean loginStatus;
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     private static final String LOGIN_SQL = "SELECT * FROM ACCOUNTS WHERE USERNAME = ? AND PASSWORD = ?";
     private static final String FIND_USER_SQL = "SELECT * FROM ACCOUNTS WHERE USERNAME = ?";
 
@@ -74,5 +66,20 @@ public class Login {
             System.err.println(ex);
         }
         return status;
+    }
+
+    public static int getUserId(String user) {
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FORM STAFFS WHERE USERNAME = ?");
+            pstm.setString(1, user);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt("STAFF_ID");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return id;
     }
 }

@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
         if (Login.login(user, pass) == true) {
             target = "/homepage.jsp";
             session.setAttribute("user", user);
+            session.setAttribute("user_id", Login.getUserId(user));
         } else {
             if (Login.isUserExit(user)) {
                 message = "Wrong password !";
