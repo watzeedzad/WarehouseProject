@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/NetbeansProject/WarehouseProject/web/index.jsp</file>
+            <file>file:/D:/NetbeansProject/WarehouseProject/web/homepage.jsp</file>
+            <file>file:/D:/NetbeansProject/WarehouseProject/web/WEB-INF/web.xml</file>
+            <file>file:/D:/NetbeansProject/WarehouseProject/web/staff.jsp</file>
+            <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/controller/ViewStaffServlet.java</file>
             <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/model/Staff.java</file>
-            <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/etc/TestConnectionBuilderMySql.java</file>
-            <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/model/RegisterNewUser.java</file>
-            <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/model/Product.java</file>
+            <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/model/Login.java</file>
+            <file>file:/D:/NetbeansProject/WarehouseProject/src/java/int303/project/controller/EditStaffServlet.java</file>
         </group>
     </open-files>
 </project-private>
