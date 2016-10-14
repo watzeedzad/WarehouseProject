@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
  *
  * @author jiraw
  */
-@WebServlet(name = "StaffServlet", urlPatterns = {"/staff"})
 public class ViewStaffServlet extends HttpServlet {
 
     /**
@@ -38,6 +37,7 @@ public class ViewStaffServlet extends HttpServlet {
         int id = (Integer) session.getAttribute("user_id");
         Staff st = Staff.viewStaffData(id);
         session.setAttribute("staff", st);
+        getServletContext().getRequestDispatcher("").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

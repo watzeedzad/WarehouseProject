@@ -5,12 +5,14 @@
  */
 package int303.project.controller;
 
+import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,18 +32,25 @@ public class EditStaffServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditStaffServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditStaffServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession(false);
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        String address = request.getParameter("address");
+        int id = (Integer) session.getAttribute("user_id");
+        Staff st = (Staff) session.getAttribute("staffData");
+        //ถ้ามาเป็น null แสดงว่า user ไม่ได้แก้หรือลบแล้วไม่ได่กรอกค่ามา
+        //จะเอาข้อมูลที่มีอยู่แล้วใน DB มาเป็นค่า default
+        if (firstName == null) {
+            firstName = st.getFirstname();
         }
+        if (lastName == null) {
+            lastName = st.getLastname();
+        }
+        if (address == null) {
+            address = st.getLastname();
+        }
+        Staff.editStaff(firstName, lastName, address, id);
+        getServletContext().getRequestDispatcher("/staff.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

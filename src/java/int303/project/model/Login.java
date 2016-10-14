@@ -47,7 +47,7 @@ public class Login {
         return loginStatus;
     }
 
-    public static boolean isUserExit(String user) {
+    public static boolean isUserExist(String user) {
         boolean status = false;
         try {
             Connection conn = ConnectionBuilder.getConnection();

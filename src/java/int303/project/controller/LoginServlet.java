@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import int303.project.model.Login;
+import int303.project.model.Staff;
 
 /**
  *
@@ -40,12 +41,13 @@ public class LoginServlet extends HttpServlet {
             target = "/homepage.jsp";
             session.setAttribute("user", user);
             session.setAttribute("user_id", Login.getUserId(user));
+            //ดึงข้อมูลมาทั้ง record ของ staff เอาไว้ใช้ต่อไป
+            Staff st = Staff.viewStaffData(Login.getUserId(user));
+            session.setAttribute("staffData", st);
+        } else if (Login.isUserExist(user)) {
+            message = "Wrong password !";
         } else {
-            if (Login.isUserExit(user)) {
-                message = "Wrong password !";
-            } else {
-                message = "Username " + user + " does not exit !";
-            }
+            message = "Username " + user + " does not exit !";
         }
         request.setAttribute("message", message);
         getServletContext().getRequestDispatcher(target).forward(request, response);
