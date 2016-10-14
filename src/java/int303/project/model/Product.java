@@ -32,4 +32,7 @@ public class Product {
         this.company = Company.getCompany(companyName);
         this.branch = Branch.getBranch(branchId);
     }
+    
+    
+    
 }
