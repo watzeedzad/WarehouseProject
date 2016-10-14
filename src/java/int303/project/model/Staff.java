@@ -5,6 +5,7 @@
  */
 package int303.project.model;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -108,6 +109,9 @@ public class Staff {
             if (rs.next()) {
                 s = new Staff(rs);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -125,6 +129,31 @@ public class Staff {
             pstm.setString(3, address);
             pstm.setInt(4, staffId);
             pstm.executeQuery();
+            conn.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public static final String ADD_STAFF_SQL = "INSERT STAFFS (COMPANY_ID, FRISTNAME, LASTNAME, CITIZENN0O, ADDRESS, POSITION)"
+            + "VALUES(?,?,?,?,?,?)";
+
+    public static void addStaff(int companyId, String fName, String lName, long citizenNo, String address, String position) {
+        try {
+            BigDecimal temp = null;
+            temp.valueOf(citizenNo);
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement(ADD_STAFF_SQL);
+            pstm.setInt(1, companyId);
+            pstm.setString(2, fName);
+            pstm.setString(3, lName);
+            pstm.setBigDecimal(4, temp);
+            pstm.setString(5, address);
+            pstm.setString(6, position);
+            pstm.executeQuery();
+            conn.close();
+            pstm.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
