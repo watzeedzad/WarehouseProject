@@ -60,7 +60,9 @@ public class Branch {
         return branch;
     }
     
-    public static void orm(Branch branch,ResultSet rs){
-        
+    public static void orm(Branch branch,ResultSet rs) throws SQLException{
+        branch.setWarehouse_id(rs.getInt("waregouse_id"));
+        branch.setWarehouse_name(rs.getString("warehouse_name"));
+        branch.setLocation(rs.getString("location"));
     }
 }
