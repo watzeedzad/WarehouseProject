@@ -19,11 +19,21 @@
         <br>
         <br>
         <form method="GET" action="editstaff">
-            Staff ID : <input type="number" name="staffid" value="${sessionScope.staffData.staffId}" disabled>
+            Staff ID : <input type="number" value="${sessionScope.staffData.staffId}" disabled>
             <br>
-            Company ID : <input type="number" name="companyid" value="${sessionScope.staffData.companyId}" disabled>
+            Company ID : <input type="number" value="${sessionScope.staffData.companyId}" disabled>
             <br>
-            Firstname : 
+            Firstname : <input type="text" name="firstname" value="${sessionScope.staffData.firstname}">
+            <br>
+            Lastname : <input type="text" name="lastname" value="${sessionScope.staffData.lastname}">
+            <br>
+            Citizen No : <input type="number" value="${sessionScope.staffData.citizenNo}" disabled>
+            <br>
+            Address : <input type="text" name="address" value="${sessionScope.staffData.address}">
+            <br>
+            Position : <input type="text" value="${sessionScope.staffData.position}" disabled>
+            <br>
+            <input type="submit" value="Send">
         </form>
     </body>
 </html>

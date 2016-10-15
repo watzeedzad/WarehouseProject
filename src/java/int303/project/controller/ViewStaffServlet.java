@@ -36,8 +36,8 @@ public class ViewStaffServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         int id = (Integer) session.getAttribute("user_id");
         Staff st = Staff.viewStaffData(id);
-        session.setAttribute("staff", st);
-        getServletContext().getRequestDispatcher("").forward(request, response);
+        session.setAttribute("staffData", st);
+        getServletContext().getRequestDispatcher("/viewstaff.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

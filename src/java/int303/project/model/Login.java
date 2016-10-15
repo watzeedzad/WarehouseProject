@@ -71,7 +71,7 @@ public class Login {
     public static int getUserId(String user) {
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT * FORM STAFFS WHERE USERNAME = ?");
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM STAFFS WHERE STAFF_ID = (SELECT STAFF_ID FROM ACCOUNTS WHERE USERNAME = ?)");
             pstm.setString(1, user);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {

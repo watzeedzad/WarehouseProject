@@ -97,7 +97,7 @@ public class Staff {
         this.position = position;
     }
 
-    public static final String VIEW_STAFF_SQL = "SELECT * FROM STAFF WHERE STAFF_ID = ?";
+    public static final String VIEW_STAFF_SQL = "SELECT * FROM STAFFS WHERE STAFF_ID = ?";
 
     public static Staff viewStaffData(int staffId) {
         Staff s = null;
@@ -128,7 +128,7 @@ public class Staff {
             pstm.setString(2, lName);
             pstm.setString(3, address);
             pstm.setInt(4, staffId);
-            pstm.executeQuery();
+            pstm.executeUpdate();
             conn.close();
             pstm.close();
         } catch (SQLException ex) {

@@ -4,7 +4,7 @@
     Author     : jirawat
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +12,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>:: View Staff ::</h1>
+        <br>
+        Staff ID : ${sessionScope.staffData.staffId}
+        <br>
+        Company ID : ${sessionScope.staffData.companyId}
+        <br>
+        Firstname : ${sessionScope.staffData.firstname}
+        <br>
+        Lastname : ${sessionScope.staffData.lastname}
+        <br>
+        Citizen No : ${sessionScope.staffData.citizenNo}
+        <br>
+        Address : ${sessionScope.staffData.address}
+        <br>
+        Position : ${sessionScope.staffData.position}
     </body>
 </html>

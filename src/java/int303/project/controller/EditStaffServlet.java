@@ -50,6 +50,9 @@ public class EditStaffServlet extends HttpServlet {
             address = st.getLastname();
         }
         Staff.editStaff(firstName, lastName, address, id);
+        //เพื่อ update ข้อมูลของ staff หลังจาก edit ไป
+        st = Staff.viewStaffData(id);
+        session.setAttribute("staffData", st);
         getServletContext().getRequestDispatcher("/staff.jsp").forward(request, response);
     }
 
