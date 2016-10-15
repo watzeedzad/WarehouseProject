@@ -50,3 +50,5 @@ private.properties
 pivate.xml
 /.idea/
 /src/WarehouseProject.iml
+/src/.idea/
+/web/.idea/
