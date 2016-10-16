@@ -40,13 +40,13 @@ public class EditStaffServlet extends HttpServlet {
         Staff st = (Staff) session.getAttribute("staffData");
         //ถ้ามาเป็น null แสดงว่า user ไม่ได้แก้หรือลบแล้วไม่ได่กรอกค่ามา
         //จะเอาข้อมูลที่มีอยู่แล้วใน DB มาเป็นค่า default
-        if (firstName == null) {
+        if (firstName.length() == 0) {
             firstName = st.getFirstname();
         }
-        if (lastName == null) {
+        if (lastName.length() == 0) {
             lastName = st.getLastname();
         }
-        if (address == null) {
+        if (address.length() == 0) {
             address = st.getLastname();
         }
         Staff.editStaff(firstName, lastName, address, id);
