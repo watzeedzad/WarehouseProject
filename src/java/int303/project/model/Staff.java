@@ -24,7 +24,7 @@ public class Staff {
     private int companyId;
     private String firstname;
     private String lastname;
-    private String citizenNo;
+    private long citizenNo;
     private String address;
     private String position;
 
@@ -33,7 +33,7 @@ public class Staff {
         this.companyId = rs.getInt("COMPANY_ID");
         this.firstname = rs.getString("FIRSTNAME");
         this.lastname = rs.getString("LASTNAME");
-        this.citizenNo = rs.getString("CITIZENNO");
+        this.citizenNo = rs.getLong("CITIZENNO");
         this.address = rs.getString("ADDRESS");
         this.position = rs.getString("POSITION");
     }
@@ -74,11 +74,11 @@ public class Staff {
         this.lastname = lastname;
     }
 
-    public String getCitizenNo() {
+    public long getCitizenNo() {
         return citizenNo;
     }
 
-    public void setCitizenNo(String citizenNo) {
+    public void setCitizenNo(long citizenNo) {
         this.citizenNo = citizenNo;
     }
 
@@ -156,9 +156,18 @@ public class Staff {
             pstm.setString(5, address);
             pstm.setString(6, position);
             x = pstm.executeUpdate(); // ถ้า insert สำเร็จจะ return ตัวเลขที่เป็นจำนวน row ที่ insert เข้าไป
-            
+                        
             ResultSet rs = pstm.getGeneratedKeys();
-            this.setStaffId(rs.getInt(1)); // เอาเลขไอดีที่ได้มา set ให้Staff            
+            rs.next();   
+            
+            this.setStaffId(rs.getInt(1)); // เอาเลขไอดีที่ได้มา set ให้Staff
+            this.setCompanyId(companyId);
+            this.setFirstname(fName);
+            this.setLastname(lName);
+            this.setCitizenNo(citizenNo);
+            this.setAddress(address);
+            this.setPosition(position);
+            
             conn.close();
             pstm.close();
             rs.close();
@@ -167,4 +176,11 @@ public class Staff {
         }        
         return x>0;
     } 
+
+    @Override
+    public String toString() {
+        return "Staff{" + "staffId=" + staffId + ", companyId=" + companyId + ", firstname=" + firstname + ", lastname=" + lastname + ", citizenNo=" + citizenNo + ", address=" + address + ", position=" + position + '}';
+    }
+    
+    
 }

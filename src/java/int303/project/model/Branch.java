@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -53,9 +54,9 @@ public class Branch {
         
         ResultSet rs = pstm.executeQuery();
         if(rs.next()){
+            branch = new Branch();
             orm(branch,rs);
-        }
-        
+        }        
         
         return branch;
     }
@@ -65,4 +66,31 @@ public class Branch {
         branch.setBranch_name(rs.getString("branch_name"));
         branch.setLocation(rs.getString("location"));
     }
+    
+    public boolean addNewBranch() throws SQLException{
+        int x = 0;
+        
+        Connection con = ConnectionBuilder.getConnection();
+        String sql = "INSERT INTO Branch(branch_name,location) VALUES(?,?)";
+        PreparedStatement pstm = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        pstm.setString(1, this.getBranch_name());
+        pstm.setString(2, this.getLocation());
+        
+        x = pstm.executeUpdate();
+        ResultSet rs = pstm.getGeneratedKeys();
+        rs.next();        
+        this.setBranch_id(rs.getInt(1));
+        
+        rs.close();
+        pstm.close();
+        con.close();       
+        
+        return x>0;
+    }
+
+    @Override
+    public String toString() {
+        return "Branch{" + "branch_id=" + branch_id + ", branch_name=" + branch_name + ", location=" + location + '}';
+    }    
+    
 }
