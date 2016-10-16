@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +24,7 @@ public class Staff {
     private int companyId;
     private String firstname;
     private String lastname;
-    private long citizenNo;
+    private String citizenNo;
     private String address;
     private String position;
 
@@ -32,7 +33,7 @@ public class Staff {
         this.companyId = rs.getInt("COMPANY_ID");
         this.firstname = rs.getString("FIRSTNAME");
         this.lastname = rs.getString("LASTNAME");
-        this.citizenNo = rs.getBigDecimal("CITIZENNO").longValue();
+        this.citizenNo = rs.getString("CITIZENNO");
         this.address = rs.getString("ADDRESS");
         this.position = rs.getString("POSITION");
     }
@@ -73,11 +74,11 @@ public class Staff {
         this.lastname = lastname;
     }
 
-    public long getCitizenNo() {
+    public String getCitizenNo() {
         return citizenNo;
     }
 
-    public void setCitizenNo(long citizenNo) {
+    public void setCitizenNo(String citizenNo) {
         this.citizenNo = citizenNo;
     }
 
@@ -136,26 +137,34 @@ public class Staff {
         }
     }
 
-    public static final String ADD_STAFF_SQL = "INSERT STAFFS (COMPANY_ID, FRISTNAME, LASTNAME, CITIZENN0O, ADDRESS, POSITION)"
+    public static final String ADD_STAFF_SQL = "INSERT INTO STAFFS (COMPANY_ID, FIRSTNAME, LASTNAME, CITIZENNO, ADDRESS, POSITION)"
             + "VALUES(?,?,?,?,?,?)";
 
-    public static void addStaff(int companyId, String fName, String lName, long citizenNo, String address, String position) {
-        try {
-            BigDecimal temp = null;
-            temp.valueOf(citizenNo);
+    public boolean addStaff(int companyId, String fName, String lName, long citizenNo, String address, String position) {
+        int x=0;
+        try {           
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement(ADD_STAFF_SQL);
+            PreparedStatement pstm = conn.prepareStatement(ADD_STAFF_SQL,Statement.RETURN_GENERATED_KEYS);
+            // ใส่Statement.RETURN_GENERATED_KEYS เพื่อขอเลข id             
+            BigDecimal temp = null;
+            temp = temp.valueOf(citizenNo);
+            
             pstm.setInt(1, companyId);
             pstm.setString(2, fName);
             pstm.setString(3, lName);
             pstm.setBigDecimal(4, temp);
             pstm.setString(5, address);
             pstm.setString(6, position);
-            pstm.executeQuery();
+            x = pstm.executeUpdate(); // ถ้า insert สำเร็จจะ return ตัวเลขที่เป็นจำนวน row ที่ insert เข้าไป
+            
+            ResultSet rs = pstm.getGeneratedKeys();
+            this.setStaffId(rs.getInt(1)); // เอาเลขไอดีที่ได้มา set ให้Staff            
             conn.close();
             pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
-        }
-    }
+        }        
+        return x>0;
+    } 
 }

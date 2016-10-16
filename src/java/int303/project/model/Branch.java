@@ -15,24 +15,24 @@ import java.sql.SQLException;
  * @author Praew
  */
 public class Branch {
-    private int warehouse_id;
-    private String warehouse_name;
+    private int branch_id;
+    private String branch_name;
     private String location;
 
-    public int getWarehouse_id() {
-        return warehouse_id;
+    public int getBranch_id() {
+        return branch_id;
     }
 
-    public void setWarehouse_id(int warehouse_id) {
-        this.warehouse_id = warehouse_id;
+    public void setBranch_id(int branch_id) {
+        this.branch_id = branch_id;
     }
 
-    public String getWarehouse_name() {
-        return warehouse_name;
+    public String getBranch_name() {
+        return branch_name;
     }
 
-    public void setWarehouse_name(String warehouse_name) {
-        this.warehouse_name = warehouse_name;
+    public void setBranch_name(String branch_name) {
+        this.branch_name = branch_name;
     }
 
     public String getLocation() {
@@ -47,7 +47,7 @@ public class Branch {
         Branch branch = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM branch WHERE warehouse_id = ?";
+        String sql = "SELECT * FROM branch WHERE branch_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, branchId);
         
@@ -61,8 +61,8 @@ public class Branch {
     }
     
     public static void orm(Branch branch,ResultSet rs) throws SQLException{
-        branch.setWarehouse_id(rs.getInt("waregouse_id"));
-        branch.setWarehouse_name(rs.getString("warehouse_name"));
+        branch.setBranch_id(rs.getInt("branch_id"));
+        branch.setBranch_name(rs.getString("branch_name"));
         branch.setLocation(rs.getString("location"));
     }
 }

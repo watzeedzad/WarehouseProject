@@ -69,4 +69,24 @@ public class Company {
         company.setCompany_name(rs.getString("company_name"));
         company.setDescription(rs.getString("company_description"));
     }
+    
+    public static Company getCompany(int id) throws SQLException{
+        Company comp = null;
+        
+        Connection con = ConnectionBuilder.getConnection();
+        String sql = "SELECT * FROM company WHERE company_id = ?";
+        PreparedStatement pstm = con.prepareStatement(sql);
+        pstm.setInt(1,id);
+        
+        ResultSet rs = pstm.executeQuery();
+        if(rs.next()){
+            orm(comp,rs);
+        }
+        
+        rs.close();
+        pstm.close();
+        con.close();
+        
+        return comp;
+    }
 }
