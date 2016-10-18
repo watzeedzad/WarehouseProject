@@ -150,12 +150,12 @@
     <br>
     <div class="row">
         <div class="col-sm-6">
-            <p><img src="box.png"></p>
+            <p><img src="image/box.png"></p>
             <h4>PRODUCT REMAINING</h4>
             <button class="btn btn-default btn-lg ">Enter</button>
         </div>
         <div class="col-sm-6">
-            <img src="podium.png">
+            <img src="image/podium.png">
             <h4>BEST SELLER</h4>
             <button class="btn btn-default btn-lg">Enter</button>
         </div>
@@ -163,12 +163,12 @@
     <br><br>
     <div class="row">
         <div class="col-sm-6">
-            <p><img src="list.png"></p>
+            <p><img src="image/list.png"></p>
             <h4>ALL PRODUCT</h4>
             <button class="btn btn-default btn-lg">Enter</button>
         </div>
         <div class="col-sm-6">
-            <p><img src="cancel.png"></p>
+            <p><img src="image/cancel.png"></p>
             <h4>CANCEL PRODUCT</h4>
             <button class="btn btn-default btn-lg">Enter</button>
         </div>
@@ -181,21 +181,21 @@
     <div class="row text-center">
         <div class="col-sm-4">
             <div class="thumbnail">
-                <p><img src="add.png"></p>
+                <p><img src="image/add.png"></p>
                 <p><strong>INCREASE</strong></p>
                 <button class="btn btn-default btn-lg">Enter</button>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="thumbnail">
-                <p><img src="remove.png"></p>
+                <p><img src="image/remove.png"></p>
                 <p><strong>REDUCE</strong></p>
                 <button class="btn btn-default btn-lg">Enter</button>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="thumbnail">
-                <p><img src="pencil.png"></p>
+                <p><img src="image/pencil.png"></p>
                 <p><strong>EDIT</strong></p>
                 <button class="btn btn-default btn-lg">Enter</button>
             </div>
@@ -209,17 +209,17 @@
     <br>
     <div class="row">
         <div class="col-sm-4">
-            <p><img src="box.png"></p>
+            <p><img src="image/box.png"></p>
             <h4>fdsfs</h4>
             <button class="btn btn-default btn-lg ">Enter</button>
         </div><br>
         <div class="col-sm-4">
-            <img src="podium.png">
+            <img src="image/podium.png">
             <h4>fdfsdf</h4>
             <button class="btn btn-default btn-lg">Enter</button>
         </div><br>
         <div class="col-sm-4">
-            <img src="podium.png">
+            <img src="image/podium.png">
             <h4>fsdfsdfs</h4>
             <button class="btn btn-default btn-lg">Enter</button>
         </div><br>
