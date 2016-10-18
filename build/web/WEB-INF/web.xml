@@ -20,6 +20,14 @@
         <servlet-name>ViewStaffServlet</servlet-name>
         <servlet-class>int303.project.controller.ViewStaffServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddBranchServlet</servlet-name>
+        <servlet-class>int303.project.controller.AddBranchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewBranchServlet</servlet-name>
+        <servlet-class>int303.project.controller.ViewBranchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>ViewStaffServlet</servlet-name>
         <url-pattern>/viewstaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddBranchServlet</servlet-name>
+        <url-pattern>/addbranch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewBranchServlet</servlet-name>
+        <url-pattern>/viewbranch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
