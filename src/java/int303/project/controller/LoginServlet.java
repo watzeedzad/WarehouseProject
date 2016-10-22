@@ -49,6 +49,9 @@ public class LoginServlet extends HttpServlet {
         } else {
             message = "Username " + user + " does not exit !";
         }
+        if (user == null) {
+            message = "";
+        }
         request.setAttribute("message", message);
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
