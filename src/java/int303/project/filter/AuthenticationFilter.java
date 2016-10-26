@@ -35,9 +35,15 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/login";
+        String path = request.getRequestURI();
 
         boolean loggedIn = session != null && session.getAttribute("user") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
+
+        if (path.matches(".*(css|jpg|png|gif|js)")) {
+            chain.doFilter(req, res);
+            return;
+        }
 
         if (loggedIn || loginRequest) {
             chain.doFilter(request, response);
