@@ -46,9 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-/nbproject/private/private.properties
-/nbproject/private/pivate.xml
 /.idea/
 /src/WarehouseProject.iml
 /src/.idea/
 /web/.idea/
+/nbproject/private/
+/nbproject/project.properties
