@@ -25,7 +25,10 @@ public class Product {
     private String prod_type;
     private Branch branch;
     private Company company;
+    private int amountAlert; // จำนวนสินค้าที่ต้องการจะให้ alert
     
+    //method getAlertProduct()
+    //method delete Product()
     
     public Product(){
         
@@ -328,6 +331,19 @@ public class Product {
         pstm.close();
         con.close();    
         return products;
+    }
+    
+    public List<Product> getAlertProduct(){
+        List<Product> prods = null;
+        
+        return prods;
+    }
+    
+    public boolean deleteProduct(){
+        int x=0;
+        // ไปอัพเดทข้อมูล จำนวนสินค้า 
+        // โดยจะต้องไป add ใน CancleProduct
+        return x>0;
     }
 
     @Override
