@@ -5,10 +5,18 @@
  */
 package int303.project.model;
 
+import java.sql.Date;
+import java.util.List;
+
 /**
  *
  * @author Praewhubb
  */
 public class Order {
+    private int orderId;
+    private Staff staff;
+    private String orderType; //-------- 
+    private Date orderDate;
+    private List<Product> prodInOrder;
     
 }
