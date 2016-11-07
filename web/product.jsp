@@ -16,7 +16,7 @@
         <style>
             .navbar {
                 margin-bottom: 0;
-                background-color: #A31E39;
+                background-color: black;
                 z-index: 9999;
                 border: 0;
                 font-size: 12px !important;
@@ -49,56 +49,21 @@
             }
             .modal-dialog{
                 padding-top: 80px;
-/*                width: 30%;*/
+                width: 400px;
             }
             .form-group{
                 width: 200px;
             }
+            .add-pro input{
+                padding: 10px;
+                margin: 10px;
+                border-radius: 10px; 
+            }
+
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span> 
-                    </button>
-                    <a class="navbar-brand" href="TestHome.jsp">WareHouse</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <!--                        <li><a href="#product">PRODUCT</a></li>-->
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#product">PRODUCT<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">PRODUCT REMAINING</a></li>
-                                <li><a href="#">BEST SELLER</a></li>
-                                <li><a href="#">ALL PRODUCT</a></li>
-                                <li><a href="#">CANCEL PRODUCT</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#edit">EDIT<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">INCREASE</a></li>
-                                <li><a href="#">REDUCE</a></li>
-                                <li><a href="#">EDIT</a></li>
-                                <li><a href="#">EDIT</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#view">VIEW<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Page 1-1</a></li>
-                                <li><a href="#">Page 1-2</a></li>
-                                <li><a href="#">Page 1-3</a></li>
-                                <li><a href="#">Page 1-3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#alert">ALERT</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <jsp:include page="/WEB-INF/jsp/Tagnavigation.jsp"/>
         <!--table ----------------------------------------------------------------------------------------------------------------->
         <div class="row">
             <div class="col-sm-2">
@@ -150,74 +115,110 @@
                         </div>
                         <div class="modal-body">
                             <div class="container">
-                                <form>
-                                    <div class="form-group">
-      <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-      </div>
-    </div>
-    </div>
+                                <form >
+                                    <table class="add-pro">
+                                        <tr>
+                                            <td>Name:</td>
+                                            <td><input type="text" name="name"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Amount:</td>
+                                            <td><input type="text" name="amount"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Price:</td>
+                                            <td><input type="text" name="price"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Type:</td>
+                                            <td><input type="text" name="type"></td>
+                                        </tr>
+                                    </table>
+
                                 </form>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">ADD</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" >ADD</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- remove ----------------------------------------------------------------------------------------------------------------->          
-            <button type="button" class="btn btn-primary">REMOVE</button>
-            <div class="modal fade" id="myModal" role="dialog">
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE</button>
+
+            <div class="modal fade" id="myModal1" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modal Header</h4>
+                            <h4 class="modal-title">Remove Products</h4>
                         </div>
                         <div class="modal-body">
-                            <p>This is a large modal.</p>
+                            <table class="add-pro">
+                                <tr>
+                                    <td>ID:</td>
+                                    <td><input type="text" name="id"></td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Remove</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- increase ----------------------------------------------------------------------------------------------------------------->          
-            <button type="button" class="btn btn-primary">INCREASE</button>
-            <div class="modal fade" id="myModal" role="dialog">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">INCREASE</button>
+            <div class="modal fade" id="myModal2" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modal Header</h4>
+                            <h4 class="modal-title">INCREASE</h4>
                         </div>
                         <div class="modal-body">
-                            <p>This is a large modal.</p>
+                            <table class="add-pro">
+                                <tr>
+                                    <td>ID:</td>
+                                    <td><input type="text" name="id"></td>
+                                </tr>
+                                <tr>
+                                    <td>Amount:</td>
+                                    <td><input type="text" name="amount1"></td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- reduce ----------------------------------------------------------------------------------------------------------------->          
-            <button type="button" class="btn btn-primary">REDUCE</button>
-            <div class="modal fade" id="myModal" role="dialog">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">REDUCE</button>
+            <div class="modal fade" id="myModal3" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modal Header</h4>
+                            <h4 class="modal-title">Reduce Product</h4>
                         </div>
                         <div class="modal-body">
-                            <p>This is a large modal.</p>
+                            <table class="add-pro">
+                                <tr>
+                                    <td>ID:</td>
+                                    <td><input type="text" name="id2"></td>
+                                </tr>
+                                <tr>
+                                    <td>Amount:</td>
+                                    <td><input type="text" name="amount2"></td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
                         </div>
                     </div>
                 </div>

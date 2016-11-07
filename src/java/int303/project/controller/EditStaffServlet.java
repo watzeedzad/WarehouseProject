@@ -53,7 +53,7 @@ public class EditStaffServlet extends HttpServlet {
         //เพื่อ update ข้อมูลของ staff หลังจาก edit ไป
         st = Staff.viewStaffData(id);
         session.setAttribute("staffData", st);
-        getServletContext().getRequestDispatcher("/staff.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/EditStaff.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

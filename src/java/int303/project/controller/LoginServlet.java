@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
         String message = "";
         HttpSession session = request.getSession();
         if (Login.login(user, pass) == true) {
-            target = "/homepage.jsp";
+            target = "/TestHome.jsp";
             session.setAttribute("user", user);
             session.setAttribute("user_id", Login.getUserId(user));
             //ดึงข้อมูลมาทั้ง record ของ staff เอาไว้ใช้ต่อไป

@@ -13,10 +13,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         <style>
+        <style>
             .navbar {
                 margin-bottom: 0;
-                background-color: #A31E39;
+                background-color: black;
                 z-index: 9999;
                 border: 0;
                 font-size: 12px !important;
@@ -59,11 +59,11 @@
                 margin: 10px;
                 border-radius: 10px; 
             }
-            </style>
+        </style>
     </head>
     <body>
         <%-- Nav--%>
-       <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -105,7 +105,7 @@
                 </div>
             </div>
         </nav>
-         <!--table ----------------------------------------------------------------------------------------------------------------->
+        <!--table ----------------------------------------------------------------------------------------------------------------->
         <div class="row">
             <div class="col-sm-2">
 
@@ -145,8 +145,8 @@
             </div>
         </div>
         <div class="row text-center">
-        
-        
-        
+
+
+
     </body>
 </html>

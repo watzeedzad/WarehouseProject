@@ -8,7 +8,7 @@
     <body>
         <%
             if (session.getAttribute("user") != null) {
-                getServletContext().getRequestDispatcher("/homepage.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/TestHome.jsp").forward(request, response);
             }
         %>
         <!--Google Font - Work Sans-->
@@ -17,7 +17,7 @@
         <div class="container">
             <div class="profile">
                 <button class="profile__avatar" id="toggleProfile">
-                    <img src="image/warehouse.png" alt="Avatar" /> 
+                    <img src="image/login-pic.png" alt="Avatar" /> 
                 </button>
                 <div class="profile__form">
                     <div class="profile__fields">

@@ -62,48 +62,7 @@
     </head>
     <body>
         <%-- Nav--%>
-       <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span> 
-                    </button>
-                    <a class="navbar-brand" href="TestHome.jsp">WareHouse</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <!--                        <li><a href="#product">PRODUCT</a></li>-->
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#product">PRODUCT<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">PRODUCT REMAINING</a></li>
-                                <li><a href="#">BEST SELLER</a></li>
-                                <li><a href="#">ALL PRODUCT</a></li>
-                                <li><a href="#">CANCEL PRODUCT</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#edit">EDIT<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">INCREASE</a></li>
-                                <li><a href="#">REDUCE</a></li>
-                                <li><a href="#">EDIT</a></li>
-                                <li><a href="#">EDIT</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#view">VIEW<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Page 1-1</a></li>
-                                <li><a href="#">Page 1-2</a></li>
-                                <li><a href="#">Page 1-3</a></li>
-                                <li><a href="#">Page 1-3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#alert">ALERT</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+       
          <!--table ----------------------------------------------------------------------------------------------------------------->
         <div class="row">
             <div class="col-sm-2">
