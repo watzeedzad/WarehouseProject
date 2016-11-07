@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -333,9 +335,32 @@ public class Product {
         return products;
     }
     
-    public List<Product> getAlertProduct(){
+    public static  List<Product> getAlertProduct(){
         List<Product> prods = null;
+        Product p = null;
         
+        Connection con = ConnectionBuilder.getConnection();
+        String sql = "SELECT * FROM PRODUCTS "
+                     + "WHERE amount <= (SELECT alertAmount FROM ALERT )";
+        try {
+            PreparedStatement pstm = con.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                if(prods == null){
+                    prods = new ArrayList<>();
+                }
+                p = new Product();
+                orm(p, rs);
+                prods.add(p);
+            }
+            
+            rs.close();
+            pstm.close();
+            con.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
         return prods;
     }
     

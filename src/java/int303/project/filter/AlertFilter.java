@@ -5,16 +5,20 @@
  */
 package int303.project.filter;
 
+import int303.project.model.Product;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,15 +34,24 @@ public class AlertFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // invoke method alert in class Product
-        int count = 0;
-        if(count==0){
-            System.out.println("HEYYYYY");
-            config.getServletContext().getRequestDispatcher("/UpdateProduct").forward(request, response);
+        HttpSession session = ((HttpServletRequest)request).getSession();                       
+        
+        if(session == null){
+            String msg = "Session Timeout";
+            config.getServletContext().getRequestDispatcher("/try").forward(request, response);
+        }else{
+            if(session.getAttribute("alertProd") != null){
+                ((List)session.getAttribute("alertProd")).clear();
+            } 
+        }              
+        
+        List<Product> alertProd = Product.getAlertProduct();
+        if(alertProd != null){
+            session.setAttribute("alertProd",alertProd);
+            config.getServletContext().getRequestDispatcher("/Alert").forward(request, response);
         }else{
             chain.doFilter(request, response);
-        }
-        
-        
+        }       
     }
 
     @Override

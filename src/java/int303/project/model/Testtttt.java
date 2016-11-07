@@ -24,9 +24,9 @@ public class Testtttt {
 //    com = Company.getCompany(1);    
 //    System.out.println(com.getCompany_name());
 //  --------------- TEST Product -----------------------
-//    Product prod = new Product("Keyboard", 30, 990, "it-equipment" , "ABC", 1000001);
+//    Product prod = new Product("Keyboard", 30, 990, "it-equipment" , "TEST_COMPANY", 1000001);
 //    boolean success = prod.addNewProduct();   
-//    Product p = Product.getProduct(10000006);
+//    Product p = Product.getProduct(10000003);
 //    System.out.println(p.getProd_id());
 //    System.out.println(p.getProd_name());
 //    System.out.println(p.getPrice());
@@ -35,7 +35,7 @@ public class Testtttt {
 //    System.out.println(p.getProd_type());
 //    System.out.println(p.getCompany().getCompany_name());    
 //    System.out.println(p);
-//   
+   
 //    p.setAmount(1000);
 //    p.editProduct();        
 //    System.out.println(p);
@@ -49,17 +49,17 @@ public class Testtttt {
 //            System.out.println("FAILED!!");
 //        }
 //  --------------- TEST get List of Product -----------------------         
-        System.out.println("Product pro = Product.searchById(10000001);");
-        Product pro = Product.searchById(10000001);
-        System.out.println(pro);
-        System.out.println("----------------------------------------------------------\n\n");
-        
-        System.out.println("List<Product> searchName = Product.searchByName(\"P\");");
-        List<Product> searchName = Product.searchByName("P");
-        for (Product p : searchName) {
-            System.out.println(p);
-        }
-        System.out.println("----------------------------------------------------------\n\n");
+//        System.out.println("Product pro = Product.searchById(10000001);");
+//        Product pro = Product.searchById(10000001);
+//        System.out.println(pro);
+//        System.out.println("----------------------------------------------------------\n\n");
+//        
+//        System.out.println("List<Product> searchName = Product.searchByName(\"P\");");
+//        List<Product> searchName = Product.searchByName("P");
+//        for (Product p : searchName) {
+//            System.out.println(p);
+//        }
+//        System.out.println("----------------------------------------------------------\n\n");
 
 //    Company company = new Company();    
 //    company.setCompany_name("ABC");
@@ -71,24 +71,29 @@ public class Testtttt {
 //    }else{
 //            System.out.println("FAILED!!");
 //    } 
-        System.out.println("List<Product> prodCompany = Product.getAllProduct(\"ABC\");");
-        List<Product> prodCompany = Product.getAllProduct("ABC");
-        for (Product p : prodCompany) {
-            System.out.println(p);
-        }
-        
-        System.out.println("----------------------------------------------------------\n\n");
+//        System.out.println("List<Product> prodCompany = Product.getAllProduct(\"ABC\");");
+//        List<Product> prodCompany = Product.getAllProduct("ABC");
+//        for (Product p : prodCompany) {
+//            System.out.println(p);
+//        }
+//        
+//        System.out.println("----------------------------------------------------------\n\n");
         
 //        Product p1 = Product.getProduct(10000009);
 //        p1.setAmount(1035);
 //        p1.editProduct();
 //        System.out.println(p1);
-        System.out.println("List<Product> prodOutOfStock = Product.productOutOfStock();");
-        List<Product> prodOutOfStock = Product.productOutOfStock();
-        for (Product p : prodOutOfStock) {
-            System.out.println(p);
-        }
-        System.out.println("----------------------------------------------------------\n\n");
+
+
+//        System.out.println("List<Product> prodOutOfStock = Product.productOutOfStock();");
+//        List<Product> prodOutOfStock = Product.productOutOfStock();
+//        if(prodOutOfStock != null){
+//            for (Product p : prodOutOfStock) {
+//                System.out.println(p);
+//            }
+//            System.out.println("----------------------------------------------------------\n\n");
+//        }
+        
         
 //        System.out.println("********TEST Branch*********");
 //        Branch b1 = new Branch();
@@ -96,5 +101,19 @@ public class Testtttt {
 //        b1.setLocation("Somewhere on this world");
 //        boolean success = b1.addNewBranch();
 //        System.out.println(success? "SUCCESS":"FAILED");
+
+
+
+//        Product prod = new Product("Keyboard", 30 , 990, "it-equipment" , "ABC", 1);
+//        boolean success = prod.addNewProduct();
+//        System.out.println(success);
+
+          List<Product> prods = Product.getAlertProduct();
+          for(Product p : prods){
+              System.out.println(p);
+          }
+        
+
+
     }
 }

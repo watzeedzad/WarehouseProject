@@ -70,6 +70,10 @@
         <servlet-name>ReduceProductAmountServlet</servlet-name>
         <servlet-class>int303.project.controller.ReduceProductAmountServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlertServlet</servlet-name>
+        <servlet-class>AlertServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -121,6 +125,10 @@
     <servlet-mapping>
         <servlet-name>ReduceProductAmountServlet</servlet-name>
         <url-pattern>/ReduceProductAmount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlertServlet</servlet-name>
+        <url-pattern>/Alert</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
