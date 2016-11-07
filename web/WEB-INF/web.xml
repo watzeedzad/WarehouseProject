@@ -4,6 +4,16 @@
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>int303.project.filter.AuthenticationFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>AlertFilter</filter-name>
+        <filter-class>int303.project.filter.AlertFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AlertFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -28,6 +38,38 @@
         <servlet-name>ViewBranchServlet</servlet-name>
         <servlet-class>int303.project.controller.ViewBranchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BestSellerServlet</servlet-name>
+        <servlet-class>int303.project.controller.BestSellerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllProductServlet</servlet-name>
+        <servlet-class>int303.project.controller.AllProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancleProductServlet</servlet-name>
+        <servlet-class>int303.project.controller.CancleProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OutoOfStockServlet</servlet-name>
+        <servlet-class>int303.project.controller.OutoOfStockServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewProductServlet</servlet-name>
+        <servlet-class>int303.project.controller.AddNewProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <servlet-class>int303.project.controller.UpdateProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProductAmountServlet</servlet-name>
+        <servlet-class>int303.project.controller.AddProductAmountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReduceProductAmountServlet</servlet-name>
+        <servlet-class>int303.project.controller.ReduceProductAmountServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -47,6 +89,38 @@
     <servlet-mapping>
         <servlet-name>ViewBranchServlet</servlet-name>
         <url-pattern>/viewbranch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BestSellerServlet</servlet-name>
+        <url-pattern>/BestSeller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllProductServlet</servlet-name>
+        <url-pattern>/AllProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancleProductServlet</servlet-name>
+        <url-pattern>/CancleProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OutoOfStockServlet</servlet-name>
+        <url-pattern>/OutoOfStock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewProductServlet</servlet-name>
+        <url-pattern>/AddNewProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <url-pattern>/UpdateProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProductAmountServlet</servlet-name>
+        <url-pattern>/AddProductAmount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReduceProductAmountServlet</servlet-name>
+        <url-pattern>/ReduceProductAmount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
