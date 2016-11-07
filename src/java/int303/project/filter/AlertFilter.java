@@ -21,15 +21,24 @@ import javax.servlet.ServletResponse;
  * @author Praew
  */
 public class AlertFilter implements Filter {
-
+    private FilterConfig config;
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        
+        config = filterConfig;
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // invoke method alert in class Product
+        int count = 0;
+        if(count==0){
+            System.out.println("HEYYYYY");
+            config.getServletContext().getRequestDispatcher("/UpdateProduct").forward(request, response);
+        }else{
+            chain.doFilter(request, response);
+        }
+        
+        
     }
 
     @Override
