@@ -213,14 +213,42 @@ public class Product {
         return x>0;
     }
     
-    public static List<Product> searchByName(String prodName) throws SQLException{
+//    public static List<Product> searchByName(String prodName) throws SQLException{
+//        List<Product> products = null;
+//        Product prod = null;
+//        
+//        Connection con = ConnectionBuilder.getConnection();
+//        String sql = "SELECT * FROM Products WHERE lower(prod_name) LIKE ? ORDER BY prod_id";
+//        PreparedStatement pstm = con.prepareStatement(sql);
+//        pstm.setString(1, prodName.toLowerCase()+"%");
+//        
+//        ResultSet rs = pstm.executeQuery();
+//        while(rs.next()){
+//            prod = new Product();
+//            orm(prod, rs);
+//            if(products == null){
+//                products = new ArrayList();
+//            }            
+//            products.add(prod);
+//        }
+//        
+//        rs.close();
+//        pstm.close();
+//        con.close();
+//        
+//        return products;
+//    }
+    
+    public static List<Product> searchByName(String prodName,int companyId) throws SQLException{
         List<Product> products = null;
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products WHERE lower(prod_name) LIKE ? ORDER BY prod_id";
+        String sql = "SELECT * FROM Products WHERE lower(prod_name) LIKE ? "
+                      + " AND company_id = ? ORDER BY prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
-        pstm.setString(1, prodName.toLowerCase()+"%");
+        pstm.setString(1, "%"+prodName.toLowerCase()+"%");
+        pstm.setInt(2, companyId);
         
         ResultSet rs = pstm.executeQuery();
         while(rs.next()){
@@ -239,13 +267,15 @@ public class Product {
         return products;
     }
     
-    public static Product searchById(long prodId) throws SQLException{        
+    public static Product searchById(long prodId,int companyId) throws SQLException{        
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products WHERE prod_id = ?";
+        String sql = "SELECT * FROM Products WHERE prod_id = ? "
+                      + "AND company_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setLong(1, prodId);
+        pstm.setInt(2, companyId);
         
         ResultSet rs = pstm.executeQuery();
         if(rs.next()){          
@@ -260,13 +290,15 @@ public class Product {
         return prod;
     }
     
-    public static  List<Product> productOutOfStock() throws SQLException{
+    public static  List<Product> productOutOfStock(int companyId) throws SQLException{
         List<Product> products = null;
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products WHERE amount = 0 ORDER BY prod_id";
+        String sql = "SELECT * FROM Products WHERE amount = 0 "
+                     + "AND company_id = ? ORDER BY prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
+        pstm.setInt(1, companyId);
         
         ResultSet rs = pstm.executeQuery();
         while(rs.next()){
@@ -335,15 +367,17 @@ public class Product {
         return products;
     }
     
-    public static  List<Product> getAlertProduct(){
+    public static  List<Product> getAlertProduct(int companyId){
         List<Product> prods = null;
         Product p = null;
         
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM PRODUCTS "
-                     + "WHERE amount <= (SELECT alertAmount FROM ALERT )";
+                     + "WHERE amount <= (SELECT alertAmount FROM ALERT) "
+                     + "AND company_id = ?";
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setInt(1, companyId);
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 if(prods == null){

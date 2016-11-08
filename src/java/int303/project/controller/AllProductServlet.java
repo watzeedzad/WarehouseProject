@@ -5,12 +5,20 @@
  */
 package int303.project.controller;
 
+import int303.project.model.Product;
+import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,19 +37,82 @@ public class AllProductServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AllProductServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AllProductServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        HttpSession session = request.getSession(false);
+        String searchParam = request.getParameter("searchParam");
+        String target = "/allProduct.jsp";
+        List<Product> products = null;
+        String message = "";
+        Staff user = (Staff)session.getAttribute("staffData");
+        
+        if(user == null){
+            request.getServletContext().getRequestDispatcher("/login").forward(request, response);
+            log(user+""); 
+            log("NULLLL");
         }
+        
+        int companyId = user.getCompanyId();
+        
+        if(searchParam != null){
+            searchParam.trim();
+            
+            if(session.getAttribute("products") != null){
+                ((List)session.getAttribute("products")).clear();
+            }
+            
+            try {
+                Long id = Long.parseLong(searchParam);
+                Product p = Product.searchById(id,companyId);
+                log("id = "+id);
+                log(p.toString());
+                // เกิด NullPointerException เลยลงไปทำ findByName
+                if(p == null){
+                    message = "Product ID '"+id+"' does not exist!!"; 
+                    log("In p==null");
+                }else{
+                    log("in product != null");
+                    products = new ArrayList<>();
+                    products.add(p);
+//                    System.out.println(products);
+                    session.setAttribute("products", products);
+                    message = "search By ID";
+                }
+                
+            } catch (Exception e) {
+                log(e+"");
+                try {                    
+                    products = Product.searchByName(searchParam,companyId);
+                    session.setAttribute("products", products);
+                    message = "search by Name";                 
+                    log("hereeee");
+                } catch (SQLException ex) {
+                    request.setAttribute("error", ex);
+                    request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
+                }
+            }
+        }else{
+            message = "Get All Product";            
+            try {
+                products = Product.getAllProduct(companyId);
+                session.setAttribute("products", products);
+            } catch (SQLException ex) {
+                request.setAttribute("error", ex);
+                request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
+            }
+        }
+        
+
+        // โดย default getAllproduct
+        // searchByName / id / 
+        
+        session.setAttribute("message", message);
+        getServletContext().getRequestDispatcher(target).forward(request, response);
+    
+        
+        
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

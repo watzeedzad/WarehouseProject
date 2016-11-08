@@ -140,7 +140,7 @@
                         <div class="thumbnail" >
                             <p><img src="image/box.png"></p>
                             <h4><b>ALL PRODUCT</b></h4>
-                            <button class="btn btn-default btn-lg "><a href="product.jsp">Enter</a></button> 
+                            <a href="AllProduct"><button class="btn btn-default btn-lg ">Enter</button></a>                            
                         </div>
                     </div>
                     <div class="col-sm-6">

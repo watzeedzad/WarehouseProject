@@ -4,6 +4,7 @@
     Author     : petch
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -62,6 +63,15 @@
     </head>
     <body>
         <%-- Nav--%>
+        <div style="text-align: center; margin-top: 100px;">
+            <a href="AllProduct"><button class="btn btn-default btn-lg ">All Product</button></a> 
+            
+            <form action="AllProduct" method="get">                
+                Search By Name or Id : <input type="text" name="searchParam" width="200px" value="${param.searchParam}">
+                <input type="submit" value="Submit" class="btn btn-default btn-lg">
+            </form>
+            ${message}
+        </div>
        
          <!--table ----------------------------------------------------------------------------------------------------------------->
         <div class="row">
@@ -106,7 +116,16 @@
             <div class="button">
                 <button type="button" class="btn btn-primary"><a href="TestHome.jsp">OK</a></button>
             </div>
-        
+            <c:forEach items="${products}" var="p" varStatus="vs">
+                <table>
+                    <tr>
+                        <td> ${p.prod_id}</td>
+                        <td> ${p.prod_name}</td>
+                        <td> ${p.price}</td>
+                        <td> ${p.amount} </td>
+                    </tr>
+                </table>
+            </c:forEach>
         
     </body>
 </html>

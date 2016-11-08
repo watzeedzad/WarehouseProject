@@ -48,7 +48,8 @@ public class AuthenticationFilter implements Filter {
         if (loggedIn || loginRequest) {
             chain.doFilter(request, response);
         } else {
-            response.sendRedirect(loginURI);
+//            response.sendRedirect(loginURI);
+            config.getServletContext().getRequestDispatcher("/login").forward(req, res);
         }
     }
 

@@ -19,7 +19,7 @@
                 <button class="profile__avatar" id="toggleProfile">
                     <img src="image/login-pic.png" alt="Avatar" /> 
                 </button>
-                <div class="profile__form">
+                <div class="profile__form" style="margin-top: 100px;">
                     <div class="profile__fields">
                         <form action="login" method="POST">
                             <div class="field">

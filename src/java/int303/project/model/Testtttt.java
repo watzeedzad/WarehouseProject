@@ -108,10 +108,22 @@ public class Testtttt {
 //        boolean success = prod.addNewProduct();
 //        System.out.println(success);
 
-          List<Product> prods = Product.getAlertProduct();
+//          List<Product> prods = Product.getAlertProduct(1);
+//          for(Product p : prods){
+//              System.out.println(p);
+//              
+//          }
+    
+          List<Product> prods = Product.searchByName("key",1);
           for(Product p : prods){
               System.out.println(p);
+              
           }
+          System.out.println("--------------------------\n\n\n\n");
+          Product p = Product.searchById(10000003L, 1);          
+          System.out.println(p);
+              
+          
         
 
 
