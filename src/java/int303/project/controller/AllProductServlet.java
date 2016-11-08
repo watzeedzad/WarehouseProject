@@ -82,8 +82,14 @@ public class AllProductServlet extends HttpServlet {
                 log(e+"");
                 try {                    
                     products = Product.searchByName(searchParam,companyId);
-                    session.setAttribute("products", products);
-                    message = "search by Name";                 
+                    if(products != null){
+                        session.setAttribute("products", products);
+                        message = "search by Name";   
+                    }else{
+                        message = "Product name LIKE '%"+searchParam+"'% does not exist";
+                    }
+                    
+                                  
                     log("hereeee");
                 } catch (SQLException ex) {
                     request.setAttribute("error", ex);

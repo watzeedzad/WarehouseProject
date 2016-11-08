@@ -40,10 +40,20 @@ public class LoginServlet extends HttpServlet {
         if (Login.login(user, pass) == true) {
             target = "/TestHome.jsp";
             session.setAttribute("user", user);
-            session.setAttribute("user_id", Login.getUserId(user));
+            int staffId = Login.getUserId(user);
+            session.setAttribute("user_id", staffId);
             //ดึงข้อมูลมาทั้ง record ของ staff เอาไว้ใช้ต่อไป
-            Staff st = Staff.viewStaffData(Login.getUserId(user));
+            Staff st = Staff.viewStaffData(staffId);
+//            log("staffId "+session.getAttribute("user_id"));
+//            log(Login.getUserId(user)+" Login.getUserId(user)");
+            
             session.setAttribute("staffData", st);
+            if(session.getAttribute("staffData")!= null){
+                Staff s = (Staff)session.getAttribute("staffData");
+//                log("---has Staff");
+//                log(s.toString());
+            }
+//            log("test in log in");
         } else if (Login.isUserExist(user)) {
             message = "Wrong password !";
         } else {
