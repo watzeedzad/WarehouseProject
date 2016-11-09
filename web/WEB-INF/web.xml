@@ -42,7 +42,7 @@
     </servlet>
     <servlet>
         <servlet-name>OutoOfStockServlet</servlet-name>
-        <servlet-class>int303.project.controller.OutoOfStockServlet</servlet-class>
+        <servlet-class>int303.project.controller.OutOfStockServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddNewProductServlet</servlet-name>

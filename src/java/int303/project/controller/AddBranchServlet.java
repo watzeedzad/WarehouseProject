@@ -33,6 +33,7 @@ public class AddBranchServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String message = "";
         try {
             response.setContentType("text/html;charset=UTF-8");
             String branchName = request.getParameter("branchname");
@@ -41,9 +42,11 @@ public class AddBranchServlet extends HttpServlet {
             b.setBranch_name(branchName);
             b.setLocation(branchLocation);
             b.addNewBranch();
+            message = "Add new branch sucessful!";
         } catch (SQLException ex) {
             System.err.println(ex);
         }
+        request.setAttribute("message", message);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
