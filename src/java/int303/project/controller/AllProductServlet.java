@@ -46,7 +46,7 @@ public class AllProductServlet extends HttpServlet {
         Staff user = (Staff)session.getAttribute("staffData");
         
         if(user == null){
-            request.getServletContext().getRequestDispatcher("/login").forward(request, response);
+            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
             log(user+""); 
             log("NULLLL");
         }
@@ -63,8 +63,8 @@ public class AllProductServlet extends HttpServlet {
             try {
                 Long id = Long.parseLong(searchParam);
                 Product p = Product.searchById(id,companyId);
-                log("id = "+id);
-                log(p.toString());
+//                log("id = "+id);
+//                log(p.toString()); >> ทำให้เกิด NullPointerException เหมือนกัน
                 // เกิด NullPointerException เลยลงไปทำ findByName
                 if(p == null){
                     message = "Product ID '"+id+"' does not exist!!"; 

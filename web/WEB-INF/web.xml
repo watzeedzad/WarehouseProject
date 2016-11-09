@@ -37,11 +37,11 @@
         <servlet-class>int303.project.controller.AllProductServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CancleProductServlet</servlet-name>
-        <servlet-class>int303.project.controller.CancleProductServlet</servlet-class>
+        <servlet-name>CancelProductServlet</servlet-name>
+        <servlet-class>int303.project.controller.CancelProductServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>OutoOfStockServlet</servlet-name>
+        <servlet-name>OutOfStockServlet</servlet-name>
         <servlet-class>int303.project.controller.OutOfStockServlet</servlet-class>
     </servlet>
     <servlet>
@@ -76,6 +76,10 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>int303.project.controller.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RemoveProductServlet</servlet-name>
+        <servlet-class>int303.project.controller.RemoveProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -103,14 +107,6 @@
     <servlet-mapping>
         <servlet-name>AllProductServlet</servlet-name>
         <url-pattern>/AllProduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CancleProductServlet</servlet-name>
-        <url-pattern>/CancleProduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>OutoOfStockServlet</servlet-name>
-        <url-pattern>/OutoOfStock</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddNewProductServlet</servlet-name>
@@ -143,6 +139,18 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OutOfStockServlet</servlet-name>
+        <url-pattern>/OutOfStock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelProductServlet</servlet-name>
+        <url-pattern>/CancelProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveProductServlet</servlet-name>
+        <url-pattern>/RemoveProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

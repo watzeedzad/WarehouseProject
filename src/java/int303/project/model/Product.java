@@ -178,16 +178,36 @@ public class Product {
         pstm.setInt(3, this.getAmount());
         pstm.setInt(4, this.getBranch().getBranch_id());
         pstm.setString(5, this.getProd_type());
-        pstm.setInt(6, this.getCompany().getCompany_id());
+        pstm.setInt(6, this.getCompany().getCompany_id());       
         
         x = pstm.executeUpdate();
         ResultSet rs = pstm.getGeneratedKeys();
-        rs.next();        
-        this.setProd_id(rs.getLong(1));
+        
+        rs.next();
+        long id = rs.getLong(1);
+        this.setProd_id(id);
+        
+        boolean saveStatusSuccess = addToProductStatus(con, id);
         
         pstm.close();
         con.close();
         
+        return x>0 && saveStatusSuccess;
+    }
+    
+    public static boolean addToProductStatus(Connection con,long prodId){
+        int x=0;
+        String sql = "INSERT INTO product_status(prod_id,cancle_status)"
+                     + "VALUES(?,false)"; // false = ยังผลิตอยู่
+        try {
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setLong(1, prodId);
+            x = pstm.executeUpdate();
+            
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return x>0;
     }
         
@@ -322,9 +342,19 @@ public class Product {
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products WHERE company_id = ? ORDER BY company_id";
+        String sql = "SELECT * FROM Products P "
+                      + "JOIN product_status S ON P.prod_id =  S.prod_id "
+                      + "WHERE company_id = 1 AND cancle_status = false "
+                      + "ORDER BY company_id ";
+        
+//        SELECT * FROM Products P
+//        JOIN product_status S ON P.prod_id =  S.prod_id
+//        WHERE company_id = 1 AND cancle_status = false 
+//        ORDER BY company_id;
+
+        System.out.println(companyId);
         PreparedStatement pstm = con.prepareStatement(sql);
-        pstm.setInt(1, companyId);
+//        pstm.setInt(1, companyId);
         
         ResultSet rs = pstm.executeQuery();
         while(rs.next()){
@@ -398,10 +428,16 @@ public class Product {
         return prods;
     }
     
-    public boolean deleteProduct(){
+    public boolean deleteProduct(long prodId){
         int x=0;
         // ไปอัพเดทข้อมูล จำนวนสินค้า 
         // โดยจะต้องไป add ใน CancleProduct
+        Connection con = ConnectionBuilder.getConnection();
+        //ชื่อ locumnผิด >> 'CANCEL'
+        String sql = "UPDATE cancle_status VALUES(true) "
+                      + "WHERE prodId = ? ";
+        
+        
         return x>0;
     }
 

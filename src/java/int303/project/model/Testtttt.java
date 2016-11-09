@@ -5,6 +5,7 @@
  */
 package int303.project.model;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -24,8 +25,15 @@ public class Testtttt {
 //    com = Company.getCompany(1);    
 //    System.out.println(com.getCompany_name());
 //  --------------- TEST Product -----------------------
-//    Product prod = new Product("Keyboard", 30, 990, "it-equipment" , "TEST_COMPANY", 1000001);
+//    Product prod = new Product("pen", 200,150, "pen" , "TEST_COMPANY", 1000001);
 //    boolean success = prod.addNewProduct();   
+//    System.out.println(success);
+
+//    Connection con = ConnectionBuilder.getConnection();
+//    boolean s = Product.addToProductStatus(con, 10000105);
+//        System.out.println(s);
+    
+    
 //    Product p = Product.getProduct(10000003);
 //    System.out.println(p.getProd_id());
 //    System.out.println(p.getProd_name());
@@ -71,11 +79,11 @@ public class Testtttt {
 //    }else{
 //            System.out.println("FAILED!!");
 //    } 
-//        System.out.println("List<Product> prodCompany = Product.getAllProduct(\"ABC\");");
-//        List<Product> prodCompany = Product.getAllProduct("ABC");
-//        for (Product p : prodCompany) {
-//            System.out.println(p);
-//        }
+        System.out.println("List<Product> prodCompany = Product.getAllProduct(1);");
+        List<Product> prodCompany = Product.getAllProduct(1);
+        for (Product p : prodCompany) {
+            System.out.println(p);
+        }
 //        
 //        System.out.println("----------------------------------------------------------\n\n");
         
@@ -113,15 +121,17 @@ public class Testtttt {
 //              System.out.println(p);
 //              
 //          }
+
+//-----------------------------------------------------------------------------------
     
-          List<Product> prods = Product.searchByName("key",1);
-          for(Product p : prods){
-              System.out.println(p);
-              
-          }
-          System.out.println("--------------------------\n\n\n\n");
-          Product p = Product.searchById(10000003L, 1);          
-          System.out.println(p);
+//          List<Product> prods = Product.searchByName("key",1);
+//          for(Product p : prods){
+//              System.out.println(p);
+//              
+//          }
+//          System.out.println("--------------------------\n\n\n\n");
+//          Product p = Product.searchById(10000003L, 1);          
+//          System.out.println(p);
               
           
         

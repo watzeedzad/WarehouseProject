@@ -147,7 +147,7 @@
                         <div class="thumbnail" >
                             <p><img src="image/podium.png"></p>
                             <h4><b>BEST SELLER</b></h4>
-                            <button class="btn btn-default btn-lg"><a href="BestSeller.jsp">Enter</a></button>   
+                            <a href="BestSeller"><button class="btn btn-default btn-lg">Enter</button></a>  
                         </div>
                     </div>
                 </div><br><br>
@@ -155,15 +155,15 @@
                     <div class="col-sm-6">
                         <div class="thumbnail" >
                             <p><img src="image/list.png"></p>
-                            <h4><b>สินค้าที่หมด</b></h4>
-                            <button class="btn btn-default btn-lg"><a href="CancelProduct.jsp">Enter</a></button>  
+                            <h4><b>Out of Stock</b></h4>
+                            <a href="OutOfStock"><button class="btn btn-default btn-lg">Enter</button></a>  
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail" >
                             <p><img src="image/cancel.png"></p>
                             <h4><b>CANCEL PRODUCT</b></h4>
-                            <button class="btn btn-default btn-lg"><a href="CancelProduct.jsp">Enter</a></button>  
+                            <a href="CancelProduct"><button class="btn btn-default btn-lg">Enter</button></a>  
                         </div>
                     </div>
                 </div>
@@ -187,34 +187,34 @@
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h2 class="modal-title">ADD PRODUCT</h2>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="container">
-                                                <form >
-                                                    <table class="add-pro">
-                                                        <tr>
-                                                            <td>Name:</td>
-                                                            <td><input type="text" name="name"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Amount:</td>
-                                                            <td><input type="text" name="amount"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Price:</td>
-                                                            <td><input type="text" name="price"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Type:</td>
-                                                            <td><input type="text" name="type"></td>
-                                                        </tr>
-                                                    </table>
+                                        <form action="AddNewProduct">
+                                            <div class="modal-body">
+                                                <div class="container">                                                
+                                                        <table class="add-pro">
+                                                            <tr>
+                                                                <td>Name:</td>
+                                                                <td><input type="text" name="name"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Amount:</td>
+                                                                <td><input type="text" name="amount"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Price:</td>
+                                                                <td><input type="text" name="price"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Type:</td>
+                                                                <td><input type="text" name="type"></td>
+                                                            </tr>                                                            
+                                                        </table>
 
-                                                </form>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal" >ADD</button>
-                                        </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" value="ADD" class="btn btn-default" /> ถ้าใส่ data-dismiss="modal" กดปุ่มแล้วจะไม่ไป
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -233,17 +233,21 @@
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Remove Products</h4>
                                         </div>
-                                        <div class="modal-body">
-                                            <table class="add-pro">
-                                                <tr>
-                                                    <td>ID:</td>
-                                                    <td><input type="text" name="id"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Remove</button>
-                                        </div>
+                                        <form action="RemoveProduct">
+                                            <div class="modal-body">
+
+                                                    <table class="add-pro">
+                                                        <tr>
+                                                            <td>ID:</td>
+                                                            <td><input type="text" name="id"></td>
+                                                        </tr>                                                        
+                                                    </table>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" value="Remove" class="btn btn-default" /> ถ้าใส่ data-dismiss="modal" กดปุ่มแล้วจะไม่ไป 
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -263,21 +267,23 @@
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">INCREASE</h4>
                                         </div>
-                                        <div class="modal-body">
-                                            <table class="add-pro">
-                                                <tr>
-                                                    <td>ID:</td>
-                                                    <td><input type="text" name="id"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount:</td>
-                                                    <td><input type="text" name="amount1"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-                                        </div>
+                                        <form action="AddProductAmount">
+                                            <div class="modal-body">
+                                                <table class="add-pro">
+                                                    <tr>
+                                                        <td>ID:</td>
+                                                        <td><input type="text" name="id"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Amount:</td>
+                                                        <td><input type="text" name="amount1"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" value="OK" class="btn btn-default" /> ถ้าใส่ data-dismiss="modal" กดปุ่มแล้วจะไม่ไป 
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -295,21 +301,23 @@
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Reduce Product</h4>
                                         </div>
-                                        <div class="modal-body">
-                                            <table class="add-pro">
-                                                <tr>
-                                                    <td>ID:</td>
-                                                    <td><input type="text" name="id2"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount:</td>
-                                                    <td><input type="text" name="amount2"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-                                        </div>
+                                        <form action="ReduceProductAmount">
+                                            <div class="modal-body">
+                                                <table class="add-pro">
+                                                    <tr>
+                                                        <td>ID:</td>
+                                                        <td><input type="text" name="id2"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Amount:</td>
+                                                        <td><input type="text" name="amount2"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" value="OK" class="btn btn-default" /> ถ้าใส่ data-dismiss="modal" กดปุ่มแล้วจะไม่ไป 
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

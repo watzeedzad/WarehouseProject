@@ -116,16 +116,21 @@
             <div class="button">
                 <button type="button" class="btn btn-primary"><a href="TestHome.jsp">OK</a></button>
             </div>
-            <c:forEach items="${products}" var="p" varStatus="vs">
-                <table>
+            <table style="border: solid; margin-left: 250px; " width="500px">
+                <tr>
+                    <td>id</td>
+                    <td>name</td>
+                    <td>price</td>
+                    <td>amount</td>
+                </tr>
+                <c:forEach items="${products}" var="p" varStatus="vs">                       
                     <tr>
                         <td> ${p.prod_id}</td>
                         <td> ${p.prod_name}</td>
                         <td> ${p.price}</td>
                         <td> ${p.amount} </td>
-                    </tr>
-                </table>
-            </c:forEach>
-        
+                    </tr>                   
+                </c:forEach>
+            </table>
     </body>
 </html>
