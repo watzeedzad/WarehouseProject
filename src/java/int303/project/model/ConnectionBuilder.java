@@ -16,7 +16,8 @@ import java.util.logging.Logger;
  * @author jiraw
  */
 public class ConnectionBuilder {
-    
+
+    /*
     private static org.apache.derby.jdbc.ClientDataSource ds = null;
     
     public static Connection getConnection() {
@@ -31,5 +32,18 @@ public class ConnectionBuilder {
         }
         return conn;
     }
+     */
+    public static Connection getConnection() {
+        Connection conn = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://54.169.9.10:3306/int303_project?zeroDateTimeBehavior=convertToNull", "int303", "int303");
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.err.println(ex);
+        }
 
+        return conn;
+    }
 }

@@ -14,9 +14,18 @@ import java.sql.SQLException;
  * @author jiraw
  */
 public class ConnectionBuilderMySql {
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/warehouse_int303?zeroDateTimeBehavior=convertToNull", "int303", "int303");
+
+    public static Connection getConnection() {
+        Connection conn = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://54.169.9.10:3306/int303_project?zeroDateTimeBehavior=convertToNull", "int303", "int303");
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.err.println(ex);
+        }
+
         return conn;
     }
 }
