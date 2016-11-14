@@ -48,7 +48,7 @@ public class Branch {
         Branch branch = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM branch WHERE branch_id = ?";
+        String sql = "SELECT * FROM BRANCH WHERE branch_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, branchId);
         
@@ -71,7 +71,7 @@ public class Branch {
         int x = 0;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "INSERT INTO Branch(branch_name,location) VALUES(?,?)";
+        String sql = "INSERT INTO BRANCH(branch_name,location) VALUES(?,?)";
         PreparedStatement pstm = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
         pstm.setString(1, this.getBranch_name());
         pstm.setString(2, this.getLocation());

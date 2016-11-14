@@ -49,7 +49,7 @@ public class Company {
         Company comp = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM companies WHERE company_name = ?";
+        String sql = "SELECT * FROM COMPANIES WHERE company_name = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setString(1,name);
         
@@ -76,7 +76,7 @@ public class Company {
         Company comp = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM companies WHERE company_id = ?";
+        String sql = "SELECT * FROM COMPANIES WHERE company_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1,id);
         
@@ -96,7 +96,7 @@ public class Company {
     public boolean addNewCompany() throws SQLException{
        int x = 0;
        Connection con = ConnectionBuilder.getConnection();
-       String sql = "INSERT INTO Companies(company_name,company_description) VALUES(?,?)";
+       String sql = "INSERT INTO COMPANIES(company_name,company_description) VALUES(?,?)";
        PreparedStatement pstm = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);  
        
        pstm.setString(1, this.getCompany_name());

@@ -103,6 +103,7 @@ public class AllProductServlet extends HttpServlet {
                 session.setAttribute("products", products);
             } catch (SQLException ex) {
                 request.setAttribute("error", ex);
+                System.err.println(ex);
                 request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
             }
         }

@@ -105,7 +105,7 @@ public class Product {
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products WHERE prod_id = ?";
+        String sql = "SELECT * FROM PRODUCTS WHERE prod_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setLong(1, prodId);
         
@@ -132,7 +132,7 @@ public class Product {
         prod.setCompany(Company.getCompany(rs.getInt("company_id")));        
     }
     
-    public final static String SQL_SET_AMOUNT = "UPDATE Products SET amount = ? WHERE prod_id = ?";
+    public final static String SQL_SET_AMOUNT = "UPDATE PRODUCTS SET amount = ? WHERE prod_id = ?";
     
     public boolean addAmount(int amount) throws SQLException{
         int x=0;
@@ -170,7 +170,7 @@ public class Product {
     public boolean addNewProduct() throws SQLException{       
         int x=0;
         Connection con = ConnectionBuilder.getConnection();        
-        String sql = "INSERT INTO Products(prod_name,price,amount,branch_id,prod_type,company_id) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO PRODUCTS(prod_name,price,amount,branch_id,prod_type,company_id) VALUES(?,?,?,?,?,?)";
         PreparedStatement pstm = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);        
         
         pstm.setString(1, this.getProd_name());
@@ -197,7 +197,7 @@ public class Product {
     
     public static boolean addToProductStatus(Connection con,long prodId){
         int x=0;
-        String sql = "INSERT INTO product_status(prod_id,cancle_status)"
+        String sql = "INSERT INTO PRODUCT_STATUS(prod_id,cancle_status)"
                      + "VALUES(?,false)"; // false = ยังผลิตอยู่
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -214,7 +214,7 @@ public class Product {
     public boolean editProduct() throws SQLException{        
         int x=0;
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "UPDATE Products SET prod_name=?,price=?,amount=?,branch_id=?,prod_type=?,company_id=? WHERE prod_id=?";
+        String sql = "UPDATE PRODUCTS SET prod_name=?,price=?,amount=?,branch_id=?,prod_type=?,company_id=? WHERE prod_id=?";
         PreparedStatement pstm = con.prepareStatement(sql);
         
         pstm.setString(1, this.getProd_name());
@@ -238,7 +238,7 @@ public class Product {
 //        Product prod = null;
 //        
 //        Connection con = ConnectionBuilder.getConnection();
-//        String sql = "SELECT * FROM Products WHERE lower(prod_name) LIKE ? ORDER BY prod_id";
+//        String sql = "SELECT * FROM PRODUCTS WHERE lower(prod_name) LIKE ? ORDER BY prod_id";
 //        PreparedStatement pstm = con.prepareStatement(sql);
 //        pstm.setString(1, prodName.toLowerCase()+"%");
 //        
@@ -264,7 +264,7 @@ public class Product {
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products WHERE lower(prod_name) LIKE ? "
+        String sql = "SELECT * FROM PRODUCTS WHERE lower(prod_name) LIKE ? "
                       + " AND company_id = ? ORDER BY prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setString(1, "%"+prodName.toLowerCase()+"%");
@@ -291,7 +291,7 @@ public class Product {
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products WHERE prod_id = ? "
+        String sql = "SELECT * FROM PRODUCTS WHERE prod_id = ? "
                       + "AND company_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setLong(1, prodId);
@@ -315,7 +315,7 @@ public class Product {
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products WHERE amount = 0 "
+        String sql = "SELECT * FROM PRODUCTS WHERE amount = 0 "
                      + "AND company_id = ? ORDER BY prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, companyId);
@@ -342,13 +342,13 @@ public class Product {
         Product prod = null;
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products P "
-                      + "JOIN product_status S ON P.prod_id =  S.prod_id "
+        String sql = "SELECT * FROM PRODUCTS P "
+                      + "JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
                       + "WHERE company_id = 1 AND cancle_status = false "
                       + "ORDER BY company_id ";
         
-//        SELECT * FROM Products P
-//        JOIN product_status S ON P.prod_id =  S.prod_id
+//        SELECT * FROM PRODUCTS P
+//        JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id
 //        WHERE company_id = 1 AND cancle_status = false 
 //        ORDER BY company_id;
 
@@ -377,7 +377,7 @@ public class Product {
         Product prod = new Product();
         
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM Products p JOIN Companies c ON p.COMPANY_ID ="
+        String sql = "SELECT * FROM PRODUCTS p JOIN Companies c ON p.COMPANY_ID ="
                       +"c.company_id WHERE c.company_name = ? ORDER BY p.prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setString(1, companyName);
@@ -434,7 +434,7 @@ public class Product {
         // โดยจะต้องไป add ใน CancleProduct
         Connection con = ConnectionBuilder.getConnection();
         //ชื่อ locumnผิด >> 'CANCEL'
-        String sql = "UPDATE cancle_status VALUES(true) "
+        String sql = "UPDATE CANCLE_STATUS VALUES(true) "
                       + "WHERE prodId = ? ";
         
         
