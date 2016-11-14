@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -60,6 +62,28 @@ public class Branch {
         
         return branch;
     }
+    
+    public static List<Branch> getAllBranch() throws SQLException{
+        List<Branch> branches = null;
+        Branch branch = null;
+        
+        Connection con = ConnectionBuilder.getConnection();
+        String sql = "SELECT * FROM BRANCH ";
+        PreparedStatement pstm = con.prepareStatement(sql);    
+        
+        ResultSet rs = pstm.executeQuery();
+        while(rs.next()){
+            if(branches == null){
+                branches = new ArrayList<>();
+            }
+            branch = new Branch();
+            orm(branch,rs);
+            branches.add(branch);
+        }        
+        
+        return branches;
+    }
+    
     
     public static void orm(Branch branch,ResultSet rs) throws SQLException{
         branch.setBranch_id(rs.getInt("branch_id"));

@@ -4,7 +4,9 @@
     Author     : petch
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -105,20 +107,27 @@
             </div>
         </nav>
          <!--table ----------------------------------------------------------------------------------------------------------------->
+        
         <div class="row">
             <div class="col-sm-2">
-
+                
             </div>
             <div class="col-sm-8">
                 <div class="container-fluid">
                     <table class="table table-striped">
                         <thead>
-                            <tr>
-                                <th></th>
-                                <th>ID</th>
-                                <th>NameProduct</th>
-                                <th>Price</th>
-                            </tr>
+                            <c:if test="${message != null}" >
+                                <tr>
+                                    <center><h2> ${message}</h2></center>
+                                </tr>  
+                            </c:if>
+                            <c:if test="${products != null}"> 
+                                <tr>
+                                    <th></th>
+                                    <th>ID</th>
+                                    <th>NameProduct</th>
+                                    <th>Price</th>
+                                </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -140,6 +149,8 @@
                                 <td>40</td>
                             </tr>
                         </tbody>
+                        </c:if>
+                            
                     </table>
                 </div>
             </div>    

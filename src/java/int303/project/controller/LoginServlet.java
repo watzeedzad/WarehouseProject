@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("staffData", st);
             if(session.getAttribute("staffData")!= null){
                 Staff s = (Staff)session.getAttribute("staffData");
+                session.setAttribute("staffData", s);
 //                log("---has Staff");
 //                log(s.toString());
             }
@@ -57,7 +58,7 @@ public class LoginServlet extends HttpServlet {
         } else if (Login.isUserExist(user)) {
             message = "Wrong password !";
         } else {
-            message = "Username " + user + " does not exit !";
+            message = "Username " + user + " does not exist !";
         }
         if (user == null) {
             message = "";

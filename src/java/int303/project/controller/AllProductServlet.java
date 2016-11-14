@@ -38,7 +38,7 @@ public class AllProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
         String searchParam = request.getParameter("searchParam");
         String target = "/allProduct.jsp";
         List<Product> products = null;
@@ -53,17 +53,17 @@ public class AllProductServlet extends HttpServlet {
         
         int companyId = user.getCompanyId();
         
-        if(searchParam != null){
-            searchParam.trim();
-            
+        if(searchParam != null){            
+            String search = searchParam.trim();
             if(session.getAttribute("products") != null){
                 ((List)session.getAttribute("products")).clear();
             }
             
             try {
-                Long id = Long.parseLong(searchParam);
+                
+                Long id = Long.parseLong(search);
                 Product p = Product.searchById(id,companyId);
-//                log("id = "+id);
+                log("id = "+id);
 //                log(p.toString()); >> ทำให้เกิด NullPointerException เหมือนกัน
                 // เกิด NullPointerException เลยลงไปทำ findByName
                 if(p == null){
@@ -81,15 +81,13 @@ public class AllProductServlet extends HttpServlet {
             } catch (Exception e) {
                 log(e+"");
                 try {                    
-                    products = Product.searchByName(searchParam,companyId);
+                    products = Product.searchByName(search,companyId);
                     if(products != null){
                         session.setAttribute("products", products);
                         message = "search by Name";   
                     }else{
-                        message = "Product name LIKE '%"+searchParam+"'% does not exist";
-                    }
-                    
-                                  
+                        message = "Product name LIKE '%"+search+"'% does not exist";
+                    }                                 
                     log("hereeee");
                 } catch (SQLException ex) {
                     request.setAttribute("error", ex);

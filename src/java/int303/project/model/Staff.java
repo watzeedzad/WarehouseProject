@@ -122,6 +122,7 @@ public class Staff {
     public static final String EDIT_STAFF_SQL = "UPDATE STAFFS SET FIRSTNAME = ?, LASTNAME = ?, ADDRESS = ? WHERE STAFF_ID = ?";
 
     public static void editStaff(String fName, String lName, String address, int staffId) {
+        
         try {
             Connection conn = ConnectionBuilder.getConnection();
             PreparedStatement pstm = conn.prepareStatement(EDIT_STAFF_SQL);
