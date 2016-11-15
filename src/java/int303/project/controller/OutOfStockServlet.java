@@ -38,26 +38,29 @@ public class OutOfStockServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Staff user = (Staff)(session.getAttribute("staffData"));
+        String message = "";
         
         if(user == null){
             request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
             log(user+""); 
             log("NULLLL");
         }
-        
+        log("in OutOfStock");
         try {
             log("USERRRRRRRRRRRRRRRRRRRRRRRRRRR "+user+"");
             List<Product> products = Product.productOutOfStock( user.getCompanyId());
             if(products!=null){
                 session.setAttribute("products", products);
+                message = "Out of Stock product";
             }else{
-                session.setAttribute("message", "There is no product that Out of Stock");
+                message = "There is no product that Out of Stock";
                         
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
         
+        session.setAttribute("message", message);
         getServletContext().getRequestDispatcher("/OutOfStock.jsp").forward(request, response);
         
     }

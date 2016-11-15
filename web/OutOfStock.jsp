@@ -4,6 +4,7 @@
     Author     : petch
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -81,6 +82,9 @@
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">OUT OF PRODUCT<span class="black"><b>}</b></span></h1><br></center>
                     <table class="table table-striped">
                         <thead>
+                            <tr>
+                                <td style="text-align: center;"><c:out value="${message}" ></c:out></td>                                
+                            </tr>
                             <tr>
                                 <th>ID</th>
                                 <th>NameProduct</th>

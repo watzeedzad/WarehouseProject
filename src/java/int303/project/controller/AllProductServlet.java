@@ -53,7 +53,17 @@ public class AllProductServlet extends HttpServlet {
         
         int companyId = user.getCompanyId();
         
-        if(searchParam != null){            
+        if(searchParam == null || searchParam.equals("") || searchParam.trim().length()==0 ){
+            message = "Get All Product";            
+            try {
+                products = Product.getAllProduct(companyId);
+                session.setAttribute("products", products);
+            } catch (SQLException ex) {
+                request.setAttribute("error", ex);
+                System.err.println(ex);
+                request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
+            }
+        }else if(searchParam != null){            
             String search = searchParam.trim();
             if(session.getAttribute("products") != null){
                 ((List)session.getAttribute("products")).clear();
@@ -99,16 +109,6 @@ public class AllProductServlet extends HttpServlet {
                     message = "ERROR";
 //                    request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
                 }
-            }
-        }else{
-            message = "Get All Product";            
-            try {
-                products = Product.getAllProduct(companyId);
-                session.setAttribute("products", products);
-            } catch (SQLException ex) {
-                request.setAttribute("error", ex);
-                System.err.println(ex);
-                request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
             }
         }
         

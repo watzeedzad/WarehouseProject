@@ -160,14 +160,14 @@
                         <div class="thumbnail" >
                             <p><img src="image/box.png"></p>
                             <h4><b>ALL PRODUCT</b></h4>
-                            <a href="product.jsp"><button class="btn btn-default btn-lg ">Enter</button></a>
+                            <a href="AllProduct"><button class="btn btn-default btn-lg ">Enter</button></a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail" >
                             <p><img src="image/podium.png"></p>
                             <h4><b>BEST SELLER</b></h4>
-                            <a href="Bestseller.jsp"><button class="btn btn-default btn-lg">Enter</button></a>   
+                            <a href="BestSeller"><button class="btn btn-default btn-lg">Enter</button></a>   
                         </div>
                     </div>
                 </div><br><br>
@@ -176,14 +176,14 @@
                         <div class="thumbnail" >
                             <p><img src="image/list.png"></p>
                             <h4><b>OUT Of STOCK</b></h4>
-                            <a href="OutOfStock.jsp"><button class="btn btn-default btn-lg">Enter</button></a>  
+                            <a href="OutOfStock"><button class="btn btn-default btn-lg">Enter</button></a>  
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail" >
                             <p><img src="image/cancel.png"></p>
                             <h4><b>CANCEL PRODUCT</b></h4>
-                            <a href="CancelProduct.jsp"><button class="btn btn-default btn-lg">Enter</button></a> 
+                            <a href="CancelProduct"><button class="btn btn-default btn-lg">Enter</button></a> 
                         </div>
                     </div>
                 </div>

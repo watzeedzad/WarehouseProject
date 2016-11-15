@@ -104,9 +104,6 @@
         </div>
         
         <div class="row text-center">
-            <div class="button">
-                <button type="button" class="btn btn-primary"><a href="TestHome.jsp">OK</a></button>
-            </div>
             <form action="CancelProduct">
                 <input type="submit" value="Get All"/>
                 <table style="border: solid; margin-left: 250px; " width="500px">

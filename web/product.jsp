@@ -82,8 +82,12 @@
                             <td><input type="text" class="form-control" size="40" placeholder="SEARCH PRODUCT" name="searchParam"></td>
                             <td><input type="submit" value="SEARCH" class="btn btn-success"></td>
                         </form>
-                        <c:if test="${products != null}">
                             </tr>
+                            <tr>
+                                <td colspan="4" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
+                            </tr>
+                        <c:if test="${products != null}">
+                            
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>

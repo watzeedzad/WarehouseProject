@@ -337,10 +337,10 @@ public class Product {
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM PRODUCTS P "
                      + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
-                     + " WHERE amount = 0 "
-                     + " AND company_id = ? "
-                     + " AND cancle_status = false  "
-                     + " ORDER BY prod_id";
+                     + " WHERE P.amount = 0 "
+                     + " AND P.company_id = ? "
+                     + " AND S.cancle_status = false  "
+                     + " ORDER BY P.prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, companyId);
         
