@@ -1,16 +1,3 @@
-#home{
-    background-image: url("css/warehouse.jpg");
-    position: fixed auto calc;
-    /*background-size: 100%;*/
-    width: 100%;
-    height: 780px;
-    display:block;
-    padding:0 !important;
-    margin:0;
-    font-family: 'Francois One', sans-serif;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: black;    
-}
 .navbar {
     margin-bottom: 0;
     background-color: black;

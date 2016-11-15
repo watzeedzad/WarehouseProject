@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,8 +14,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-
-        <div class="container">
+        <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
+        <div class="container"><br><br><br>
             <h1>::STAFF::</h1><br>
             <button type="button" class="btn btn-default">View Data</button><br><br><br>
             <form class="form-horizontal" action="editstaff" method="POST">

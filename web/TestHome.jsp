@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <!--<html>-->
 <head>
@@ -16,8 +15,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:700" rel="stylesheet">
+
     <style>
+        body{
+            font-family: 'Rubik', sans-serif;
+        }
         #home{
             background-image: url("image/warehouse.jpg");
             position: fixed auto calc;
@@ -27,7 +30,7 @@
             display:block;
             padding:0 !important;
             margin:0;
-            font-family: 'Francois One', sans-serif;
+            font-family: 'Rubik', sans-serif;
             -webkit-text-stroke-width: 3px;
             -webkit-text-stroke-color: black;    
         }
@@ -66,7 +69,7 @@
             padding: 60px 50px;
         }
         .bg-blue {
-            background-color: gray;
+            background-color: #1F2739;
             /*background-color: #485C5A;*/
         }
         .bg-gray{
@@ -94,7 +97,23 @@
             /* Make the element visible */
             visibility: visible; 
         }
-
+        /*popup edit*/
+        .modal-dialog{
+            padding-top: 80px;
+            width: 400px;
+        }
+        .form-group{
+            width: 200px;
+        }
+        .add-pro input{
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px; 
+        }
+        /*container-fluid bg-blue */
+        .container-fluid bg-blue{
+            color: white;
+        }
         /* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
         @keyframes slide {
             0% {
@@ -119,12 +138,12 @@
     </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-    <jsp:include page="/WEB-INF/jsp/Tagnavigation.jsp"/>
-    <!--Home ----------------------------------------class="jumbotron text-center"-------------------------------------------------------->  
+    <jsp:include page="/WEB-INF/jsp/Tagnavigation_home.jsp"/>
+    <!--Home ----------------------------------------------------------------------------------------------->  
     <div id="home" class="jumbotron text-center" >       
-        <div class="slideanim">
+        <div > 
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <h1>WareHouse</h1> 
+            <h1 style="font-size: 800%">WareHouse</h1> 
         </div>
     </div>
     <!--product--------------------------------------------------------------------------------------------->
@@ -141,14 +160,14 @@
                         <div class="thumbnail" >
                             <p><img src="image/box.png"></p>
                             <h4><b>ALL PRODUCT</b></h4>
-                            <a href="AllProduct"><button class="btn btn-default btn-lg ">Enter</button></a>                            
+                            <a href="product.jsp"><button class="btn btn-default btn-lg ">Enter</button></a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail" >
                             <p><img src="image/podium.png"></p>
                             <h4><b>BEST SELLER</b></h4>
-                            <a href="BestSeller"><button class="btn btn-default btn-lg">Enter</button></a>  
+                            <a href="BestSeller.jsp"><button class="btn btn-default btn-lg">Enter</button></a>   
                         </div>
                     </div>
                 </div><br><br>
@@ -156,15 +175,15 @@
                     <div class="col-sm-6">
                         <div class="thumbnail" >
                             <p><img src="image/list.png"></p>
-                            <h4><b>Out of Stock</b></h4>
-                            <a href="OutOfStock"><button class="btn btn-default btn-lg">Enter</button></a>  
+                            <h4><b>OUT Of STOCK</b></h4>
+                            <a href="OutOfStock.jsp"><button class="btn btn-default btn-lg">Enter</button></a>  
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail" >
                             <p><img src="image/cancel.png"></p>
                             <h4><b>CANCEL PRODUCT</b></h4>
-                            <a href="CancelProduct"><button class="btn btn-default btn-lg">Enter</button></a>  
+                            <a href="CancelProduct.jsp"><button class="btn btn-default btn-lg">Enter</button></a> 
                         </div>
                     </div>
                 </div>
@@ -184,38 +203,38 @@
                             <div class="modal fade" id="myModal" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
-                                        <div class="modal-header">
+                                        <div class="modal-header" style="background-color: gray">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h2 class="modal-title">ADD PRODUCT</h2>
                                         </div>
-                                        <form action="AddNewProduct">
-                                            <div class="modal-body">
-                                                <div class="container">                                                
-                                                        <table class="add-pro">
-                                                            <tr>
-                                                                <td>Name:</td>
-                                                                <td><input type="text" name="name"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Amount:</td>
-                                                                <td><input type="text" name="amount"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Price:</td>
-                                                                <td><input type="text" name="price"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Type:</td>
-                                                                <td><input type="text" name="type"></td>
-                                                            </tr>                                                            
-                                                        </table>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <form >
+                                                    <table class="add-pro">
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td><input type="text" class="form-control" ></td>                                   
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Amount</td>
+                                                            <td><input type="number" class="form-control" min="1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Price</td>
+                                                            <td><input type="number" class="form-control" min="1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Type</td>
+                                                            <td><input type="text" class="form-control" ></td>
+                                                        </tr>
+                                                    </table>
 
-                                                </div>
+                                                </form>
                                             </div>
-                                            <div class="modal-footer">
-                                                <input type="submit" value="ADD" class="btn btn-default" /> ถ้าใส่ data-dismiss="modal" กดปุ่มแล้วจะไม่ไป
-                                            </div>
-                                        </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" >ADD</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -230,25 +249,21 @@
                             <div class="modal fade" id="myModal1" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
-                                        <div class="modal-header">
+                                        <div class="modal-header" style="background-color: gray">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Remove Products</h4>
                                         </div>
-                                        <form action="RemoveProduct">
-                                            <div class="modal-body">
-
-                                                    <table class="add-pro">
-                                                        <tr>
-                                                            <td>ID:</td>
-                                                            <td><input type="text" name="id"></td>
-                                                        </tr>                                                        
-                                                    </table>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="submit" value="Remove" class="btn btn-default" /> ถ้าใส่ data-dismiss="modal" กดปุ่มแล้วจะไม่ไป 
-                                            </div>
-                                        </form>
+                                        <div class="modal-body">
+                                            <table class="add-pro">
+                                                <tr>
+                                                    <td>ID:</td>
+                                                    <td><input type="number" min="1" class="form-control" name="id"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Remove</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -264,27 +279,25 @@
                             <div class="modal fade" id="myModal2" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
-                                        <div class="modal-header">
+                                        <div class="modal-header" style="background-color: gray">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">INCREASE</h4>
                                         </div>
-                                        <form action="AddProductAmount">
-                                            <div class="modal-body">
-                                                <table class="add-pro">
-                                                    <tr>
-                                                        <td>ID:</td>
-                                                        <td><input type="text" name="id"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Amount:</td>
-                                                        <td><input type="text" name="amount1"></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="submit" value="OK" class="btn btn-default" /> ถ้าใส่ data-dismiss="modal" กดปุ่มแล้วจะไม่ไป 
-                                            </div>
-                                        </form>
+                                        <div class="modal-body">
+                                            <table class="add-pro">
+                                                <tr>
+                                                    <td>ID:</td>
+                                                    <td><input type="number" class="form-control" name="id"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amount:</td>
+                                                    <td><input type="number" class="form-control" name="amount1"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -298,27 +311,25 @@
                             <div class="modal fade" id="myModal3" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
-                                        <div class="modal-header">
+                                        <div class="modal-header" style="background-color: gray">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Reduce Product</h4>
                                         </div>
-                                        <form action="ReduceProductAmount">
-                                            <div class="modal-body">
-                                                <table class="add-pro">
-                                                    <tr>
-                                                        <td>ID:</td>
-                                                        <td><input type="text" name="id2"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Amount:</td>
-                                                        <td><input type="text" name="amount2"></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="submit" value="OK" class="btn btn-default" /> ถ้าใส่ data-dismiss="modal" กดปุ่มแล้วจะไม่ไป 
-                                            </div>
-                                        </form>
+                                        <div class="modal-body">
+                                            <table class="add-pro">
+                                                <tr>
+                                                    <td>ID:</td>
+                                                    <td><input type="number" class="form-control" name="id2"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amount:</td>
+                                                    <td><input type="number" class="form-control" name="amount2"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -335,36 +346,32 @@
     </div>
     <!--view--------------------------------------------------------------------------------------------->
     <div id="view" class="container-fluid text-center bg-gray">
-        <div class="row slideanim ">
-            <div class="col-sm-6">                   
-                <p><img src="image/search_1.png" style="width: 150px; height: 150px;"></p>
+        <div class="col-sm-6">
+            <div><br><br><br><br>                   
+                <p><img src="image/search_1.png" style="width: 350px; height: 350px;"></p>
                 <h2>VIEW</h2>
                 <h4>blablablablablablablablablablablablablablablabl</h4>
             </div>
-            <div class="col-sm-6">
-                <div class="thumbnail">
-                    <p><img src="image/password.png"></p>
-                    <p><strong>ยอดขายต่อเดือน</strong></p>
-                    <button class="btn btn-default btn-lg">Enter</button>
-                </div>
-            </div>
         </div><br><br>
-        <div class="row slideanim ">
-            <div class="col-sm-6">
-                <div class="thumbnail">
-                    <img src="image/password.png">
-                    <p><strong>ยอดเก็บสินค้า</strong></p>
-                    <button class="btn btn-default btn-lg">Enter</button>
+        <div class="col-sm-6">
+            <div class="row slideanim ">
+                <div class="col-sm-12">
+                    <div class="thumbnail">
+                        <p><img src="image/password.png"></p>
+                        <p><strong>ยอดขายต่อเดือน</strong></p>
+                        <a href="yodkaitormonth.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="thumbnail">
-                    <img src="image/password.png">
-                    <p><strong>ยอดขายสินค้า</strong></p>
-                    <button class="btn btn-default btn-lg">Enter</button>
-                </div>  
+                <div class="col-sm-12">
+                    <div class="thumbnail">
+                        <img src="image/password.png">
+                        <p><strong>ยอดขายสินค้า</strong></p>
+                        <a href="yodkaisinka.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
+                    </div>  
+                </div>
             </div>
         </div>
+
     </div>
     <!--Alert --------------------------------------------------------------------------------------------->
     <div id="alert" class="container-fluid bg-blue ">
@@ -382,7 +389,7 @@
                         (SDARS) providers, and direct broadcast satellite (DBS) providers to provide the communications
 
                         such as AMBER alerts and weather information targeted to specific areas.</h4>
-                    <button class="btn btn-default btn-lg">Enter</button>
+                    <a href="TestAlert.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
                 </div>
             </div>
         </div>
