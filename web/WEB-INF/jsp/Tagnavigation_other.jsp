@@ -39,10 +39,10 @@
                     <ul class="nav navbar-nav navbar-right ">
                         <li class="dropdown"><a class="dropdown-toggle"  href="#" data-toggle="dropdown" >PRODUCT<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="product.jsp">ALL PRODUCT</a></li>
-                                <li><a href="BestSeller.jsp">BEST SELLER</a></li>
-                                <li><a href="OutOfStock.jsp">OUT OF STOCK</a></li>
-                                <li><a href="CancelProduct.jsp">CANCEL PRODUCT</a></li>
+                                <li><a href="AllProduct">ALL PRODUCT</a></li>
+                                <li><a href="BestSeller">BEST SELLER</a></li>
+                                <li><a href="OutOfStock">OUT OF STOCK</a></li>
+                                <li><a href="CancelProduct">CANCEL PRODUCT</a></li>
                             </ul>
                         </li>
                         <li><a href="Editallpage.jsp">EDIT</a></li>
@@ -54,8 +54,8 @@
                             </ul>
                         </li>
                         <li><a href="TestAlert.jsp">ALERT</a></li>
-                        <li><a href="EditStaff.jsp">USER</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> LOG OUT</a></li>
+                        <li><a href="EditStaff">USER</a></li>
+                        <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> LOG OUT</a></li>
                     </ul>
                 </div>
             </div>

@@ -456,9 +456,9 @@ public class Product {
         return prods;
     }
     
-    public boolean deleteProduct(long prodId){
+    public static  boolean deleteProduct(long prodId){
         int x=0;
-        // ไปอัพเดทข้อมูล จำนวนสินค้า 
+        
         // โดยจะต้องไป add ใน CancleProduct 
         try {
             Connection con = ConnectionBuilder.getConnection();

@@ -45,7 +45,10 @@ public class AllProductServlet extends HttpServlet {
         String message = "";
         Staff user = (Staff)session.getAttribute("staffData");
         
+        log("before user==null: "+session.toString());
+        
         if(user == null){
+            log(session.toString());
             request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
             log(user+""); 
             log("NULLLL");

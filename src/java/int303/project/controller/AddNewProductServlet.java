@@ -37,10 +37,10 @@ public class AddNewProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("name");
-        String amountStr = request.getParameter("amount");
-        String priceStr = request.getParameter("price");
-        String type = request.getParameter("type");
+        String name = request.getParameter("prodName");
+        String amountStr = request.getParameter("prodAmount");
+        String priceStr = request.getParameter("prodPrice");
+        String type = request.getParameter("prodType");
         String branchIdStr = request.getParameter("branchId");
         int amount = Integer.parseInt(amountStr);
         double price = Double.parseDouble(priceStr);
@@ -49,13 +49,22 @@ public class AddNewProductServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String message = "";
         Staff user = (Staff) session.getAttribute("staffData");
+        
+        if(user == null){
+            log(session.toString());
+            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
+            log("USER = "+user); 
+            log("NULLLL");
+        }
+        
         int companyId = user.getCompanyId();
 
         Product p = new Product(name, amount, price, type, companyId, branchId);
-
+        //ต้องaddลง ตาราง ORDERS + ODERDETAIL ด้วย
         boolean success;
         try {
             success = p.addNewProduct();
+            
             if (success) {
                 message = "Add new Product SUCCESS!!";
             } else {

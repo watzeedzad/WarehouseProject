@@ -5,12 +5,14 @@
  */
 package int303.project.controller;
 
+import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,18 +32,24 @@ public class AddProductAmountServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddProductAmountServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddProductAmountServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession();
+        Staff user = (Staff)session.getAttribute("staffData");
+       
+        if(user == null){
+//            log(session.toString());
+            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
+            log("USER = "+user); 
+            log("NULLLL");
         }
+        
+        String idStr = request.getParameter("prodId");
+        String amountStr = request.getParameter("prodAmount");
+        
+        //เวลาเพิ่มจำนวน ต้องaddลงORDERSด้วย
+        
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

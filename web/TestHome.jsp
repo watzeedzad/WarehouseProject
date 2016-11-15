@@ -206,35 +206,41 @@
                                         <div class="modal-header" style="background-color: gray">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h2 class="modal-title">ADD PRODUCT</h2>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container">
-                                                <form >
+                                        </div> 
+                                        <form action="AddNewProduct">
+                                            <div class="modal-body">
+                                                <div class="container">
+
                                                     <table class="add-pro">
                                                         <tr>
                                                             <td>Name</td>
-                                                            <td><input type="text" class="form-control" ></td>                                   
+                                                            <td><input type="text" class="form-control" name="prodName"></td>                                   
                                                         </tr>
                                                         <tr>
                                                             <td>Amount</td>
-                                                            <td><input type="number" class="form-control" min="1"></td>
+                                                            <td><input type="number" class="form-control" min="1" name="prodAmount"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Price</td>
-                                                            <td><input type="number" class="form-control" min="1"></td>
+                                                            <td><input type="number" class="form-control" min="1" name="prodPrice"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Type</td>
-                                                            <td><input type="text" class="form-control" ></td>
+                                                            <td><input type="text" class="form-control" name="prodType"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Branch ID</td>
+                                                            <td><input type="text" class="form-control" name="branchId" ></td>
                                                         </tr>
                                                     </table>
 
-                                                </form>
+
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal" >ADD</button>
-                                        </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-default" value="ADD">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -251,19 +257,22 @@
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: gray">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Remove Products</h4>
+                                            <h2 class="modal-title">Remove Product</h2>
                                         </div>
-                                        <div class="modal-body">
-                                            <table class="add-pro">
-                                                <tr>
-                                                    <td>ID:</td>
-                                                    <td><input type="number" min="1" class="form-control" name="id"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Remove</button>
-                                        </div>
+                                        
+                                        <form action="RemoveProduct">
+                                            <div class="modal-body">
+                                                <table class="add-pro">
+                                                    <tr>
+                                                        <td>Product ID:</td>
+                                                        <td><input type="number" min="1" class="form-control" name="prodId"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-default" value="Remove">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -281,23 +290,25 @@
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: gray">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">INCREASE</h4>
+                                            <h2 class="modal-title">INCREASE Amount</h2>
                                         </div>
-                                        <div class="modal-body">
-                                            <table class="add-pro">
-                                                <tr>
-                                                    <td>ID:</td>
-                                                    <td><input type="number" class="form-control" name="id"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount:</td>
-                                                    <td><input type="number" class="form-control" name="amount1"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-                                        </div>
+                                        <form action="AddProductAmount">
+                                            <div class="modal-body">
+                                                <table class="add-pro">
+                                                    <tr>
+                                                        <td>ID:</td>
+                                                        <td><input type="number" class="form-control" name="prodId"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Amount:</td>
+                                                        <td><input type="number" class="form-control" name="prodAmount"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-default" value="Increase">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -313,23 +324,25 @@
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: gray">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Reduce Product</h4>
+                                            <h2 class="modal-title">REDUCE Amount</h2>
                                         </div>
-                                        <div class="modal-body">
-                                            <table class="add-pro">
-                                                <tr>
-                                                    <td>ID:</td>
-                                                    <td><input type="number" class="form-control" name="id2"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount:</td>
-                                                    <td><input type="number" class="form-control" name="amount2"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-                                        </div>
+                                        <form action="ReduceProductAmount">
+                                            <div class="modal-body">
+                                                <table class="add-pro">
+                                                    <tr>
+                                                        <td>ID:</td>
+                                                        <td><input type="number" class="form-control" name="prodId"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Amount:</td>
+                                                        <td><input type="number" class="form-control" name="prodAmount"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-default" value="Reduce">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
