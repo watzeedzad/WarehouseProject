@@ -4,6 +4,7 @@
     Author     : 000
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -77,50 +78,32 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                        <form class="form-inline">
-                            <td><input type="text" class="form-control" size="40" placeholder="SEARCH PRODUCT"></td>
-                            <td><button type="button" class="btn btn-success">SEARCH</button></td>
+                        <form class="form-inline" action="AllProduct" method="GET">
+                            <td><input type="text" class="form-control" size="40" placeholder="SEARCH PRODUCT" name="searchParam"></td>
+                            <td><input type="submit" value="SEARCH" class="btn btn-success"></td>
                         </form>
-                        </tr>
-                        <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Quantity</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>john@example.com</td>
-                                <td> 
-                                    <div class="form-group">
-                                        <input type="number" min="1" style="width: 100px; text-align: center" class="form-control" id="usr">
-                                    </div>
-
-                                </td>
+                        <c:if test="${products != null}">
                             </tr>
                             <tr>
-                                <td>Mary</td>
-                                <td>Moe</td>
-                                <td>mary@example.com</td>
-                                <td> 
-                                    <input type="number" min="1" value="${it.value.quantity}" name="_${it.key}" 
-                                           style="width: 50px; text-align: center"/> 
-                                </td>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Amount</th>
                             </tr>
-                            <tr>
-                                <td>July</td>
-                                <td>Dooley</td>
-                                <td>july@example.com</td>
-                                <td> 
-                                    <input type="number" min="1" value="${it.value.quantity}" name="_${it.key}" 
-                                           style="width: 50px; text-align: center"/> 
-                                </td>
-                            </tr>
-
-                        </tbody>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${products}" var="p" varStatus="vs">                       
+                                    <tr>
+                                        <td> ${p.prod_id}</td>
+                                        <td> ${p.prod_name}</td>
+                                        <td> ${p.price}</td>
+                                <div class="form-group">
+                                    <input type="number" value="${p.amount}" min="1" style="width: 100px; text-align: center" class="form-control" id="usr" name="prodAmount">
+                                </div>
+                                </tr>                   
+                            </c:forEach>
+                            </tbody>
+                        </c:if>
                     </table>
                 </div>
             </div>    

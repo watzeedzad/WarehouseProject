@@ -40,7 +40,7 @@ public class AllProductServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         String searchParam = request.getParameter("searchParam");
-        String target = "/allProduct.jsp";
+        String target = "/product.jsp";
         List<Product> products = null;
         String message = "";
         Staff user = (Staff)session.getAttribute("staffData");
