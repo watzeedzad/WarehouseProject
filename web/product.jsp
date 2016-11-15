@@ -97,9 +97,9 @@
                                         <td> ${p.prod_id}</td>
                                         <td> ${p.prod_name}</td>
                                         <td> ${p.price}</td>
-                                <div class="form-group">
-                                    <input type="number" value="${p.amount}" min="1" style="width: 100px; text-align: center" class="form-control" id="usr" name="prodAmount">
-                                </div>
+                                        <td>
+                                            <input type="number" value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" disabled="">
+                                        </td>
                                 </tr>                   
                             </c:forEach>
                             </tbody>
