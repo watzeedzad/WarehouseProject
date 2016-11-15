@@ -167,7 +167,7 @@
                         <div class="thumbnail" >
                             <p><img src="image/podium.png"></p>
                             <h4><b>BEST SELLER</b></h4>
-                            <a href="BestSeller.jsp"><button class="btn btn-default btn-lg">Enter</button></a>   
+                            <a href="Bestseller.jsp"><button class="btn btn-default btn-lg">Enter</button></a>   
                         </div>
                     </div>
                 </div><br><br>

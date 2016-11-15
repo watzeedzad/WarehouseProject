@@ -1,10 +1,9 @@
 <%-- 
-    Document   : CancelProduct
-    Created on : Oct 15, 2016, 10:17:33 AM
+    Document   : Bestseller
+    Created on : Oct 15, 2016, 9:29:45 AM
     Author     : petch
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         <style>
+        <style>
             .navbar {
                 margin-bottom: 0;
                 background-color: black;
@@ -25,25 +24,25 @@
                 letter-spacing: 4px;
                 border-radius: 0;
             }
-
-/*            .navbar li a, .navbar .navbar-brand {
-                color: #fff !important;
-            }
-
-            .navbar-nav li a:hover, .navbar-nav li.active a {
-                color: #f4511e !important;
-                background-color: #fff !important;
-            }
-
-            .navbar-default .navbar-toggle {
-                border-color: transparent;
-                color: #fff !important;
-            }
-            .dropdown-menu{
-                background-color: black;
-            }*/
+            /*            .navbar li a, .navbar .navbar-brand {
+                            color: #fff !important;
+                        }
+            
+                        .navbar-nav li a:hover, .navbar-nav li.active a {
+                            color: #f4511e !important;
+                            background-color: #fff !important;
+                        }
+            
+                        .navbar-default .navbar-toggle {
+                            border-color: transparent;
+                            color: #fff !important;
+                        }
+                        .dropdown-menu{
+                            background-color: black;
+                        }*/
             body{
-                background-color: #8C9C9A;
+                /*                background-color: #8C9C9A;*/
+                background-color:#185875;
             }
             .container-fluid{
                 padding-top: 60px;
@@ -58,18 +57,28 @@
             .button a{
                 color: white;
             }
-         
-            </style>
+            .bg-taley{
+                background-color:#185875;
+            }
+            .bg-dark{
+                background-color:#1F2739;
+            }
+            .blue { color: #185875; }
+            .yellow { color: #FFF842; }
+            .black { color: black}
+        </style>
     </head>
     <body>
+        <%-- Nav--%>
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
-         <!--table ----------------------------------------------------------------------------------------------------------------->
+        <!--table ----------------------------------------------------------------------------------------------------------------->
         <div class="row">
             <div class="col-sm-2">
 
             </div>
             <div class="col-sm-8">
                 <div class="container-fluid">
+                    <center><h1><span class="black"><b>{</b></span><span class="yellow">OUT OF PRODUCT<span class="black"><b>}</b></span></h1><br></center>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -102,32 +111,11 @@
 
             </div>
         </div>
-        
         <div class="row text-center">
             <div class="button">
                 <button type="button" class="btn btn-primary"><a href="TestHome.jsp">OK</a></button>
             </div>
-            <form action="CancelProduct">
-                <input type="submit" value="Get All"/>
-                <table style="border: solid; margin-left: 250px; " width="500px">
-                    <tr>
-                        <td>id</td>
-                        <td>name</td>
-                        <td>price</td>
-                        <td>amount</td>
-                    </tr>
-                    
-                    <c:forEach items="${products}" var="p" varStatus="vs">                       
-                        <tr>
-                            <td> ${p.prod_id}</td>
-                            <td> ${p.prod_name}</td>
-                            <td> ${p.price}</td>
-                            <td> ${p.amount} </td>
-                        </tr>                   
-                    </c:forEach>                                    
-                </table>
-            </form>
-            
-        </div>    
+
+
     </body>
 </html>
