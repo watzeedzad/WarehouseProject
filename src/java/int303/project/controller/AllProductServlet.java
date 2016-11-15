@@ -79,19 +79,25 @@ public class AllProductServlet extends HttpServlet {
                 }
                 
             } catch (Exception e) {
-                log(e+"");
-                try {                    
+//                log(e+"");
+
+                try {                   
+                    log("in search by name");
                     products = Product.searchByName(search,companyId);
+                    log("PARAM = "+search);
                     if(products != null){
                         session.setAttribute("products", products);
                         message = "search by Name";   
+                        log("in products != null");
                     }else{
                         message = "Product name LIKE '%"+search+"'% does not exist";
                     }                                 
                     log("hereeee");
                 } catch (SQLException ex) {
                     request.setAttribute("error", ex);
-                    request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
+                    System.out.println(ex);
+                    message = "ERROR";
+//                    request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
                 }
             }
         }else{

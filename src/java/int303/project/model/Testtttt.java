@@ -79,11 +79,16 @@ public class Testtttt {
 //    }else{
 //            System.out.println("FAILED!!");
 //    } 
-        System.out.println("List<Product> prodCompany = Product.getAllProduct(1);");
-        List<Product> prodCompany = Product.getAllProduct(1);
-        for (Product p : prodCompany) {
-            System.out.println(p);
-        }
+
+
+//        System.out.println("List<Product> prodCompany = Product.getAllProduct(1);");
+//        List<Product> prodCompany = Product.getAllProduct(1);
+//        for (Product p : prodCompany) {
+//            System.out.println(p);
+//        }
+
+
+
 //        
 //        System.out.println("----------------------------------------------------------\n\n");
         
@@ -124,11 +129,11 @@ public class Testtttt {
 
 //-----------------------------------------------------------------------------------
     
-//          List<Product> prods = Product.searchByName("key",1);
-//          for(Product p : prods){
-//              System.out.println(p);
-//              
-//          }
+          List<Product> prods = Product.searchByName("l",1);
+          for(Product p : prods){
+              System.out.println(p);
+              
+          }
 //          System.out.println("--------------------------\n\n\n\n");
 //          Product p = Product.searchById(10000003L, 1);          
 //          System.out.println(p);

@@ -282,7 +282,7 @@ public class Product {
                      + " WHERE lower(P.prod_name) LIKE ? "
                      + " AND P.company_id = ? "
                      + " AND S.cancle_status = false  "
-                     + " ORDER P.BY prod_id";
+                     + " ORDER BY P.prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setString(1, "%"+prodName.toLowerCase()+"%");
         pstm.setInt(2, companyId);
