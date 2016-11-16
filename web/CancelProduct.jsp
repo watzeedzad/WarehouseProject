@@ -14,7 +14,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         <style>
+        <style>
+            bg-dark{
+                background-color: #1F2739;
+            }
             .navbar {
                 margin-bottom: 0;
                 background-color: black;
@@ -26,24 +29,28 @@
                 border-radius: 0;
             }
 
-/*            .navbar li a, .navbar .navbar-brand {
-                color: #fff !important;
-            }
-
-            .navbar-nav li a:hover, .navbar-nav li.active a {
-                color: #f4511e !important;
-                background-color: #fff !important;
-            }
-
-            .navbar-default .navbar-toggle {
-                border-color: transparent;
-                color: #fff !important;
-            }
-            .dropdown-menu{
-                background-color: black;
-            }*/
+            /*            .navbar li a, .navbar .navbar-brand {
+                            color: #fff !important;
+                        }
+            
+                        .navbar-nav li a:hover, .navbar-nav li.active a {
+                            color: #f4511e !important;
+                            background-color: #fff !important;
+                        }
+            
+                        .navbar-default .navbar-toggle {
+                            border-color: transparent;
+                            color: #fff !important;
+                        }
+                        .dropdown-menu{
+                            background-color: black;
+                        }*/
             body{
-                background-color: #8C9C9A;
+                /*background-color: #8C9C9A;*/
+                /*                background-color:#1F2739;*/
+                background-color:#185875;
+                color: white;
+                font-family: sans-serif
             }
             .container-fluid{
                 padding-top: 60px;
@@ -55,76 +62,58 @@
             .form-group{
                 width: 200px;
             }
-            .button a{
-                color: white;
+            .add-pro input{
+                padding: 10px;
+                margin: 10px;
+                border-radius: 10px; 
             }
-         
-            </style>
+            .bg-taley{
+                background-color:#185875;
+            }
+            .bg-dark{
+                background-color:#1F2739;
+            }
+            .blue { color: #185875; }
+            .yellow { color: #FFF842; }
+            .black { color: black}
+            .text-white{ color: white}
+        </style>
     </head>
     <body>
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
-         <!--table ----------------------------------------------------------------------------------------------------------------->
+        <!--table ----------------------------------------------------------------------------------------------------------------->
         <div class="row">
             <div class="col-sm-2">
 
             </div>
             <div class="col-sm-8">
                 <div class="container-fluid">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>NameProduct</th>
-                                <th>Price</th>
+                    <center><h1><span class="black"><b>{</b></span><span class="yellow">CANCEL PRODUCT<span class="black"><b>}</b></span></h1><br></center>
+                    <form action="CancelProduct">
+                        <!--<input type="submit" value="Get All"/>-->
+                        <table class="table table-inverse">
+                            <tr class="bg-dark">
+                                <td>id</td>
+                                <td>name</td>
+                                <td>price</td>
+                                <td>amount</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>100001</td>
-                                <td>Pen</td>
-                                <td>200</td>
-                            </tr>
-                            <tr>
-                                <td>100002</td>
-                                <td>Rubber</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>100003</td>
-                                <td>Ruler</td>
-                                <td>40</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
+                            <c:forEach items="${products}" var="p" varStatus="vs">                       
+                                <tr>
+                                    <td> ${p.prod_id}</td>
+                                    <td> ${p.prod_name}</td>
+                                    <td> ${p.price}</td>
+                                    <td> ${p.amount} </td>
+                                </tr>                   
+                            </c:forEach>                                    
+                        </table>
+                    </form>
+                </div> 
             </div>    
             <div class="col-sm-2">
 
             </div>
-        </div>
-        
-        <div class="row text-center">
-            <form action="CancelProduct">
-                <input type="submit" value="Get All"/>
-                <table style="border: solid; margin-left: 250px; " width="500px">
-                    <tr>
-                        <td>id</td>
-                        <td>name</td>
-                        <td>price</td>
-                        <td>amount</td>
-                    </tr>
-                    
-                    <c:forEach items="${products}" var="p" varStatus="vs">                       
-                        <tr>
-                            <td> ${p.prod_id}</td>
-                            <td> ${p.prod_name}</td>
-                            <td> ${p.price}</td>
-                            <td> ${p.amount} </td>
-                        </tr>                   
-                    </c:forEach>                                    
-                </table>
-            </form>
-            
-        </div>    
+        </div>   
     </body>
 </html>

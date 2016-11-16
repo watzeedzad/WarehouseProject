@@ -15,6 +15,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
+            bg-dark{
+                background-color: #1F2739;
+            }
             .navbar {
                 margin-bottom: 0;
                 background-color: black;
@@ -25,6 +28,7 @@
                 letter-spacing: 4px;
                 border-radius: 0;
             }
+
             /*            .navbar li a, .navbar .navbar-brand {
                             color: #fff !important;
                         }
@@ -42,8 +46,11 @@
                             background-color: black;
                         }*/
             body{
-                /*                background-color: #8C9C9A;*/
+                /*background-color: #8C9C9A;*/
+                /*                background-color:#1F2739;*/
                 background-color:#185875;
+                color: white;
+                font-family: sans-serif
             }
             .container-fluid{
                 padding-top: 60px;
@@ -55,8 +62,10 @@
             .form-group{
                 width: 200px;
             }
-            .button a{
-                color: white;
+            .add-pro input{
+                padding: 10px;
+                margin: 10px;
+                border-radius: 10px; 
             }
             .bg-taley{
                 background-color:#185875;
@@ -67,6 +76,7 @@
             .blue { color: #185875; }
             .yellow { color: #FFF842; }
             .black { color: black}
+            .text-white{ color: white}
         </style>
     </head>
     <body>
@@ -80,12 +90,12 @@
             <div class="col-sm-8">
                 <div class="container-fluid">
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">OUT OF PRODUCT<span class="black"><b>}</b></span></h1><br></center>
-                    <table class="table table-striped">
+                    <table class="table table-inverse">
                         <thead>
                             <tr>
                                 <td style="text-align: center;"><c:out value="${message}" ></c:out></td>                                
                             </tr>
-                            <tr>
+                            <tr class="bg-dark"> 
                                 <th>ID</th>
                                 <th>NameProduct</th>
                                 <th>Price</th>

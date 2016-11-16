@@ -114,6 +114,15 @@
         .container-fluid bg-blue{
             color: white;
         }
+        .bg-taley{
+            background-color:#185875;
+        }
+        .bg-dark{
+            background-color:#1F2739;
+        }
+        .blue { color: #185875; }
+        .yellow { color: #FFF842; }
+        .black { color: black}
         /* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
         @keyframes slide {
             0% {
@@ -147,11 +156,11 @@
         </div>
     </div>
     <!--product--------------------------------------------------------------------------------------------->
-    <div id="product" class="container-fluid bg-gray">
+    <div id="product" class="container-fluid bg-dark">
         <div class="col-sm-4"><br><br><br><br><br><br><br>
             <center><img src="image/product.png" style="width: 300px; height: 300px;"></center>
-            <center><h1>PRODUCT</h1></center>
-            <center><h4>You can see all product this here!</h4></center>
+            <center><h1><span class="blue"><b>{</b></span><span class="yellow">PRODUCT</span><span class="blue"><b>}</b></span></h1></center>
+            <center><h4 class="yellow">You can see all product this here!</h4></center>
         </div>
         <div class="col-sm-8">
             <div class="container-fluid text-center">
@@ -191,7 +200,7 @@
         </div>
     </div>
     <!--edit--------------------------------------------------------------------------------------------->
-    <div id="edit" class="container-fluid bg-blue">
+    <div id="edit" class="container-fluid bg-taley">
         <div class="col-sm-8">
             <div class="container-fluid text-center">
                 <div class="row slideanim ">
@@ -259,7 +268,7 @@
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h2 class="modal-title">Remove Product</h2>
                                         </div>
-                                        
+
                                         <form action="RemoveProduct">
                                             <div class="modal-body">
                                                 <table class="add-pro">
@@ -353,17 +362,17 @@
         </div>
         <div class="col-sm-4"><br><br><br><br><br><br><br>
             <center><img src="image/wrench.png" style="width: 300px; height: 300px;"></center>
-            <center><h1>EDIT</h1></center>
-            <center><h4>blablablablablablablablablablablablablablablabl</h4></center>
+            <center><h1><span class="black"><b>{</b></span><span class="yellow">EDIT</span><span class="black"><b>}</b></span></h1></center>
+            <center><h4 class="yellow">You can edit your product at this here!!</h4></center>
         </div>
     </div>
     <!--view--------------------------------------------------------------------------------------------->
-    <div id="view" class="container-fluid text-center bg-gray">
+    <div id="view" class="container-fluid text-center bg-dark">
         <div class="col-sm-6">
             <div><br><br><br><br>                   
-                <p><img src="image/search_1.png" style="width: 350px; height: 350px;"></p>
-                <h2>VIEW</h2>
-                <h4>blablablablablablablablablablablablablablablabl</h4>
+                <p><img src="image/search.png" style="width: 350px; height: 350px;"></p>
+                <center><h1><span class="blue"><b>{</b></span><span class="yellow">VIEW</span><span class="blue"><b>}</b></span></h1></center>
+                <h4 class="yellow">You can view income per month in this here!!</h4>
             </div>
         </div><br><br>
         <div class="col-sm-6">
@@ -387,11 +396,10 @@
 
     </div>
     <!--Alert --------------------------------------------------------------------------------------------->
-    <div id="alert" class="container-fluid bg-blue ">
+    <div id="alert" class="container-fluid bg-taley ">
         <div class="col-sm-6 text-center">
             <p><center><img src="image/nalica.png" style="width: 400px; height: 400px;"></center>
-            <h2>ALERT</h2><!--
-            <button class="btn btn-default btn-lg ">Enter</button>-->
+            <center><h1><span class="black"><b>{</b></span><span class="yellow">ALERT</span><span class="black"><b>}</b></span></h1></center>
         </div><br>
         <div class="col-sm-6">
             <div class="container-fluid">

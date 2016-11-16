@@ -15,7 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
-            body{
+            bg-dark{
                 background-color: #1F2739;
             }
             .navbar {
@@ -46,7 +46,11 @@
                             background-color: black;
                         }*/
             body{
-                background-color: #8C9C9A;
+                /*background-color: #8C9C9A;*/
+                /*                background-color:#1F2739;*/
+                background-color:#185875;
+                color: white;
+                font-family: sans-serif
             }
             .container-fluid{
                 padding-top: 60px;
@@ -63,7 +67,16 @@
                 margin: 10px;
                 border-radius: 10px; 
             }
-
+            .bg-taley{
+                background-color:#185875;
+            }
+            .bg-dark{
+                background-color:#1F2739;
+            }
+            .blue { color: #185875; }
+            .yellow { color: #FFF842; }
+            .black { color: black}
+            .text-white{ color: white}
         </style>
     </head>
     <body>
@@ -75,20 +88,21 @@
             </div>
             <div class="col-sm-8">
                 <div class="container-fluid">
-                    <table class="table table-striped">
+                    <table class="table table-inverse">
+                        <center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>
                         <thead>
                             <tr>
                         <form class="form-inline" action="AllProduct" method="GET">
                             <td><input type="text" class="form-control" size="40" placeholder="SEARCH PRODUCT" name="searchParam"></td>
                             <td><input type="submit" value="SEARCH" class="btn btn-success"></td>
                         </form>
-                            </tr>
-                            <tr>
-                                <td colspan="4" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
                             </tr>
                         <c:if test="${products != null}">
-                            
-                            <tr>
+
+                            <tr class="bg-dark text-white">
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Price</th>
@@ -102,48 +116,16 @@
                                         <td> ${p.prod_name}</td>
                                         <td> ${p.price}</td>
                                         <td>
-                                            <input type="number" value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" disabled="">
+                                            <input type="number" class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" disabled="">
                                         </td>
-                                </tr>                   
-                            </c:forEach>
+                                    </tr>                   
+                                </c:forEach>
                             </tbody>
                         </c:if>
                     </table>
                 </div>
             </div>    
-            <!--            <div class="container">
-                            <h2>Table</h2>
-                            <p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Firstname</th>
-                                            <th>Lastname</th>
-                                            <th>Age</th>
-                                            <th>City</th>
-                                            <th>Country</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anna</td>
-                                            <td>Pitt</td>
-                                            <td>35</td>
-                                            <td>New York</td>
-                                            <td>USA</td>
-                                            <td> 
-                                                <div class="form-group">
-                                                    <input type="number" min="1" style="width: 100px; text-align: center" class="form-control" id="usr">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>-->
+
             <div class="col-sm-2">
 
             </div>
@@ -152,8 +134,8 @@
             <!--add product ----------------------------------------------------------------------------------------------------------------->
             <button type="button" class="btn btn-success">UP DATE</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD</button>
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog modal-lg">
+            <div class="modal fade " id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg black">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color: gray">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -179,6 +161,10 @@
                                             <td>Type</td>
                                             <td><input type="text" class="form-control" ></td>
                                         </tr>
+                                        <tr>
+                                            <td>Branch Id</td>
+                                            <td><input type="Number" class="form-control" ></td>
+                                        </tr>
                                     </table>
 
                                 </form>
@@ -195,7 +181,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE</button>
 
             <div class="modal fade" id="myModal1" role="dialog">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-lg black">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color: gray">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
