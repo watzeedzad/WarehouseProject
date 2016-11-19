@@ -74,10 +74,12 @@ public class AddProductAmountServlet extends HttpServlet {
         String source = request.getParameter("source");
         if(source != null){
             if(source.equals("allProduct")){
-                getServletContext().getRequestDispatcher("/product.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/AllProduct").forward(request, response);
             }
+        }else{
+            getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
         }
-        getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

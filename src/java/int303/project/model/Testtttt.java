@@ -158,8 +158,8 @@ public class Testtttt {
 //          
 //          boolean success = Product.deleteProduct(10000017);
 //          System.out.println(success);
-        Staff s = Staff.viewStaffData(10002);
-         boolean success = Order.reduceAmount(10000006, 20, s);
+        Staff s = Staff.viewStaffData(10001);
+         boolean success = Order.reduceAmount(10000007, 20, s);
          System.out.println(success);
     }
 }
