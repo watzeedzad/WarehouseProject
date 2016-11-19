@@ -119,7 +119,7 @@ public class AllProductServlet extends HttpServlet {
         // โดย default getAllproduct
         // searchByName / id / 
         
-        session.setAttribute("message", message);
+        request.setAttribute("message", message);
         getServletContext().getRequestDispatcher(target).forward(request, response);
     
         

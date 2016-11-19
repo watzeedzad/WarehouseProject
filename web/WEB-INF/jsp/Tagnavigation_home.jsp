@@ -28,7 +28,7 @@
                         <li><a href="#edit">EDIT</a></li>
                         <li><a href="#view">VIEW</a></li>
                         <li><a href="#alert">ALERT</a></li>
-                        <li><a href="EditStaff">USER</a></li>
+                        <li><a href="editstaff">USER</a></li>
                         <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> LOG OUT</a></li>
                     </ul>
                 </div>

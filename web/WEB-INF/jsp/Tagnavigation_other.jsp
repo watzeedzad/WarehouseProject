@@ -54,7 +54,7 @@
                             </ul>
                         </li>
                         <li><a href="TestAlert.jsp">ALERT</a></li>
-                        <li><a href="EditStaff">USER</a></li>
+                        <li><a href="editstaff">USER</a></li>
                         <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> LOG OUT</a></li>
                     </ul>
                 </div>

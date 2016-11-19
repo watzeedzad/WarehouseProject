@@ -6,6 +6,7 @@
 package int303.project.controller;
 
 import int303.project.model.Company;
+import int303.project.model.Order;
 import int303.project.model.Product;
 import int303.project.model.Staff;
 import java.io.IOException;
@@ -62,21 +63,24 @@ public class AddNewProductServlet extends HttpServlet {
         Product p = new Product(name, amount, price, type, companyId, branchId);
         //ต้องaddลง ตาราง ORDERS + ODERDETAIL ด้วย
         boolean success;
+        boolean orderSuccess;
         try {
-            success = p.addNewProduct();
+//            success = p.addNewProduct();
+            Order order = new Order();
+            orderSuccess = order.addNewProduct(p, user);
             
-            if (success) {
+            if (orderSuccess) {
                 message = "Add new Product SUCCESS!!";
             } else {
                 message = "Failed To add new Product";
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(AddNewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
 
-        session.setAttribute("message", message);
-        getServletContext().getRequestDispatcher("/editallpage.jsp").forward(request, response);
+        request.setAttribute("message", message);
+        getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
 
     }
 
