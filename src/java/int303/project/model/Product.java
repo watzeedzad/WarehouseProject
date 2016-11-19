@@ -292,8 +292,7 @@ public class Product {
 //        return x > 0;
 //    }
 //    
-       
-    public boolean editProduct() throws SQLException {
+    public void editProduct(String prodName, double prodPrice, String prodType, long prodId) throws SQLException {
         int x = 0;
         Connection con = ConnectionBuilder.getConnection();
         String sql = "UPDATE PRODUCTS SET prod_name=?,price=?,prod_type=? WHERE prod_id=?";
@@ -308,8 +307,6 @@ public class Product {
 
         pstm.close();
         con.close();
-
-        return x > 0;
     }
 
 //    public static List<Product> searchByName(String prodName) throws SQLException{

@@ -50,7 +50,7 @@ public class EditProductServlet extends HttpServlet {
                 prodType = prod.getProd_type();
             }
             double prodPriceDouble = Double.parseDouble(prodPrice);
-            //prod.
+            prod.editProduct(prodName, prodPriceDouble, prodType, prodId);
         } catch (SQLException ex) {
             System.err.println(ex);
         } catch (NumberFormatException ex) {
