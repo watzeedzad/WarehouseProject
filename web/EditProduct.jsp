@@ -1,71 +1,20 @@
 <%-- 
-    Document   : EditProduct
-    Created on : Nov 19, 2016, 4:45:20 PM
+    Document   : EditStaff
+    Created on : Nov 5, 2016, 4:22:02 PM
     Author     : 000
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
-            bg-dark{
-                background-color: #1F2739;
-            }
-            .navbar {
-                margin-bottom: 0;
-                background-color: black;
-                z-index: 9999;
-                border: 0;
-                font-size: 12px !important;
-                line-height: 1.42857143 !important;
-                letter-spacing: 4px;
-                border-radius: 0;
-            }
-
-            /*            .navbar li a, .navbar .navbar-brand {
-                            color: #fff !important;
-                        }
-            
-                        .navbar-nav li a:hover, .navbar-nav li.active a {
-                            color: #f4511e !important;
-                            background-color: #fff !important;
-                        }
-            
-                        .navbar-default .navbar-toggle {
-                            border-color: transparent;
-                            color: #fff !important;
-                        }
-                        .dropdown-menu{
-                            background-color: black;
-                        }*/
             body{
-                /*background-color: #8C9C9A;*/
-                /*                background-color:#1F2739;*/
                 background-color:#185875;
-                color: white;
-                font-family: sans-serif
-            }
-            .container-fluid{
-                padding-top: 60px;
-            }
-            .modal-dialog{
-                padding-top: 80px;
-                width: 400px;
-            }
-            .form-group{
-                width: 200px;
-            }
-            .add-pro input{
-                padding: 10px;
-                margin: 10px;
-                border-radius: 10px; 
             }
             .bg-taley{
                 background-color:#185875;
@@ -76,10 +25,50 @@
             .blue { color: #185875; }
             .yellow { color: #FFF842; }
             .black { color: black}
-            .text-white{ color: white}
-            .center{text-align: center}
-        </style>    
+        </style>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
+        <div class="container"><br><br><br>
+            <center><h1><span class="black"><b>{</b></span><span class="yellow">EDIT PRODUCT<span class="black"><b>}</b></span></h1><br></center>
+            <a href="javascript:history.back()"><button type="button" class="btn btn-success yellow">BACK</button><br><br><br></a>
+            
+            
+            <form action="" class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label yellow">Product ID :</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="number" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label yellow">Product Name :</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="text" disabled>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label yellow">Type :</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="focusedInput" type="text" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label yellow">Price :</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="focusedInput" type="number" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label yellow">Amount :</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="disabledInput" type="number" disabled>
+                    </div>
+                </div>
+            </form><br>
+            
+            
+            <button type="button" class="btn btn-success yellow">SEND</button>
+        </div>
     </body>
 </html>
