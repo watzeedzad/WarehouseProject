@@ -596,35 +596,7 @@ public class Product {
 
     }
 
-    public static Product bestSeller() {
-        Product prod = null;
-        try {
-            Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("");
-            ResultSet rs = pstm.executeQuery();
-            while (rs.next()) {
-
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-        return prod;
-    }
-
-    public static Product bestSellerByTime() {
-        Product prod = null;
-        try {
-            Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("");
-            ResultSet rs = pstm.executeQuery();
-            while (rs.next()) {
-
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-        return prod;
-    }
+    
 
     @Override
     public String toString() {

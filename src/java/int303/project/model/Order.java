@@ -8,6 +8,7 @@ package int303.project.model;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -141,5 +142,55 @@ public class Order {
         return x>0;
     }
     
+    public static Product statBestSeller() {
+        Product prod = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement("");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return prod;
+    }
+
+    //----------- SUM(amount)  // order by SUM(amount) DESC;
+    // WHERE order_type = 'IN'
+    // WHERE order_type = 'OUT'
+    
+    public static List<Product> statSellerByMonth() {
+        List<Product> products = null;
+        Product prod = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement("");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return products;
+    }
+    
+    public static List<Product> statSellerByYear() {
+        List<Product> products = null;
+        Product prod = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement("");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return products;
+    }
     
 }

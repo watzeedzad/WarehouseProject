@@ -54,6 +54,15 @@ public class LoginServlet extends HttpServlet {
 //                log("---has Staff");
 //                log(s.toString());
             }
+            
+            
+//            String targetJa = (String)request.getAttribute("targetJa");
+//            if(targetJa==null || target.trim().length()==0){
+//                getServletContext().getRequestDispatcher(target).forward(request, response);
+//            }else{
+//                System.out.println("--- LOG IN >>> TARGETJA = "+targetJa);
+//                getServletContext().getRequestDispatcher(targetJa).forward(request, response);
+//            }
 //            log("test in log in");
         } else if (Login.isUserExist(user)) {
             message = "Wrong password !";
@@ -64,6 +73,7 @@ public class LoginServlet extends HttpServlet {
             message = "";
         }
         request.setAttribute("message", message);
+        System.out.println("----- INNNNN LOGIN -----");
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 

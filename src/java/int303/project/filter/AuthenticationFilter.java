@@ -39,11 +39,18 @@ public class AuthenticationFilter implements Filter {
 
         boolean loggedIn = session != null && session.getAttribute("user") != null;
         //boolean loginRequest = request.getRequestURI().equals(loginURI);
-
+        
+       
+        
         if (loggedIn || path.matches(".*(css|jpg|png|gif|js)")) {
             chain.doFilter(request, response);
-        } else {
-//            response.sendRedirect(loginURI);
+        } else { 
+//             String targetJa = request.getRequestURI();
+//            int slash = targetJa.indexOf("/", 1);
+//            targetJa = targetJa.substring(slash);
+//            request.setAttribute("targetJa", targetJa);
+//            System.out.println("***AUTHEN >>>> TARGETJA = "+targetJa);
+            System.out.println("*** INNNNN AUTHEN ***");
             config.getServletContext().getRequestDispatcher("/login").forward(req, res);
         }
     }
