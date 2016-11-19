@@ -76,39 +76,30 @@
                     <hr>
 
                     <div class="modal-body" >
-                        <form action="AddNewProduct">
-                            <div class="modal-body">
-                                <div class="container">
-                                    <table class="add-pro">
-                                        <tr>
-                                            <td>Name</td>
-                                            <td><input type="text" class="form-control" name="prodName"></td>                                   
-                                        </tr>
-                                        <tr>
-                                            <td>Amount</td>
-                                            <td><input type="number" class="form-control" min="1" name="prodAmount"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Price</td>
-                                            <td><input type="number" class="form-control" min="1" name="prodPrice"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Type</td>
-                                            <td><input type="text" class="form-control" name="prodType"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Branch ID</td>
-                                            <td><input type="text" class="form-control" name="branchId" ></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="submit" class="btn btn-default" value="ADD">
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </form>
+                        <table class="add-pro" >
+                            <tr>
+                                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                            
+                            </tr>
+                            <tr >
+                                <td>ID:</td>
+                                <td><input type="text" class="form-control" name="Idadd" ></td>
+
+                            </tr>                                                   
+                            <tr>
+                                <td>Amount:</td>
+                                <td><input type="number" class="form-control" name="Amountadd"></td>
+                            </tr>
+                            <tr>
+                                <td>Price:</td>
+                                <td><input type="number" class="form-control" name="Priceadd"></td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td><input type="text" class="form-control" name="Typeadd"></td>
+                            </tr>
+                        </table>
+                        <input type="submit" class="btn btn-default" value="ADD">
                     </div>
 
                     <!--                        <form>
@@ -136,21 +127,13 @@
                     <span class=" bl-icon-close glyphicon glyphicon-remove"></span>
                     <hr>
                     <div class="modal-body" >
-                        <form action="RemoveProduct">
-                            <div class="modal-body">
-                                <table class="add-pro">
-                                    <tr>
-                                        <td>Product ID:</td>
-                                        <td><input type="number" min="1" class="form-control" name="prodId"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="submit" class="btn btn-default" value="Remove">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </form>
+                        <table class="add-pro" >
+                            <tr>
+                                <td>ID:</td>
+                                <td><input type="number" class="form-control" name="Idremove"></td>
+                            </tr>                                                   
+                        </table>
+                        <input type="submit" class="btn btn-default" value="REMOVE">
                     </div>
                     <!--                        <form>
                                                 <h3>ID : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number"  class="form-control" ></h3>
@@ -158,7 +141,7 @@
                                             </form>-->
                     <hr>
                 </div>
-                <!--                <span class="bl-icon bl-icon-close"></span>-->
+<!--                <span class="bl-icon bl-icon-close"></span>-->
             </section>
             <!----------------------------------------------------------------------------------------> 
             <section>
@@ -171,25 +154,18 @@
                     <span class=" bl-icon-close glyphicon glyphicon-remove"></span>
                     <hr>
                     <div class="modal-body" >
-                        <form action="AddProductAmount">
-                            <div class="modal-body">
-                                <table class="add-pro">
-                                    <tr>
-                                        <td>ID:</td>
-                                        <td><input type="number" class="form-control" name="prodId"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Amount:</td>
-                                        <td><input type="number" class="form-control" name="prodAmount"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="submit" class="btn btn-default" value="Increase">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </form>
+                        <table class="add-pro" >
+                            <tr>
+                                <td>ID:</td>
+                                <td><input type="text" class="form-control" name="Idincrease"></td>
+                            </tr>                                                   
+                            <tr>
+                                <td>Amount:</td>
+                                <td><input type="number" class="form-control" name="Amountincrease"></td>
+                            </tr>
+
+                        </table>
+                        <input type="submit" class="btn btn-default" value="OK">
                     </div>
                     <!--                        <form>
                                                 <h3>ID : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number"></h3>
@@ -198,7 +174,7 @@
                                             </form>-->
                     <hr>
                 </div>
-                <!--                <span class="bl-icon bl-icon-close"></span>-->
+<!--                <span class="bl-icon bl-icon-close"></span>-->
             </section>
             <!----------------------------------------------------------------------------------------> 
             <section>
@@ -211,23 +187,18 @@
                     <span class=" bl-icon-close glyphicon glyphicon-remove"></span>
                     <hr>
                     <div class="modal-body" >
-                        <form action="ReduceProductAmount">
-                            <div class="modal-body">
-                                <table class="add-pro">
-                                    <tr>
-                                        <td>ID:</td>
-                                        <td><input type="number" class="form-control" name="prodId"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Amount:</td>
-                                        <td><input type="number" class="form-control" name="prodAmount"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="submit" class="btn btn-default" value="Reduce"></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </form>
+                        <table class="add-pro" >
+                            <tr>
+                                <td>ID:</td>
+                                <td><input type="text" class="form-control" name="Idreduce"></td>
+                            </tr>                                                   
+                            <tr>
+                                <td>Amount:</td>
+                                <td><input type="number" class="form-control" name="Amountreduce"></td>
+                            </tr>
+
+                        </table>
+                        <input type="submit" class="btn btn-default" value="OK">
                     </div>
 
                     <!--                        <form>
@@ -237,7 +208,7 @@
                                             </form>-->
                     <hr>
                 </div>                         
-                <!--                <span class="bl-icon bl-icon-close" class="glyphicon glyphicon-remove"></span>-->
+<!--                <span class="bl-icon bl-icon-close" class="glyphicon glyphicon-remove"></span>-->
             </section>
             <!----------------------------------------------------------------------------------------> 
         </div>
