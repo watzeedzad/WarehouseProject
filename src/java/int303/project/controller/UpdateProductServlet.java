@@ -5,16 +5,19 @@
  */
 package int303.project.controller;
 
+import int303.project.model.Product;
+import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Praew
+ * @author Praewhubb
  */
 public class UpdateProductServlet extends HttpServlet {
 
@@ -29,19 +32,51 @@ public class UpdateProductServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdateProductServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdateProductServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession();
+        Staff user = (Staff)session.getAttribute("staffData");
+       
+        if(user == null){
+//            log(session.toString());
+            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
+            log("USER = "+user); 
+            log("NULLLL");
         }
+        
+        String message = "";
+        String[] deletes = request.getParameterValues("delete");
+        String[] cancels = request.getParameterValues("cancel");
+        boolean success1 = false;
+        boolean success2 = false;
+        
+        if(deletes==null&&cancels==null){
+            message = "Please select Product to CANCEL OR DELETE";
+        }else{                    
+            if(deletes!=null){
+                for(String idStr : deletes){
+                    long id = Long.parseLong(idStr);
+                    success1 = Product.deleteProduct(id);
+                }
+                if(success1){
+                    message = "DELETE product(s) SUCCESS";
+                }else{
+                    message = "FAILED to DELETE product(s)";
+                }
+            }
+            if(cancels!=null){
+                for(String idStr : cancels){
+                    long id = Long.parseLong(idStr);
+                    success2 = Product.cancelProduct(id);
+                }
+                if(success2){
+                    message += "\n CANCEL product(s) SUCCESS";
+                }else{
+                    message = "FAILED to CANCEL product(s)";
+                }
+            }
+        }
+        
+        request.setAttribute("messageJa", message);
+        getServletContext().getRequestDispatcher("/AllProduct").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
