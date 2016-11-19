@@ -104,6 +104,12 @@
                                 
                             </tr>                            
                         </c:if>
+                        <c:if test="${messageJa!=null}">
+                            <tr>
+                                <td colspan="10" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
+                                
+                            </tr>                            
+                        </c:if>    
                             
                         <c:if test="${products != null}">
 <!-------------------------เหลือใส่ฟอร์มสำหรับ cancel >>>> DELETE-------------------------------------->

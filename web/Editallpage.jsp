@@ -78,8 +78,8 @@
 
                     <div class="modal-body" >
                         <form action="AddNewProduct">
-                            <c:if test="${message!=null}">
-                                <center><h2>${message}</h2></center>
+                            <c:if test="${messageJa!=null}">
+                                <center><h2>${messageJa}</h2></center>
                             </c:if>
                             <div class="modal-body">
                                 <div class="container">

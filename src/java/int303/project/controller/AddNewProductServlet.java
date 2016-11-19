@@ -79,7 +79,7 @@ public class AddNewProductServlet extends HttpServlet {
             System.out.println(ex);
         }
 
-        request.setAttribute("message", message);
+        request.setAttribute("messageJa", message);
         
         String source = request.getParameter("source");        
         if(source != null){
