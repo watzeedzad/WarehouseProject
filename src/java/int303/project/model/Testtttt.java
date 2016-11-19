@@ -135,18 +135,23 @@ public class Testtttt {
 //          }
 //          
           
-          List<Product> prods = Product.getCancelProduct(1);
-          for(Product p : prods){
-              System.out.println(p);
-              
-          }
+//          List<Product> prods = Product.getCancelProduct(1);
+//          for(Product p : prods){
+//              System.out.println(p);
+//              
+//          }
           
 //          System.out.println("--------------------------\n\n\n\n");
 //          Product p = Product.searchById(10000003L, 1);          
 //          System.out.println(p);
               
           
-        
+//        Product p =Product.getProduct(10000017);
+//        Staff s = Staff.viewStaffData(10001);
+//        Order o = new Order();
+//        boolean suc = o.addNewProduct(p, s);
+//        
+//        System.out.println("************ "+suc);
 
 
     }
