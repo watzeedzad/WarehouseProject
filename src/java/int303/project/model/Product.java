@@ -210,8 +210,8 @@ public class Product {
     
     public static boolean addToProductStatus(Connection con,long prodId){
         int x=0;
-        String sql = "INSERT INTO PRODUCT_STATUS(prod_id,cancle_status)"
-                     + "VALUES(?,false)"; // false = ยังผลิตอยู่
+        String sql = "INSERT INTO PRODUCT_STATUS(prod_id,cancle_status,delete)"
+                     + "VALUES(?,false,false)"; // false = ยังผลิตอยู่
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setLong(1, prodId);
@@ -222,6 +222,53 @@ public class Product {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
         }
         return x>0;
+    }
+    
+//    public static boolean isDeleteProduct(long prodId){
+//        boolean delete = false;
+//        
+//        Connection con = ConnectionBuilder.getConnection();        
+//        String sql = "SELECT delete FROM CANCLE_STATUS "
+//                     + " WHERE prodId = ? ";        
+//        try {
+//            PreparedStatement pstm = con.prepareStatement(sql);
+//            pstm.setLong(1, prodId);
+//            
+//            ResultSet rs = pstm.executeQuery();
+//            if(rs.next()){
+//                delete = rs.getBoolean("delete");
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        return delete;
+//    }
+    
+    public static boolean isExistProduct(int companyId,long prodId){
+        boolean exist = false;
+        
+        Connection con = ConnectionBuilder.getConnection();        
+        String sql = "SELECT * FROM PRODUCTS P "
+                     + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id  "
+                     + " WHERE P.prod_id = ? "
+                     + " AND P.company_id = ? "
+                     + " AND S.delete != true ";           
+        try {
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setLong(1, prodId);
+            pstm.setLong(2, companyId);
+                       
+            ResultSet rs = pstm.executeQuery();
+            if(rs.next()){
+                exist = true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return exist;
     }
         
     public boolean editProduct() throws SQLException{        
@@ -282,6 +329,7 @@ public class Product {
                      + " WHERE lower(P.prod_name) LIKE ? "
                      + " AND P.company_id = ? "
                      + " AND S.cancle_status = false  "
+                     + " AND S.delete = false  "
                      + " ORDER BY P.prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setString(1, "%"+prodName.toLowerCase()+"%");
@@ -312,7 +360,8 @@ public class Product {
                       + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
                       + " WHERE P.prod_id = ? "
                       + " AND P.company_id = ? "
-                      + " AND S.cancle_status = false  ";
+                      + " AND S.cancle_status = false  "
+                      + " AND S.delete = false  ";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setLong(1, prodId);
         pstm.setInt(2, companyId);
@@ -340,6 +389,7 @@ public class Product {
                      + " WHERE P.amount = 0 "
                      + " AND P.company_id = ? "
                      + " AND S.cancle_status = false  "
+                     + " AND S.delete = false  "
                      + " ORDER BY P.prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, companyId);
@@ -370,6 +420,7 @@ public class Product {
                      + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
                      + " WHERE P.company_id = ? "
                      + " AND S.cancle_status = false "
+                     + " AND S.delete = false  "
                      + " ORDER BY P.prod_id ";
         
 //        SELECT * FROM PRODUCTS P
@@ -431,6 +482,7 @@ public class Product {
                      + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
                      + " WHERE P.amount <= (SELECT alertAmount FROM ALERT) "
                      + " AND S.cancle_status = false "
+                     + " AND S.delete = false  "
                      + " AND P.company_id = ? "
                      + " ORDER BY P.prod_id ";
         try {
@@ -458,16 +510,15 @@ public class Product {
     
     public static  boolean deleteProduct(long prodId){
         int x=0;
-        
-        // โดยจะต้องไป add ใน CancleProduct 
+                
         try {
             Connection con = ConnectionBuilder.getConnection();
-            //ชื่อ locumnผิด >> 'CANCEL'
-            String sql = "UPDATE CANCLE_STATUS VALUES(true) "
-                          + "WHERE prodId = ? ";
-       
+            
+            String sql = "UPDATE PRODUCT_STATUS SET delete = ? "
+                          + "WHERE PROD_ID = ? "; 
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setLong(1, prodId);
+            pstm.setBoolean(1, true); 
+            pstm.setLong(2, prodId);           
             x = pstm.executeUpdate();
             
                      
@@ -488,6 +539,7 @@ public class Product {
                      + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
                      + " WHERE P.company_id = ? "
                      + " AND S.cancle_status = true "
+                     + " AND S.delete = false  "
                      + " ORDER BY P.prod_id ";
         try {
             PreparedStatement pstm = con.prepareStatement(sql);

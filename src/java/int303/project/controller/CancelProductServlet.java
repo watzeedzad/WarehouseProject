@@ -51,7 +51,8 @@ public class CancelProductServlet extends HttpServlet {
            log("in products cancel == nul");
            log("Message = " + message);
        }
-       session.setAttribute("message", message);
+       
+       request.setAttribute("message", message);
         log(session.getAttribute("message")+"");
        getServletContext().getRequestDispatcher("/CancelProduct.jsp").forward(request, response);
     }

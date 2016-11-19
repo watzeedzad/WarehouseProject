@@ -37,32 +37,32 @@ public class Order {
            
     }   
         
+//    public static boolean addAmount(long prodId,int amount){
+//        int x=0;
+//        
+//        return x>0;
+//    }
+    
+//    public static boolean reduceAmount(long prodId,int amount){
+//        int x=0;
+//        
+//        return x>0;
+//    }
+    
     public static boolean addAmount(long prodId,int amount){
         int x=0;
+        // reduce amount in DB
+        // save ข้อมูลใน order ด้วย
+        
         
         return x>0;
     }
     
     public static boolean reduceAmount(long prodId,int amount){
         int x=0;
-        
-        return x>0;
-    }
-    
-    public static boolean sell(long prodId,int amount){
-        int x=0;
-        // reduce amount in DB
-        // save ข้อมูลใน order ด้วย
-        // เอาข้อมูลจากใน List มาวนloop save ลง DB
-        
-        return x>0;
-    }
-    
-    public static boolean buy(long prodId,int amount){
-        int x=0;
         // add amount in DB
         // save ข้อมูลใน order ด้วย
-        // เอาข้อมูลจากใน List มาวนloop save ลง DB
+        
         
         
         return x>0;

@@ -45,27 +45,34 @@ public class RemoveProductServlet extends HttpServlet {
         String idStr = request.getParameter("prodId");
         String message = "";
         
+        
+        
         try {
-            long prodId = Long.parseLong(idStr);
-            Product prod = Product.getProduct(prodId);
-            
-            boolean success = Product.deleteProduct(prodId);
-            if(success){
-                message = "DELETE SUCCESS"
-                        + "\nProduct id: "+prodId                      
-                        + "\nProduct name: "+ prod.getProd_name();
-            }else{
-                message = "DELETE FAILED"
-                        + "\nProduct id: "+prodId                      
-                        + "\nProduct name: "+ prod.getProd_name();
-            }
+            long prodId = Long.parseLong(idStr);   
+            boolean exist =  Product.isExistProduct(user.getCompanyId(), prodId);
+                                
+            if(exist){
+                Product prod = Product.getProduct(prodId);         
+                boolean success = Product.deleteProduct(prodId);
+                if(success){
+                    message = "DELETE SUCCESS"
+                            + "<br> Product id: "+prodId                      
+                            + "<br> Product name: "+ prod.getProd_name();
+                }else{
+                    message = "DELETE FAILED"
+                            + "<br> Product id: "+prodId                      
+                            + "<br> Product name: "+ prod.getProd_name();
+                }
+            }else{               
+                message = "Product ID '"+prodId+"' does not exist";
+            }            
             
         } catch (Exception e) {            
             System.out.println(e);
         }
         
-        session.setAttribute("message", message);
-        getServletContext().getRequestDispatcher("/Result.jsp").forward(request, response);
+        request.setAttribute("message", message);
+        getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
         
     }
 

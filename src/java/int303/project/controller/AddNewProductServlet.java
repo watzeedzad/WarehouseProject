@@ -80,6 +80,15 @@ public class AddNewProductServlet extends HttpServlet {
         }
 
         request.setAttribute("message", message);
+        
+        String source = request.getParameter("source");
+        
+        if(source != null){
+            if(source.equals("allProduct")){
+                getServletContext().getRequestDispatcher("/product.jsp").forward(request, response);
+            }
+        }
+        
         getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
 
     }

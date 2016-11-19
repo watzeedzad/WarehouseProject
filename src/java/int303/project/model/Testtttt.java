@@ -152,7 +152,11 @@ public class Testtttt {
 //        boolean suc = o.addNewProduct(p, s);
 //        
 //        System.out.println("************ "+suc);
-
-
+            
+          boolean exist = Product.isExistProduct(2, 100000018);
+          System.out.println(exist);
+          
+          boolean success = Product.deleteProduct(10000017);
+          System.out.println(success);
     }
 }
