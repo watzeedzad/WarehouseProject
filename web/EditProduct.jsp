@@ -3,7 +3,7 @@
     Created on : Nov 5, 2016, 4:22:02 PM
     Author     : 000
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,42 +32,38 @@
         <div class="container"><br><br><br>
             <center><h1><span class="black"><b>{</b></span><span class="yellow">EDIT PRODUCT<span class="black"><b>}</b></span></h1><br></center>
             <a href="javascript:history.back()"><button type="button" class="btn btn-success yellow">BACK</button><br><br><br></a>
-            
-            
-            <form action="" class="form-horizontal">
-                <div class="form-group">
-                    <label for="inputPassword" class="col-sm-2 control-label yellow">Product ID :</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" id="disabledInput" type="number" disabled>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="col-sm-2 control-label yellow">Product Name :</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" id="disabledInput" type="text" disabled>
-                    </div>
-                </div> 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label yellow">Type :</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" id="focusedInput" type="text" >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label yellow">Price :</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" id="focusedInput" type="number" >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="col-sm-2 control-label yellow">Amount :</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" id="disabledInput" type="number" disabled>
-                    </div>
-                </div>
-            </form><br>
-            
-            
+
+            <c:choose>
+                <c:when test="${p !=null}">
+                    <form action="EditProductServlet" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-sm-2 control-label yellow">Product ID :</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="disabledInput" type="number" value="${p.prod_id}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-sm-2 control-label yellow">Product Name :</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="disabledInput" type="text" value="${p.prod_name}" >
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label yellow">Type :</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="focusedInput" value="${p.prod_type}" type="text" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label yellow">Price :</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="focusedInput" value="${p.price}" type="number" >
+                            </div>
+                        </div>
+                    </form><br>
+                </c:when>
+            </c:choose>
+
             <button type="button" class="btn btn-success yellow">SEND</button>
         </div>
     </body>
