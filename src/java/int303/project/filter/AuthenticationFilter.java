@@ -38,14 +38,9 @@ public class AuthenticationFilter implements Filter {
         String path = request.getRequestURI();
 
         boolean loggedIn = session != null && session.getAttribute("user") != null;
-        boolean loginRequest = request.getRequestURI().equals(loginURI);
+        //boolean loginRequest = request.getRequestURI().equals(loginURI);
 
-        if (path.matches(".*(css|jpg|png|gif|js)")) {
-            chain.doFilter(req, res);
-            return;
-        }
-
-        if (loggedIn || loginRequest) {
+        if (loggedIn || path.matches(".*(css|jpg|png|gif|js)")) {
             chain.doFilter(request, response);
         } else {
 //            response.sendRedirect(loginURI);
