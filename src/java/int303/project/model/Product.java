@@ -210,7 +210,7 @@ public class Product {
 
     public static boolean addToProductStatus(Connection con, long prodId) {
         int x = 0;
-        String sql = "INSERT INTO PRODUCT_STATUS(prod_id,cancle_status,delete)"
+        String sql = "INSERT INTO PRODUCT_STATUS(prod_id,cancle_status,`DELETE`)"
                 + "VALUES(?,false,false)"; // false = ยังผลิตอยู่
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -270,19 +270,39 @@ public class Product {
         return exist;
     }
 
+//    public boolean editProduct() throws SQLException {
+//        int x = 0;
+//        Connection con = ConnectionBuilder.getConnection();
+//        String sql = "UPDATE PRODUCTS SET prod_name=?,price=?,amount=?,branch_id=?,prod_type=?,company_id=? WHERE prod_id=?";
+//        PreparedStatement pstm = con.prepareStatement(sql);
+//
+//        pstm.setString(1, this.getProd_name());
+//        pstm.setDouble(2, this.getPrice());
+//        pstm.setInt(3, this.getAmount());
+//        pstm.setInt(4, this.getBranch().getBranch_id());
+//        pstm.setString(5, this.getProd_type());
+//        pstm.setInt(6, this.getCompany().getCompany_id());
+//        pstm.setLong(7, this.getProd_id());
+//
+//        x = pstm.executeUpdate();
+//
+//        pstm.close();
+//        con.close();
+//
+//        return x > 0;
+//    }
+//    
+       
     public boolean editProduct() throws SQLException {
         int x = 0;
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "UPDATE PRODUCTS SET prod_name=?,price=?,amount=?,branch_id=?,prod_type=?,company_id=? WHERE prod_id=?";
+        String sql = "UPDATE PRODUCTS SET prod_name=?,price=?,prod_type=? WHERE prod_id=?";
         PreparedStatement pstm = con.prepareStatement(sql);
 
         pstm.setString(1, this.getProd_name());
         pstm.setDouble(2, this.getPrice());
-        pstm.setInt(3, this.getAmount());
-        pstm.setInt(4, this.getBranch().getBranch_id());
-        pstm.setString(5, this.getProd_type());
-        pstm.setInt(6, this.getCompany().getCompany_id());
-        pstm.setLong(7, this.getProd_id());
+        pstm.setString(3, this.getProd_type());
+        pstm.setLong(4, this.getProd_id());
 
         x = pstm.executeUpdate();
 
