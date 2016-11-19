@@ -132,7 +132,7 @@
                                     <c:forEach items="${products}" var="p" varStatus="vs">                       
                                         <tr>
                                             <td> ${p.prod_id}</td>
-                                            <td> ${p.prod_name}</td>
+                                            <td><a href="EditProductServlet?prod_id=${p.prod_id}">${p.prod_name}</a> </td>
                                             <td> ${p.price}</td>
                                             <td>
                                                 <input type="number" class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
