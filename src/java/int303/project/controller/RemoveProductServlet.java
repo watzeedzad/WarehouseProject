@@ -54,14 +54,15 @@ public class RemoveProductServlet extends HttpServlet {
             if(exist){
                 Product prod = Product.getProduct(prodId);         
                 boolean success = Product.deleteProduct(prodId);
+                log("IN REMOVE PRODUCT");
                 if(success){
                     message = "DELETE SUCCESS"
-                            + "<br> Product id: "+prodId                      
-                            + "<br> Product name: "+ prod.getProd_name();
+                            + "\nProduct id: "+prodId                      
+                            + "\nProduct name: "+ prod.getProd_name();
                 }else{
                     message = "DELETE FAILED"
-                            + "<br> Product id: "+prodId                      
-                            + "<br> Product name: "+ prod.getProd_name();
+                            + "\nProduct id: "+prodId                      
+                            + "\nProduct name: "+ prod.getProd_name();
                 }
             }else{               
                 message = "Product ID '"+prodId+"' does not exist";

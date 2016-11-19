@@ -233,7 +233,7 @@
         <!--add product ----------------------------------------------------------------------------------------------------------------->
        
         
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button>
         <div class="modal fade " id="myModal" role="dialog">
             <div class="modal-dialog modal-lg black">
                 <div class="modal-content">
@@ -266,19 +266,14 @@
                                         <tr>
                                             <td>Branch ID</td>
                                             <td><input type="text" class="form-control" name="branchId" ></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="submit" class="btn btn-default" value="ADD New Product">
-                                            </td>
-                                        </tr>
+                                        </tr>                                        
                                     </table>
 
 
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-default" data-dismiss="modal" value="ADD">
+                            <input type="submit" class="btn btn-default" value="ADD">
                         </div>
                     </form>
                 </div>
@@ -286,14 +281,14 @@
         </div>
         <!-- remove ----------------------------------------------------------------------------------------------------------------->          
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button>
 
         <div class="modal fade" id="myModal1" role="dialog">
             <div class="modal-dialog modal-lg black">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: gray">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h2 class="modal-title">Remove Products</h2>
+                        <h2 class="modal-title">Remove Product</h2>
                     </div>
                     <form action="RemoveProduct">
                         <input type="hidden" name="source" value="allProduct">
@@ -306,7 +301,7 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-default" data-dismiss="modal" value="Remove">
+                            <input type="submit" class="btn btn-default" value="Remove">
                         </div>
                     </form>
                 </div>
