@@ -5,20 +5,22 @@
  */
 package int303.project.controller;
 
-import int303.project.model.Staff;
+import int303.project.model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author jiraw
  */
-public class EditStaffServlet extends HttpServlet {
+public class EditProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,35 +33,30 @@ public class EditStaffServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession(false);
-        String firstName = request.getParameter("firstname");
-        String lastName = request.getParameter("lastname");
-        String address = request.getParameter("address");
-        int id = (Integer) session.getAttribute("user_id");
-        Staff st = (Staff) session.getAttribute("staffData");
-        //ถ้ามาเป็น null แสดงว่า user ไม่ได้แก้หรือลบแล้วไม่ได่กรอกค่ามา
-        //จะเอาข้อมูลที่มีอยู่แล้วใน DB มาเป็นค่า default
-        if (firstName != null) {
-            if (firstName.length() == 0) {
-                firstName = st.getFirstname();
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            long prodId = Long.parseLong(request.getParameter("prodId"));
+            String prodName = request.getParameter("prodName");
+            String prodPrice = request.getParameter("prodPrice");
+            String prodType = request.getParameter("prodType");
+            Product prod = Product.getProduct(prodId);
+            if (prodName != null) {
+                prodName = prod.getProd_name();
             }
-        }
-        if (lastName != null) {
-            if (lastName.length() == 0) {
-                lastName = st.getLastname();
+            if (prodPrice != null) {
+                prodPrice = String.valueOf(prod.getPrice());
             }
-        }
-        if (address != null) {
-            if (address.length() == 0) {
-                address = st.getLastname();
+            if (prodType != null) {
+                prodType = prod.getProd_type();
             }
+            double prodPriceDouble = Double.parseDouble(prodPrice);
+            //prod.
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        } catch (NumberFormatException ex) {
+            System.err.println(ex);
         }
-        Staff.editStaff(firstName, lastName, address, id);
-        //เพื่อ update ข้อมูลของ staff หลังจาก edit ไป
-        st = Staff.viewStaffData(id);
-        session.setAttribute("staffData", st);
-        getServletContext().getRequestDispatcher("/EditStaff.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
