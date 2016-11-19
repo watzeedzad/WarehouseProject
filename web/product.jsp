@@ -107,6 +107,7 @@
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Amount</th>
+                                
                             </tr>
                             </thead>
                             <tbody>

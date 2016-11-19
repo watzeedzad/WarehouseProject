@@ -208,8 +208,8 @@
                         <div class="thumbnail">
                             <p><img src="image/add.png"></p>
                             <p><strong>ADD</strong></p>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD</button>
-                            <div class="modal fade" id="myModal" role="dialog">
+                            <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >ADD</button></a>
+<!--                            <div class="modal fade" id="myModal" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: gray">
@@ -252,16 +252,16 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail">
                             <p><img src="image/remove.png"></p>
                             <p><strong>REMOVE</strong></p>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE</button>
+                            <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE</button></a>
 
-                            <div class="modal fade" id="myModal1" role="dialog">
+<!--                            <div class="modal fade" id="myModal1" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: gray">
@@ -284,7 +284,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>  
                     </div>
                 </div><br><br>
@@ -293,8 +293,8 @@
                         <div class="thumbnail">
                             <p><img src="image/pencil.png"></p>
                             <p><strong>INCREASE</strong></p>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">INCREASE</button>
-                            <div class="modal fade" id="myModal2" role="dialog">
+                            <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">INCREASE</button></a>
+<!--                            <div class="modal fade" id="myModal2" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: gray">
@@ -320,15 +320,15 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail">
                             <p><img src="image/pencil.png"></p>
                             <p><strong>REDUCE</strong></p>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">REDUCE</button>
-                            <div class="modal fade" id="myModal3" role="dialog">
+                           <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">REDUCE</button></a>
+<!--                            <div class="modal fade" id="myModal3" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: gray">
@@ -354,7 +354,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>  
                     </div>
                 </div>

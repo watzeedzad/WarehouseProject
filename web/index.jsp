@@ -5,9 +5,7 @@
         <meta charset="UTF-8">
         <title>Elastic Login Form</title>
         <link rel="stylesheet" href="css/style.css">
-        <style>
-            
-        </style>
+       
     </head>
     <body>
         <%
@@ -22,16 +20,16 @@
 
             <div class="profile">
                 <div id="alert">
-                    <center style="color: red; visibility: visible;" class="slideanim">${requestScope.message}</center>
+                    <center style="color: red;  "class="slideanim">${requestScope.message}</center>
                 </div>    
                 <br>
                 <br>
 <!--                <div id="click">-->
-                    <button  onclick="NumChk();" class="profile__avatar" id="toggleProfile">
-                        <img src="image/login-pic.png" alt="Avatar" /> 
+                    <button   class="profile__avatar" id="toggleProfile">
+                        <img src="image/login-pic.png" alt="Avatar" onclick="NumChk();"/> 
                     </button>
 <!--                </div>-->
-                <div class="profile__form" style="margin-top: 100px;">
+                <div class="profile__form" style="margin-top: 30px;">
                     <div class="profile__fields">
                         <form action="login" method="POST">       
                             <div class="field">
