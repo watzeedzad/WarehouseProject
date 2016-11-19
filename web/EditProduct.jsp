@@ -81,6 +81,5 @@
         </style>    
     </head>
     <body>
-        ยีห
     </body>
 </html>
