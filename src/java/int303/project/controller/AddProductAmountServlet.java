@@ -5,6 +5,8 @@
  */
 package int303.project.controller;
 
+import int303.project.model.Order;
+import int303.project.model.Product;
 import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,12 +46,38 @@ public class AddProductAmountServlet extends HttpServlet {
         
         String idStr = request.getParameter("prodId");
         String amountStr = request.getParameter("prodAmount");
+        String message = "";
         
+        try {
+            long id = Long.parseLong(idStr);
+            int amount = Integer.parseInt(amountStr);            
+            boolean exist =  Product.isExistProduct(user.getCompanyId(), id);
+                                
+            if(exist){
+                Product prod = Product.getProduct(id); 
+                boolean success = Order.addAmount(id, amount,user);
+                if(success){
+                    message = " Add amount SUCCESS!!";
+                }else{
+                    message = " FAILED to add amount!!";
+                }
+                
+            }else{               
+                message = "Product ID '"+id+"' does not exist";
+            }      
+        } catch (Exception e) {
+            System.out.println(e);         
+        }
         //เวลาเพิ่มจำนวน ต้องaddลงORDERSด้วย
+        request.setAttribute("message", message);
         
-        
-        
-        
+        String source = request.getParameter("source");
+        if(source != null){
+            if(source.equals("allProduct")){
+                getServletContext().getRequestDispatcher("/product.jsp").forward(request, response);
+            }
+        }
+        getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

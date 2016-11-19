@@ -106,7 +106,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="submit" class="btn btn-default" value="ADD" id="but1" onclick="alert1()">
+                                                <input type="submit" class="btn btn-default" value="ADD">
                                             </td>
                                         </tr>
                                     </table>
@@ -149,7 +149,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="submit" class="btn btn-default" value="Remove" id="but2" onclick="alert2()">
+                                            <input type="submit" class="btn btn-default" value="Remove">
                                         </td>
                                     </tr>
                                 </table>
@@ -188,7 +188,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="submit" class="btn btn-default" value="Increase" id="but3" onclick="alert3()">
+                                            <input type="submit" class="btn btn-default" value="Increase">
                                         </td>
                                     </tr>
                                 </table>
@@ -227,7 +227,7 @@
                                         <td><input type="number" class="form-control" name="prodAmount"></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="submit" class="btn btn-default" value="Reduce" id="but4" onclick="alert4()"></td>
+                                        <td><input type="submit" class="btn btn-default" value="Reduce"></td>
                                     </tr>
                                 </table>
                             </div>
@@ -249,26 +249,11 @@
         <!-- /container -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="js/boxlayout.js"></script>
-        
         <script>
             $(function () {
                 Boxlayout.init();
             });
-            
-             function alert1(){
-           alert("5555");
-           }
-             function alert2(){
-           alert("5555");
-           }
-             function alert3(){
-           alert("5555");
-           }
-             function alert4(){
-           alert("5555");
-           }
         </script>
-        
     </body>
 </html>
 

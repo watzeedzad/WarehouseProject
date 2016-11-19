@@ -6,21 +6,21 @@
 package int303.project.controller;
 
 import int303.project.model.Product;
-import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Praew
+ * @author jiraw
  */
-public class CancelProductServlet extends HttpServlet {
+public class EditProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,28 +33,30 @@ public class CancelProductServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession session = request.getSession();
-       Staff user = (Staff)session.getAttribute("staffData");
-       String message = "";
-       
-       if(user == null){
-            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
-            log(user+""); 
-            log("NULLLL");
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            long prodId = Long.parseLong(request.getParameter("prodId"));
+            String prodName = request.getParameter("prodName");
+            String prodPrice = request.getParameter("prodPrice");
+            String prodType = request.getParameter("prodType");
+            Product prod = Product.getProduct(prodId);
+            if (prodName != null) {
+                prodName = prod.getProd_name();
+            }
+            if (prodPrice != null) {
+                prodPrice = String.valueOf(prod.getPrice());
+            }
+            if (prodType != null) {
+                prodType = prod.getProd_type();
+            }
+            double prodPriceDouble = Double.parseDouble(prodPrice);
+            prod.editProduct(prodName, prodPriceDouble, prodType, prodId);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        } catch (NumberFormatException ex) {
+            System.err.println(ex);
         }
-       
-       List<Product> products = Product.getCancelProduct(user.getCompanyId());
-       if(products != null){
-           session.setAttribute("products", products);
-       }else{
-           message = "There is no Cancel Product";
-           log("in products cancel == nul");
-           log("Message = " + message);
-       }
-       
-       request.setAttribute("message", message);
-        log(session.getAttribute("message")+"");
-       getServletContext().getRequestDispatcher("/CancelProduct.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
