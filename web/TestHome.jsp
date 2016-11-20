@@ -209,50 +209,50 @@
                             <p><img src="image/add.png"></p>
                             <p><strong>ADD</strong></p>
                             <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >ADD</button></a>
-<!--                            <div class="modal fade" id="myModal" role="dialog">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="background-color: gray">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h2 class="modal-title">ADD PRODUCT</h2>
-                                        </div> 
-                                        <form action="AddNewProduct">
-                                            <div class="modal-body">
-                                                <div class="container">
-
-                                                    <table class="add-pro">
-                                                        <tr>
-                                                            <td>Name</td>
-                                                            <td><input type="text" class="form-control" name="prodName"></td>                                   
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Amount</td>
-                                                            <td><input type="number" class="form-control" min="1" name="prodAmount"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Price</td>
-                                                            <td><input type="number" class="form-control" min="1" name="prodPrice"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Type</td>
-                                                            <td><input type="text" class="form-control" name="prodType"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Branch ID</td>
-                                                            <td><input type="text" class="form-control" name="branchId" ></td>
-                                                        </tr>
-                                                    </table>
-
-
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="submit" class="btn btn-default" value="ADD">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>-->
+                            <!--                            <div class="modal fade" id="myModal" role="dialog">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header" style="background-color: gray">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h2 class="modal-title">ADD PRODUCT</h2>
+                                                                    </div> 
+                                                                    <form action="AddNewProduct">
+                                                                        <div class="modal-body">
+                                                                            <div class="container">
+                            
+                                                                                <table class="add-pro">
+                                                                                    <tr>
+                                                                                        <td>Name</td>
+                                                                                        <td><input type="text" class="form-control" name="prodName"></td>                                   
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Amount</td>
+                                                                                        <td><input type="number" class="form-control" min="1" name="prodAmount"></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Price</td>
+                                                                                        <td><input type="number" class="form-control" min="1" name="prodPrice"></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Type</td>
+                                                                                        <td><input type="text" class="form-control" name="prodType"></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Branch ID</td>
+                                                                                        <td><input type="text" class="form-control" name="branchId" ></td>
+                                                                                    </tr>
+                                                                                </table>
+                            
+                            
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <input type="submit" class="btn btn-default" value="ADD">
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -261,30 +261,30 @@
                             <p><strong>REMOVE</strong></p>
                             <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE</button></a>
 
-<!--                            <div class="modal fade" id="myModal1" role="dialog">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="background-color: gray">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h2 class="modal-title">Remove Product</h2>
-                                        </div>
-
-                                        <form action="RemoveProduct">
-                                            <div class="modal-body">
-                                                <table class="add-pro">
-                                                    <tr>
-                                                        <td>Product ID:</td>
-                                                        <td><input type="number" min="1" class="form-control" name="prodId"></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="submit" class="btn btn-default" value="Remove">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>-->
+                            <!--                            <div class="modal fade" id="myModal1" role="dialog">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header" style="background-color: gray">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h2 class="modal-title">Remove Product</h2>
+                                                                    </div>
+                            
+                                                                    <form action="RemoveProduct">
+                                                                        <div class="modal-body">
+                                                                            <table class="add-pro">
+                                                                                <tr>
+                                                                                    <td>Product ID:</td>
+                                                                                    <td><input type="number" min="1" class="form-control" name="prodId"></td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <input type="submit" class="btn btn-default" value="Remove">
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                         </div>  
                     </div>
                 </div><br><br>
@@ -294,67 +294,67 @@
                             <p><img src="image/pencil.png"></p>
                             <p><strong>INCREASE</strong></p>
                             <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">INCREASE</button></a>
-<!--                            <div class="modal fade" id="myModal2" role="dialog">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="background-color: gray">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h2 class="modal-title">INCREASE Amount</h2>
-                                        </div>
-                                        <form action="AddProductAmount">
-                                            <div class="modal-body">
-                                                <table class="add-pro">
-                                                    <tr>
-                                                        <td>ID:</td>
-                                                        <td><input type="number" class="form-control" name="prodId"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Amount:</td>
-                                                        <td><input type="number" class="form-control" name="prodAmount"></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="submit" class="btn btn-default" value="Increase">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>-->
+                            <!--                            <div class="modal fade" id="myModal2" role="dialog">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header" style="background-color: gray">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h2 class="modal-title">INCREASE Amount</h2>
+                                                                    </div>
+                                                                    <form action="AddProductAmount">
+                                                                        <div class="modal-body">
+                                                                            <table class="add-pro">
+                                                                                <tr>
+                                                                                    <td>ID:</td>
+                                                                                    <td><input type="number" class="form-control" name="prodId"></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Amount:</td>
+                                                                                    <td><input type="number" class="form-control" name="prodAmount"></td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <input type="submit" class="btn btn-default" value="Increase">
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail">
-                            <p><img src="image/pencil.png"></p>
+                            <p><img src="image/eraser.png"></p>
                             <p><strong>REDUCE</strong></p>
-                           <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">REDUCE</button></a>
-<!--                            <div class="modal fade" id="myModal3" role="dialog">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="background-color: gray">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h2 class="modal-title">REDUCE Amount</h2>
-                                        </div>
-                                        <form action="ReduceProductAmount">
-                                            <div class="modal-body">
-                                                <table class="add-pro">
-                                                    <tr>
-                                                        <td>ID:</td>
-                                                        <td><input type="number" class="form-control" name="prodId"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Amount:</td>
-                                                        <td><input type="number" class="form-control" name="prodAmount"></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="submit" class="btn btn-default" value="Reduce">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>-->
+                            <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">REDUCE</button></a>
+                            <!--                            <div class="modal fade" id="myModal3" role="dialog">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header" style="background-color: gray">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h2 class="modal-title">REDUCE Amount</h2>
+                                                                    </div>
+                                                                    <form action="ReduceProductAmount">
+                                                                        <div class="modal-body">
+                                                                            <table class="add-pro">
+                                                                                <tr>
+                                                                                    <td>ID:</td>
+                                                                                    <td><input type="number" class="form-control" name="prodId"></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Amount:</td>
+                                                                                    <td><input type="number" class="form-control" name="prodAmount"></td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <input type="submit" class="btn btn-default" value="Reduce">
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                         </div>  
                     </div>
                 </div>
@@ -379,16 +379,16 @@
             <div class="row slideanim ">
                 <div class="col-sm-12">
                     <div class="thumbnail">
-                        <p><img src="image/password.png"></p>
-                        <p><strong>ยอดขายต่อเดือน</strong></p>
-                        <a href="yodkaitormonth.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
+                        <p><img src="image/van1.png"></p>
+                        <p><strong>VIEW ORDER</strong></p>
+                        <a href="ViewState.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="thumbnail">
-                        <img src="image/password.png">
-                        <p><strong>ยอดขายสินค้า</strong></p>
-                        <a href="OrderInOut"><button class="btn btn-default btn-lg">Enter</button></a>
+                        <p><img src="image/analytics.png"></p>
+                        <p><strong>VIEW ORDER BY TIME</strong></p>
+                        <a href="ViewStateByTime"><button class="btn btn-default btn-lg">Enter</button></a>
                     </div>  
                 </div>
             </div>
@@ -403,13 +403,8 @@
         </div><br>
         <div class="col-sm-6">
             <div class="container-fluid">
-                <h2>The Emergency Alert System</h2><hr>
-                <div class=" text-center thumbnail slideanim ">
-                    <h4>The Emergency Alert System (EAS) is a national public warning system that requires broadcasters, 
-                        cable television systems, wireless cable systems, satellite digital audio radio service 
-                        (SDARS) providers, and direct broadcast satellite (DBS) providers to provide the communications
-
-                        such as AMBER alerts and weather information targeted to specific areas.</h4>
+                <h2 class="yellow">You can see the product in this!!</h2><hr>
+                <div class=" text-center  slideanim ">
                     <a href="UpdateAlert"><button class="btn btn-default btn-lg">Enter</button></a>
                 </div>
             </div>

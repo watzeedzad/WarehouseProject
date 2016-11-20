@@ -77,7 +77,6 @@
                     <tr><td>Category : </td>
                         <td>
                             <select name="range"" id="category" class="black">
-                                <option value=''>--Select View By--</option>
                                 <option value="month" ${param.searchDateBy=='month' ? 'selected': ''}>Month</option>
                                 <option value="year" ${param.searchDateBy=='year' ? 'selected': ''}>Year</option>
                                 <option value="monthandyear" ${param.searchDateBy=='monthandyear' ? 'selected': ''}>Month and Year</option>
@@ -87,7 +86,6 @@
                         <td>Month : </td>
                         <td>
                             <select name="month" class="black">
-                                <option value=''>--Select Month--</option>
                                 <option value='1'>Janaury</option>
                                 <option value='2'>February</option>
                                 <option value='3'>March</option>
@@ -106,7 +104,6 @@
                         <td>Year</td>
                         <td>
                             <select name="year"  class="black">
-                                <option value=''>--Select Year--</option>
                                 <option value='2005'>2005</option>
                                 <option value='2006'>2006</option>
                                 <option value='2007'>2007</option>
@@ -125,7 +122,6 @@
                         <td> Order Type</td>
                         <td>
                             <select name="viewBy" class="black" >
-                                <option value=''>--Order Type--</option>
                                 <option value="in">IN</option>
                                 <option value="out">OUT</option>
                                 <option value="all">ALL</option>
