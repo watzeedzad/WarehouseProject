@@ -62,7 +62,9 @@ public class Branch {
             branch = new Branch();
             orm(branch, rs);
         }
-
+        con.close();
+        pstm.close();
+        rs.close();
         return branch;
     }
 
@@ -84,6 +86,9 @@ public class Branch {
                 orm(branch, rs);
                 branches.add(branch);
             }
+            con.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.out.println(ex);
         }

@@ -77,6 +77,9 @@ public class Login {
             if (rs.next()) {
                 id = rs.getInt("STAFF_ID");
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
