@@ -102,7 +102,18 @@
                                         </tr>
                                         <tr>
                                             <td>Branch ID</td>
-                                            <td><input type="text" class="form-control" name="branchId" ></td>
+                                            <c:if test="${allBranch==null}">
+                                                <td><input type="text" class="form-control" name="branchId" required></td>
+                                            </c:if>
+                                            <c:if test="${allBranch!=null}">
+                                                <td>
+                                                    <select name="branchId">
+                                                        <c:forEach items="${allBranch}" var="b" >
+                                                            <option value="${b.branch_id}">${b.branch_name}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </td>
+                                            </c:if>
                                         </tr>
                                         <tr>
                                             <td>

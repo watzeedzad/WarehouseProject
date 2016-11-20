@@ -5,6 +5,7 @@
  */
 package int303.project.controller;
 
+import int303.project.model.Branch;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import int303.project.model.Login;
 import int303.project.model.Staff;
+import java.util.List;
 
 /**
  *
@@ -55,7 +57,11 @@ public class LoginServlet extends HttpServlet {
 //                log(s.toString());
             }
             
-            
+            List<Branch> allBranch = Branch.getAllBranch();
+            if(allBranch!=null){
+                getServletContext().setAttribute("allBranch", allBranch);
+            }
+                        
             String targetJa = (String)getServletContext().getAttribute("targetJa");
             System.out.println(targetJa);
             if(targetJa==null || target.trim().length()==0){

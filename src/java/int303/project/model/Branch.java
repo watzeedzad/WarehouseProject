@@ -12,12 +12,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Praew
  */
 public class Branch {
+
     private int branch_id;
     private String branch_name;
     private String location;
@@ -45,76 +48,79 @@ public class Branch {
     public void setLocation(String location) {
         this.location = location;
     }
-      
-    public static Branch getBranch(int branchId) throws SQLException{
+
+    public static Branch getBranch(int branchId) throws SQLException {
         Branch branch = null;
-        
+
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM BRANCH WHERE branch_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, branchId);
-        
+
         ResultSet rs = pstm.executeQuery();
-        if(rs.next()){
+        if (rs.next()) {
             branch = new Branch();
-            orm(branch,rs);
-        }        
-        
+            orm(branch, rs);
+        }
+
         return branch;
     }
-    
-    public static List<Branch> getAllBranch() throws SQLException{
+
+    public static List<Branch> getAllBranch() {
         List<Branch> branches = null;
         Branch branch = null;
-        
+
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM BRANCH ";
-        PreparedStatement pstm = con.prepareStatement(sql);    
-        
-        ResultSet rs = pstm.executeQuery();
-        while(rs.next()){
-            if(branches == null){
-                branches = new ArrayList<>();
+        PreparedStatement pstm;
+        try {
+            pstm = con.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                if (branches == null) {
+                    branches = new ArrayList<>();
+                }
+                branch = new Branch();
+                orm(branch, rs);
+                branches.add(branch);
             }
-            branch = new Branch();
-            orm(branch,rs);
-            branches.add(branch);
-        }        
-        
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
         return branches;
     }
-    
-    
-    public static void orm(Branch branch,ResultSet rs) throws SQLException{
+
+    public static void orm(Branch branch, ResultSet rs) throws SQLException {
         branch.setBranch_id(rs.getInt("branch_id"));
         branch.setBranch_name(rs.getString("branch_name"));
         branch.setLocation(rs.getString("location"));
     }
-    
-    public boolean addNewBranch() throws SQLException{
+
+    public boolean addNewBranch() throws SQLException {
         int x = 0;
-        
+
         Connection con = ConnectionBuilder.getConnection();
         String sql = "INSERT INTO BRANCH(branch_name,location) VALUES(?,?)";
-        PreparedStatement pstm = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         pstm.setString(1, this.getBranch_name());
         pstm.setString(2, this.getLocation());
-        
+
         x = pstm.executeUpdate();
         ResultSet rs = pstm.getGeneratedKeys();
-        rs.next();        
+        rs.next();
         this.setBranch_id(rs.getInt(1));
-        
+
         rs.close();
         pstm.close();
-        con.close();       
-        
-        return x>0;
+        con.close();
+
+        return x > 0;
     }
 
     @Override
     public String toString() {
         return "Branch{" + "branch_id=" + branch_id + ", branch_name=" + branch_name + ", location=" + location + '}';
-    }    
-    
+    }
+
 }
