@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class OrderInOut {
 
+    private int prodId;
     private String prodName;
     private int prodAmount;
     private int orderId;
@@ -36,10 +37,19 @@ public class OrderInOut {
         this.dateOrder = rs.getDate("ors.DATE_ORDER");
         this.branchName = rs.getString("b.BRANCH_NAME");
         this.dateOrder = rs.getDate("DATE_ORDER");
+        this.prodId = rs.getInt("prod.PROD_ID");
     }
 
     public OrderInOut() {
 
+    }
+
+    public int getProdId() {
+        return prodId;
+    }
+
+    public void setProdId(int prodId) {
+        this.prodId = prodId;
     }
 
     public String getProdName() {
@@ -102,7 +112,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -132,7 +142,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -162,7 +172,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -193,7 +203,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -224,7 +234,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -254,7 +264,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -284,7 +294,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -315,7 +325,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -346,7 +356,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
@@ -377,7 +387,7 @@ public class OrderInOut {
         List<OrderInOut> order = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
                     + "LEFT JOIN PRODUCTS prod\n"
