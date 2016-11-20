@@ -17,8 +17,8 @@
             @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
             body {
-                font-family: 'Open Sans', sans-serif;
-                font-weight: 300;
+                /*                font-family: 'Open Sans', sans-serif;
+                                font-weight: 300;*/
                 line-height: 1.42em;
                 color:#A7A1AE;
                 background-color:#1F2739;
@@ -68,12 +68,12 @@
             }
 
             .container {
-/*                text-align: left;
-                overflow: hidden;
-                width: 80%;
-                margin: 0 auto;
-                display: table;
-                padding: 0 0 8em 0;*/
+                /*                text-align: left;
+                                overflow: hidden;
+                                width: 80%;
+                                margin: 0 auto;
+                                display: table;
+                                padding: 0 0 8em 0;*/
             }
 
             .container td, .container th {
@@ -97,115 +97,147 @@
             }
 
             .container td:first-child { color: #FB667A; }
-
-            .container tr:hover {
-                background-color: #464A52;
-                -webkit-box-shadow: 0 6px 6px -6px #0E1119;
-                -moz-box-shadow: 0 6px 6px -6px #0E1119;
-                box-shadow: 0 6px 6px -6px #0E1119;
+            .modal-dialog{
+                padding-top: 80px;
+                width: 400px;
             }
-
-            .container td:hover {
-                background-color: #FFF842;
-                color: #403E10;
-                font-weight: bold;
-
-                box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-                transform: translate3d(6px, -6px, 0);
-
-                transition-delay: 0s;
-                transition-duration: 0.4s;
-                transition-property: all;
-                transition-timing-function: line;
+            .bg-taley{
+                background-color:#185875;
             }
+            .bg-dark{
+                background-color:#1F2739;
+            }
+            .blue { color: #185875; }
+            .yellow { color: #FFF842; }
+            .black { color: black}
+            .text-white{ color: white}
+            .center{text-align: center}
+            .fix{
+                font-size: 30px;
+                border: 10px;
+            }
+            /*            .container tr:hover {
+                            background-color: #464A52;
+                            -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+                            -moz-box-shadow: 0 6px 6px -6px #0E1119;
+                            box-shadow: 0 6px 6px -6px #0E1119;
+                        }
+            
+                        .container td:hover {
+                            background-color: #FFF842;
+                            color: #403E10;
+                            font-weight: bold;
+            
+                            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+                            transform: translate3d(6px, -6px, 0);
+            
+                            transition-delay: 0s;
+                            transition-duration: 0.4s;
+                            transition-property: all;
+                            transition-timing-function: line;
+                        }*/
 
-/*            @media (max-width: 800px) {
-                .container td:nth-child(4),
-                .container th:nth-child(4) { display: none; }
-            }*/
+            /*            @media (max-width: 800px) {
+                            .container td:nth-child(4),
+                            .container th:nth-child(4) { display: none; }
+                        }*/
             /* ---------------------------------------------------------------*/
-/*            .navbar {
-                margin-bottom: 0;
-                background-color: black;
-                z-index: 9999;
-                border: 0;
-                font-size: 12px !important;
-                line-height: 1.42857143 !important;
-                letter-spacing: 4px;
-                border-radius: 0;
-            }
+            /*            .navbar {
+                            margin-bottom: 0;
+                            background-color: black;
+                            z-index: 9999;
+                            border: 0;
+                            font-size: 12px !important;
+                            line-height: 1.42857143 !important;
+                            letter-spacing: 4px;
+                            border-radius: 0;
+                        }
+            
+                        .navbar li a, .navbar .navbar-brand {
+                            color: #fff !important;
+                        }
+            
+                        .navbar-nav li a:hover, .navbar-nav li.active a {
+                            color: #f4511e !important;
+                            background-color: #fff !important;
+                        }
+            
+                        .navbar-default .navbar-toggle {
+                            border-color: transparent;
+                            color: #fff !important;
+                        }
+                        .dropdown-menu{
+                            background-color: black;
+                        }*/
 
-            .navbar li a, .navbar .navbar-brand {
-                color: #fff !important;
-            }
-
-            .navbar-nav li a:hover, .navbar-nav li.active a {
-                color: #f4511e !important;
-                background-color: #fff !important;
-            }
-
-            .navbar-default .navbar-toggle {
-                border-color: transparent;
-                color: #fff !important;
-            }
-            .dropdown-menu{
-                background-color: black;
-            }*/
         </style>
     </head>
     <body>
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         <br><br><br><br>
         <h1><span class="blue"><b>{</b></span><span class="yellow">ALERT<span class="blue"><b>}</b></span></h1>
+    <center><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal1">SET ALERT</button></center><br><br>
+
+
+    <!-- popup set slaer-->
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog modal-lg black">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: gray">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title text-white ">Set Alert</h2>
+                </div>
+                <form action="AlertProduct">
+                    <input type="hidden" name="source" value="allProduct">
+                    <div class="modal-body">
+                        <table class="add-pro">
+                            <tr>
+                                <td>Set Alert Amount:</td>
+                                <td><input type="number" min="1" class="form-control" name="alertAmount" value="${amount}" required></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-default" value="UPDATE">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">            
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-8">
+                <div class="container-fluid">
+                    <form action="CancelProduct">
+                        <!--<input type="submit" value="Get All"/>-->
+                        <table class="table table-inverse">
+                            <tr class="bg-dark">
+                                <td>id</td>
+                                <td>name</td>
+                                <td>price</td>
+                                <td>amount</td>
+                            </tr>
+
+                            <c:forEach items="${products}" var="p" varStatus="vs">                       
+                                <tr>
+                                    <td> ${p.prod_id}</td>
+                                    <td> ${p.prod_name}</td>
+                                    <td> ${p.price}</td>
+                                    <td> ${p.amount} </td>
+                                </tr>                   
+                            </c:forEach>                                    
+                        </table>
+                    </form>
+                </div> 
+            </div>
         
-        
-        <table class="container">
-            <thead>
-                <tr>
-                    <th><h1>Sites</h1></th>
-                    <th><h1>Views</h1></th>
-                    <th><h1>Clicks</h1></th>
-                    <th><h1>Average</h1></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Google</td>
-                    <td>9518</td>
-                    <td>6369</td>
-                    <td>01:32:50</td>
-                </tr>
-                <tr>
-                    <td>Twitter</td>
-                    <td>7326</td>
-                    <td>10437</td>
-                    <td>00:51:22</td>
-                </tr>
-                <tr>
-                    <td>Amazon</td>
-                    <td>4162</td>
-                    <td>5327</td>
-                    <td>00:24:34</td>
-                </tr>
-                <tr>
-                    <td>LinkedIn</td>
-                    <td>3654</td>
-                    <td>2961</td>
-                    <td>00:12:10</td>
-                </tr>
-                <tr>
-                    <td>CodePen</td>
-                    <td>2002</td>
-                    <td>4135</td>
-                    <td>00:46:19</td>
-                </tr>
-                <tr>
-                    <td>GitHub</td>
-                    <td>4623</td>
-                    <td>3486</td>
-                    <td>00:31:52</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="col-sm-2">
+
+            </div>        
+        </div>                    
     </body>
 </html>

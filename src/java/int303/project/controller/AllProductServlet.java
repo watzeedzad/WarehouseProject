@@ -60,7 +60,9 @@ public class AllProductServlet extends HttpServlet {
             message = "Get All Product";            
             try {
                 products = Product.getAllProduct(companyId);
+                int alertAmount = Product.getShareAlertFromDB(companyId);
                 session.setAttribute("products", products);
+                session.setAttribute("alertAmount", alertAmount);
             } catch (SQLException ex) {
                 request.setAttribute("error", ex);
                 System.err.println(ex);

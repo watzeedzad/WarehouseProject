@@ -140,14 +140,16 @@ public class Product {
         this.amountAlert = amountAlert;
     }       
     
-    public static void getShareAlertFromDB() {
-
+    public static int getShareAlertFromDB(int companyId) {
+        
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT alertAmount FROM ALERT ";
+        String sql = "SELECT alertAmount FROM ALERT "
+                    + " WHERE company_id = ? ";
 
         PreparedStatement pstm;
         try {
             pstm = con.prepareStatement(sql);
+            pstm.setInt(1, companyId);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                shareAlert = rs.getInt("alertAmount");
@@ -160,7 +162,8 @@ public class Product {
             
         } catch (SQLException ex) {
             System.out.println(ex);
-        }      
+        }
+        return shareAlert;
     }
 
     public static Product getProduct(long prodId) throws SQLException {
@@ -195,7 +198,7 @@ public class Product {
         prod.setProd_type(rs.getString("prod_type"));
         prod.setCompany(Company.getCompany(rs.getInt("company_id")));
         prod.setCancelStatus(rs.getBoolean("cancle_status"));
-        prod.setAmountAlert(getShareAlert());
+//        prod.setAmountAlert(getShareAlert());
     }
 
     public final static String SQL_SET_AMOUNT = "UPDATE PRODUCTS SET amount = ? WHERE prod_id = ?";
@@ -413,7 +416,7 @@ public class Product {
             products.add(prod);
         }
         
-        getShareAlertFromDB();
+//        getShareAlertFromDB(companyId);
                 
         rs.close();
         pstm.close();
@@ -442,7 +445,7 @@ public class Product {
             orm(prod, rs);
         }
         
-        getShareAlertFromDB();
+//        getShareAlertFromDB(companyId);
             
         rs.close();
         pstm.close();
@@ -513,7 +516,7 @@ public class Product {
             products.add(prod);
         }
         
-        getShareAlertFromDB();
+//        getShareAlertFromDB(companyId);
         
         rs.close();
         pstm.close();
@@ -552,7 +555,7 @@ public class Product {
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
-                + " WHERE P.amount <= (SELECT alertAmount FROM ALERT) "
+                + " WHERE P.amount <= (SELECT alertAmount FROM ALERT WHERE companyId = ?) "
                 + " AND S.cancle_status = false "
                 + " AND S.delete = false  "
                 + " AND P.company_id = ? "
@@ -560,6 +563,7 @@ public class Product {
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, companyId);
+            pstm.setInt(2, companyId);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 if (prods == null) {
@@ -570,7 +574,7 @@ public class Product {
                 prods.add(p);
             }
             
-            getShareAlertFromDB();
+//            getShareAlertFromDB(companyId);
                 
             rs.close();
             pstm.close();

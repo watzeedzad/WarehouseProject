@@ -61,12 +61,12 @@
         <servlet-class>int303.project.controller.ReduceProductAmountServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AlertServlet</servlet-name>
-        <servlet-class>AlertServlet</servlet-class>
+        <servlet-name>AlertProductServlet</servlet-name>
+        <servlet-class>int303.project.controller.AlertProductServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Alert1Servlet</servlet-name>
-        <servlet-class>int303.project.controller.Alert1Servlet</servlet-class>
+        <servlet-class>int303.project.controller.AlertProductServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>WatchError</servlet-name>
@@ -137,10 +137,6 @@
         <url-pattern>/ReduceProductAmount</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AlertServlet</servlet-name>
-        <url-pattern>/Alert</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Alert1Servlet</servlet-name>
         <url-pattern>/Alert1</url-pattern>
     </servlet-mapping>
@@ -175,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>OrderInuOutServlet</servlet-name>
         <url-pattern>/OrderInuOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlertProductServlet</servlet-name>
+        <url-pattern>/AlertProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -48,7 +48,7 @@ public class UpdateProductServlet extends HttpServlet {
         boolean success1 = false;
         boolean success2 = false;
         
-        if(deletes==null&&cancels==null){
+        if((deletes==null&&cancels==null) || (deletes.length==0&&cancels.length==0)){
             message = "Please select Product to CANCEL OR DELETE";
         }else{                    
             if(deletes!=null){

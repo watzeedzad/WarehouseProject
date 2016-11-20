@@ -67,7 +67,7 @@
     </head>
     <body>
         <%-- Nav--%>
-        <nav class="navbar navbar-default navbar-fixed-top">
+<!--        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <!--                        <li><a href="#product">PRODUCT</a></li>-->
+                                                <li><a href="#product">PRODUCT</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#product">PRODUCT<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">PRODUCT REMAINING</a></li>
@@ -108,7 +108,8 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
+        <jsp:include page="WEB-INF/jsp/Tagnavigation_other.jsp"></jsp:include>
         <!--table ----------------------------------------------------------------------------------------------------------------->
         <div class="row">
             <div class="col-sm-2">

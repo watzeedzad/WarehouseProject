@@ -107,6 +107,12 @@
 
                                 </tr>                            
                             </c:if>
+                            <c:if test="${messageJa!=null}">
+                                <tr>
+                                    <td colspan="10" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if>    
                             
 
                             <c:if test="${products != null}">
@@ -130,7 +136,7 @@
                                             <td><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a> </td>
                                             <td> ${p.price}</td>
                                             <td>
-                                                <input type="number" ${p.amount<p.amountAlert? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
+                                                <input type="number" ${p.amount<alertAmount? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
                                             </td>
                                             <td>
 

@@ -5,18 +5,21 @@
  */
 package int303.project.controller;
 
+import int303.project.model.Product;
+import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Praew
  */
-public class Alert1Servlet extends HttpServlet {
+public class AlertProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,18 +32,22 @@ public class Alert1Servlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Alert1Servlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Alert1Servlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession();
+        String amountStr = request.getParameter("alertAmount");
+        Staff user = (Staff)session.getAttribute("staffData");
+        
+        if(user == null){
+//            log(session.toString());
+            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
+            log("USER = "+user); 
+            log("NULLLL");
+        }  
+                
+        if(amountStr==null||amountStr.trim().length()==0){            
+        
+        }else{
+            int amount = Product.getShareAlertFromDB(user.getCompanyId());
+            session.setAttribute("amount", amount);
         }
     }
 

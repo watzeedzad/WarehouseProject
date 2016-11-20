@@ -6,6 +6,7 @@
 package int303.project.controller;
 
 import int303.project.model.Product;
+import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -36,6 +37,15 @@ public class EditProductServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String message="";
+        Staff user = (Staff)session.getAttribute("staffData");
+        
+        if(user == null){
+//            log(session.toString());
+            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
+            log("USER = "+user); 
+            log("NULLLL");
+        }        
+        
         try {           
             String idStr = request.getParameter("prod_id");
             String prodName = request.getParameter("prodName");
