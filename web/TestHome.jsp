@@ -388,7 +388,7 @@
                     <div class="thumbnail">
                         <img src="image/password.png">
                         <p><strong>ยอดขายสินค้า</strong></p>
-                        <a href="yodkaisinka.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
+                        <a href="OrderInOut"><button class="btn btn-default btn-lg">Enter</button></a>
                     </div>  
                 </div>
             </div>

@@ -26,14 +26,35 @@
             <p><input type="submit"/></p>
         </form>
         <br>
-        <c:forEach var="ord" items="${orders}">
-            <p>${ord.prodName}</p>
-            <p>${ord.prodAmount}</p>
-            <p>${ord.orderId}</p>
-            <p>${ord.staffName}</p>
-            <p>${ord.orderType}</p>
-            <p>${ord.dateOrder}</p>
-            <p>${ord.branchName}</p>
-        </c:forEach>
+        
+        <c:if test="${messages!=null}">
+            <hr>
+            <h2>${messages}</h2>
+        </c:if>
+        
+        <c:if test="${orders!=null}">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>amount</td>
+                    <td>orderId</td>
+                    <td>staffName</td>
+                    <td>orderType</td>
+                    <td>dateOrder</td>
+                    <td>branchName</td>
+                </tr>
+                <c:forEach var="ord" items="${orders}">
+                    <tr>
+                        <td>${ord.prodName}</td>
+                        <td>${ord.prodAmount}</td>
+                        <td>${ord.orderId}</td>
+                        <td>${ord.staffName}</td>
+                        <td>${ord.orderType}</td>
+                        <td>${ord.dateOrder}</td>
+                        <td>${ord.branchName}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:if>
     </body>
 </html>
