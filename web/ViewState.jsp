@@ -71,45 +71,44 @@
 
 
         <div class="col-sm-8">
+            <table class="table table-inverse">
+                <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT<span class="black"><b>}</b></span></h1><br></center>
+                <tr>
+                <p class="black">Search product Id/Name : <input type="text" name="" class="form-group">
+                    <select name="type" class="">
+                        <option >IN</option>
+                        <option>OUT</option>
+                        <option>ALL</option>
+                    </select>
+                    <input type="submit" class="btn-default"></p>
+                </tr>
+                <thead>
+                <c:if test="${message!=null}">
+                    <tr>
+                        <td colspan="10" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
+                    </tr>                            
+                </c:if>
 
-            
-                <table class="table table-inverse">
-                    <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT<span class="black"><b>}</b></span></h1><br></center>
-                    <div class="row ">
-                        <p class="black">Search product Id/Name : <input type="text" name="" class="form-group">
-                            <select name="type" class="">
-                                <option >IN</option>
-                                <option>OUT</option>
-                                <option>ALL</option>
-                            </select>
-                            <input type="submit" class="btn-default"></p>
-                    </div> 
-                    <thead>
-                    <c:if test="${message!=null}">
-                        <tr>
-                            <td colspan="10" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
-                        </tr>                            
-                    </c:if>
-
-                    <c:if test="${products != null}">
-                        <tr class="bg-dark text-white">
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th colspan="3" class="center" style="text-align: center;">Amount</th>
-                            
-
-                        </tr>
-                        </thead>
-                        <tbody>
+                <c:if test="${products != null}">
+                    <tr class="bg-dark text-white">
+                        <th>Order ID</th>
+                        <th>Product Id</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Staff Name</th>
+                        <th>Order Type</th>
+                        <th>Date</th>
+                        <th>Branch</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
 
-                        </tbody>                        
-                    </c:if>
-                </table>
+                    </tbody>                        
+                </c:if>
+            </table>
 
-            
+
         </div>
     </div>
 

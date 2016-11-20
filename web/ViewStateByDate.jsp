@@ -82,6 +82,7 @@
                                 <option value="monthandyear" ${param.searchDateBy=='monthandyear' ? 'selected': ''}>Month and Year</option>
                             </select>
                         </td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>Month : </td>
                         <td>
                             <select name="month" class="black">
@@ -100,6 +101,7 @@
                                 <option value='12'>December</option>
                             </select> 
                         </td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>Year</td>
                         <td>
                             <select name="year"  class="black">
@@ -118,9 +120,11 @@
                                 <option value='12'>2016</option>
                             </select>
                         </td>
-                        <td>Type</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td> Order Type</td>
                         <td>
                             <select name="type" class="black" >
+                                <option value=''>--Order Type--</option>
                                 <option value="in">IN</option>
                                 <option value="out">OUT</option>
                                 <option value="all">ALL</option>
@@ -139,12 +143,15 @@
 
                     <c:if test="${products != null}">
                         <tr class="bg-dark text-white">
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th colspan="3" class="center" style="text-align: center;">Amount</th>
-                        </tr>
+                        <th>Order ID</th>
+                        <th>Product Id</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Staff Name</th>
+                        <th>Order Type</th>
+                        <th>Date</th>
+                        <th>Branch</th>
+                    </tr>
                         </thead>
                         <tbody>
 
