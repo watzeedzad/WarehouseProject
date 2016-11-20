@@ -79,7 +79,7 @@ public class UpdateAlertServlet extends HttpServlet {
         request.setAttribute("messageJa", messageJa);
         session.setAttribute("productsAlert", products);
         
-        getServletContext().getRequestDispatcher("/PraewTest.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/TestAlert.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
