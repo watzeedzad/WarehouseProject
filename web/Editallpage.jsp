@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                         </nav> -->
-            <jsp:include page="/WEB-INF/jsp/Tagnavigation_editallpage.jsp"/>
+            <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         </div><br><br>
         <div id="bl-main" class="bl-main">
             <section>
