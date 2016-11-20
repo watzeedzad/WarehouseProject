@@ -169,10 +169,13 @@ public class Testtttt {
 //            System.out.println("messageJa = "+messageJa);
             
 
-          List<Product> prods = Product.searchByName("Sham",2);
-          for(Product p : prods){
-              System.out.println(p.getProd_name());              
-          }
+//          List<Product> prods = Product.searchByName("Sham",2);
+//          for(Product p : prods){
+//              System.out.println(p.getProd_name());              
+//          }
+
+            Staff st = Staff.viewStaffData(10002);
+            System.out.println(st.getCompany().getCompany_name());
             
         
     }

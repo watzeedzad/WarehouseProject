@@ -37,8 +37,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right ">
+                        <li><a href="TestHome.jsp">${staffData.company.company_name}</a></li>
                         <li class="dropdown"><a class="dropdown-toggle"  href="#" data-toggle="dropdown" >PRODUCT<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu">                               
                                 <li><a href="AllProduct">ALL PRODUCT</a></li>
                                 <li><a href="BestSeller">BEST SELLER</a></li>
                                 <li><a href="OutOfStock">OUT OF STOCK</a></li>
@@ -54,7 +55,7 @@
                             </ul>
                         </li>
                         <li><a href="UpdateAlert">ALERT</a></li>
-                        <li><a href="editstaff">USER</a></li>
+                        <li><a href="editstaff">${staffData.firstname}</a></li>
                         <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> LOG OUT</a></li>
                     </ul>
                 </div>

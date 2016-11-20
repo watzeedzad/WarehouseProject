@@ -100,7 +100,7 @@
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">CANCEL PRODUCT<span class="black"><b>}</b></span></h1><br></center>
                     <form action="CancelProduct">
                         <!--<input type="submit" value="Get All"/>-->
-                        <table class="table table-inverse">
+                        <table class="table table-inverse">                            
                             <c:if test="${message!=null}">
                                 <tr>
                                     <td colspan="10" style="text-align: center;font-size:large"> <c:out value="${message}" ></c:out> </td>

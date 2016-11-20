@@ -23,12 +23,13 @@
                     <a class="navbar-brand" href="#home">WareHouse</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">  
+                        <li><a href="#home">${staffData.company.company_name}</a></li>
                         <li><a href="#product">PRODUCT</a></li>
                         <li><a href="#edit">EDIT</a></li>
                         <li><a href="#view">VIEW</a></li>
                         <li><a href="#alert">ALERT</a></li>
-                        <li><a href="editstaff">USER</a></li>
+                        <li><a href="editstaff">${staffData.firstname}</a></li>
                         <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> LOG OUT</a></li>
                     </ul>
                 </div>

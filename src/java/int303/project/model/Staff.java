@@ -22,6 +22,7 @@ public class Staff {
 
     private int staffId;
     private int companyId;
+    private Company company;
     private String firstname;
     private String lastname;
     private long citizenNo;
@@ -36,6 +37,7 @@ public class Staff {
         this.citizenNo = rs.getLong("CITIZENNO");
         this.address = rs.getString("ADDRESS");
         this.position = rs.getString("POSITION");
+        this.company = Company.getCompany(rs.getInt("COMPANY_ID"));
     }
 
     public Staff() {
@@ -97,6 +99,14 @@ public class Staff {
     public void setPosition(String position) {
         this.position = position;
     }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }        
 
     public static final String VIEW_STAFF_SQL = "SELECT * FROM STAFFS WHERE STAFF_ID = ?";
 
