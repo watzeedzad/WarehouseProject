@@ -486,7 +486,7 @@ public class Product {
                 + " AND P.company_id = ? "
                 + " AND S.cancle_status = false  "
                 + " AND S.delete = false  "
-                + " ORDER BY P.prod_id";
+                + " ORDER BY P.branch_id , P.prod_id ";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, companyId);
 
@@ -517,7 +517,7 @@ public class Product {
                 + " WHERE P.company_id = ? "
                 //                + " AND S.cancle_status = false "
                 + " AND S.delete = false  "
-                + " ORDER BY P.prod_id ";
+                + " ORDER BY P.branch_id , P.prod_id ";
 
 //        SELECT * FROM PRODUCTS P
 //        JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id
@@ -580,7 +580,7 @@ public class Product {
                 + " AND S.cancle_status = false "
                 + " AND S.delete = false  "
                 + " AND P.company_id = ? "
-                + " ORDER BY P.prod_id ";
+                + " ORDER BY P.branch_id , P.prod_id ";
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, companyId);
@@ -657,7 +657,7 @@ public class Product {
                 + " WHERE P.company_id = ? "
                 + " AND S.cancle_status = true "
                 + " AND S.delete = false  "
-                + " ORDER BY P.prod_id ";
+                + " ORDER BY P.branch_id , P.prod_id ";
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, companyId);

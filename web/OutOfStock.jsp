@@ -52,6 +52,15 @@
                 color: white;
                 font-family: sans-serif
             }
+            a:link {
+                color: white;
+            }
+            a:visited {
+                color: palevioletred;
+            }
+            a:hover {
+                color: greenyellow;
+            }
             .container-fluid{
                 padding-top: 60px;
             }
@@ -103,20 +112,24 @@
                                 </c:if>
                             </tr>
                             <tr class="bg-dark ">
-                                <td>id</td>
-                                <td>name</td>
-                                <td>price</td>
-                                <td>amount</td>
-                                <td>cancel</td>
+                                <td>Item no</td>
+                                <td>Id</td>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Amount</td>
+                                <td>Branch name</td>
+                                <!--<td>Cancel</td>-->
                             </tr>
 
                             <c:forEach items="${products}" var="p" varStatus="vs">                       
                                 <tr>
+                                    <td> ${vs.count}</td>
                                     <td> ${p.prod_id}</td>
-                                    <td> ${p.prod_name}</td>
+                                    <td><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a></td>
                                     <td> ${p.price}</td>
                                     <td> ${p.amount} </td>
-                                    <td><input type="checkbox" ></input></td>
+                                    <td> ${p.branch.branch_name}</td>
+                                    <!--<td><input type="checkbox" ></input></td>-->
                                 </tr>                   
                             </c:forEach>                                    
                         </table>
@@ -129,7 +142,7 @@
         </div>
         <div class="row text-center">
             <div class="button">
-                <button type="button" class="btn btn-success"><a href="TestHome.jsp">BACK</a></button>
+                <a href="TestHome.jsp"><button type="button" class="btn btn-success">BACK</button></a>
             </div>
 
 

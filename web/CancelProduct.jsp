@@ -52,6 +52,15 @@
                 color: white;
                 font-family: sans-serif
             }
+            a:link {
+                color: white;
+            }
+            a:visited {
+                color: palevioletred;
+            }
+            a:hover {
+                color: greenyellow;
+            }
             .container-fluid{
                 padding-top: 60px;
             }
@@ -93,18 +102,22 @@
                         <!--<input type="submit" value="Get All"/>-->
                         <table class="table table-inverse">
                             <tr class="bg-dark">
-                                <td>id</td>
-                                <td>name</td>
-                                <td>price</td>
-                                <td>amount</td>
+                                <td>Item no</td>
+                                <td>ID</td>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Amount</td>
+                                <td>Branch name</td>
                             </tr>
 
                             <c:forEach items="${products}" var="p" varStatus="vs">                       
                                 <tr>
+                                    <td> ${vs.count}</td>
                                     <td> ${p.prod_id}</td>
-                                    <td> ${p.prod_name}</td>
+                                    <td><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a></td>
                                     <td> ${p.price}</td>
                                     <td> ${p.amount} </td>
+                                    <td> ${p.branch.branch_name}</td>
                                 </tr>                   
                             </c:forEach>                                    
                         </table>
