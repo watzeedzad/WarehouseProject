@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author jiraw
  */
-public class OrderInuOutServlet extends HttpServlet {
+public class OrderInOutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,8 +34,11 @@ public class OrderInuOutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
         Staff staff = (Staff) session.getAttribute("staffData");
+        if (staff == null) {
+            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
+        }
         int companyId = staff.getCompanyId();
         String orderStatus = request.getParameter("viewBy");
         String searchParam = request.getParameter("searchParam");
@@ -57,7 +60,7 @@ public class OrderInuOutServlet extends HttpServlet {
                     } else {
                         messages = "Product ID " + searchParamInt + " not found!";
                     }
-                    return;
+                    //return;
                 } else if (orderStatus.equalsIgnoreCase("all")) {
                     List<OrderInOut> orders = OrderInOut.allOrderById("in", "out", searchParamInt, companyId);
                     if (orders != null) {
@@ -87,7 +90,7 @@ public class OrderInuOutServlet extends HttpServlet {
                     } else {
                         messages = "Product Name " + searchParam + " not found!";
                     }
-                    return;
+                    //return;
                 } else if (orderStatus.equalsIgnoreCase("all")) {
                     if (searchParam.trim().length() == 0) {
                         searchParam = "";
@@ -104,7 +107,7 @@ public class OrderInuOutServlet extends HttpServlet {
             messages = "Can not be null!";
         }
         request.setAttribute("messages", messages);
-        getServletContext().getRequestDispatcher("/OrderInOut.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/TestOrderInOut.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

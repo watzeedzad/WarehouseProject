@@ -90,7 +90,7 @@
     </servlet>
     <servlet>
         <servlet-name>OrderInuOutServlet</servlet-name>
-        <servlet-class>int303.project.controller.OrderInuOutServlet</servlet-class>
+        <servlet-class>int303.project.controller.OrderInOutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>OrderByTimeRangeServlet</servlet-name>
@@ -173,12 +173,12 @@
         <url-pattern>/UpdatePruduct</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>OrderInuOutServlet</servlet-name>
-        <url-pattern>/OrderInuOut</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AlertProductServlet</servlet-name>
         <url-pattern>/AlertProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderInuOutServlet</servlet-name>
+        <url-pattern>/OrderInOut</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

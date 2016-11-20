@@ -108,7 +108,7 @@ public class OrderInOut {
                     + "ON prod.PROD_ID = ors.PROD_ID\n"
                     + "LEFT JOIN BRANCH b\n"
                     + "ON b.BRANCH_ID = prod.BRANCH_ID\n"
-                    + "WHERE ors.ORDERTYPE = ? AND prod.PROD_ID =  AND prod.COMPANY_ID = ?\n"
+                    + "WHERE ors.ORDERTYPE = ? AND prod.PROD_ID = ? AND prod.COMPANY_ID = ?\n"
                     + "ORDER BY ORDER_ID DESC ;");
             pstm.setString(1, in);
             pstm.setInt(2, searchInput);
@@ -138,7 +138,7 @@ public class OrderInOut {
                     + "ON prod.PROD_ID = ors.PROD_ID\n"
                     + "LEFT JOIN BRANCH b\n"
                     + "ON b.BRANCH_ID = prod.BRANCH_ID\n"
-                    + "WHERE ors.ORDERTYPE = ? AND prod.PRO_NAME LIKE ? AND prod.COMPANY_ID = ?\n"
+                    + "WHERE ors.ORDERTYPE = ? AND prod.PROD_NAME LIKE ? AND prod.COMPANY_ID = ?\n"
                     + "ORDER BY ORDER_ID DESC ;");
             pstm.setString(1, in);
             pstm.setString(2, "%" + searchInput + "%");
