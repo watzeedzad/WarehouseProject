@@ -52,6 +52,15 @@
                 color: white;
                 font-family: sans-serif
             }
+            a:link {
+                color: white;
+            }
+            a:visited {
+                color: palevioletred;
+            }
+            a:hover {
+                color: greenyellow;
+            }
             .container-fluid{
                 padding-top: 60px;
             }

@@ -89,12 +89,16 @@
         <servlet-class>int303.project.controller.UpdateProductServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>OrderInuOutServlet</servlet-name>
+        <servlet-name>OrderInOutServlet</servlet-name>
         <servlet-class>int303.project.controller.OrderInOutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>OrderByTimeRangeServlet</servlet-name>
         <servlet-class>int303.project.controller.OrderByTimeRangeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateAlertServlet</servlet-name>
+        <servlet-class>int303.project.controller.UpdateAlertServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -177,7 +181,11 @@
         <url-pattern>/AlertProduct</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>OrderInuOutServlet</servlet-name>
+        <servlet-name>UpdateAlertServlet</servlet-name>
+        <url-pattern>/UpdateAlert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderInOutServlet</servlet-name>
         <url-pattern>/OrderInOut</url-pattern>
     </servlet-mapping>
     <session-config>

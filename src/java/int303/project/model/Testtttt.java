@@ -158,8 +158,19 @@ public class Testtttt {
 //          
 //          boolean success = Product.deleteProduct(10000017);
 //          System.out.println(success);
-        Staff s = Staff.viewStaffData(10001);
-         boolean success = Order.reduceAmount(10000007, 20, s);
-         System.out.println(success);
+//        Staff s = Staff.viewStaffData(10001);
+//         boolean success = Order.reduceAmount(10000007, 20, s);
+//         System.out.println(success);
+            String messageJa = "";
+            boolean success = Product.setAlertAmountInDB(2, 150);
+            if(success){
+                messageJa = "UPDATE alert amount SUCCESS!!";
+            }else{
+                messageJa = "FAILED to UPDATE alert amount!!";
+            }
+            System.out.println("messageJa = "+messageJa);
+            
+            
+        
     }
 }
