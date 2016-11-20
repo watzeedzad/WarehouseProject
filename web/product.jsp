@@ -93,7 +93,7 @@
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         <!--table ----------------------------------------------------------------------------------------------------------------->
 
-<form action="UpdateProduct">  
+  
         <div class="row">            
             <div class="col-sm-2">
 
@@ -110,6 +110,9 @@
                                 <td><input type="submit" value="SEARCH" class="btn btn-success"></td>
                             </form>
                             </tr>
+                            
+                            
+                            <form action="UpdateProduct">
                             <c:if test="${message!=null}">
                                 <tr>
                                     <td colspan="13" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
