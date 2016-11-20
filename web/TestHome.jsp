@@ -325,7 +325,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="thumbnail">
-                            <p><img src="image/pencil.png"></p>
+                            <p><img src="image/eraser.png"></p>
                             <p><strong>REDUCE</strong></p>
                            <a href="Editallpage.jsp"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">REDUCE</button></a>
 <!--                            <div class="modal fade" id="myModal3" role="dialog">
@@ -379,15 +379,15 @@
             <div class="row slideanim ">
                 <div class="col-sm-12">
                     <div class="thumbnail">
-                        <p><img src="image/password.png"></p>
-                        <p><strong>ยอดขายต่อเดือน</strong></p>
+                        <p><img src="image/van1.png"></p>
+                        <p><strong>VIEW ORDER</strong></p>
                         <a href="yodkaitormonth.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="thumbnail">
-                        <img src="image/password.png">
-                        <p><strong>ยอดขายสินค้า</strong></p>
+                        <p><img src="image/analytics.png"></p>
+                        <p><strong>VIEW ORDER BY TIME</strong></p>
                         <a href="OrderInOut"><button class="btn btn-default btn-lg">Enter</button></a>
                     </div>  
                 </div>
@@ -403,13 +403,8 @@
         </div><br>
         <div class="col-sm-6">
             <div class="container-fluid">
-                <h2>The Emergency Alert System</h2><hr>
-                <div class=" text-center thumbnail slideanim ">
-                    <h4>The Emergency Alert System (EAS) is a national public warning system that requires broadcasters, 
-                        cable television systems, wireless cable systems, satellite digital audio radio service 
-                        (SDARS) providers, and direct broadcast satellite (DBS) providers to provide the communications
-
-                        such as AMBER alerts and weather information targeted to specific areas.</h4>
+                <h2 class="yellow">You can see the product in this!!</h2><hr>
+                <div class=" text-center  slideanim ">
                     <a href="UpdateAlert"><button class="btn btn-default btn-lg">Enter</button></a>
                 </div>
             </div>
