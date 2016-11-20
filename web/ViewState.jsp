@@ -76,11 +76,11 @@
                 <table class="table table-inverse">
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT<span class="black"><b>}</b></span></h1><br></center>
                     <tr>
-                    <p class="black">Search product Id/Name : <input type="text" name="searchParam" class="form-group">
+                    <p class="black">Search product Id/Name : <input type="text" name="searchParam" class="form-group" value="${param.searchParam}">
                         <select name="viewBy">
-                            <option value="in">IN</option>
-                            <option value="out">OUT</option>
-                            <option value="all">ALL</option>
+                            <option value="in" ${param.viewBy=='in'? 'selected':''}>IN</option>
+                            <option value="out" ${param.viewBy=='out'? 'selected':''}>OUT</option>
+                            <option value="all" ${param.viewBy=='all'? 'selected':''}>ALL</option>
                         </select>
                         <input type="submit" class="btn-default"></p>
                     </tr>
@@ -117,6 +117,8 @@
                             </c:forEach>
                         </tbody>                        
                     </c:if>
+                        <input type="hidden" name="searchParam" value="${param.searchParam}">
+                        <input type="hidden" name="viewBy" value="${param.viewBy}">
                 </table>
             </form>
 
