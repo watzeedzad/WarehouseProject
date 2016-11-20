@@ -104,13 +104,13 @@ public class OrderByTimeRangeServlet extends HttpServlet {
                         }
                         System.out.println("test6");
                     }
-                } else if (range.equalsIgnoreCase("month_year")) {
+                } else if (range.equalsIgnoreCase("monthandyear")) {
                     if (orderStatus.equalsIgnoreCase("in")) {
                         List<OrderInOut> ordersTime = OrderInOut.orderMonthYear("in", companyId, month, year);
                         if (ordersTime != null) {
                             request.setAttribute("ordersTime", ordersTime);
                         } else {
-                            messages = "Range " + month + "," + year + " and order type " + orderStatus + " not found.";
+                            messages = "Range " + month + ", " + year + " and order type " + orderStatus + " not found.";
                         }
                         System.out.println("test7");
                     } else if (orderStatus.equalsIgnoreCase("out")) {
@@ -118,7 +118,7 @@ public class OrderByTimeRangeServlet extends HttpServlet {
                         if (ordersTime != null) {
                             request.setAttribute("ordersTime", ordersTime);
                         } else {
-                            messages = "Range " + month + "," + year + " and order type " + orderStatus + " not found.";
+                            messages = "Range " + month + ", " + year + " and order type " + orderStatus + " not found.";
                         }
                         System.out.println("test8");
                     } else if (orderStatus.equalsIgnoreCase("all")) {
@@ -126,7 +126,7 @@ public class OrderByTimeRangeServlet extends HttpServlet {
                         if (ordersTime != null) {
                             request.setAttribute("ordersTime", ordersTime);
                         } else {
-                            messages = "Range " + month + "," + year + " and order type " + orderStatus + " not found.";
+                            messages = "Range " + month + ", " + year + " and order type " + orderStatus + " not found.";
                         }
                         System.out.println("test9");
                     }
