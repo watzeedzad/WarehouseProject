@@ -388,7 +388,7 @@
                     <div class="thumbnail">
                         <p><img src="image/analytics.png"></p>
                         <p><strong>VIEW ORDER BY TIME</strong></p>
-                        <a href="ViewStateByTime"><button class="btn btn-default btn-lg">Enter</button></a>
+                        <a href="ViewStateByDate.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
                     </div>  
                 </div>
             </div>

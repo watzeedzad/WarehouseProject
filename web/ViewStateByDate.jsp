@@ -76,7 +76,7 @@
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT BY DATE<span class="black"><b>}</b></span></h1><br></center>
                     <tr><td>Category : </td>
                         <td>
-                            <select name="range"" id="category" class="black">
+                            <select name="range"" id="category" class="black" onchange="cat()">
                                 <option value="month" ${param.searchDateBy=='month' ? 'selected': ''}>Month</option>
                                 <option value="year" ${param.searchDateBy=='year' ? 'selected': ''}>Year</option>
                                 <option value="monthandyear" ${param.searchDateBy=='monthandyear' ? 'selected': ''}>Month and Year</option>
@@ -85,7 +85,7 @@
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>Month : </td>
                         <td>
-                            <select name="month" class="black">
+                            <select name="month" class="black" id="month">
                                 <option value='1'>Janaury</option>
                                 <option value='2'>February</option>
                                 <option value='3'>March</option>
@@ -103,7 +103,7 @@
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>Year</td>
                         <td>
-                            <select name="year"  class="black">
+                            <select name="year"  class="black" id="year">
                                 <option value='2005'>2005</option>
                                 <option value='2006'>2006</option>
                                 <option value='2007'>2007</option>
@@ -175,4 +175,19 @@
             </div>
         </form>
     </body>
-</html>
+    <script>
+        function cat() {
+            var x = document.getElementById("category");
+            if (x.value == "month") {
+                document.getElementById("year").disabled = true;
+                document.getElementById("month").disabled = false;
+            } else if (x.value == "year") {
+                document.getElementById("month").disabled = true;
+                document.getElementById("year").disabled = false;
+            } else if (x.value == "monthandyear") {
+                document.getElementById("month").disabled = false;
+                document.getElementById("year").disabled = false;
+            }
+        }
+    </script>
+ </html>
