@@ -188,6 +188,10 @@
         <servlet-name>OrderInOutServlet</servlet-name>
         <url-pattern>/OrderInOut</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderByTimeRangeServlet</servlet-name>
+        <url-pattern>/OrderByTime</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

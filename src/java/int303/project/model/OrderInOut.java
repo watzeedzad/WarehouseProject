@@ -310,4 +310,98 @@ public class OrderInOut {
         }
         return order;
     }
+
+    public static List<OrderInOut> allOrderMonth(String in, String out, int companyId, String month) {
+        List<OrderInOut> order = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+                    + "LEFT JOIN STAFFS S\n"
+                    + "ON S.STAFF_ID = ors.STAFF_ID\n"
+                    + "LEFT JOIN PRODUCTS prod\n"
+                    + "ON prod.PROD_ID = ors.PROD_ID\n"
+                    + "LEFT JOIN BRANCH b\n"
+                    + "ON b.BRANCH_ID = prod.BRANCH_ID\n"
+                    + "WHERE (ors.ORDERTYPE = ? OR ors.ORDERTYPE = ?) AND prod.COMPANY_ID = ? AND MONTH(ors.DATE_ORDER) = ?\n"
+                    + "ORDER BY ORDER_ID DESC ;");
+            pstm.setString(1, in);
+            pstm.setString(2, out);
+            pstm.setInt(3, companyId);
+            pstm.setString(4, month);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                OrderInOut ord = new OrderInOut(rs);
+                if (order == null) {
+                    order = new ArrayList<>();
+                }
+                order.add(ord);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return order;
+    }
+
+    public static List<OrderInOut> allOrderYear(String in, String out, int companyId, String year) {
+        List<OrderInOut> order = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+                    + "LEFT JOIN STAFFS S\n"
+                    + "ON S.STAFF_ID = ors.STAFF_ID\n"
+                    + "LEFT JOIN PRODUCTS prod\n"
+                    + "ON prod.PROD_ID = ors.PROD_ID\n"
+                    + "LEFT JOIN BRANCH b\n"
+                    + "ON b.BRANCH_ID = prod.BRANCH_ID\n"
+                    + "WHERE (ors.ORDERTYPE = ? OR ors.ORDERTYPE = ?) AND prod.COMPANY_ID = ? AND YEAR(ors.DATE_ORDER) = ?\n"
+                    + "ORDER BY ORDER_ID DESC ;");
+            pstm.setString(1, in);
+            pstm.setString(2, out);
+            pstm.setInt(3, companyId);
+            pstm.setString(4, year);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                OrderInOut ord = new OrderInOut(rs);
+                if (order == null) {
+                    order = new ArrayList<>();
+                }
+                order.add(ord);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return order;
+    }
+
+    public static List<OrderInOut> allOrderMonthYear(String in, String out, int companyId, String month, String year) {
+        List<OrderInOut> order = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = conn.prepareStatement("SELECT ors.DATE_ORDER, prod.PROD_NAME, ors.AMOUNT, ors.ORDER_ID, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME), ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
+                    + "LEFT JOIN STAFFS S\n"
+                    + "ON S.STAFF_ID = ors.STAFF_ID\n"
+                    + "LEFT JOIN PRODUCTS prod\n"
+                    + "ON prod.PROD_ID = ors.PROD_ID\n"
+                    + "LEFT JOIN BRANCH b\n"
+                    + "ON b.BRANCH_ID = prod.BRANCH_ID\n"
+                    + "WHERE (ors.ORDERTYPE = ? OR ors.ORDERTYPE = ?) AND prod.COMPANY_ID = ? AND MONTH(ors.DATE_ORDER) = ? AND YEAR(ors.DATE_ORDER) = ?\n"
+                    + "ORDER BY ORDER_ID DESC ;");
+            pstm.setString(1, in);
+            pstm.setString(2, out);
+            pstm.setInt(3, companyId);
+            pstm.setString(4, month);
+            pstm.setString(5, year);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                OrderInOut ord = new OrderInOut(rs);
+                if (order == null) {
+                    order = new ArrayList<>();
+                }
+                order.add(ord);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return order;
+    }
 }
