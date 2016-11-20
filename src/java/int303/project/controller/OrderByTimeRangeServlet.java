@@ -5,12 +5,14 @@
  */
 package int303.project.controller;
 
+import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,7 +32,23 @@ public class OrderByTimeRangeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        HttpSession session = request.getSession();
+        Staff staff = (Staff) session.getAttribute("staffData");
+        if (staff == null) {
+            request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
+        }
+        int companyId = staff.getCompanyId();
+        String orderStatus = request.getParameter("viewBy");
+        String range = request.getParameter("range");
+        String searchParamMonth = request.getParameter("searchParam");
+        String messages = "";
+        if (orderStatus != null && range != null && searchParamMonth != null) {
+            try {
+                
+            } catch (NumberFormatException ex) {
+                messages = "Must be decimal number only!!";
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
