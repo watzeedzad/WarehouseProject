@@ -4,6 +4,7 @@
     Author     : 000
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -71,43 +72,53 @@
 
 
         <div class="col-sm-8">
-            <table class="table table-inverse">
-                <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT<span class="black"><b>}</b></span></h1><br></center>
-                <tr>
-                <p class="black">Search product Id/Name : <input type="text" name="" class="form-group">
-                    <select name="type" class="">
-                        <option >IN</option>
-                        <option>OUT</option>
-                        <option>ALL</option>
-                    </select>
-                    <input type="submit" class="btn-default"></p>
-                </tr>
-                <thead>
-                <c:if test="${message!=null}">
+            <form action="OrderInOut" method="GET">
+                <table class="table table-inverse">
+                    <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT<span class="black"><b>}</b></span></h1><br></center>
                     <tr>
-                        <td colspan="10" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
-                    </tr>                            
-                </c:if>
-
-                <c:if test="${products != null}">
-                    <tr class="bg-dark text-white">
-                        <th>Order ID</th>
-                        <th>Product Id</th>
-                        <th>Name</th>
-                        <th>Amount</th>
-                        <th>Staff Name</th>
-                        <th>Order Type</th>
-                        <th>Date</th>
-                        <th>Branch</th>
+                    <p class="black">Search product Id/Name : <input type="text" name="searchParam" class="form-group">
+                        <select name="viewBy">
+                            <option value="in">IN</option>
+                            <option value="out">OUT</option>
+                            <option value="all">ALL</option>
+                        </select>
+                        <input type="submit" class="btn-default"></p>
                     </tr>
-                    </thead>
-                    <tbody>
-
-
-                    </tbody>                        
-                </c:if>
-            </table>
-
+                    <thead>
+                        <c:if test="${messages!=null}">
+                            <tr>
+                                <td colspan="10" style="text-align: center;"> <c:out value="${messages}" ></c:out> </td>
+                                </tr>                            
+                        </c:if>
+                        <c:if test="${orders != null}">
+                            <tr class="bg-dark text-white">
+                                <th>Order ID</th>
+                                <th>Product Id</th>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Staff Name</th>
+                                <th>Order Type</th>
+                                <th>Date</th>
+                                <th>Branch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="ord" items="${orders}">
+                                <tr>
+                                    <td>${ord.orderId}</td>
+                                    <td>${ord.prodId}</td>
+                                    <td>${ord.prodName}</td>
+                                    <td>${ord.prodAmount}</td>
+                                    <td>${ord.staffName}</td>
+                                    <td>${ord.orderType}</td>
+                                    <td>${ord.dateOrder}</td>
+                                    <td>${ord.branchName}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>                        
+                    </c:if>
+                </table>
+            </form>
 
         </div>
     </div>
