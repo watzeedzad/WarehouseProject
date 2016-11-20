@@ -140,6 +140,27 @@ public class Product {
         this.amountAlert = amountAlert;
     }       
     
+    public static boolean setAlertAmountInDB(int companyId,int amount){
+        int x = 0;
+        
+        Connection con = ConnectionBuilder.getConnection();
+        String sql = " UPDATE ALERT SET alertAmount = ? "
+                      + " WHERE company_id = ? ";
+        
+        try {
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setInt(1, amount);
+            pstm.setInt(2, companyId);
+            x = pstm.executeUpdate();            
+            
+        } catch (SQLException ex) {
+//            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+        }
+        
+        return x>0;
+    }
+    
     public static int getShareAlertFromDB(int companyId) {
         
         Connection con = ConnectionBuilder.getConnection();
@@ -555,7 +576,7 @@ public class Product {
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
-                + " WHERE P.amount <= (SELECT alertAmount FROM ALERT WHERE companyId = ?) "
+                + " WHERE P.amount <= (SELECT alertAmount FROM ALERT WHERE company_id = ?) "
                 + " AND S.cancle_status = false "
                 + " AND S.delete = false  "
                 + " AND P.company_id = ? "

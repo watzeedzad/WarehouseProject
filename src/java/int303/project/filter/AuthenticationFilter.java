@@ -48,9 +48,11 @@ public class AuthenticationFilter implements Filter {
             String targetJa = request.getRequestURI();
             int slash = targetJa.indexOf("/", 1);
             targetJa = targetJa.substring(slash);
+            if(targetJa.equalsIgnoreCase("/logout")){
+                config.getServletContext().setAttribute("/login", targetJa);
+            }
             config.getServletContext().setAttribute("targetJa", targetJa);
-
-
+                        
             System.out.println("***AUTHEN >>>> TARGETJA = "+targetJa);
 //            System.out.println("*** INNNNN AUTHEN ***");
             response.sendRedirect(loginURI);

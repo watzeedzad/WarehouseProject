@@ -176,6 +176,9 @@
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         <br><br><br><br>
         <h1><span class="blue"><b>{</b></span><span class="yellow">ALERT<span class="blue"><b>}</b></span></h1>
+        <form action="AlertProduct">
+            <input type="submit" value="GET ALL">
+        </form>
     <center><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal1">SET ALERT</button></center><br><br>
 
 
@@ -203,41 +206,52 @@
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 
-    <div class="row">            
-        <div class="col-sm-2">
+    <c:if test="${message != null}">
+        <h2></h2>
+    </c:if>
 
-        </div>
-        <div class="col-sm-8">
-                <div class="container-fluid">
-                    <form action="CancelProduct">
-                        <!--<input type="submit" value="Get All"/>-->
-                        <table class="table table-inverse">
-                            <tr class="bg-dark">
-                                <td>id</td>
-                                <td>name</td>
-                                <td>price</td>
-                                <td>amount</td>
+    <c:if test="${messageJa != null}">
+        <h3></h3>
+    </c:if>                
+
+    <c:if test="${productsAlert!=null}">
+        <div class="row">            
+            <div class="col-sm-2">
+
+            </div>
+            <div class="col-sm-8">
+                <div class="container-fluid">                    
+                    <!--<input type="submit" value="Get All"/>-->
+                    <table class="table table-inverse">
+                        <tr class="bg-dark">
+                            <td>item no</td>
+                            <td>id</td>
+                            <td>name</td>
+                            <td>price</td>
+                            <td>amount</td>
+                        </tr>
+
+                        <c:forEach items="${productsAlert}" var="p" varStatus="vs"> 
+                            <tr>
+                                <td>${vs.count}</td>
+                                <td>${p.prod_id}</td>
+                                <td>${p.prod_name}</td>
+                                <td>${p.price}</td> 
+                                <td>${p.amount}</td>  
                             </tr>
-
-                            <c:forEach items="${products}" var="p" varStatus="vs">                       
-                                <tr>
-                                    <td> ${p.prod_id}</td>
-                                    <td> ${p.prod_name}</td>
-                                    <td> ${p.price}</td>
-                                    <td> ${p.amount} </td>
-                                </tr>                   
-                            </c:forEach>                                    
-                        </table>
-                    </form>
+                        </c:forEach>                                    
+                    </table>                    
                 </div> 
             </div>
-        
+
             <div class="col-sm-2">
 
             </div>        
-        </div>                    
-    </body>
+        </div>
+    </c:if>
+</body>
 </html>

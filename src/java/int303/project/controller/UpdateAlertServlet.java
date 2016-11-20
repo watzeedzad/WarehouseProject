@@ -9,6 +9,7 @@ import int303.project.model.Product;
 import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +18,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Praew
+ * @author Praewhubb
  */
-public class AlertProductServlet extends HttpServlet {
+public class UpdateAlertServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,19 +37,49 @@ public class AlertProductServlet extends HttpServlet {
         String amountStr = request.getParameter("alertAmount");
         Staff user = (Staff)session.getAttribute("staffData");
         
+        
         if(user == null){
 //            log(session.toString());
             request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
             log("USER = "+user); 
             log("NULLLL");
-        }  
-                
-        if(amountStr==null||amountStr.trim().length()==0){            
+        } 
         
+        int companyId = user.getCompanyId();
+        int amountOld = Product.getShareAlertFromDB(user.getCompanyId());
+        int amountNew;
+        String message = "";
+        String messageJa = "";
+        
+        if(amountStr==null||amountStr.trim().length()==0){            
+            amountNew = amountOld;
         }else{
-            int amount = Product.getShareAlertFromDB(user.getCompanyId());
-            session.setAttribute("amount", amount);
+            amountNew = Integer.parseInt(amountStr);
+            boolean success = Product.setAlertAmountInDB(companyId, amountNew);
+            if(success){
+                messageJa = "UPDATE alert amount SUCCESS!!";
+            }else{
+                messageJa = "FAILED to UPDATE alert amount!!";
+            }
         }
+        
+        session.setAttribute("amount", amountNew);        
+        List<Product> products = Product.getAlertProduct(companyId);
+        
+        if(products == null || products.size()==0){
+            message = "There is no ALERT PRODUCT";
+        }else{
+            message = "All ALERT Product(s)";
+            for(Product p : products){
+            System.out.println(p+"\n");
+            }
+        }
+        
+        request.setAttribute("message", message);
+        request.setAttribute("messageJa", messageJa);
+        session.setAttribute("productsAlert", products);
+        
+        getServletContext().getRequestDispatcher("/PraewTest.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
