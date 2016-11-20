@@ -72,63 +72,69 @@
 
             </div>
             <div class="col-sm-8">
-                <table>
+                <table>                    
+                    
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT BY DATE<span class="black"><b>}</b></span></h1><br></center>
                     <tr><td>Category : </td>
                         <td>
-                            <select name="range"" id="category" class="black" onchange="cat()">
-                                <option value="month" ${param.searchDateBy=='month' ? 'selected': ''}>Month</option>
-                                <option value="year" ${param.searchDateBy=='year' ? 'selected': ''}>Year</option>
-                                <option value="monthandyear" ${param.searchDateBy=='monthandyear' ? 'selected': ''}>Month and Year</option>
+                            <select name="range" id="category" class="black" onchange="cat()">
+                                <option value="monthandyear" ${param.range=='monthandyear' ? 'selected': ''}>Month and Year</option>
+                                <option value="month" ${param.range=='month' ? 'selected': ''}>Month</option>
+                                <option value="year" ${param.range=='year' ? 'selected': ''}>Year</option>                                
                             </select>
                         </td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>Month : </td>
                         <td>
-                            <select name="month" class="black" id="month">
-                                <option value='1'>Janaury</option>
-                                <option value='2'>February</option>
-                                <option value='3'>March</option>
-                                <option value='4'>April</option>
-                                <option value='5'>May</option>
-                                <option value='6'>June</option>
-                                <option value='7'>July</option>
-                                <option value='8'>August</option>
-                                <option value='9'>September</option>
-                                <option value='10'>October</option>
-                                <option value='11'>November</option>
-                                <option value='12'>December</option>
+                            <select name="month" class="black" id="month" ${param.range=='month' ? '': 'disabled'}>
+                                <option value='1' ${param.month==1 ? 'selected': ''}>January</option>
+                                <option value='2' ${param.month==2 ? 'selected': ''}>February</option>
+                                <option value='3' ${param.month==3 ? 'selected': ''}>March</option>
+                                <option value='4' ${param.month==4 ? 'selected': ''}>April</option>
+                                <option value='5' ${param.month==5 ? 'selected': ''}>May</option>
+                                <option value='6' ${param.month==6 ? 'selected': ''}>June</option>
+                                <option value='7' ${param.month==7 ? 'selected': ''}>July</option>
+                                <option value='8' ${param.month==8 ? 'selected': ''}>August</option>
+                                <option value='9' ${param.month==9 ? 'selected': ''}>September</option>
+                                <option value='10' ${param.month==10 ? 'selected': ''}>October</option>
+                                <option value='11' ${param.month==11 ? 'selected': ''}>November</option>
+                                <option value='12' ${param.month==12 ? 'selected': ''}>December</option>
                             </select> 
                         </td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>Year</td>
                         <td>
-                            <select name="year"  class="black" id="year">
-                                <option value='2005'>2005</option>
-                                <option value='2006'>2006</option>
-                                <option value='2007'>2007</option>
-                                <option value='2008'>2008</option>
-                                <option value='2009'>2009</option>
-                                <option value='2010'>2010</option>
-                                <option value='201'>2011</option>
-                                <option value='2012'>2012</option>
-                                <option value='2013'>2013</option>
-                                <option value='2014'>2014</option>
-                                <option value='2015'>2015</option>
-                                <option value='2016'>2016</option>
+                            <select name="year"  class="black" id="year" ${param.range=='year' ? '': 'disabled'}>
+                                <option value='2005' ${param.year==2005 ? 'selected': ''}>2005</option>
+                                <option value='2006' ${param.year==2006 ? 'selected': ''}>2006</option>
+                                <option value='2007' ${param.year==2007 ? 'selected': ''}>2007</option>
+                                <option value='2008' ${param.year==2008 ? 'selected': ''}>2008</option>
+                                <option value='2009' ${param.year==2009 ? 'selected': ''}>2009</option>
+                                <option value='2010' ${param.year==2010 ? 'selected': ''}>2010</option>
+                                <option value='2011' ${param.year==2011 ? 'selected': ''}>2011</option>
+                                <option value='2012' ${param.year==2012 ? 'selected': ''}>2012</option>
+                                <option value='2013' ${param.year==2013 ? 'selected': ''}>2013</option>
+                                <option value='2014' ${param.year==2014 ? 'selected': ''}>2014</option>
+                                <option value='2015' ${param.year==2015 ? 'selected': ''}>2015</option>
+                                <option value='2016' ${param.year==2016 ? 'selected': ''}>2016</option>
                             </select>
                         </td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td> Order Type</td>
                         <td>
                             <select name="viewBy" class="black" >
-                                <option value="in">IN</option>
-                                <option value="out">OUT</option>
-                                <option value="all">ALL</option>
+                                <option value="in" ${param.viewBy=='in' ? 'selected': ''}>IN</option>
+                                <option value="out" ${param.viewBy=='out' ? 'selected': ''}>OUT</option>
+                                <option value="all" ${param.viewBy=='all' ? 'selected': ''}>ALL</option>
                             </select>
                         </td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td><input type="submit" value="Submit" class="btn-default"></td>
+                        <input type="hidden" name="range" value="${param.range}">
+                        <input type="hidden" name="range" value="${param.range}">
+                        <input type="hidden" name="month" value="${param.month}">
+                        <input type="hidden" name="year" value="${param.year}">
+                        <input type="hidden" name="viewBy" value="${param.viewBy}">
                     </tr>
                 </table>
 
