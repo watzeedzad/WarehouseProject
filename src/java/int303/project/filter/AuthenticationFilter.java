@@ -45,12 +45,12 @@ public class AuthenticationFilter implements Filter {
         if (loginRequest || loggedIn || path.matches(".*(css|jpg|png|gif|js)")) {
             chain.doFilter(request, response);
         } else { 
-             String targetJa = request.getRequestURI();
-            int slash = targetJa.indexOf("/", 1);
-            targetJa = targetJa.substring(slash);
-            request.setAttribute("targetJa", targetJa);
-            System.out.println("***AUTHEN >>>> TARGETJA = "+targetJa);
-            System.out.println("*** INNNNN AUTHEN ***");
+//             String targetJa = request.getRequestURI();
+//            int slash = targetJa.indexOf("/", 1);
+//            targetJa = targetJa.substring(slash);
+//            request.setAttribute("targetJa", targetJa);
+//            System.out.println("***AUTHEN >>>> TARGETJA = "+targetJa);
+//            System.out.println("*** INNNNN AUTHEN ***");
             response.sendRedirect(loginURI);
             //config.getServletContext().getRequestDispatcher("/login").forward(req, res);
         }
