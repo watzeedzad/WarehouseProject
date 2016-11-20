@@ -33,7 +33,7 @@
         
             <form class="form-inline" action="AllProduct" method="GET">
                 <center>
-                    <input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam">
+                    <input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam" value="${param.searchParam}">
                     <input type="submit" value="SEARCH" class="btn btn-success">
                 </center>
              </form>        
@@ -94,7 +94,7 @@
                                 <tr class="bg-dark text-white">
                                     <th colspan="3">Item no</th>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th colspan="5">Name</th>
                                     <th>Price</th>
                                     <th colspan="3" class="center" style="text-align: center;">Amount</th>
                                     <th>Cancel</th>
@@ -109,7 +109,7 @@
                                         <tr>
                                             <td colspan="3">${vs.count}</td>
                                             <td > ${p.prod_id}</td>
-                                            <td><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a> </td>
+                                            <td colspan="5"><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a> </td>
                                             <td> ${p.price}</td>
                                             <td>
                                                 <input type="number" ${p.amount<alertAmount? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">

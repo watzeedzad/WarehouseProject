@@ -102,7 +102,7 @@ public class AllProductServlet extends HttpServlet {
                     log("PARAM = "+search);
                     if(products != null){
                         session.setAttribute("products", products);
-                        message = "search by Name";   
+                        message = "search by Name / Type";   
                         log("in products != null");
                     }else{
                         message = "Product name LIKE '%"+search+"'% does not exist";
