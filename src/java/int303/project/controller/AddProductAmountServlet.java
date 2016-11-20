@@ -69,7 +69,7 @@ public class AddProductAmountServlet extends HttpServlet {
             System.out.println(e);         
         }
         //เวลาเพิ่มจำนวน ต้องaddลงORDERSด้วย
-        request.setAttribute("messageJa", message);
+        request.setAttribute("messageJa3", message);
         
         String source = request.getParameter("source");
         if(source != null){

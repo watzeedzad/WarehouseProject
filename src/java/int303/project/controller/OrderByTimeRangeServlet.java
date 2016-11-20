@@ -135,6 +135,7 @@ public class OrderByTimeRangeServlet extends HttpServlet {
                 messages = "Must be decimal number only!!";
             }
             request.setAttribute("messagesTime", messages);
+            System.out.println("--------- TESTTTT- -------");
             getServletContext().getRequestDispatcher("/TestOrderInOutTime.jsp").forward(request, response);
         }
     }

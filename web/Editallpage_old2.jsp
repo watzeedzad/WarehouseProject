@@ -64,6 +64,8 @@
                             </div>
                         </nav> -->
             <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
+            <hr>
+            <jsp:include page="WEB-INF/jsp/Tagnavigation_home.jsp"/>
         </div><br><br>
         <div id="bl-main" class="bl-main">
             <section>
@@ -71,7 +73,6 @@
 
                     <img src="image/add.png">
                     <h2>ADD</h2>
-                    <center><h2>${messageJa1}</h2></center>
                 </div>
                 <div class="bl-content">
                     <center><h1>ADD PRODUCT</h1></center>
@@ -80,7 +81,9 @@
 
                     <div class="modal-body" >
                         <form action="AddNewProduct">
-                            
+                            <c:if test="${messageJa!=null}">
+                                <center><h2>${messageJa}</h2></center>
+                            </c:if>
                             <div class="modal-body">
                                 <div class="container">
                                     <table class="add-pro">
@@ -145,9 +148,6 @@
                 <div class="bl-box">
                     <img src="image/remove.png">
                     <h2>REMOVE</h2>
-                    
-                    <center><h2>${messageJa2}</h2></center>
-                    
                 </div>
                 <div class="bl-content">
                     <center><h1>REMOVE PRODUCT</h1></center>
@@ -183,7 +183,6 @@
                 <div class="bl-box">
                     <img src="image/pencil.png">
                     <h2>INCREASE</h2>
-                    <center><h2>${messageJa3}</h2></center>
                 </div>
                 <div class="bl-content">
                     <center><h1>INCREASE PRODUCT</h1></center>
@@ -224,7 +223,6 @@
                 <div class="bl-box">
                     <img src="image/pencil.png">
                     <h2>REDUCE</h2>
-                    <center><h2>${messageJa4}</h2></center>
                 </div>
                 <div class="bl-content">
                     <center><h1>REDUCE PRODUCT</h1></center>
@@ -271,18 +269,18 @@
                 Boxlayout.init();
             });
             
-//             function alert1(){
-//           alert("5555");
-//           }
-//             function alert2(){
-//           alert("5555");
-//           }
-//             function alert3(){
-//           alert("5555");
-//           }
-//             function alert4(){
-//           alert("5555");
-//           }
+             function alert1(){
+           alert("5555");
+           }
+             function alert2(){
+           alert("5555");
+           }
+             function alert3(){
+           alert("5555");
+           }
+             function alert4(){
+           alert("5555");
+           }
         </script>
         
     </body>
