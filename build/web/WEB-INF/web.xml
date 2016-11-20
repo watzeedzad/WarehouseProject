@@ -117,6 +117,10 @@
         <servlet-name>OrderInuOutServlet</servlet-name>
         <servlet-class>int303.project.controller.OrderInuOutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderByTimeRangeServlet</servlet-name>
+        <servlet-class>int303.project.controller.OrderByTimeRangeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -200,6 +204,10 @@
     <servlet-mapping>
         <servlet-name>OrderInuOutServlet</servlet-name>
         <url-pattern>/OrderInuOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderByTimeRangeServlet</servlet-name>
+        <url-pattern>/OrderByTimeRange</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,12 +5,16 @@
  */
 package int303.project.controller;
 
+import int303.project.model.OrderInOut;
+import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,18 +34,77 @@ public class OrderInuOutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String orderStatus = "";
-        orderStatus = request.getParameter("orderStatus");
+        HttpSession session = request.getSession(false);
+        Staff staff = (Staff) session.getAttribute("staffData");
+        int companyId = staff.getCompanyId();
+        String orderStatus = request.getParameter("viewBy");
+        String searchParam = request.getParameter("searchParam");
         String messages = "";
-        if (orderStatus != null) {
-            if (orderStatus.equalsIgnoreCase("in")) {
-                
-            } else if (orderStatus.equalsIgnoreCase("out")){
-                
+        if (orderStatus != null && searchParam != null) {
+            try {
+                int searchParamInt = Integer.parseInt(searchParam);
+                if (orderStatus.equalsIgnoreCase("in")) {
+                    List<OrderInOut> orders = OrderInOut.orderById("in", searchParamInt, companyId);
+                    if (orders != null) {
+                        request.setAttribute("orders", orders);
+                    } else {
+                        messages = "Product ID " + searchParamInt + " not found!";
+                    }
+                } else if (orderStatus.equalsIgnoreCase("out")) {
+                    List<OrderInOut> orders = OrderInOut.orderById("out", searchParamInt, companyId);
+                    if (orders != null) {
+                        request.setAttribute("orders", orders);
+                    } else {
+                        messages = "Product ID " + searchParamInt + " not found!";
+                    }
+                    return;
+                } else if (orderStatus.equalsIgnoreCase("all")) {
+                    List<OrderInOut> orders = OrderInOut.allOrderById("in", "out", searchParamInt, companyId);
+                    if (orders != null) {
+                        request.setAttribute("orders", orders);
+                    } else {
+                        messages = "Product ID " + searchParamInt + " not found!";
+                    }
+                }
+            } catch (NumberFormatException ex) {
+                if (orderStatus.equalsIgnoreCase("in")) {
+                    if (searchParam.trim().length() == 0) {
+                        searchParam = "";
+                    }
+                    List<OrderInOut> orders = OrderInOut.orderByName("in", searchParam, companyId);
+                    if (orders != null) {
+                        request.setAttribute("orders", orders);
+                    } else {
+                        messages = "Product Name " + searchParam + " not found!";
+                    }
+                } else if (orderStatus.equalsIgnoreCase("out")) {
+                    if (searchParam.trim().length() == 0) {
+                        searchParam = "";
+                    }
+                    List<OrderInOut> orders = OrderInOut.orderByName("out", searchParam, companyId);
+                    if (orders != null) {
+                        request.setAttribute("orders", orders);
+                    } else {
+                        messages = "Product Name " + searchParam + " not found!";
+                    }
+                    return;
+                } else if (orderStatus.equalsIgnoreCase("all")) {
+                    if (searchParam.trim().length() == 0) {
+                        searchParam = "";
+                    }
+                    List<OrderInOut> orders = OrderInOut.allOrderByName("in", "out", searchParam, companyId);
+                    if (orders != null) {
+                        request.setAttribute("orders", orders);
+                    } else {
+                        messages = "Product Name " + searchParam + " not found!";
+                    }
+                }
             }
         } else {
-            request.setAttribute("messages", messages);
+            messages = "Can not be null!";
         }
+        request.setAttribute("messages", messages);
+        getServletContext().getRequestDispatcher("/OrderInOut.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
