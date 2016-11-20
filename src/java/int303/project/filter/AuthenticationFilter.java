@@ -55,8 +55,8 @@ public class AuthenticationFilter implements Filter {
                         
             System.out.println("***AUTHEN >>>> TARGETJA = "+targetJa);
 //            System.out.println("*** INNNNN AUTHEN ***");
-            response.sendRedirect(loginURI);
-            //config.getServletContext().getRequestDispatcher("/login").forward(req, res);
+            //response.sendRedirect(loginURI);
+            config.getServletContext().getRequestDispatcher("/login").forward(req, res);
         }
     }
 
