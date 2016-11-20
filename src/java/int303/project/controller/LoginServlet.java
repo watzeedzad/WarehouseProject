@@ -56,14 +56,18 @@ public class LoginServlet extends HttpServlet {
             }
             
             
-//            String targetJa = (String)request.getAttribute("targetJa");
-//            if(targetJa==null || target.trim().length()==0){
-//                getServletContext().getRequestDispatcher(target).forward(request, response);
-//            }else{
-//                System.out.println("--- LOG IN >>> TARGETJA = "+targetJa);
-//                getServletContext().getRequestDispatcher(targetJa).forward(request, response);
-//            }
-//            log("test in log in");
+            String targetJa = (String)getServletContext().getAttribute("targetJa");
+            System.out.println(targetJa);
+            if(targetJa==null || target.trim().length()==0){
+                getServletContext().getRequestDispatcher("/TestHome.jsp").forward(request, response);
+                System.out.println("********in targetJa == null");
+            }else{
+                System.out.println("--- LOG IN >>> TARGETJA = "+targetJa);
+                getServletContext().getRequestDispatcher(targetJa).forward(request, response);
+            }
+            log("test in log in");
+                                    
+            
         } else if (Login.isUserExist(user)) {
             message = "Wrong password !";
         } else {

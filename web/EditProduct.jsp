@@ -31,40 +31,41 @@
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         <div class="container"><br><br><br>
             <center><h1><span class="black"><b>{</b></span><span class="yellow">EDIT PRODUCT<span class="black"><b>}</b></span></h1><br></center>
-            <a href="javascript:history.back()"><button type="button" class="btn btn-success yellow">BACK</button><br><br><br></a>
+            <a href="AllProduct"><button type="button" class="btn btn-success yellow">BACK</button><br><br><br></a>
 
-            <c:choose>
-                <c:when test="${p !=null}">
-                    <form action="EditProductServlet" class="form-horizontal">
+           
+                <c:if test="${product !=null}">
+                    <form action="EditProduct" class="form-horizontal">
                         <div class="form-group">
                             <label for="inputPassword" class="col-sm-2 control-label yellow">Product ID :</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="disabledInput" type="number" value="${p.prod_id}">
+                                <input name="prod_id" class="form-control" id="disabledInput" type="number" value="${product.prod_id}" readonly="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword" class="col-sm-2 control-label yellow">Product Name :</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="disabledInput" type="text" value="${p.prod_name}" >
+                                <input name="prodName" class="form-control" id="disabledInput" type="text" value="${product.prod_name}" >
                             </div>
                         </div> 
                         <div class="form-group">
                             <label class="col-sm-2 control-label yellow">Type :</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="focusedInput" value="${p.prod_type}" type="text" >
+                                <input name="prodType" class="form-control" id="focusedInput" value="${product.prod_type}" type="text" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label yellow">Price :</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="focusedInput" value="${p.price}" type="number" >
+                                <input name="prodPrice" class="form-control" id="focusedInput" value="${product.price}" type="number" >
                             </div>
                         </div>
+                            <input type="submit" class="btn btn-success yellow" value="SEND">
                     </form><br>
-                </c:when>
-            </c:choose>
+                </c:if>
+            
 
-            <button type="button" class="btn btn-success yellow">SEND</button>
+            
         </div>
     </body>
 </html>

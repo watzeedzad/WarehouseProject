@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,29 +34,52 @@ public class EditProductServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
-            long prodId = Long.parseLong(request.getParameter("prodId"));
+        HttpSession session = request.getSession();
+        String message="";
+        try {           
+            String idStr = request.getParameter("prod_id");
             String prodName = request.getParameter("prodName");
             String prodPrice = request.getParameter("prodPrice");
             String prodType = request.getParameter("prodType");
-            Product prod = Product.getProduct(prodId);
-            if (prodName != null) {
-                prodName = prod.getProd_name();
+            Product prod=null;
+            
+            if(idStr!=null||idStr.trim().length()!=0){
+                long prodId = Long.parseLong(idStr);
+                prod = Product.getProduct(prodId); 
+            }              
+                                    
+            if (prodName == null || prodName.trim().length()==0) {
+                String name = prod.getProd_name();
+                prod.setProd_name(name);
+            }else{
+                prod.setProd_name(prodName);
             }
-            if (prodPrice != null) {
-                prodPrice = String.valueOf(prod.getPrice());
-            }
-            if (prodType != null) {
-                prodType = prod.getProd_type();
-            }
-            double prodPriceDouble = Double.parseDouble(prodPrice);
-            prod.editProduct(prodName, prodPriceDouble, prodType, prodId);
+            
+            double prodPriceDouble=0;            
+            if (prodPrice == null || prodPrice.trim().length()==0) {                
+                double price = prod.getPrice();
+                prod.setPrice(price);
+            }else{
+                prodPriceDouble = Double.parseDouble(prodPrice);
+                prod.setPrice(prodPriceDouble); 
+            }            
+            
+            if (prodType == null||prodType.trim().length()==0) {
+                String type = prod.getProd_type();
+                prod.setProd_type(type);
+            }else{
+                prod.setProd_type(prodType);
+            }            
+            prod.editProduct(prodName, prodPriceDouble, prodType, prod.getProd_id());
+            session.setAttribute("product", prod);
+            System.out.println("session.setAttribute(\"p\", prod);");
+            
         } catch (SQLException ex) {
             System.err.println(ex);
         } catch (NumberFormatException ex) {
             System.err.println(ex);
         }
+        
         getServletContext().getRequestDispatcher("/EditProduct.jsp").forward(request, response);
     }
 

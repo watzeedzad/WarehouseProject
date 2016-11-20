@@ -21,6 +21,7 @@ import java.util.logging.Logger;
  */
 public class Product {
 
+    public static int shareAlert;
     private long prod_id;
     private String prod_name;
     private int amount;
@@ -28,6 +29,7 @@ public class Product {
     private String prod_type;
     private Branch branch;
     private Company company;
+    private boolean cancelStatus;
     private int amountAlert; // จำนวนสินค้าที่ต้องการจะให้ alert
 
     //method getAlertProduct()
@@ -114,11 +116,60 @@ public class Product {
         this.branch = branch;
     }
 
+    public boolean isCancelStatus() {
+        return cancelStatus;
+    }
+
+    public void setCancelStatus(boolean cancelStatus) {
+        this.cancelStatus = cancelStatus;
+    }
+
+    public static int getShareAlert() {
+        return Product.shareAlert;
+    }
+
+    public static void setShareAlert(int shareAlert) {
+        Product.shareAlert = shareAlert;
+    }
+
+    public int getAmountAlert() {
+        return amountAlert;
+    }
+
+    public void setAmountAlert(int amountAlert) {
+        this.amountAlert = amountAlert;
+    }       
+    
+    public static void getShareAlertFromDB() {
+
+        Connection con = ConnectionBuilder.getConnection();
+        String sql = "SELECT alertAmount FROM ALERT ";
+
+        PreparedStatement pstm;
+        try {
+            pstm = con.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+               shareAlert = rs.getInt("alertAmount");
+            }
+            
+            rs.close();
+            pstm.close();
+            con.close();
+            System.out.println("shareAlert = "+shareAlert);
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }      
+    }
+
     public static Product getProduct(long prodId) throws SQLException {
         Product prod = null;
 
         Connection con = ConnectionBuilder.getConnection();
-        String sql = "SELECT * FROM PRODUCTS WHERE prod_id = ?";
+        String sql = "SELECT * FROM PRODUCTS P "
+                + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
+                + " WHERE P.prod_id = ? ";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setLong(1, prodId);
 
@@ -143,6 +194,8 @@ public class Product {
         prod.setBranch(Branch.getBranch(rs.getInt("branch_id")));
         prod.setProd_type(rs.getString("prod_type"));
         prod.setCompany(Company.getCompany(rs.getInt("company_id")));
+        prod.setCancelStatus(rs.getBoolean("cancle_status"));
+        prod.setAmountAlert(getShareAlert());
     }
 
     public final static String SQL_SET_AMOUNT = "UPDATE PRODUCTS SET amount = ? WHERE prod_id = ?";
@@ -304,7 +357,7 @@ public class Product {
         pstm.setLong(4, this.getProd_id());
 
         x = pstm.executeUpdate();
-
+               
         pstm.close();
         con.close();
     }
@@ -343,7 +396,7 @@ public class Product {
                 + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
                 + " WHERE lower(P.prod_name) LIKE ? "
                 + " AND P.company_id = ? "
-                + " AND S.cancle_status = false  "
+                //                + " AND S.cancle_status = false  "
                 + " AND S.delete = false  "
                 + " ORDER BY P.prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
@@ -359,7 +412,9 @@ public class Product {
             }
             products.add(prod);
         }
-
+        
+        getShareAlertFromDB();
+                
         rs.close();
         pstm.close();
         con.close();
@@ -375,7 +430,7 @@ public class Product {
                 + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
                 + " WHERE P.prod_id = ? "
                 + " AND P.company_id = ? "
-                + " AND S.cancle_status = false  "
+                //                + " AND S.cancle_status = false  "
                 + " AND S.delete = false  ";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setLong(1, prodId);
@@ -386,7 +441,9 @@ public class Product {
             prod = new Product();
             orm(prod, rs);
         }
-
+        
+        getShareAlertFromDB();
+            
         rs.close();
         pstm.close();
         con.close();
@@ -434,7 +491,7 @@ public class Product {
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
                 + " WHERE P.company_id = ? "
-                + " AND S.cancle_status = false "
+                //                + " AND S.cancle_status = false "
                 + " AND S.delete = false  "
                 + " ORDER BY P.prod_id ";
 
@@ -455,7 +512,9 @@ public class Product {
             }
             products.add(prod);
         }
-
+        
+        getShareAlertFromDB();
+        
         rs.close();
         pstm.close();
         con.close();
@@ -510,7 +569,9 @@ public class Product {
                 orm(p, rs);
                 prods.add(p);
             }
-
+            
+            getShareAlertFromDB();
+                
             rs.close();
             pstm.close();
             con.close();
@@ -540,7 +601,7 @@ public class Product {
 
         return x > 0;
     }
-    
+
     public static boolean cancelProduct(long prodId) {
         int x = 0;
 
@@ -559,7 +620,7 @@ public class Product {
         }
 
         return x > 0;
-    } 
+    }
 
     public static List<Product> getCancelProduct(int companyId) {
         List<Product> products = null;
@@ -596,13 +657,12 @@ public class Product {
 
     }
 
-    
-
     @Override
     public String toString() {
         return "Product{" + "prod_id=" + prod_id + ", prod_name=" + prod_name
                 + "\n, amount=" + amount + ", price=" + price
                 + "\n, prod_type=" + prod_type + ", branch=" + branch.getBranch_id()
+                + "\n CANCLE = " + cancelStatus
                 + "\n, company=" + company.getCompany_name() + '}';
     }
 

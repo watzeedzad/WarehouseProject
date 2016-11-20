@@ -123,20 +123,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                    <c:set var="bgRed" value=" style='background-color: red;' "></c:set>
                                     <c:forEach items="${products}" var="p" varStatus="vs">                       
                                         <tr>
-                                            <td> ${p.prod_id}</td>
+                                            <td > ${p.prod_id}</td>
                                             <td><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a> </td>
                                             <td> ${p.price}</td>
                                             <td>
-                                                <input type="number" class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
+                                                <input type="number" ${p.amount<p.amountAlert? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
                                             </td>
                                             <td>
 
 
                                             <!--Button add product -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodalIncrease${p.prod_id}">INCREASE</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodalIncrease${p.prod_id}" ${p.cancelStatus==true? 'disabled':''} >INCREASE</button>
                                             <!-- ---  -->
                                             <div class="modal fade" id="mymodalIncrease${p.prod_id}" role="dialog">
                                                 <div class="modal-dialog modal-lg">
@@ -205,7 +205,7 @@
 
 
                                         </td>
-                                        <td><input type="checkbox" name="cancel" value="${p.prod_id}"></td>
+                                        <td><input type="checkbox" name="cancel" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
                                         <td><input type="checkbox" name="delete" value="${p.prod_id}"></td>
                                     </tr>                   
                                 </c:forEach> 
