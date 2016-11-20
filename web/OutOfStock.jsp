@@ -89,45 +89,47 @@
             </div>
             <div class="col-sm-8">
                 <div class="container-fluid">
-                    <center><h1><span class="black"><b>{</b></span><span class="yellow">OUT OF PRODUCT<span class="black"><b>}</b></span></h1><br></center>
-                    <table class="table table-inverse">
-                        <thead>
+                    <center><h1><span class="black"><b>{</b></span><span class="yellow">OUT OF STOCK<span class="black"><b>}</b></span></h1><br></center>
+                    <form action="OutOfStock">
+                        <!--<input type="submit" value="Get All"/>-->
+                        <table class="table table-inverse">
+                            <!--ปุ่ม message มันโชว์แต่ there is no product ทั้งๆที่มันมีอยู่ -->
                             <tr>
-                                <td style="text-align: center;"><c:out value="${message}" ></c:out></td>                                
+                                <c:if test="${message!=null}">
+                                <tr>
+                                    <td colspan="10" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
+
+                                    </tr>                            
+                                </c:if>
                             </tr>
-                            <tr class="bg-dark"> 
-                                <th>ID</th>
-                                <th>NameProduct</th>
-                                <th>Price</th>
+                            <tr class="bg-dark ">
+                                <td>id</td>
+                                <td>name</td>
+                                <td>price</td>
+                                <td>amount</td>
+                                <td>cancel</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>100001</td>
-                                <td>Pen</td>
-                                <td>200</td>
-                            </tr>
-                            <tr>
-                                <td>100002</td>
-                                <td>Rubber</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>100003</td>
-                                <td>Ruler</td>
-                                <td>40</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>    
+
+                            <c:forEach items="${products}" var="p" varStatus="vs">                       
+                                <tr>
+                                    <td> ${p.prod_id}</td>
+                                    <td> ${p.prod_name}</td>
+                                    <td> ${p.price}</td>
+                                    <td> ${p.amount} </td>
+                                    <td><input type="checkbox" ></input></td>
+                                </tr>                   
+                            </c:forEach>                                    
+                        </table>
+                    </form>
+                </div> 
+            </div>     
             <div class="col-sm-2">
 
             </div>
         </div>
         <div class="row text-center">
             <div class="button">
-                <button type="button" class="btn btn-primary"><a href="TestHome.jsp">OK</a></button>
+                <button type="button" class="btn btn-success"><a href="TestHome.jsp">BACK</a></button>
             </div>
 
 
