@@ -92,8 +92,8 @@
     <body>
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         <!--table ----------------------------------------------------------------------------------------------------------------->
-<form action="UpdateProduct">
 
+<form action="UpdateProduct">  
         <div class="row">            
             <div class="col-sm-2">
 
@@ -106,34 +106,36 @@
                             <thead>
                                 <tr>
                             <form class="form-inline" action="AllProduct" method="GET">
-                                <td><input type="text" class="form-control" size="40" placeholder="SEARCH PRODUCT" name="searchParam"></td>
+                                <td colspan="6"><input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam"></td>
                                 <td><input type="submit" value="SEARCH" class="btn btn-success"></td>
                             </form>
                             </tr>
                             <c:if test="${message!=null}">
                                 <tr>
-                                    <td colspan="10" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
 
                                 </tr>                            
                             </c:if>
                             <c:if test="${messageJa!=null}">
                                 <tr>
-                                    <td colspan="10" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
 
                                 </tr>                            
                             </c:if>    
                             
-
+                              
                             <c:if test="${products != null}">
     <!-------------------------àËÅ×ÍãÊè¿ÍÃìÁÊÓËÃÑº cancel >>>> DELETE-------------------------------------->
                                 <!--<form action="UpdateProduct"></form>-->
                                 <tr class="bg-dark text-white">
+                                    <th colspan="3">Item no</th>
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th colspan="3" class="center" style="text-align: center;">Amount</th>
                                     <th>Cancel</th>
                                     <th>Delete</th>
+                                    <th colspan="3">Branch name</th>
 
                                 </tr>
                                 </thead>
@@ -141,6 +143,7 @@
                                     <c:set var="bgRed" value=" style='background-color: red;' "></c:set>
                                     <c:forEach items="${products}" var="p" varStatus="vs">                       
                                         <tr>
+                                            <td colspan="3">${vs.count}</td>
                                             <td > ${p.prod_id}</td>
                                             <td><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a> </td>
                                             <td> ${p.price}</td>
@@ -222,6 +225,7 @@
                                         </td>
                                         <td><input type="checkbox" name="cancel" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
                                         <td><input type="checkbox" name="delete" value="${p.prod_id}"></td>
+                                        <td> ${p.branch.branch_name}</td>
                                     </tr>                   
                                 </c:forEach> 
 
@@ -235,12 +239,13 @@
         <div class="col-sm-2">
 
         </div>
+            
     </div> 
-<div class="row text-center">  
-    <input type="submit" class="btn btn-success" value="UPDATE" onclick="myFunction();">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
-</div>  
+    <div class="row text-center">  
+        <input type="submit" class="btn btn-success" value="UPDATE" onclick="myFunction();">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
+    </div>  
     
  </form>  
         
