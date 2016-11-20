@@ -48,34 +48,37 @@ public class LoginServlet extends HttpServlet {
             Staff st = Staff.viewStaffData(staffId);
 //            log("staffId "+session.getAttribute("user_id"));
 //            log(Login.getUserId(user)+" Login.getUserId(user)");
-            
+
             session.setAttribute("staffData", st);
-            if(session.getAttribute("staffData")!= null){
-                Staff s = (Staff)session.getAttribute("staffData");
+            if (session.getAttribute("staffData") != null) {
+                Staff s = (Staff) session.getAttribute("staffData");
                 session.setAttribute("staffData", s);
 //                log("---has Staff");
 //                log(s.toString());
             }
-            
+
             List<Branch> allBranch = Branch.getAllBranch();
-            if(allBranch!=null){
+            if (allBranch != null) {
                 getServletContext().setAttribute("allBranch", allBranch);
             }
-                        
-            String targetJa = (String)getServletContext().getAttribute("targetJa");
+
+            String targetJa = (String) getServletContext().getAttribute("targetJa");
             System.out.println(targetJa);
-            if(targetJa==null || target.trim().length()==0){
+            if (targetJa == null || target.trim().length() == 0) {
                 getServletContext().getRequestDispatcher("/TestHome.jsp").forward(request, response);
                 System.out.println("********in targetJa == null");
-            }else{
-                System.out.println("--- LOG IN >>> TARGETJA = "+targetJa);
-                getServletContext().getRequestDispatcher(targetJa).forward(request, response);
+                return;
+            } else {
+                System.out.println("--- LOG IN >>> TARGETJA = " + targetJa);
+                //getServletContext().getRequestDispatcher(targetJa).forward(request, response);
+                response.sendRedirect("http://localhost:8080/WarehouseProject" + targetJa);
+                return;
             }
-            log("test in log in");
-                                    
-            
+            //log("test in log in");
+
         } else if (Login.isUserExist(user)) {
             message = "Wrong password !";
+            return;
         } else {
             message = "Username " + user + " does not exist !";
         }
