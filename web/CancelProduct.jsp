@@ -119,7 +119,7 @@
                                 <tr>
                                     <td> ${vs.count}</td>
                                     <td> ${p.prod_id}</td>
-                                    <td><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a></td>
+                                    <td><a href="EditProduct?prod_id=${p.prod_id}&source=CancelProduct">${p.prod_name}</a></td>
                                     <td> ${p.price}</td>
                                     <td> ${p.amount} </td>
                                     <td> ${p.branch.branch_name}</td>
