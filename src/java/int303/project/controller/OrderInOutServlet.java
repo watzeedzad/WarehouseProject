@@ -107,7 +107,7 @@ public class OrderInOutServlet extends HttpServlet {
             messages = "Can not be null!";
         }
         request.setAttribute("messages", messages);
-        getServletContext().getRequestDispatcher("/TestOrderInOut.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/ViewState.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
