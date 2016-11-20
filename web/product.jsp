@@ -93,26 +93,33 @@
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         <!--table ----------------------------------------------------------------------------------------------------------------->
 
-  
+        <hr>
+        <hr>
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        
+        <center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>
+        
+        
+            <form class="form-inline" action="AllProduct" method="GET">
+                <center>
+                    <input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam">
+                    <input type="submit" value="SEARCH" class="btn btn-success">
+                </center>
+             </form>        
+        
+        
+ <form action="UpdateProduct"> 
         <div class="row">            
             <div class="col-sm-2">
 
             </div>
             <div class="col-sm-8">
-                <div class="container-fluid">
-                    
+                <div class="container-fluid" style="margin-top: -20px;">                    
                         <table class="table table-inverse">
-                            <center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>
+                            <!--<center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>-->
                             <thead>
-                                <tr>
-                            <form class="form-inline" action="AllProduct" method="GET">
-                                <td colspan="6"><input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam"></td>
-                                <td><input type="submit" value="SEARCH" class="btn btn-success"></td>
-                            </form>
-                            </tr>
                             
-                            
-                            <form action="UpdateProduct">
                             <c:if test="${message!=null}">
                                 <tr>
                                     <td colspan="13" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
