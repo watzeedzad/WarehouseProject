@@ -56,6 +56,15 @@
             .bg-dark{
                 background-color:#1F2739;
             }
+            a:link {
+                color: white;
+            }
+            a:visited {
+                color: palevioletred;
+            }
+            a:hover {
+                color: greenyellow;
+            }
             .blue { color: #185875; }
             .yellow { color: #FFF842; }
             .black { color: black}
@@ -107,7 +116,7 @@
                                 <tr>
                                     <td>${ord.orderId}</td>
                                     <td>${ord.prodId}</td>
-                                    <td>${ord.prodName}</td>
+                                    <td><a href="EditProduct?prod_id=${ord.prodId}&source=ViewState.jsp">${ord.prodName}</a></td>
                                     <td>${ord.prodAmount}</td>
                                     <td>${ord.staffName}</td>
                                     <td>${ord.orderType}</td>
