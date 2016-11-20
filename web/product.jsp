@@ -124,7 +124,31 @@
                                     <td colspan="13" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
 
                                 </tr>                            
-                            </c:if>    
+                            </c:if>
+                            <c:if test="${messageJa1!=null}">
+                                <tr>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa1}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if> 
+                            <c:if test="${messageJa2!=null}">
+                                <tr>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa2}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if> 
+                            <c:if test="${messageJa3!=null}">
+                                <tr>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa3}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if>  
+                            <c:if test="${messageJa4!=null}">
+                                <tr>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa4}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if>      
                             
                               
                             <c:if test="${products != null}">
