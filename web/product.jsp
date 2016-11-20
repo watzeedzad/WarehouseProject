@@ -107,15 +107,10 @@
 
                                 </tr>                            
                             </c:if>
-                            <c:if test="${messageJa!=null}">
-                                <tr>
-                                    <td colspan="10" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
-
-                                </tr>                            
-                            </c:if>    
+                            
 
                             <c:if test="${products != null}">
-    <!-------------------------เหลือใส่ฟอร์มสำหรับ cancel >>>> DELETE-------------------------------------->
+    <!-------------------------àËÅ×ÍãÊè¿ÍÃìÁÊÓËÃÑº cancel >>>> DELETE-------------------------------------->
                                 <!--<form action="UpdateProduct"></form>-->
                                 <tr class="bg-dark text-white">
                                     <th>ID</th>
@@ -132,7 +127,7 @@
                                     <c:forEach items="${products}" var="p" varStatus="vs">                       
                                         <tr>
                                             <td> ${p.prod_id}</td>
-                                            <td><a href="EditProductServlet?prod_id=${p.prod_id}">${p.prod_name}</a> </td>
+                                            <td><a href="EditProduct?prod_id=${p.prod_id}">${p.prod_name}</a> </td>
                                             <td> ${p.price}</td>
                                             <td>
                                                 <input type="number" class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
@@ -156,17 +151,17 @@
                                                                 <table class="add-pro black">
                                                                     <tr>
                                                                         <td>ID:</td>
-                                                                        <td><input type="number" class="form-control" name="prodId" value="${p.prod_id}" readonly=""></td>
+                                                                        <td><input type="number" class="form-control" name="prodId" value="${p.prod_id}" readonly="" min=1></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Amount:</td>
-                                                                        <td><input type="number" class="form-control" name="prodAmount"></td>
+                                                                        <td><input type="number" class="form-control" name="prodAmount" min=1 required></td>
                                                                     </tr>
                                                                 </table>
-                                                            </div>
+                                                            <br>
                                                             <div class="modal-footer">
                                                                 <input type="submit" class="btn btn-default" value="Increase">
-                                                            </div>
+                                                            </div></div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -191,18 +186,18 @@
                                                                 <table class="add-pro black">
                                                                     <tr>
                                                                         <td>ID:</td>
-                                                                        <td><input type="number" class="form-control" name="prodId" value="${p.prod_id}" readonly=""></td>
+                                                                        <td><input type="number" class="form-control" name="prodId" value="${p.prod_id}" readonly="" min=1></td>
 
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Amount:</td>
-                                                                        <td><input type="number" class="form-control" name="prodAmount"></td>
+                                                                        <td><input type="number" class="form-control" name="prodAmount" required min=1></td>
                                                                     </tr>
                                                                 </table>
-                                                            </div>
+                                                            <br>
                                                             <div class="modal-footer">
                                                                 <input type="submit" class="btn btn-default" value="Reduce">
-                                                            </div>
+                                                            </div></div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -226,14 +221,19 @@
 
         </div>
     </div> 
-  
-    <center><input type="submit" class="btn btn-success" value="UPDATE"></button></center>
+<div class="row text-center">  
+    <input type="submit" class="btn btn-success" value="UPDATE" onclick="myFunction();">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
+</div>  
+    
  </form>  
-    <div class="row text-center">
+        
+    
         <!--add product ----------------------------------------------------------------------------------------------------------------->
        
         
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button>
+        
         <div class="modal fade " id="myModal" role="dialog">
             <div class="modal-dialog modal-lg black">
                 <div class="modal-content">
@@ -249,23 +249,23 @@
                                     <table class="add-pro">
                                         <tr>
                                             <td>Name</td>
-                                            <td><input type="text" class="form-control" name="prodName"></td>                                   
+                                            <td><input type="text" class="form-control" name="prodName" required></td>                                   
                                         </tr>
                                         <tr>
                                             <td>Amount</td>
-                                            <td><input type="number" class="form-control" min="1" name="prodAmount"></td>
+                                            <td><input type="number" class="form-control" min="1" name="prodAmount" required></td>
                                         </tr>
                                         <tr>
                                             <td>Price</td>
-                                            <td><input type="number" class="form-control" min="1" name="prodPrice"></td>
+                                            <td><input type="number" class="form-control" min="1" name="prodPrice" required></td>
                                         </tr>
                                         <tr>
                                             <td>Type</td>
-                                            <td><input type="text" class="form-control" name="prodType"></td>
+                                            <td><input type="text" class="form-control" name="prodType" required></td>
                                         </tr>
                                         <tr>
                                             <td>Branch ID</td>
-                                            <td><input type="text" class="form-control" name="branchId" ></td>
+                                            <td><input type="text" class="form-control" name="branchId" required></td>
                                         </tr>                                        
                                     </table>
 
@@ -281,7 +281,7 @@
         </div>
         <!-- remove ----------------------------------------------------------------------------------------------------------------->          
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button>
+       
 
         <div class="modal fade" id="myModal1" role="dialog">
             <div class="modal-dialog modal-lg black">
@@ -296,18 +296,23 @@
                             <table class="add-pro">
                                 <tr>
                                     <td>Product ID:</td>
-                                    <td><input type="number" min="1" class="form-control" name="prodId"></td>
+                                    <td><input type="number" min="1" class="form-control" name="prodId" required></td>
                                 </tr>
                             </table>
-                        </div>
+                        <br>
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-default" value="Remove">
-                        </div>
+                        </div></div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-        
 </body>
+<script>
+    
+    function myFunction() {
+    confirm("Are you sure to cancel and delete product(s)");
+    }
+</script>
 </html>

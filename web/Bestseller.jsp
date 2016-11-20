@@ -14,6 +14,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
+            bg-dark{
+                background-color: #1F2739;
+            }
             .navbar {
                 margin-bottom: 0;
                 background-color: black;
@@ -42,7 +45,11 @@
                             background-color: black;
                         }*/
             body{
-                background-color: #8C9C9A;
+                /*background-color: #8C9C9A;*/
+                /*                background-color:#1F2739;*/
+                background-color:#185875;
+                color: white;
+                font-family: sans-serif
             }
             .container-fluid{
                 padding-top: 60px;
@@ -59,6 +66,16 @@
                 margin: 10px;
                 border-radius: 10px; 
             }
+            .bg-taley{
+                background-color:#185875;
+            }
+            .bg-dark{
+                background-color:#1F2739;
+            }
+            .blue { color: #185875; }
+            .yellow { color: #FFF842; }
+            .black { color: black}
+            .text-white{ color: white}
         </style>
     </head>
     <body>
@@ -70,39 +87,34 @@
             </div>
             <div class="col-sm-8">
                 <div class="container-fluid">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Ranking</th>
-                                <th>NameProduct</th>
-                                <th>Price</th>
+                    <center><h1><span class="black"><b>{</b></span><span class="yellow">BEST SELLER<span class="black"><b>}</b></span></h1><br></center>
+                    <form action="BestSeller">
+                        <!--<input type="submit" value="Get All"/>-->
+                        <table class="table table-inverse">
+                            <tr class="bg-dark ">
+                                <td>id</td>
+                                <td>name</td>
+                                <td>price</td>
+                                <td>amount</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Pen</td>
-                                <td>200</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Rubber</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Ruler</td>
-                                <td>40</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>    
+
+                            <c:forEach items="${products}" var="p" varStatus="vs">                       
+                                <tr>
+                                    <td> ${p.prod_id}</td>
+                                    <td> ${p.prod_name}</td>
+                                    <td> ${p.price}</td>
+                                    <td> ${p.amount} </td>
+                                </tr>                   
+                            </c:forEach>                                    
+                        </table>
+                    </form>
+                </div> 
+            </div>     
             <div class="col-sm-2">
 
             </div>
         </div>
-        <div class="row text-center">
+        
 
 
 
