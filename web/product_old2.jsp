@@ -93,7 +93,7 @@
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         <!--table ----------------------------------------------------------------------------------------------------------------->
 
-  
+<form action="UpdateProduct">  
         <div class="row">            
             <div class="col-sm-2">
 
@@ -110,9 +110,6 @@
                                 <td><input type="submit" value="SEARCH" class="btn btn-success"></td>
                             </form>
                             </tr>
-                            
-                            
-                            <form action="UpdateProduct">
                             <c:if test="${message!=null}">
                                 <tr>
                                     <td colspan="13" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
@@ -124,8 +121,31 @@
                                     <td colspan="13" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
 
                                 </tr>                            
-                            </c:if>    
-                            
+                            </c:if>
+                            <c:if test="${messageJa1!=null}">
+                                <tr>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa1}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if> 
+                            <c:if test="${messageJa2!=null}">
+                                <tr>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa2}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if> 
+                            <c:if test="${messageJa3!=null}">
+                                <tr>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa3}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if>  
+                            <c:if test="${messageJa4!=null}">
+                                <tr>
+                                    <td colspan="13" style="text-align: center;"> <c:out value="${messageJa4}" ></c:out> </td>
+
+                                </tr>                            
+                            </c:if>     
                               
                             <c:if test="${products != null}">
     <!-------------------------àËÅ×ÍãÊè¿ÍÃìÁÊÓËÃÑº cancel >>>> DELETE-------------------------------------->

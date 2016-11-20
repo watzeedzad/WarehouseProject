@@ -72,7 +72,7 @@ public class RemoveProductServlet extends HttpServlet {
             System.out.println(e);
         }
         
-        request.setAttribute("messageJa", message);
+        request.setAttribute("messageJa2", message);
         
         String source = request.getParameter("source");
         if(source != null){
