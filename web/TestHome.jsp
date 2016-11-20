@@ -410,7 +410,7 @@
                         (SDARS) providers, and direct broadcast satellite (DBS) providers to provide the communications
 
                         such as AMBER alerts and weather information targeted to specific areas.</h4>
-                    <a href="TestAlert.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
+                    <a href="UpdateAlert"><button class="btn btn-default btn-lg">Enter</button></a>
                 </div>
             </div>
         </div>
