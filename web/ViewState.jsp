@@ -72,12 +72,12 @@
 
         <div class="col-sm-8">
 
-            <div class="container-fluid">
+            
                 <table class="table table-inverse">
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT<span class="black"><b>}</b></span></h1><br></center>
                     <div class="row ">
                         <p class="black">Search product Id/Name : <input type="text" name="" class="form-group">
-                            <select class="">
+                            <select name="type" class="">
                                 <option >IN</option>
                                 <option>OUT</option>
                                 <option>ALL</option>
@@ -96,9 +96,9 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Status</th>
                             <th colspan="3" class="center" style="text-align: center;">Amount</th>
-                            <th>Cancel</th>
-                            <th>Delete</th>
+                            
 
                         </tr>
                         </thead>
@@ -109,7 +109,7 @@
                     </c:if>
                 </table>
 
-            </div>
+            
         </div>
     </div>
 
