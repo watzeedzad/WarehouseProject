@@ -20,11 +20,12 @@ import java.util.logging.Logger;
  * @author Praewhubb
  */
 public class Order {
+
     private int orderId;
     private Staff staff;
-    private String orderType; 
-    private java.util.Date orderDate;        
-       
+    private String orderType;
+    private java.util.Date orderDate;
+
     //sell
     //buy
     //updateOrder Servlet
@@ -32,78 +33,74 @@ public class Order {
     //ดูยอดขายปี
     //ดูสินค้าขายดีแต่ละเดือน
     //ดูสินค้าขายดีแต่ละปี
-    
+    public Order() {
 
-    public Order() {       
-           
-    }   
-        
+    }
+
 //    public static boolean addAmount(long prodId,int amount){
 //        int x=0;
 //        
 //        return x>0;
 //    }
-    
 //    public static boolean reduceAmount(long prodId,int amount){
 //        int x=0;
 //        
 //        return x>0;
 //    }
-    
-    public static boolean addAmount(long prodId,int amount,Staff s){
-        int x=0;    
+    public static boolean addAmount(long prodId, int amount, Staff s) {
+        int x = 0;
         boolean addOrderSuccess = false;
-            // add amount in DB
-            // save ข้อมูลใน order ด้วย  
+        // add amount in DB
+        // save ข้อมูลใน order ด้วย  
         try {
             Product p = Product.getProduct(prodId);
             Connection con = ConnectionBuilder.getConnection();
             String sql = "UPDATE PRODUCTS SET amount = ? "
-                        + " WHERE prod_id = ? ";
+                    + " WHERE prod_id = ? ";
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setInt(1,p.getAmount()+amount);
+            pstm.setInt(1, p.getAmount() + amount);
             pstm.setLong(2, prodId);
-            
-            x = pstm.executeUpdate();            
-            addOrderSuccess = Order.addOrder(p, s, "IN",amount);            
-            
+
+            x = pstm.executeUpdate();
+            addOrderSuccess = Order.addOrder(p, s, "IN", amount);
+
         } catch (SQLException ex) {
             System.out.println(ex);
-        }        
-        
-        return x>0 && addOrderSuccess;
+        }
+
+        return x > 0 && addOrderSuccess;
     }
-    
-    public static boolean reduceAmount(long prodId,int amount,Staff s){
-        int x=0;
+
+    public static boolean reduceAmount(long prodId, int amount, Staff s) {
+        int x = 0;
         boolean addOrderSuccess = false;
-            // reduce amount in DB
-            // save ข้อมูลใน order ด้วย  
+        // reduce amount in DB
+        // save ข้อมูลใน order ด้วย  
         try {
             Product p = Product.getProduct(prodId);
             Connection con = ConnectionBuilder.getConnection();
             String sql = "UPDATE PRODUCTS SET amount = ?"
-                         + " WHERE prod_id = ? ";
+                    + " WHERE prod_id = ? ";
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setInt(1,p.getAmount()-amount);
+            pstm.setInt(1, p.getAmount() - amount);
             pstm.setLong(2, prodId);
-            
-            x = pstm.executeUpdate();            
-            addOrderSuccess = Order.addOrder(p, s, "OUT",amount);            
-            
+
+            x = pstm.executeUpdate();
+            addOrderSuccess = Order.addOrder(p, s, "OUT", amount);
+
         } catch (SQLException ex) {
             System.out.println(ex);
-        }        
-        
-        return x>0 && addOrderSuccess;               
-        
+        }
+
+        return x > 0 && addOrderSuccess;
+
     }
-    
-    public static boolean addNewProduct(Product p,Staff s) throws SQLException{
+
+    public static boolean addNewProduct(Product p, Staff s) throws SQLException {
 //        int x = 0;
         boolean addProductSuccess = p.addNewProduct();
-        boolean addOrderSuccess = addOrder(p, s, "IN",p.getAmount());
-        
+        boolean addOrderSuccess = addOrder(p, s, "IN", p.getAmount());
+
 //        Connection con = ConnectionBuilder.getConnection();
 //        String sql = "INSERT INTO ORDERS(staff_id,ordertype,date_order,prod_id,amount) "
 //                     + " VALUES(?,?,?,?,?)";
@@ -116,33 +113,33 @@ public class Order {
 //        x = pstm.executeUpdate();              
         return addOrderSuccess && addProductSuccess;
     }
-    
-    public static boolean addOrder(Product p,Staff s,String str,int amount) throws SQLException{
+
+    public static boolean addOrder(Product p, Staff s, String str, int amount) throws SQLException {
         int x = 0;
         String inOrOut = "";
-        
-        if(str.equalsIgnoreCase("IN")){
+
+        if (str.equalsIgnoreCase("IN")) {
             inOrOut = "IN";
-        }else if(str.equalsIgnoreCase("OUT")){
+        } else if (str.equalsIgnoreCase("OUT")) {
             inOrOut = "OUT";
         }
-        
+
         Connection con = ConnectionBuilder.getConnection();
         String sql = "INSERT INTO ORDERS(staff_id,ordertype,date_order,prod_id,amount) "
-                     + " VALUES(?,?,?,?,?)";
+                + " VALUES(?,?,?,?,?)";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, s.getStaffId());
         pstm.setString(2, inOrOut);
         pstm.setDate(3, new java.sql.Date(new java.util.Date().getTime()));
         pstm.setLong(4, p.getProd_id());
         pstm.setInt(5, amount);
-        
-        x = pstm.executeUpdate();        
-        
-        return x>0;
+
+        x = pstm.executeUpdate();
+
+        return x > 0;
     }
-    
-    public static Product statBestSeller() {
+
+    public static Product statBestSeller(int companyId) {
         Product prod = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
@@ -160,8 +157,7 @@ public class Order {
     //----------- SUM(amount)  // order by SUM(amount) DESC;
     // WHERE order_type = 'IN'
     // WHERE order_type = 'OUT'
-    
-    public static List<Product> statSellerByMonth() {
+    public static List<Product> statSellerByMonth(int companyId) {
         List<Product> products = null;
         Product prod = null;
         try {
@@ -176,8 +172,8 @@ public class Order {
         }
         return products;
     }
-    
-    public static List<Product> statSellerByYear() {
+
+    public static List<Product> statSellerByYear(int companyId) {
         List<Product> products = null;
         Product prod = null;
         try {
@@ -192,5 +188,5 @@ public class Order {
         }
         return products;
     }
-    
+
 }
