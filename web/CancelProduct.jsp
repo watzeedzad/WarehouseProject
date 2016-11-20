@@ -101,6 +101,11 @@
                     <form action="CancelProduct">
                         <!--<input type="submit" value="Get All"/>-->
                         <table class="table table-inverse">
+                            <c:if test="${message!=null}">
+                                <tr>
+                                    <td colspan="10" style="text-align: center;font-size:large"> <c:out value="${message}" ></c:out> </td>
+                                </tr>
+                            </c:if>
                             <tr class="bg-dark">
                                 <td>Item no</td>
                                 <td>ID</td>

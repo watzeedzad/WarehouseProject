@@ -106,11 +106,12 @@
                             <tr>
                                 <c:if test="${message!=null}">
                                 <tr>
-                                    <td colspan="10" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
+                                    <td colspan="10" style="text-align: center;font-size:large"> <c:out value="${message}" ></c:out> </td>
 
                                     </tr>                            
                                 </c:if>
                             </tr>
+        <c:if test="${products!=null}">                    
                             <tr class="bg-dark ">
                                 <td>Item no</td>
                                 <td>Id</td>
@@ -131,7 +132,8 @@
                                     <td> ${p.branch.branch_name}</td>
                                     <!--<td><input type="checkbox" ></input></td>-->
                                 </tr>                   
-                            </c:forEach>                                    
+                            </c:forEach> 
+        </c:if>    
                         </table>
                     </form>
                 </div> 

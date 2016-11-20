@@ -32,8 +32,7 @@
         <div class="container"><br><br><br>
             <center><h1><span class="black"><b>{</b></span><span class="yellow">EDIT PRODUCT<span class="black"><b>}</b></span></h1><br></center>
             <a href="AllProduct"><button type="button" class="btn btn-success yellow">BACK</button><br><br><br></a>
-
-           
+                           
                 <c:if test="${product !=null}">
                     <form action="EditProduct" class="form-horizontal">
                         <div class="form-group">

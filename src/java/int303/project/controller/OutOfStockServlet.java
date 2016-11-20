@@ -53,6 +53,7 @@ public class OutOfStockServlet extends HttpServlet {
                 session.setAttribute("products", products);
                 message = "Out of Stock product";
             }else{
+                session.removeAttribute("products");
                 message = "There is no product that Out of Stock";
                         
             }

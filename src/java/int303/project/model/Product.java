@@ -419,13 +419,15 @@ public class Product {
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
                 + " WHERE lower(P.prod_name) LIKE ? "
+                + " OR lower(P.prod_type) LIKE ? "
                 + " AND P.company_id = ? "
                 //                + " AND S.cancle_status = false  "
                 + " AND S.delete = false  "
                 + " ORDER BY P.prod_id";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setString(1, "%" + prodName.toLowerCase() + "%");
-        pstm.setInt(2, companyId);
+        pstm.setString(2, "%" + prodName.toLowerCase() + "%");
+        pstm.setInt(3, companyId);
 
         ResultSet rs = pstm.executeQuery();
         while (rs.next()) {

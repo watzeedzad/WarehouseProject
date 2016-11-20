@@ -46,6 +46,7 @@ public class CancelProductServlet extends HttpServlet {
        List<Product> products = Product.getCancelProduct(user.getCompanyId());
        if(products != null){
            session.setAttribute("products", products);
+           message = "All CANCLE Products";
        }else{
            message = "There is no Cancel Product";
            log("in products cancel == nul");
