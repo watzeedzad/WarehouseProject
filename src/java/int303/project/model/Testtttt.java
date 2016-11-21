@@ -178,25 +178,51 @@ public class Testtttt {
 //            Staff st = Staff.viewStaffData(10002);
 //            System.out.println(st.getCompany().getCompany_name());
             
-//        List<Branch> branchPerCompany = Branch.viewAmountPerBranch(2);
-//        for(Branch b:branchPerCompany){
-//            System.out.println(b);
-//        }
+        List<Branch> branchPerCompany = Branch.viewAmountPerBranch(2);          
+        List<Branch> branchRamain = Branch.viewRemainPerBranch();
+//                
+//        List<Branch> results = new ArrayList<>();
 //        
+////        while(branchPerCompany.)
+//        for(Branch company:branchPerCompany){
+//            for(Branch remain:branchRamain){
+//                if(company.getBranch_id()==remain.getBranch_id()){
+//                   Branch b = new Branch();
+//                   b.setBranch_id(company.getBranch_id());
+//                   b.setBranch_name(company.getBranch_name());
+//                   b.setLocation(company.getLocation());
+//                   b.setMax_amount(company.getMax_amount());
+//                   b.setAmountProduct(company.getAmountProduct());
+//                   b.setRemain(remain.getAmountProduct());
+//                    System.out.println("      >>> remain.getAmountProduct() = "+remain.getAmountProduct());
+//                   results.add(b);
+//                }
+//                System.out.println("TEST");
+//            }
+//        }
+        for(Branch company:branchPerCompany){
+            System.out.println("****COMPANY****");
+            System.out.println(company);
+        }
 //        System.out.println("\n\n-------------------------------------------------\n\n");
-//        List<Branch> branchRamin = Branch.viewRemainPerBranch();
-//        
-//        for(Branch b:branchRamin){
-//            
+//        for(Branch remain:branchRamain){
+//            System.out.println("****remain****");
+//            System.out.println(remain);
 //        }
-//        List<Branch> result = new ArrayList<>();
+//        System.out.println("\n\n-------------------------------------------------\n\n");
+//        System.out.println(" REEEEEEEEEEESULTTTTTTTTTTTTTTT");
+//        for(Branch res:results ){
+//            System.out.println(res);
+//        }
+//         boolean success = Branch.updateRemainInDB(1000001, -21236);
+//         System.out.println(success);
         
         
-          List<Product> prods = Product.searchByName("book",2);
-          for(Product p : prods){
-              System.out.println(p);
-              
-          }
+//          List<Product> prods = Product.searchByName("book",2);
+//          for(Product p : prods){
+//              System.out.println(p);
+//              
+//          }
         
     }
 }
