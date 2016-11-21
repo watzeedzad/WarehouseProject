@@ -128,7 +128,42 @@
                                     <td> ${p.prod_id}</td>
                                     <td><a href="EditProduct?prod_id=${p.prod_id}&source=OutOfStock">${p.prod_name}</a></td>
                                     <td> ${p.price}</td>
-                                    <td> ${p.amount} </td>
+                                    <td>
+
+
+                                            <!--Button add product -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodalIncrease${p.prod_id}" ${p.cancelStatus==true? 'disabled':''} >INCREASE</button>
+                                            <!-- ---  -->
+                                            <div class="modal fade" id="mymodalIncrease${p.prod_id}" role="dialog">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header" style="background-color: gray">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h2 class="modal-title">INCREASE Amount</h2>
+                                                        </div>
+                                                        <form action="AddProductAmount" id="add">
+                                                            <input type="hidden" name="source" value="allProduct">
+                                                            <div class="modal-body">
+                                                                <table class="add-pro black">
+                                                                    <tr>
+                                                                        <td>ID:</td>
+                                                                        <td><input type="number" class="form-control" name="prodId" value="${p.prod_id}" readonly="" min=1></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Amount:</td>
+                                                                        <td><input type="number" class="form-control" name="prodAmount" min=1 required></td>
+                                                                    </tr>
+                                                                </table>
+                                                                <br>
+                                                                <div class="modal-footer">
+                                                                    <input type="submit" class="btn btn-default" value="Increase">
+                                                                </div></div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- --------------------------------------------->    
+                                        </td>
                                     <td> ${p.branch.branch_name}</td>
                                     <!--<td><input type="checkbox" ></input></td>-->
                                 </tr>                   
