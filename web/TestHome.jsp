@@ -159,7 +159,7 @@
         <div class="col-sm-4"><br><br><br><br><br><br><br>
             <center><img src="image/product.png" style="width: 300px; height: 300px;"></center>
             <center><h1><span class="blue"><b>{</b></span><span class="yellow">PRODUCT</span><span class="blue"><b>}</b></span></h1></center>
-            <center><h4 class="yellow">You can see all product in this here!</h4></center>
+            <center><h4 class="yellow">You can view all product at this here!</h4></center>
         </div>
         <div class="col-sm-8">
             <div class="container-fluid text-center">
@@ -402,7 +402,7 @@
         </div><br>
         <div class="col-sm-6">
             <div class="container-fluid">
-                <h2 class="yellow">You can see all alert product in this here!!</h2><hr>
+                <h2 class="yellow">You can view all alert product at this here!!</h2><hr>
                 <div class=" text-center  slideanim ">
                     <a href="UpdateAlert"><button class="btn btn-default btn-lg">Enter</button></a>
                 </div>
