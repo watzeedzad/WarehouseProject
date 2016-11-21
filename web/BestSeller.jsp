@@ -52,6 +52,15 @@
                 color: white;
                 font-family: sans-serif
             }
+            a:link {
+                color: white;
+            }
+            a:visited {
+                color: palevioletred;
+            }
+            a:hover {
+                color: greenyellow;
+            }
             .container-fluid{
                 padding-top: 60px;
             }
@@ -106,7 +115,7 @@
                             <c:forEach items="${bestSeller}" var="b" varStatus="vs">                       
                                 <tr>
                                     <td>${b.prodId}</td>
-                                    <td>${b.prodName}</td>
+                                    <td><a href="EditProduct?prod_id=${b.prodId}&source=BestSeller">${b.prodName}</a></td>
                                     <td>${b.prodType}</td>
                                     <td>${b.prodPrice}</td>
                                     <td>${b.prodAmount}</td>

@@ -85,7 +85,9 @@
 
                         <center><h1><span class="black"><b>{</b></span><span class="yellow">ALERT<span class="black"><b>}</b></span></h1><br></center>
                         <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">SET ALERT</button></center><br>
-
+                        
+                        
+                        
                         <div class="modal fade" id="myModal1" role="dialog">
                             <div class="modal-dialog modal-lg black">
                                 <div class="modal-content">
@@ -113,13 +115,13 @@
                         </div>
                     </div>
                     <table class="table table-inverse">
-                        <c:if test="${productsAlert!=null}">   
+                          
                             <c:if test="${message != null}">
                                 <tr>
-                                <center><h5>${message}</h5></center>
+                                <center><h4>${message}</h4></center>
                                 </tr>
                             </c:if>
-
+                        <c:if test="${productsAlert!=null}"> 
                             <c:if test="${messageJa != null}">
                                 <tr>
                                 <center><h5>${messageJa}</h5></center>
