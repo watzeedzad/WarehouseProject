@@ -105,8 +105,8 @@
         <servlet-class>int303.project.controller.AddUserServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UndoCancelServlet</servlet-name>
-        <servlet-class>int303.project.controller.UndoCancelServlet</servlet-class>
+        <servlet-name>ViewAmountBranchServlet</servlet-name>
+        <servlet-class>int303.project.controller.ViewAmountBranchServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -205,8 +205,8 @@
         <url-pattern>/AddUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UndoCancelServlet</servlet-name>
-        <url-pattern>/UndoCancel</url-pattern>
+        <servlet-name>ViewAmountBranchServlet</servlet-name>
+        <url-pattern>/ViewAmountBranch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

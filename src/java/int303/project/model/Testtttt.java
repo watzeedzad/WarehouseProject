@@ -174,9 +174,17 @@ public class Testtttt {
 //              System.out.println(p.getProd_name());              
 //          }
 
-            Staff st = Staff.viewStaffData(10002);
-            System.out.println(st.getCompany().getCompany_name());
+//            Staff st = Staff.viewStaffData(10002);
+//            System.out.println(st.getCompany().getCompany_name());
             
-        
+        List<Branch> branchPerCompany = Branch.viewAmountPerBranch(2);
+        for(Branch b:branchPerCompany){
+            System.out.println(b);
+        }
+        System.out.println("\n\n-------------------------------------------------\n\n");
+        List<Branch> branchRamin = Branch.viewRemainPerBranch();
+        for(Branch b:branchPerCompany){
+            System.out.println(b);
+        }
     }
 }
