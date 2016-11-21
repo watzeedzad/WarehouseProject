@@ -609,7 +609,7 @@ public class Product {
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
-                + " WHERE P.amount <= (SELECT alertAmount FROM ALERT WHERE company_id = ?) "
+                + " WHERE P.amount < (SELECT alertAmount FROM ALERT WHERE company_id = ?) "
                 + " AND S.cancle_status = false "
                 + " AND S.delete = false  "
                 + " AND P.company_id = ? "
