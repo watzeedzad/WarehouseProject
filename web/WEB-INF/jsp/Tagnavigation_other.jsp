@@ -48,10 +48,10 @@
                         </li>
                         <li><a href="Editallpage.jsp">EDIT</a></li>
 
-                        <li class="dropdown"><a class="dropdown-toggle"  href="#" data-toggle="dropdown" >VIEW<span class="caret"></span></a>
+                        <li class="dropdown"><a class="dropdown-toggle"  href="#" data-toggle="dropdown" >STATISTIC<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="ViewState.jsp">VIEW ORDER</a></li>
-                                <li><a href="ViewStateByDate.jsp">VIEW ORDER BY TIME</a></li>
+                                <li><a href="ViewState.jsp">STATISTIC ORDER</a></li>
+                                <li><a href="ViewStateByDate.jsp">STATISTIC ORDER BY TIME</a></li>
                             </ul>
                         </li>
                         <li><a href="UpdateAlert">ALERT</a></li>
