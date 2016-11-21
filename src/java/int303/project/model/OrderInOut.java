@@ -111,7 +111,7 @@ public class OrderInOut {
     public static List<OrderInOut> orderById(String in, int searchInput, int companyId) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -132,7 +132,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -144,7 +144,7 @@ public class OrderInOut {
     public static List<OrderInOut> orderByName(String in, String searchInput, int companyId) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -165,7 +165,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -177,7 +177,7 @@ public class OrderInOut {
     public static List<OrderInOut> allOrderByName(String in, String out, String searchInput, int companyId) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -199,7 +199,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -211,7 +211,7 @@ public class OrderInOut {
     public static List<OrderInOut> allOrderById(String in, String out, int searchInput, int companyId) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -233,7 +233,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -245,7 +245,7 @@ public class OrderInOut {
     public static List<OrderInOut> orderMonth(String in, int companyId, String month) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -266,7 +266,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -278,7 +278,7 @@ public class OrderInOut {
     public static List<OrderInOut> orderYear(String in, int companyId, String year) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -299,7 +299,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -311,7 +311,7 @@ public class OrderInOut {
     public static List<OrderInOut> orderMonthYear(String in, int companyId, String month, String year) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -333,7 +333,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -345,7 +345,7 @@ public class OrderInOut {
     public static List<OrderInOut> allOrderMonth(String in, String out, int companyId, String month) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -367,7 +367,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -379,7 +379,7 @@ public class OrderInOut {
     public static List<OrderInOut> allOrderYear(String in, String out, int companyId, String year) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -401,7 +401,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -413,7 +413,7 @@ public class OrderInOut {
     public static List<OrderInOut> allOrderMonthYear(String in, String out, int companyId, String month, String year) {
         List<OrderInOut> order = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT ors.ORDER_ID, prod.PROD_ID, prod.PROD_NAME, ors.AMOUNT, CONCAT(S.FIRSTNAME, \" \", S.LASTNAME) AS \"staffName\", ors.ORDERTYPE, ors.DATE_ORDER, b.BRANCH_NAME FROM ORDERS ors\n"
                     + "LEFT JOIN STAFFS S\n"
                     + "ON S.STAFF_ID = ors.STAFF_ID\n"
@@ -436,7 +436,7 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {

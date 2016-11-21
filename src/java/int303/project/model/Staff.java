@@ -113,14 +113,14 @@ public class Staff {
     public static Staff viewStaffData(int staffId) {
         Staff s = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement(VIEW_STAFF_SQL);
             pstm.setInt(1, staffId);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 s = new Staff(rs);
             }
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -134,14 +134,14 @@ public class Staff {
     public static void editStaff(String fName, String lName, String address, int staffId) {
         
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement(EDIT_STAFF_SQL);
             pstm.setString(1, fName);
             pstm.setString(2, lName);
             pstm.setString(3, address);
             pstm.setInt(4, staffId);
             pstm.executeUpdate();
-            conn.close();
+            //conn.close();
             pstm.close();
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -154,7 +154,7 @@ public class Staff {
     public boolean addStaff(int companyId, String fName, String lName, long citizenNo, String address, String position) {
         int x=0;
         try {           
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement(ADD_STAFF_SQL,Statement.RETURN_GENERATED_KEYS);
             // ใส่Statement.RETURN_GENERATED_KEYS เพื่อขอเลข id             
             BigDecimal temp = null;
@@ -179,7 +179,7 @@ public class Staff {
             this.setAddress(address);
             this.setPosition(position);
             
-            conn.close();
+            //conn.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {

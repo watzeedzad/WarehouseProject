@@ -52,7 +52,7 @@ public class Branch {
     public static Branch getBranch(int branchId) throws SQLException {
         Branch branch = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM BRANCH WHERE branch_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, branchId);
@@ -62,7 +62,7 @@ public class Branch {
             branch = new Branch();
             orm(branch, rs);
         }
-        con.close();
+        //con.close();
         pstm.close();
         rs.close();
         return branch;
@@ -72,7 +72,7 @@ public class Branch {
         List<Branch> branches = null;
         Branch branch = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM BRANCH ";
         PreparedStatement pstm;
         try {
@@ -86,7 +86,7 @@ public class Branch {
                 orm(branch, rs);
                 branches.add(branch);
             }
-            con.close();
+            //con.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -105,7 +105,7 @@ public class Branch {
     public boolean addNewBranch() throws SQLException {
         int x = 0;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "INSERT INTO BRANCH(branch_name,location) VALUES(?,?)";
         PreparedStatement pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         pstm.setString(1, this.getBranch_name());
@@ -118,7 +118,7 @@ public class Branch {
 
         rs.close();
         pstm.close();
-        con.close();
+        //con.close();
 
         return x > 0;
     }

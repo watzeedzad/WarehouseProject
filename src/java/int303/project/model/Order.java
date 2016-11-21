@@ -54,7 +54,7 @@ public class Order {
         // save ข้อมูลใน order ด้วย  
         try {
             Product p = Product.getProduct(prodId);
-            Connection con = ConnectionBuilder.getConnection();
+            Connection con = ConnectionBuilder.getConn();
             String sql = "UPDATE PRODUCTS SET amount = ? "
                     + " WHERE prod_id = ? ";
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -64,7 +64,7 @@ public class Order {
             x = pstm.executeUpdate();
             addOrderSuccess = Order.addOrder(p, s, "IN", amount);
 
-            con.close();
+            //con.close();
             pstm.close();
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -80,7 +80,7 @@ public class Order {
         // save ข้อมูลใน order ด้วย  
         try {
             Product p = Product.getProduct(prodId);
-            Connection con = ConnectionBuilder.getConnection();
+            Connection con = ConnectionBuilder.getConn();
             String sql = "UPDATE PRODUCTS SET amount = ?"
                     + " WHERE prod_id = ? ";
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -90,7 +90,7 @@ public class Order {
             x = pstm.executeUpdate();
             addOrderSuccess = Order.addOrder(p, s, "OUT", amount);
 
-            con.close();
+            //con.close();
             pstm.close();
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -105,7 +105,7 @@ public class Order {
         boolean addProductSuccess = p.addNewProduct();
         boolean addOrderSuccess = addOrder(p, s, "IN", p.getAmount());
 
-//        Connection con = ConnectionBuilder.getConnection();
+//        Connection con = ConnectionBuilder.getConn();
 //        String sql = "INSERT INTO ORDERS(staff_id,ordertype,date_order,prod_id,amount) "
 //                     + " VALUES(?,?,?,?,?)";
 //        PreparedStatement pstm = con.prepareStatement(sql);
@@ -128,7 +128,7 @@ public class Order {
             inOrOut = "OUT";
         }
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "INSERT INTO ORDERS(staff_id,ordertype,date_order,prod_id,amount) "
                 + " VALUES(?,?,?,?,?)";
         PreparedStatement pstm = con.prepareStatement(sql);
@@ -140,7 +140,7 @@ public class Order {
 
         x = pstm.executeUpdate();
 
-        con.close();
+        //con.close();
         pstm.close();
         return x > 0;
     }
@@ -148,7 +148,7 @@ public class Order {
     public static List<BestSeller> statBestSeller(int companyId) {
         List<BestSeller> prod = null;
         try {
-            Connection conn = ConnectionBuilder.getConnection();
+            Connection conn = ConnectionBuilder.getConn();
             PreparedStatement pstm = conn.prepareStatement("SELECT prod.PROD_ID, prod.PROD_NAME, prod.PRICE, SUM(prod.AMOUNT) AS \"amountSum\", prod.PROD_TYPE, b.BRANCH_NAME, com.COMPANY_NAME, prods.CANCLE_STATUS FROM ORDERS ors\n"
                     + "LEFT JOIN PRODUCTS prod\n"
                     + "ON prod.PROD_ID = ors.PROD_ID\n"

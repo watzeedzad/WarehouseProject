@@ -143,7 +143,7 @@ public class Product {
     public static boolean setAlertAmountInDB(int companyId, int amount) {
         int x = 0;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = " UPDATE ALERT SET alertAmount = ? "
                 + " WHERE company_id = ? ";
 
@@ -153,7 +153,7 @@ public class Product {
             pstm.setInt(2, companyId);
             x = pstm.executeUpdate();
 
-            con.close();
+            //con.close();
             pstm.close();
         } catch (SQLException ex) {
 //            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
@@ -165,7 +165,7 @@ public class Product {
 
     public static int getShareAlertFromDB(int companyId) {
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT alertAmount FROM ALERT "
                 + " WHERE company_id = ? ";
 
@@ -180,7 +180,7 @@ public class Product {
 
             rs.close();
             pstm.close();
-            con.close();
+            //con.close();
             System.out.println("shareAlert = " + shareAlert);
 
         } catch (SQLException ex) {
@@ -192,7 +192,7 @@ public class Product {
     public static Product getProduct(long prodId) throws SQLException {
         Product prod = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
                 + " WHERE P.prod_id = ? ";
@@ -207,7 +207,7 @@ public class Product {
 
         rs.close();
         pstm.close();
-        con.close();
+        //con.close();
 
         return prod;
     }
@@ -229,7 +229,7 @@ public class Product {
     public boolean addAmount(int amount) throws SQLException {
         int x = 0;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         PreparedStatement pstm = con.prepareStatement(SQL_SET_AMOUNT);
         pstm.setInt(1, this.getAmount() + amount);
         pstm.setLong(2, this.getProd_id());
@@ -238,7 +238,7 @@ public class Product {
         x = pstm.executeUpdate();
 
         pstm.close();
-        con.close();
+        //con.close();
 
         return x > 0;
     }
@@ -246,7 +246,7 @@ public class Product {
     public boolean reduceAmount(int amount) throws SQLException {
         int x = 0;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         PreparedStatement pstm = con.prepareStatement(SQL_SET_AMOUNT);
         pstm.setInt(1, this.getAmount() - amount);
         pstm.setLong(2, this.getProd_id());
@@ -254,14 +254,14 @@ public class Product {
         x = pstm.executeUpdate();
         this.setAmount(this.getAmount() - amount);
         pstm.close();
-        con.close();
+        //con.close();
 
         return x > 0;
     }
 
     public boolean addNewProduct() throws SQLException {
         int x = 0;
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "INSERT INTO PRODUCTS(prod_name,price,amount,branch_id,prod_type,company_id) VALUES(?,?,?,?,?,?)";
         PreparedStatement pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -282,7 +282,7 @@ public class Product {
         boolean saveStatusSuccess = addToProductStatus(con, id);
 
         pstm.close();
-        con.close();
+        //con.close();
 
         return x > 0 && saveStatusSuccess;
     }
@@ -296,7 +296,7 @@ public class Product {
             pstm.setLong(1, prodId);
             x = pstm.executeUpdate();
 
-            con.close();
+            //con.close();
             pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
@@ -307,7 +307,7 @@ public class Product {
 //    public static boolean isDeleteProduct(long prodId){
 //        boolean delete = false;
 //        
-//        Connection con = ConnectionBuilder.getConnection();        
+//        Connection con = ConnectionBuilder.getConn();        
 //        String sql = "SELECT delete FROM CANCLE_STATUS "
 //                     + " WHERE prodId = ? ";        
 //        try {
@@ -327,7 +327,7 @@ public class Product {
     public static boolean isExistProduct(int companyId, long prodId) {
         boolean exist = false;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id  "
                 + " WHERE P.prod_id = ? "
@@ -343,7 +343,7 @@ public class Product {
                 exist = true;
             }
 
-            con.close();
+            //con.close();
             pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
@@ -354,7 +354,7 @@ public class Product {
 
 //    public boolean editProduct() throws SQLException {
 //        int x = 0;
-//        Connection con = ConnectionBuilder.getConnection();
+//        Connection con = ConnectionBuilder.getConn();
 //        String sql = "UPDATE PRODUCTS SET prod_name=?,price=?,amount=?,branch_id=?,prod_type=?,company_id=? WHERE prod_id=?";
 //        PreparedStatement pstm = con.prepareStatement(sql);
 //
@@ -369,14 +369,14 @@ public class Product {
 //        x = pstm.executeUpdate();
 //
 //        pstm.close();
-//        con.close();
+//        //con.close();
 //
 //        return x > 0;
 //    }
 //    
     public void editProduct(String prodName, double prodPrice, String prodType, long prodId) throws SQLException {
         int x = 0;
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "UPDATE PRODUCTS SET prod_name=?,price=?,prod_type=? WHERE prod_id=?";
         PreparedStatement pstm = con.prepareStatement(sql);
 
@@ -388,14 +388,14 @@ public class Product {
         x = pstm.executeUpdate();
 
         pstm.close();
-        con.close();
+        //con.close();
     }
 
 //    public static List<Product> searchByName(String prodName) throws SQLException{
 //        List<Product> products = null;
 //        Product prod = null;
 //        
-//        Connection con = ConnectionBuilder.getConnection();
+//        Connection con = ConnectionBuilder.getConn();
 //        String sql = "SELECT * FROM PRODUCTS WHERE lower(prod_name) LIKE ? ORDER BY prod_id";
 //        PreparedStatement pstm = con.prepareStatement(sql);
 //        pstm.setString(1, prodName.toLowerCase()+"%");
@@ -412,7 +412,7 @@ public class Product {
 //        
 //        rs.close();
 //        pstm.close();
-//        con.close();
+//        //con.close();
 //        
 //        return products;
 //    }
@@ -420,7 +420,7 @@ public class Product {
         List<Product> products = null;
         Product prod = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
                 + " WHERE lower(P.prod_name) LIKE ? "
@@ -447,7 +447,7 @@ public class Product {
 //        getShareAlertFromDB(companyId);
         rs.close();
         pstm.close();
-        con.close();
+        //con.close();
 
         return products;
     }
@@ -455,7 +455,7 @@ public class Product {
     public static Product searchById(long prodId, int companyId) throws SQLException {
         Product prod = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
                 + " WHERE P.prod_id = ? "
@@ -475,7 +475,7 @@ public class Product {
 //        getShareAlertFromDB(companyId);
         rs.close();
         pstm.close();
-        con.close();
+        //con.close();
 
         return prod;
     }
@@ -484,7 +484,7 @@ public class Product {
         List<Product> products = null;
         Product prod = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
                 + " WHERE P.amount = 0 "
@@ -507,7 +507,7 @@ public class Product {
 
         rs.close();
         pstm.close();
-        con.close();
+        //con.close();
 
         return products;
     }
@@ -516,7 +516,7 @@ public class Product {
         List<Product> products = null;
         Product prod = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
                 + " WHERE P.company_id = ? "
@@ -545,7 +545,7 @@ public class Product {
 //        getShareAlertFromDB(companyId);
         rs.close();
         pstm.close();
-        con.close();
+        //con.close();
         return products;
     }
 
@@ -553,7 +553,7 @@ public class Product {
 //        List<Product> products = null;
 //        Product prod = new Product();
 //        
-//        Connection con = ConnectionBuilder.getConnection();
+//        Connection con = ConnectionBuilder.getConn();
 //        String sql = "SELECT * FROM PRODUCTS p JOIN Companies c ON p.COMPANY_ID ="
 //                      +"c.company_id WHERE c.company_name = ? ORDER BY p.prod_id";
 //        PreparedStatement pstm = con.prepareStatement(sql);
@@ -570,14 +570,14 @@ public class Product {
 //        
 //        rs.close();
 //        pstm.close();
-//        con.close();    
+//        //con.close();    
 //        return products;
 //    }
     public static List<Product> getAlertProduct(int companyId) {
         List<Product> prods = null;
         Product p = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
                 + " WHERE P.amount <= (SELECT alertAmount FROM ALERT WHERE company_id = ?) "
@@ -602,7 +602,7 @@ public class Product {
 //            getShareAlertFromDB(companyId);
             rs.close();
             pstm.close();
-            con.close();
+            //con.close();
 
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -614,7 +614,7 @@ public class Product {
         int x = 0;
 
         try {
-            Connection con = ConnectionBuilder.getConnection();
+            Connection con = ConnectionBuilder.getConn();
 
             String sql = "UPDATE `PRODUCT_STATUS` SET `DELETE` = ? "
                     + "WHERE PROD_ID = ? ;";
@@ -623,7 +623,7 @@ public class Product {
             pstm.setLong(2, prodId);
             x = pstm.executeUpdate();
 
-            con.close();
+            //con.close();
             pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
@@ -636,7 +636,7 @@ public class Product {
         int x = 0;
 
         try {
-            Connection con = ConnectionBuilder.getConnection();
+            Connection con = ConnectionBuilder.getConn();
 
             String sql = "UPDATE `PRODUCT_STATUS` SET cancle_status = ? "
                     + "WHERE PROD_ID = ? ;";
@@ -645,7 +645,7 @@ public class Product {
             pstm.setLong(2, prodId);
             x = pstm.executeUpdate();
 
-            con.close();
+            //con.close();
             pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
@@ -658,7 +658,7 @@ public class Product {
         List<Product> products = null;
         Product p = null;
 
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = ConnectionBuilder.getConn();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id "
                 + " WHERE P.company_id = ? "
@@ -680,7 +680,7 @@ public class Product {
 
             rs.close();
             pstm.close();
-            con.close();
+            //con.close();
 
         } catch (SQLException ex) {
             System.out.println(ex);
