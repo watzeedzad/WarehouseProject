@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
+        <title>::VIEW ORDER BY TIME::</title>
         <style>
             bg-dark{
                 background-color: #1F2739;
@@ -70,6 +70,34 @@
             .black { color: black}
             .text-white{ color: white}
             .center{text-align: center}
+            .rounded {
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+            }
+            .styled-select {
+                background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+                height: 29px;
+                overflow: hidden;
+                width: 240px;
+            }
+            .semi-square {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+            .green   { background-color: #779126; }
+            .select_join {
+                width: 170px;
+                height: 28px;
+                overflow: hidden;
+/*                background: url('http://s24.postimg.org/lyhytocf5/dropdown.png') no-repeat right #FEFEFE;*/
+                border: black 1px solid;
+                -webkit-border-radius: 3px;
+/*                border-radius: 3px;
+                -webkit-box-shadow: inset 0px 0px 10px 1px #FEFEFE;
+                box-shadow: inset 0px 0px 10px 1px #FEFEFE;*/
+            }
         </style>    
 
     </head>
@@ -82,20 +110,21 @@
             </div>
             <div class="col-sm-8">
                 <table>                    
-                    
+
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT BY DATE<span class="black"><b>}</b></span></h1><br></center>
-                    <tr><td>Category : </td>
-                        <td>
-                            <select name="range" id="category" class="black" onchange="cat()">
+                    <tr>
+                    <center><h4>Category : 
+
+                            <select name="range" id="category" class="select_join green" onchange="cat()" style="width: 150px;">
                                 <option value="monthandyear" ${param.range=='monthandyear' ? 'selected': ''}>Month and Year</option>
                                 <option value="month" ${param.range=='month' ? 'selected': ''}>Month</option>
                                 <option value="year" ${param.range=='year' ? 'selected': ''}>Year</option>                                
                             </select>
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td>Month : </td>
-                        <td>
-                            <select name="month" class="black" id="month" ${param.range=='month' ? '': 'disabled'}>
+
+                            &nbsp;
+                            Month : 
+
+                            <select name="month" style="width: 100px;" class="select_join green" id="month" ${param.range=='month' ? '': 'disabled'}>
                                 <option value='1' ${param.month==1 ? 'selected': ''}>January</option>
                                 <option value='2' ${param.month==2 ? 'selected': ''}>February</option>
                                 <option value='3' ${param.month==3 ? 'selected': ''}>March</option>
@@ -109,11 +138,11 @@
                                 <option value='11' ${param.month==11 ? 'selected': ''}>November</option>
                                 <option value='12' ${param.month==12 ? 'selected': ''}>December</option>
                             </select> 
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td>Year</td>
-                        <td>
-                            <select name="year"  class="black" id="year" ${param.range=='year' ? '': 'disabled'}>
+
+                            &nbsp;
+                            Year :
+
+                            <select name="year" style="width: 70px;" class="select_join green" id="year" ${param.range=='year' ? '': 'disabled'}>
                                 <option value='2005' ${param.year==2005 ? 'selected': ''}>2005</option>
                                 <option value='2006' ${param.year==2006 ? 'selected': ''}>2006</option>
                                 <option value='2007' ${param.year==2007 ? 'selected': ''}>2007</option>
@@ -127,24 +156,27 @@
                                 <option value='2015' ${param.year==2015 ? 'selected': ''}>2015</option>
                                 <option value='2016' ${param.year==2016 ? 'selected': ''}>2016</option>
                             </select>
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td> Order Type</td>
-                        <td>
-                            <select name="viewBy" class="black" >
+
+                            &nbsp;
+                            Order Type :
+
+                            <select name="viewBy" class="select_join green" style="width: 70px;">
                                 <option value="in" ${param.viewBy=='in' ? 'selected': ''}>IN</option>
                                 <option value="out" ${param.viewBy=='out' ? 'selected': ''}>OUT</option>
                                 <option value="all" ${param.viewBy=='all' ? 'selected': ''}>ALL</option>
-                            </select>
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><input type="submit" value="Submit" class="btn-default"></td>
-                        <input type="hidden" name="range" value="${param.range}">
-                        <input type="hidden" name="range" value="${param.range}">
-                        <input type="hidden" name="month" value="${param.month}">
-                        <input type="hidden" name="year" value="${param.year}">
-                        <input type="hidden" name="viewBy" value="${param.viewBy}">
+                            </select>&nbsp;&nbsp;
+                     
+                            <input type="submit" value="SEARCH" class="btn-default semi-square">
+                            
+                            <input type="hidden" name="range" value="${param.range}">
+                            <input type="hidden" name="range" value="${param.range}">
+                            <input type="hidden" name="month" value="${param.month}">
+                            <input type="hidden" name="year" value="${param.year}">
+                            <input type="hidden" name="viewBy" value="${param.viewBy}">
+                        </h4>
+                    </center>
                     </tr>
+
                 </table>
 
                 <table class="table table-inverse">
@@ -205,4 +237,4 @@
             }
         }
     </script>
- </html>
+</html>

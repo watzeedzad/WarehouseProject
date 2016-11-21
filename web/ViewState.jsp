@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
+        <title>::VIEW ORDER::</title>
         <style>
             bg-dark{
                 background-color: #1F2739;
@@ -70,11 +70,28 @@
             .black { color: black}
             .text-white{ color: white}
             .center{text-align: center}
+            .rounded {
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+            }
+            .styled-select {
+                background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+                height: 29px;
+                overflow: hidden;
+                width: 240px;
+            }
+            .semi-square {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+            .green   { background-color: #779126; }
         </style>    
 
     </head>
     <body>
-        <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/><br><br>
+        <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/><br><br><br>
         <div class="col-sm-2">
 
         </div>
@@ -85,13 +102,14 @@
                 <table class="table table-inverse">
                     <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT<span class="black"><b>}</b></span></h1><br></center>
                     <tr>
-                    <p class="black">Search product Id/Name : <input type="text" name="searchParam" class="form-group" value="${param.searchParam}">
-                        <select name="viewBy">
-                            <option value="in" ${param.viewBy=='in'? 'selected':''}>IN</option>
-                            <option value="out" ${param.viewBy=='out'? 'selected':''}>OUT</option>
-                            <option value="all" ${param.viewBy=='all'? 'selected':''}>ALL</option>
-                        </select>
-                        <input type="submit" class="btn-default"></p>
+                    <center><h4 class="text-white ">Search product Id/Name : <input type="text" name="searchParam" class="semi-square black" value="${param.searchParam}">&nbsp;&nbsp;
+                            <select name="viewBy" class="styled-select semi-square green " style="width: 70px;">
+                                <option value="in" ${param.viewBy=='in'? 'selected':''}>IN</option>
+                                <option value="out" ${param.viewBy=='out'? 'selected':''}>OUT</option>
+                                <option value="all" ${param.viewBy=='all'? 'selected':''}>ALL</option>
+                            </select>&nbsp;&nbsp;
+                            <input type="submit" class="btn-default semi-square" value="SEARCH">
+                        </h4></center>
                     </tr>
                     <thead>
                         <c:if test="${messages!=null}">
@@ -126,8 +144,8 @@
                             </c:forEach>
                         </tbody>                        
                     </c:if>
-                        <input type="hidden" name="searchParam" value="${param.searchParam}">
-                        <input type="hidden" name="viewBy" value="${param.viewBy}">
+                    <input type="hidden" name="searchParam" value="${param.searchParam}">
+                    <input type="hidden" name="viewBy" value="${param.viewBy}">
                 </table>
             </form>
 

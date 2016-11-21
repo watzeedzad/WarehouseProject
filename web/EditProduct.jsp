@@ -26,6 +26,7 @@
             .yellow { color: #FFF842; }
             .black { color: black}
         </style>
+        <title>EDIT PRODUCT</title>
     </head>
     <body>
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>

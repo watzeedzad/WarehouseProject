@@ -50,8 +50,8 @@
 
                         <li class="dropdown"><a class="dropdown-toggle"  href="#" data-toggle="dropdown" >VIEW<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="yodkaitormonth.jsp">YODCAYPERMONTH</a></li>
-                                <li><a href="yodkaisinka.jsp">YODCAYPRODUCT</a></li>
+                                <li><a href="ViewState.jsp">VIEW ORDER</a></li>
+                                <li><a href="ViewStateByDate.jsp">VIEW ORDER BY TIME</a></li>
                             </ul>
                         </li>
                         <li><a href="UpdateAlert">ALERT</a></li>

@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>LOG IN</h1>
+        <h1>::LOG IN::</h1>
         <form action="login">
             <p>USERNAME: <input type="text" name="username"></p>
             <p>PASSWORD: <input type="password" name="username"></p>
