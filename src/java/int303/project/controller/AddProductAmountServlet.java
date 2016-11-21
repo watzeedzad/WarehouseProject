@@ -77,6 +77,8 @@ public class AddProductAmountServlet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/AllProduct").forward(request, response);
             }else if(source.equals("alert")){
                 getServletContext().getRequestDispatcher("/UpdateAlert").forward(request, response);
+            }else if(source.equals("backupProduct")){
+                getServletContext().getRequestDispatcher("/AllProduct?source=backupProduct").forward(request, response);
             }
         }else{
             getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);
