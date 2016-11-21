@@ -111,7 +111,7 @@
                                     </tr>                            
                                 </c:if>
                             </tr>
-        <c:if test="${branchPerCompany!=null && branchRemain!=null}">                    
+        <c:if test="${branchPerCompany!=null}">                    
                             <tr class="bg-dark ">
                                 <td>Item no</td>
                                 <td>Branch ID</td>
@@ -131,7 +131,7 @@
                                     <td> ${b1.location}</td>
                                     <td colspan="2"> ${b1.max_amount}</td>
                                     <td > ${b1.amountProduct}</td>                                    
-                                    <td> </td>
+                                    <td> ${b1.remain}</td>
                                     <!--<td><input type="checkbox" ></input></td>-->
                                 </tr>                   
                             </c:forEach> 

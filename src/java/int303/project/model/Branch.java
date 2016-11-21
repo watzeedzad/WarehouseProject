@@ -26,6 +26,7 @@ public class Branch {
     private String location;
     private int max_amount;
     private int amountProduct;  
+    private int remain;
 
     public int getBranch_id() {
         return branch_id;
@@ -67,6 +68,15 @@ public class Branch {
         this.amountProduct = amountProduct;
     }
 
+    public int getRemain() {
+        return remain;
+    }
+
+    public void setRemain(int remain) {
+        this.remain = remain;
+    }
+
+    
     public static Branch getBranch(int branchId) throws SQLException {
         Branch branch = null;
 
@@ -146,11 +156,11 @@ public class Branch {
         Branch b = null;
         
          Connection con = ConnectionBuilder.getConn();
-         String sql = "SELECT B.BRANCH_ID,B.BRANCH_NAME,B.location,B.MAX_AMOUNT,SUM(P.AMOUNT) "
+         String sql = "SELECT B.BRANCH_ID,B.BRANCH_NAME,B.location,B.MAX_AMOUNT,SUM(P.AMOUNT),remain "
                     + " FROM PRODUCTS P "
                     + " JOIN BRANCH B ON P.BRANCH_ID = B.BRANCH_ID "
                     + " WHERE P.COMPANY_ID = ? "
-                     + " GROUP BY B.BRANCH_ID,B.BRANCH_NAME ORDER BY B.BRANCH_ID ";
+                    + " GROUP BY B.BRANCH_ID,B.BRANCH_NAME ORDER BY B.BRANCH_ID ";
          PreparedStatement pstm;
          
         try {
@@ -167,6 +177,7 @@ public class Branch {
                 b.setLocation(rs.getString("B.location"));
                 b.setMax_amount(rs.getInt("B.MAX_AMOUNT"));
                 b.setAmountProduct(rs.getInt("SUM(P.AMOUNT)"));
+                b.setRemain(rs.getInt("remain"));
                 branches.add(b);
             }
             pstm.close();
@@ -198,12 +209,15 @@ public class Branch {
                     branches = new ArrayList<>();
                 }
                 b = new Branch();
-                b.setBranch_id(rs.getInt("B.BRANCH_ID"));
+                int id = rs.getInt("B.BRANCH_ID");
+                b.setBranch_id(id);
                 b.setBranch_name(rs.getString("B.BRANCH_NAME"));
                 b.setLocation(rs.getString("B.location"));
                 b.setMax_amount(rs.getInt("B.MAX_AMOUNT"));
-                b.setAmountProduct(rs.getInt(5));
+                int remain = rs.getInt(5);
+                b.setAmountProduct(remain);
                 branches.add(b);
+                updateRemainInDB(id, remain);                
             }
             pstm.close();
             rs.close();            
@@ -212,6 +226,24 @@ public class Branch {
         }       
         return branches;
     }
+    
+    public static boolean updateRemainInDB(int bId,int remain){
+        int x=0;
+        
+        Connection con = ConnectionBuilder.getConn();
+        String sql = "UPDATE BRANCH SET remain = ? "
+                    + "  WHERE BRANCH_ID = ? ";
+        PreparedStatement pstm;        
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(1, remain);
+            pstm.setInt(2, bId);            
+            x = pstm.executeUpdate();            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return x>0;
+    }
 
     @Override
     public String toString() {
@@ -219,7 +251,8 @@ public class Branch {
                 "\n, branch_name=" + branch_name + 
                 "\n, location=" + location + 
                 "\n, max_amount=" + max_amount + 
-                "\n, amountProduct=" + amountProduct + '}';
+                "\n, amountProduct=" + amountProduct + 
+                "\n remain= "+remain+'}';
     }
 
     
