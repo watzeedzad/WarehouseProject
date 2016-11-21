@@ -50,6 +50,11 @@ public class ViewAmountBranchServlet extends HttpServlet {
 
         List<Branch> branchPerCompany = Branch.viewAmountPerBranch(companyId);
         List<Branch> branchRemain = Branch.viewRemainPerBranch();
+                        
+        session.setAttribute("branchPerCompany", branchPerCompany);
+        session.setAttribute("branchRemain", branchRemain);
+        
+        getServletContext().getRequestDispatcher("/ViewAmountBranch.jsp").forward(request, response);
         
     }
 

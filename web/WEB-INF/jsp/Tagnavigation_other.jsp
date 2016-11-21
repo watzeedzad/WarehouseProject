@@ -37,7 +37,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right ">
-                        <li><a href="TestHome.jsp">${staffData.company.company_name}</a></li>
+                        <li><a href="ViewAmountBranch">${staffData.company.company_name}</a></li>
                         <li class="dropdown"><a class="dropdown-toggle"  href="#" data-toggle="dropdown" >PRODUCT<span class="caret"></span></a>
                             <ul class="dropdown-menu">                               
                                 <li><a href="AllProduct">ALL PRODUCT</a></li>
