@@ -191,10 +191,12 @@ public class Testtttt {
 //        }
 //        List<Branch> result = new ArrayList<>();
         
-        List<BestSeller> bestSeller = Order.statBestSeller(2);
-        for(BestSeller b:bestSeller){
-            System.out.println(b.getProdAmount());
-        }
+        
+          List<Product> prods = Product.searchByName("book",2);
+          for(Product p : prods){
+              System.out.println(p);
+              
+          }
         
     }
 }

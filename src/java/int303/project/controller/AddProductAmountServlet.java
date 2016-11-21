@@ -51,7 +51,7 @@ public class AddProductAmountServlet extends HttpServlet {
         try {
             long id = Long.parseLong(idStr);
             int amount = Integer.parseInt(amountStr);            
-            boolean exist =  Product.isExistProduct(user.getCompanyId(), id);
+            boolean exist =  Product.isNotCancelProduct(user.getCompanyId(), id);
                                 
             if(exist){
                 Product prod = Product.getProduct(id); 
