@@ -110,7 +110,7 @@
                                     <tr>
                                         <td colspan="3">${vs.count}</td>
                                         <td > ${p.prod_id}</td>
-                                        <td colspan="5"><a href="EditProduct?prod_id=${p.prod_id}&source=product.jsp">${p.prod_name}</a> </td>
+                                        <td colspan="5"><a href="EditProduct?prod_id=${p.prod_id}&source=AllProduct">${p.prod_name}</a> </td>
                                         <td> ${p.price}</td>
                                         <td>
                                             <input type="number" ${p.amount<alertAmount? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
