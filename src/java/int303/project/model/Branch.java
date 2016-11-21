@@ -25,7 +25,7 @@ public class Branch {
     private String branch_name;
     private String location;
     private int max_amount;
-    private int amountProduct;  
+    private int amountProduct;
 
     public int getBranch_id() {
         return branch_id;
@@ -49,7 +49,7 @@ public class Branch {
 
     public void setLocation(String location) {
         this.location = location;
-    }    
+    }
 
     public int getMax_amount() {
         return max_amount;
@@ -70,7 +70,7 @@ public class Branch {
     public static Branch getBranch(int branchId) throws SQLException {
         Branch branch = null;
 
-        Connection con = ConnectionBuilder.getConn();
+        Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM BRANCH WHERE branch_id = ?";
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setInt(1, branchId);
@@ -80,7 +80,7 @@ public class Branch {
             branch = new Branch();
             orm(branch, rs);
         }
-        //con.close();
+        con.close();
         pstm.close();
         rs.close();
         return branch;
@@ -90,7 +90,7 @@ public class Branch {
         List<Branch> branches = null;
         Branch branch = null;
 
-        Connection con = ConnectionBuilder.getConn();
+        Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM BRANCH ";
         PreparedStatement pstm;
         try {
@@ -104,7 +104,7 @@ public class Branch {
                 orm(branch, rs);
                 branches.add(branch);
             }
-            //con.close();
+            con.close();
             pstm.close();
             rs.close();
         } catch (SQLException ex) {
@@ -117,13 +117,13 @@ public class Branch {
     public static void orm(Branch branch, ResultSet rs) throws SQLException {
         branch.setBranch_id(rs.getInt("branch_id"));
         branch.setBranch_name(rs.getString("branch_name"));
-        branch.setLocation(rs.getString("location"));        
+        branch.setLocation(rs.getString("location"));
     }
 
     public boolean addNewBranch() throws SQLException {
         int x = 0;
 
-        Connection con = ConnectionBuilder.getConn();
+        Connection con = ConnectionBuilder.getConnection();
         String sql = "INSERT INTO BRANCH(branch_name,location) VALUES(?,?)";
         PreparedStatement pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         pstm.setString(1, this.getBranch_name());
@@ -136,29 +136,29 @@ public class Branch {
 
         rs.close();
         pstm.close();
-        //con.close();
+        con.close();
 
         return x > 0;
     }
-    
-    public static List<Branch> viewAmountPerBranch(int companyId){
+
+    public static List<Branch> viewAmountPerBranch(int companyId) {
         List<Branch> branches = null;
         Branch b = null;
-        
-         Connection con = ConnectionBuilder.getConn();
-         String sql = "SELECT B.BRANCH_ID,B.BRANCH_NAME,B.location,B.MAX_AMOUNT,SUM(P.AMOUNT) "
-                    + " FROM PRODUCTS P "
-                    + " JOIN BRANCH B ON P.BRANCH_ID = B.BRANCH_ID "
-                    + " WHERE P.COMPANY_ID = ? "
-                     + " GROUP BY B.BRANCH_ID,B.BRANCH_NAME ORDER BY B.BRANCH_ID ";
-         PreparedStatement pstm;
-         
+
+        Connection con = ConnectionBuilder.getConnection();
+        String sql = "SELECT B.BRANCH_ID,B.BRANCH_NAME,B.location,B.MAX_AMOUNT,SUM(P.AMOUNT) "
+                + " FROM PRODUCTS P "
+                + " JOIN BRANCH B ON P.BRANCH_ID = B.BRANCH_ID "
+                + " WHERE P.COMPANY_ID = ? "
+                + " GROUP BY B.BRANCH_ID,B.BRANCH_NAME ORDER BY B.BRANCH_ID ";
+        PreparedStatement pstm;
+
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, companyId);
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
-                if(branches==null){
+            while (rs.next()) {
+                if (branches == null) {
                     branches = new ArrayList<>();
                 }
                 b = new Branch();
@@ -170,31 +170,32 @@ public class Branch {
                 branches.add(b);
             }
             pstm.close();
-            rs.close();            
+            rs.close();
+            con.close();
         } catch (SQLException ex) {
             System.out.println(ex);
-        }       
+        }
         return branches;
     }
-    
-    public static List<Branch> viewRemainPerBranch(){
+
+    public static List<Branch> viewRemainPerBranch() {
         List<Branch> branches = null;
         Branch b = null;
-        
-         Connection con = ConnectionBuilder.getConn();
-         String sql = "SELECT B.BRANCH_ID,B.BRANCH_NAME,B.location,B.MAX_AMOUNT, "
-                    + " B.MAX_AMOUNT-SUM(P.AMOUNT) AS \"REMAIN\" " 
-                    + " FROM PRODUCTS P " 
-                    + " JOIN BRANCH B ON P.BRANCH_ID = B.BRANCH_ID  " 
-                    + " GROUP BY B.BRANCH_ID,B.BRANCH_NAME " 
-                    + " ORDER BY B.BRANCH_ID ";
-         PreparedStatement pstm;
-         
+
+        Connection con = ConnectionBuilder.getConnection();
+        String sql = "SELECT B.BRANCH_ID,B.BRANCH_NAME,B.location,B.MAX_AMOUNT, "
+                + " B.MAX_AMOUNT-SUM(P.AMOUNT) AS \"REMAIN\" "
+                + " FROM PRODUCTS P "
+                + " JOIN BRANCH B ON P.BRANCH_ID = B.BRANCH_ID  "
+                + " GROUP BY B.BRANCH_ID,B.BRANCH_NAME "
+                + " ORDER BY B.BRANCH_ID ";
+        PreparedStatement pstm;
+
         try {
             pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
-                if(branches==null){
+            while (rs.next()) {
+                if (branches == null) {
                     branches = new ArrayList<>();
                 }
                 b = new Branch();
@@ -206,22 +207,21 @@ public class Branch {
                 branches.add(b);
             }
             pstm.close();
-            rs.close();            
+            rs.close();
+            con.close();
         } catch (SQLException ex) {
             System.out.println(ex);
-        }       
+        }
         return branches;
     }
 
     @Override
     public String toString() {
-        return "Branch{" + "branch_id=" + branch_id + 
-                "\n, branch_name=" + branch_name + 
-                "\n, location=" + location + 
-                "\n, max_amount=" + max_amount + 
-                "\n, amountProduct=" + amountProduct + '}';
+        return "Branch{" + "branch_id=" + branch_id
+                + "\n, branch_name=" + branch_name
+                + "\n, location=" + location
+                + "\n, max_amount=" + max_amount
+                + "\n, amountProduct=" + amountProduct + '}';
     }
-
-    
 
 }

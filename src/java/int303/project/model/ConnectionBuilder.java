@@ -46,9 +46,4 @@ public class ConnectionBuilder {
 
         return conn;
     }
-
-    public static Connection getConn() {
-        Connection con = getConnection();
-        return con;
-    }
 }
