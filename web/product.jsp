@@ -34,7 +34,7 @@
     <form id="search" class="form-inline" action="AllProduct" method="GET">
         <center>
             <input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam" value="${param.searchParam}">
-            <input type="submit" value="SEARCH" form="search" class="btn btn-success">
+            <input type="submit" value="SEARCH" class="btn btn-success">
         </center>
     </form>        
 
