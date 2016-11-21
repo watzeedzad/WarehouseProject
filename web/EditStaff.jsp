@@ -18,7 +18,7 @@
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/>
         <div class="container"><br><br><br>
             <h1>::EDIT STAFF::</h1><br>
-            <button type="button" class="btn btn-default">View Data</button><br><br><br>
+<!--            <button type="button" class="btn btn-default">View Data</button><br><br><br>-->
             <form class="form-horizontal" action="editstaff" method="POST">
                 <div class="form-group">
                     <label for="inputPassword" class="col-sm-2 control-label">Staff ID :</label>
@@ -63,7 +63,7 @@
                     </div>
                 </div> 
                 <br>
-                <input type="submit" class="btn btn-success" value="SEND">
+                <input type="submit" class="btn btn-success" value="SEND"><br><br><br><br><br><br>
             </form>
     </body>
 </html>
