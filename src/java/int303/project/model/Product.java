@@ -356,7 +356,7 @@ public class Product {
     public static boolean isExistProduct(int companyId, long prodId) {
         boolean exist = false;
 
-        Connection con = ConnectionBuilder.getConn();
+        Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id  "
                 + " WHERE P.prod_id = ? "
