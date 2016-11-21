@@ -28,11 +28,12 @@
         <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 
-    <center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>
+    <center><h1><span class="black"><b>{</b></span><span class="yellow">BACKUP PRODUCT<span class="black"><b>}</b></span></h1><br></center>
 
 
     <form id="search" class="form-inline" action="AllProduct" method="GET">
         <center>
+            
             <input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam" value="${param.searchParam}">
             <input type="submit" value="SEARCH" form="search" class="btn btn-success">
         </center>
