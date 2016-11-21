@@ -27,7 +27,7 @@
                         <li><a href="ViewAmountBranch">${staffData.company.company_name}</a></li>
                         <li><a href="#product">PRODUCT</a></li>
                         <li><a href="#edit">EDIT</a></li>
-                        <li><a href="#view">VIEW</a></li>
+                        <li><a href="#view">STATISTIC</a></li>
                         <li><a href="#alert">ALERT</a></li>
                         <li><a href="editstaff">${staffData.firstname}</a></li>
                         <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> LOG OUT</a></li>

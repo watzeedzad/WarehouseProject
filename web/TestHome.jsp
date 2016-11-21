@@ -159,7 +159,7 @@
         <div class="col-sm-4"><br><br><br><br><br><br><br>
             <center><img src="image/product.png" style="width: 300px; height: 300px;"></center>
             <center><h1><span class="blue"><b>{</b></span><span class="yellow">PRODUCT</span><span class="blue"><b>}</b></span></h1></center>
-            <center><h4 class="yellow">You can see all product this here!</h4></center>
+            <center><h4 class="yellow">You can view all product at this here!</h4></center>
         </div>
         <div class="col-sm-8">
             <div class="container-fluid text-center">
@@ -371,7 +371,7 @@
             <div><br><br><br><br>                   
                 <p><img src="image/search.png" style="width: 350px; height: 350px;"></p>
                 <center><h1><span class="blue"><b>{</b></span><span class="yellow">VIEW</span><span class="blue"><b>}</b></span></h1></center>
-                <h4 class="yellow">You can view income per month in this here!!</h4>
+                <h4 class="yellow">You can view statistic about product and order at this here!!</h4>
             </div>
         </div><br><br>
         <div class="col-sm-6">
@@ -379,14 +379,14 @@
                 <div class="col-sm-12">
                     <div class="thumbnail">
                         <p><img src="image/van1.png"></p>
-                        <p><strong>VIEW ORDER</strong></p>
+                        <p><strong>STATISTIC ORDER</strong></p>
                         <a href="ViewState.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="thumbnail">
                         <p><img src="image/analytics.png"></p>
-                        <p><strong>VIEW ORDER BY TIME</strong></p>
+                        <p><strong>STATISTIC ORDER BY TIME</strong></p>
                         <a href="ViewStateByDate.jsp"><button class="btn btn-default btn-lg">Enter</button></a>
                     </div>  
                 </div>
@@ -402,7 +402,7 @@
         </div><br>
         <div class="col-sm-6">
             <div class="container-fluid">
-                <h2 class="yellow">You can see the product in this!!</h2><hr>
+                <h2 class="yellow">You can view all alert product at this here!!</h2><hr>
                 <div class=" text-center  slideanim ">
                     <a href="UpdateAlert"><button class="btn btn-default btn-lg">Enter</button></a>
                 </div>
