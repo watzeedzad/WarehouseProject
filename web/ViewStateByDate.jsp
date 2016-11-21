@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>::VIEW ORDER BY TIME::</title>
+        <title>JSP Page</title>
         <style>
             bg-dark{
                 background-color: #1F2739;
@@ -109,22 +109,22 @@
 
             </div>
             <div class="col-sm-8">
-                <table>                    
+                <center>  <table>                    
 
-                    <center><h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT BY DATE<span class="black"><b>}</b></span></h1><br></center>
-                    <tr>
-                    <center><h4>Category : 
+                    <h1><span class="black"><b>{</b></span><span class="yellow">VIEW STAT BY DATE<span class="black"><b>}</b></span></h1><br></center>
+                    <tr><center>
+                        <td><center><h4>Category :</h4></center></td> 
 
-                            <select name="range" id="category" class="select_join green" onchange="cat()" style="width: 150px;">
+                            <td><select name="range" id="category" class="select_join green" onchange="cat()" style="width: 150px;">
                                 <option value="monthandyear" ${param.range=='monthandyear' ? 'selected': ''}>Month and Year</option>
                                 <option value="month" ${param.range=='month' ? 'selected': ''}>Month</option>
                                 <option value="year" ${param.range=='year' ? 'selected': ''}>Year</option>                                
-                            </select>
+                                </select></td>
 
-                            &nbsp;
-                            Month : 
+                            
+                                <td id="mt">&nbsp;Month :&nbsp;</td>
 
-                            <select name="month" style="width: 100px;" class="select_join green" id="month" ${param.range=='month' ? '': 'disabled'}>
+                            <td><select name="month" style="width: 100px;" class="select_join green" id="month" ${param.range=='month'}>
                                 <option value='1' ${param.month==1 ? 'selected': ''}>January</option>
                                 <option value='2' ${param.month==2 ? 'selected': ''}>February</option>
                                 <option value='3' ${param.month==3 ? 'selected': ''}>March</option>
@@ -137,12 +137,12 @@
                                 <option value='10' ${param.month==10 ? 'selected': ''}>October</option>
                                 <option value='11' ${param.month==11 ? 'selected': ''}>November</option>
                                 <option value='12' ${param.month==12 ? 'selected': ''}>December</option>
-                            </select> 
+                                </select> </td>
 
-                            &nbsp;
-                            Year :
+                            
+                                <td id="ye">&nbsp;Year :&nbsp;</td>
 
-                            <select name="year" style="width: 70px;" class="select_join green" id="year" ${param.range=='year' ? '': 'disabled'}>
+                            <td><select name="year" style="width: 70px;" class="select_join green" id="year" ${param.range=='year'}>
                                 <option value='2005' ${param.year==2005 ? 'selected': ''}>2005</option>
                                 <option value='2006' ${param.year==2006 ? 'selected': ''}>2006</option>
                                 <option value='2007' ${param.year==2007 ? 'selected': ''}>2007</option>
@@ -155,18 +155,18 @@
                                 <option value='2014' ${param.year==2014 ? 'selected': ''}>2014</option>
                                 <option value='2015' ${param.year==2015 ? 'selected': ''}>2015</option>
                                 <option value='2016' ${param.year==2016 ? 'selected': ''}>2016</option>
-                            </select>
+                                </select></td>
 
                             &nbsp;
-                            Order Type :
+                            <td>&nbsp;Order Type :&nbsp;</td>
 
-                            <select name="viewBy" class="select_join green" style="width: 70px;">
+                            <td><select name="viewBy" class="select_join green" style="width: 70px;">
                                 <option value="in" ${param.viewBy=='in' ? 'selected': ''}>IN</option>
                                 <option value="out" ${param.viewBy=='out' ? 'selected': ''}>OUT</option>
                                 <option value="all" ${param.viewBy=='all' ? 'selected': ''}>ALL</option>
-                            </select>&nbsp;&nbsp;
+                            </select></td>
                      
-                            <input type="submit" value="SEARCH" class="btn-default semi-square">
+                            <td>&nbsp;&nbsp;&nbsp;<input type="submit" value="SEARCH" class="btn-default semi-square"/>&nbsp;</td>
                             
                             <input type="hidden" name="range" value="${param.range}">
                             <input type="hidden" name="range" value="${param.range}">
@@ -177,7 +177,7 @@
                     </center>
                     </tr>
 
-                </table>
+                </table></center>
 
                 <table class="table table-inverse">
                     <thead>
@@ -226,14 +226,26 @@
         function cat() {
             var x = document.getElementById("category");
             if (x.value == "month") {
-                document.getElementById("year").disabled = true;
-                document.getElementById("month").disabled = false;
+                document.getElementById("ye").style.visibility = "hidden";
+                document.getElementById("year").style.visibility = "hidden";
+                document.getElementById("mt").style.visibility = "visible";
+                document.getElementById("month").style.visibility = "visible";
+//                document.getElementById("year").disabled = true;
+//                document.getElementById("month").disabled = false;
             } else if (x.value == "year") {
-                document.getElementById("month").disabled = true;
-                document.getElementById("year").disabled = false;
+                document.getElementById("mt").style.visibility = "hidden";
+                document.getElementById("month").style.visibility = "hidden";
+                document.getElementById("ye").style.visibility = "visible";
+                document.getElementById("year").style.visibility = "visible";
+//                document.getElementById("month").disabled = true;
+//                document.getElementById("year").disabled = false;
             } else if (x.value == "monthandyear") {
-                document.getElementById("month").disabled = false;
-                document.getElementById("year").disabled = false;
+                document.getElementById("mt").style.visibility = "visible";
+                document.getElementById("month").style.visibility = "visible";
+                document.getElementById("ye").style.visibility = "visible";
+                document.getElementById("year").style.visibility = "visible";
+//                document.getElementById("month").disabled = false;
+//                document.getElementById("year").disabled = false;
             }
         }
     </script>
