@@ -72,12 +72,19 @@ public class AddProductAmountServlet extends HttpServlet {
         request.setAttribute("messageJa3", message);
         
         String source = request.getParameter("source");
+        String searchParam = request.getParameter("searchParam");
         if(source != null){
             if(source.equals("allProduct")){
+                if(searchParam!=null){
+                    getServletContext().getRequestDispatcher("/AllProduct?searchParam="+searchParam).forward(request, response);
+                }
                 getServletContext().getRequestDispatcher("/AllProduct").forward(request, response);
-            }else if(source.equals("alert")){
+            }else if(source.equals("alert")){                
                 getServletContext().getRequestDispatcher("/UpdateAlert").forward(request, response);
             }else if(source.equals("backupProduct")){
+                if(searchParam!=null){
+                    getServletContext().getRequestDispatcher("/AllProduct?source=backupProduct&searchParam="+searchParam).forward(request, response);
+                }
                 getServletContext().getRequestDispatcher("/AllProduct?source=backupProduct").forward(request, response);
             }
         }else{

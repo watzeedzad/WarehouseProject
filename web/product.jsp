@@ -116,6 +116,7 @@
                                             <input type="number" ${p.amount<alertAmount? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" disabled="">
                                         </td>
                                 <form id="addForm" name="addForm" action="AddProductAmount" method="GET">
+                                    
                                     <td>
                                         <!--Button add product -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodalIncrease${p.prod_id}" ${p.cancelStatus==true? 'disabled':''} >INCREASE</button>
@@ -127,7 +128,7 @@
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         <h2 class="modal-title">INCREASE Amount</h2>
                                                     </div>
-
+                                                    <input type="hidden" name="searchParam" value="${param.searchParam}">
                                                     <input type="hidden" name="source" value="allProduct">
                                                     <div class="modal-body">
                                                         <table class="add-pro black">
@@ -154,7 +155,7 @@
 
                                 <td>
                                     <!--Button add product -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#mymodalReduce${p.prod_id}">REDUCE</button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#mymodalReduce${p.prod_id}" ${p.amount==0? 'disabled':''}>REDUCE</button>
                                     <div class="modal fade" id="mymodalReduce${p.prod_id}" role="dialog">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
@@ -163,6 +164,7 @@
                                                     <h2 class="modal-title">REDUCE Amount</h2>
                                                 </div>
                                                 <form id="reduceForm" action="ReduceProductAmount" method="GET">
+                                                    <input type="hidden" name="searchParam" value="${param.searchParam}">
                                                     <input type="hidden" name="source" value="allProduct">
                                                     <div class="modal-body">
                                                         <table class="add-pro black">
@@ -185,7 +187,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td><input type="checkbox" name="cancel" class="classUpdateForm" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
+                                <td><input type="checkbox" name="cancel" class="classUpdateForm" value="${p.prod_id}" ${p.cancelStatus==true? "style='background-color: red;' disabled" : ""}></td>
                                 <td><input type="checkbox" name="delete" class="classUpdateForm" value="${p.prod_id}"></td>
                                 <td> ${p.branch.branch_name}</td>
                                 </tr>                   
