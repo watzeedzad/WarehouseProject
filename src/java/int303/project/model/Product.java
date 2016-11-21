@@ -324,7 +324,7 @@ public class Product {
 //        
 //        return delete;
 //    }
-    public static boolean isExistProduct(int companyId, long prodId) {
+    public static boolean isNotCancelProduct(int companyId, long prodId) {
         boolean exist = false;
 
         Connection con = ConnectionBuilder.getConnection();
@@ -332,6 +332,35 @@ public class Product {
                 + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id  "
                 + " WHERE P.prod_id = ? "
                 + " AND P.company_id = ? "
+                + " AND S.cancle_status != true "
+                + " AND S.delete != true ";
+        try {
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setLong(1, prodId);
+            pstm.setLong(2, companyId);
+
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                exist = true;
+            }
+
+            //con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return exist;
+    }
+    
+    public static boolean isExistProduct(int companyId, long prodId) {
+        boolean exist = false;
+
+        Connection con = ConnectionBuilder.getConn();
+        String sql = "SELECT * FROM PRODUCTS P "
+                + " JOIN PRODUCT_STATUS S ON P.prod_id = S.prod_id  "
+                + " WHERE P.prod_id = ? "
+                + " AND P.company_id = ? "                
                 + " AND S.delete != true ";
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -423,8 +452,8 @@ public class Product {
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT * FROM PRODUCTS P "
                 + " JOIN PRODUCT_STATUS S ON P.prod_id =  S.prod_id "
-                + " WHERE lower(P.prod_name) LIKE ? "
-                + " OR lower(P.prod_type) LIKE ? "
+                + " WHERE ((lower(P.prod_name) LIKE ?) "
+                + " OR (lower(P.prod_type) LIKE ?)) "
                 + " AND P.company_id = ? "
                 //                + " AND S.cancle_status = false  "
                 + " AND S.delete = false  "
