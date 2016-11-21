@@ -46,7 +46,7 @@
         </div>
         <div class="col-sm-8">
             <div class="container-fluid" style="margin-top: -20px;">
-                <form id="update" action="UpdateProduct" method="POST">                     
+                <form id="updateForm" name="updateForm" action="UpdateProduct" method="GET">                     
                     <table class="table table-inverse">
                         <!--<center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>-->
                         <thead>
@@ -113,84 +113,83 @@
                                         <td colspan="5"><a href="EditProduct?prod_id=${p.prod_id}&source=AllProduct">${p.prod_name}</a> </td>
                                         <td> ${p.price}</td>
                                         <td>
-                                            <input type="number" ${p.amount<alertAmount? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
+                                            <input type="number" ${p.amount<alertAmount? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" disabled="">
                                         </td>
-                                        <td>
-
-
-                                            <!--Button add product -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodalIncrease${p.prod_id}" ${p.cancelStatus==true? 'disabled':''} >INCREASE</button>
-                                            <!-- ---  -->
-                                            <div class="modal fade" id="mymodalIncrease${p.prod_id}" role="dialog">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header" style="background-color: gray">
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <h2 class="modal-title">INCREASE Amount</h2>
-                                                        </div>
-                                                        <form action="AddProductAmount" id="add">
-                                                            <input type="hidden" name="source" value="allProduct">
-                                                            <div class="modal-body">
-                                                                <table class="add-pro black">
-                                                                    <tr>
-                                                                        <td>ID:</td>
-                                                                        <td><input type="number" class="form-control" name="prodId" value="${p.prod_id}" readonly="" min=1></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Amount:</td>
-                                                                        <td><input type="number" class="form-control" name="prodAmount" min=1 required></td>
-                                                                    </tr>
-                                                                </table>
-                                                                <br>
-                                                                <div class="modal-footer">
-                                                                    <input type="submit" class="btn btn-default" value="Increase">
-                                                                </div></div>
-                                                        </form>
+                                <form id="addForm" name="addForm" action="AddProductAmount" method="GET">
+                                    <td>
+                                        <!--Button add product -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodalIncrease${p.prod_id}" ${p.cancelStatus==true? 'disabled':''} >INCREASE</button>
+                                        <!-- ---  -->
+                                        <div class="modal fade" id="mymodalIncrease${p.prod_id}" role="dialog">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="background-color: gray">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h2 class="modal-title">INCREASE Amount</h2>
                                                     </div>
+
+                                                    <input type="hidden" name="source" value="allProduct">
+                                                    <div class="modal-body">
+                                                        <table class="add-pro black">
+                                                            <tr>
+                                                                <td>ID:</td>
+                                                                <td><input type="number" class="form-control classAddForm" name="prodId" value="${p.prod_id}" readonly="" min=1></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Amount:</td>
+                                                                <td><input type="number" class="form-control classAddForm" name="prodAmount" min=1 required></td>
+                                                            </tr>
+                                                            </form>
+                                                        </table>
+                                                        <br>
+                                                        <div class="modal-footer">
+                                                            <input type="submit" class="btn btn-default" value="Increase" onclick="addProd()">
+                                                        </div></div>
                                                 </div>
                                             </div>
-                                            <!-- --------------------------------------------->    
-                                        </td>
+                                        </div>
+                                        <!-- --------------------------------------------->  
+                                    </td>
+                                </form>
 
-
-                                        <td>
-                                            <!--Button add product -->
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#mymodalReduce${p.prod_id}">REDUCE</button>
-                                            <div class="modal fade" id="mymodalReduce${p.prod_id}" role="dialog">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header" style="background-color: gray">
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <h2 class="modal-title">REDUCE Amount</h2>
-                                                        </div>
-                                                        <form action="ReduceProductAmount" id="reduce">
-                                                            <input type="hidden" name="source" value="allProduct">
-                                                            <div class="modal-body">
-                                                                <table class="add-pro black">
-                                                                    <tr>
-                                                                        <td>ID:</td>
-                                                                        <td><input type="number" class="form-control" name="prodId" value="${p.prod_id}" readonly="" min=1></td>
-
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Amount:</td>
-                                                                        <td><input type="number" class="form-control" name="prodAmount" required min=1></td>
-                                                                    </tr>
-                                                                </table>
-                                                                <br>
-                                                                <div class="modal-footer">
-                                                                    <input type="submit" class="btn btn-default" value="Reduce">
-                                                                </div></div>
-                                                        </form>
-                                                    </div>
+                                <td>
+                                    <!--Button add product -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#mymodalReduce${p.prod_id}">REDUCE</button>
+                                    <div class="modal fade" id="mymodalReduce${p.prod_id}" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color: gray">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h2 class="modal-title">REDUCE Amount</h2>
                                                 </div>
+                                                <form id="reduceForm" action="ReduceProductAmount" method="GET">
+                                                    <input type="hidden" name="source" value="allProduct">
+                                                    <div class="modal-body">
+                                                        <table class="add-pro black">
+                                                            <tr>
+                                                                <td>ID:</td>
+                                                                <td><input type="number" class="form-control classReduceForm" name="prodId" value="${p.prod_id}" readonly="" min=1></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Amount:</td>
+                                                                <td><input type="number" class="form-control classReduceForm" name="prodAmount" required min=1></td>
+                                                            </tr>
+                                                        </table>
+                                                        <br>
+                                                        <div class="modal-footer">
+                                                            <input type="submit" class="btn btn-default" value="Reduce" onclick="reduceProd()">
+                                                        </div></div>
+                                                </form>
                                             </div>
-                                        </td>
-                                        <td><input type="checkbox" name="cancel" form="update" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
-                                        <td><input type="checkbox" name="delete" form="update" value="${p.prod_id}"></td>
-                                        <td> ${p.branch.branch_name}</td>
-                                    </tr>                   
-                                </c:forEach> 
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><input type="checkbox" name="cancel" class="classUpdateForm" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
+                                <td><input type="checkbox" name="delete" class="classUpdateForm" value="${p.prod_id}"></td>
+                                <td> ${p.branch.branch_name}</td>
+                                </tr>                   
+                            </c:forEach> 
 
                             </tbody>                        
                         </c:if>
@@ -205,7 +204,7 @@
 
     </div> 
     <div class="row text-center">  
-        <input type="submit" class="btn btn-success" value="UPDATE" onclick="submit()">
+        <input type="submit" class="btn btn-success" value="UPDATE" onclick="updateProd()">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
     </div>  
@@ -305,8 +304,20 @@
 </div>
 </body>
 <script>
-    function submit() {
-        document.forms['update'].submit();
+    function reduceProd() {
+        $(".classReduceForm").serialize();
+        $("#reduceForm").submit();
+    }
+    function addProd() {
+        document.updateForm.action = "AddProductAmount";
+        $(".classAddForm").serialize();
+        $("#addForm").submit();
+    }
+    function updateProd() {
+        document.updateForm.action = "UpdateProduct";
+        $(".classUpdateForm").serialize();
+        $("#updateForm").submit();
+        document.forms['updateForm'].submit();
     }
     function myFunction() {
         confirm("Are you sure to cancel and delete product(s)");
