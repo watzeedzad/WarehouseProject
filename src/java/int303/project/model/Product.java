@@ -138,34 +138,36 @@ public class Product {
 
     public void setAmountAlert(int amountAlert) {
         this.amountAlert = amountAlert;
-    }       
-    
-    public static boolean setAlertAmountInDB(int companyId,int amount){
+    }
+
+    public static boolean setAlertAmountInDB(int companyId, int amount) {
         int x = 0;
-        
+
         Connection con = ConnectionBuilder.getConnection();
         String sql = " UPDATE ALERT SET alertAmount = ? "
-                      + " WHERE company_id = ? ";
-        
+                + " WHERE company_id = ? ";
+
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, amount);
             pstm.setInt(2, companyId);
-            x = pstm.executeUpdate();            
-            
+            x = pstm.executeUpdate();
+
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
 //            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
         }
-        
-        return x>0;
+
+        return x > 0;
     }
-    
+
     public static int getShareAlertFromDB(int companyId) {
-        
+
         Connection con = ConnectionBuilder.getConnection();
         String sql = "SELECT alertAmount FROM ALERT "
-                    + " WHERE company_id = ? ";
+                + " WHERE company_id = ? ";
 
         PreparedStatement pstm;
         try {
@@ -173,14 +175,14 @@ public class Product {
             pstm.setInt(1, companyId);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
-               shareAlert = rs.getInt("alertAmount");
+                shareAlert = rs.getInt("alertAmount");
             }
-            
+
             rs.close();
             pstm.close();
             con.close();
-            System.out.println("shareAlert = "+shareAlert);
-            
+            System.out.println("shareAlert = " + shareAlert);
+
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -294,6 +296,7 @@ public class Product {
             pstm.setLong(1, prodId);
             x = pstm.executeUpdate();
 
+            con.close();
             pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
@@ -340,6 +343,8 @@ public class Product {
                 exist = true;
             }
 
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -381,7 +386,7 @@ public class Product {
         pstm.setLong(4, this.getProd_id());
 
         x = pstm.executeUpdate();
-               
+
         pstm.close();
         con.close();
     }
@@ -438,9 +443,8 @@ public class Product {
             }
             products.add(prod);
         }
-        
+
 //        getShareAlertFromDB(companyId);
-                
         rs.close();
         pstm.close();
         con.close();
@@ -467,9 +471,8 @@ public class Product {
             prod = new Product();
             orm(prod, rs);
         }
-        
+
 //        getShareAlertFromDB(companyId);
-            
         rs.close();
         pstm.close();
         con.close();
@@ -538,9 +541,8 @@ public class Product {
             }
             products.add(prod);
         }
-        
+
 //        getShareAlertFromDB(companyId);
-        
         rs.close();
         pstm.close();
         con.close();
@@ -596,9 +598,8 @@ public class Product {
                 orm(p, rs);
                 prods.add(p);
             }
-            
+
 //            getShareAlertFromDB(companyId);
-                
             rs.close();
             pstm.close();
             con.close();
@@ -622,6 +623,8 @@ public class Product {
             pstm.setLong(2, prodId);
             x = pstm.executeUpdate();
 
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -642,6 +645,8 @@ public class Product {
             pstm.setLong(2, prodId);
             x = pstm.executeUpdate();
 
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
         }

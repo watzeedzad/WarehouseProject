@@ -132,6 +132,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -162,6 +165,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -193,6 +199,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -224,6 +233,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -254,6 +266,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -284,6 +299,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -315,6 +333,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -346,6 +367,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -377,6 +401,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -409,6 +436,9 @@ public class OrderInOut {
                 }
                 order.add(ord);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }

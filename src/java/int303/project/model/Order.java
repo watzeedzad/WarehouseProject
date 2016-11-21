@@ -64,6 +64,8 @@ public class Order {
             x = pstm.executeUpdate();
             addOrderSuccess = Order.addOrder(p, s, "IN", amount);
 
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -88,6 +90,8 @@ public class Order {
             x = pstm.executeUpdate();
             addOrderSuccess = Order.addOrder(p, s, "OUT", amount);
 
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -136,18 +140,39 @@ public class Order {
 
         x = pstm.executeUpdate();
 
+        con.close();
+        pstm.close();
         return x > 0;
     }
 
-    public static Product statBestSeller(int companyId) {
-        Product prod = null;
+    public static List<BestSeller> statBestSeller(int companyId) {
+        List<BestSeller> prod = null;
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("");
+            PreparedStatement pstm = conn.prepareStatement("SELECT prod.PROD_ID, prod.PROD_NAME, prod.PRICE, SUM(prod.AMOUNT) AS \"amountSum\", prod.PROD_TYPE, b.BRANCH_NAME, com.COMPANY_NAME, prods.CANCLE_STATUS FROM ORDERS ors\n"
+                    + "LEFT JOIN PRODUCTS prod\n"
+                    + "ON prod.PROD_ID = ors.PROD_ID\n"
+                    + "LEFT JOIN BRANCH b\n"
+                    + "ON b.BRANCH_ID = prod.BRANCH_ID\n"
+                    + "LEFT JOIN COMPANIES com\n"
+                    + "ON com.COMPANY_ID = prod.COMPANY_ID\n"
+                    + "LEFT JOIN PRODUCT_STATUS prods\n"
+                    + "ON prods.PROD_ID = prod.PROD_ID\n"
+                    + "WHERE ors.ORDERTYPE = 'out' AND prod.COMPANY_ID = ?\n"
+                    + "GROUP BY prod.PROD_NAME, b.BRANCH_NAME\n"
+                    + "ORDER BY amountSum DESC ;");
+            pstm.setInt(1, companyId);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-
+                BestSeller best = new BestSeller(rs);
+                if (prod == null) {
+                    prod = new ArrayList<>();
+                }
+                prod.add(best);
             }
+            conn.close();
+            pstm.close();
+            rs.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -157,36 +182,4 @@ public class Order {
     //----------- SUM(amount)  // order by SUM(amount) DESC;
     // WHERE order_type = 'IN'
     // WHERE order_type = 'OUT'
-    public static List<Product> statSellerByMonth(int companyId) {
-        List<Product> products = null;
-        Product prod = null;
-        try {
-            Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("");
-            ResultSet rs = pstm.executeQuery();
-            while (rs.next()) {
-
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-        return products;
-    }
-
-    public static List<Product> statSellerByYear(int companyId) {
-        List<Product> products = null;
-        Product prod = null;
-        try {
-            Connection conn = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = conn.prepareStatement("");
-            ResultSet rs = pstm.executeQuery();
-            while (rs.next()) {
-
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-        return products;
-    }
-
 }
