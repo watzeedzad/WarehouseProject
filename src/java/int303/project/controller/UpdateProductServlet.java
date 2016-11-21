@@ -77,8 +77,13 @@ public class UpdateProductServlet extends HttpServlet {
 
         request.setAttribute("messageJa", message);
         String source = request.getParameter("source");
+        if(source!=null){
+            if(source.equalsIgnoreCase("backupUpdate")){
+                getServletContext().getRequestDispatcher("/AllProduct?source=backupUpdate").forward(request, response);
+            }
+        }
         System.out.println("SOURCE IN update product");        
-        request.setAttribute("source", source);
+//        request.setAttribute("source", source);
               
         
         getServletContext().getRequestDispatcher("/AllProduct").forward(request, response);

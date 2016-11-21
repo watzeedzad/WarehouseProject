@@ -1,33 +1,89 @@
 <%-- 
-    Document   : TestAddNewUser
-    Created on : Nov 21, 2016, 7:33:12 PM
-    Author     : jiraw
+    Document   : EditStaff
+    Created on : Nov 5, 2016, 4:22:02 PM
+    Author     : 000
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>::Add New Account::</title>
+        <style>
+            body{
+                background-color:#185875;
+                color: white
+            }
+        </style>
     </head>
     <body>
-        <h1>Add new user</h1>
-        <form action="AddUser" onsubmit="return checkPassword()">
-            <p>Company ID : <input type="number" name="companyId" required></p>
-            <p>Firstname : <input type="text" name="firstName" required></p>
-            <p>Lastname : <input type="text" name="lastName" required></p>
-            <p>Citizen No : <input type="number" name="citizenNo" required></p>
-            <p>Address : <input type="text" name="address" required></p>
-            <p>Position : <input type="text" name="position" required></p>
+    <center><h1>::Add New Account::</h1></center><br>
+
+        <form class="form-horizontal" action="AddUser" onsubmit="return checkPassword()" >
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">Company ID :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="number" name="companyId" min="1" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">Firstname :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="firstName" required>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Lastname :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="lastName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Citizen No :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="number" name="citizenNo" min="1" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-sm-2 control-label">Address :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="address" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Position :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="position" required>
+                </div>
+            </div><br><br>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">Username :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="username" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">Password :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="password" name="password" id="pass1" required>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">Repeat Password :</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="password" id="pass2" required>
+                </div>
+            </div> 
+            <div class="form-group">
+                <center><label  class="col-sm-8 control-label">${message}</label></center>
+            </div>
             <br>
-            <br>
-            <p>Username : <input type="text" name="username" required></p>
-            <p>Password : <input type="password" name="password" id="pass1" required></p>
-            <p>Repeat Password : <input type="password" id="pass2" required></p>
-            <p><input type="submit" value="Submit"></p>
+            <center><input class="btn-default"type="submit" value="Submit"><a href="logout"><input class="btn-default" type="button" value="Logout"></a></center><br><br><br><br><br><br>
         </form>
-        ${message}
     </body>
     <script>
         function checkPassword() {

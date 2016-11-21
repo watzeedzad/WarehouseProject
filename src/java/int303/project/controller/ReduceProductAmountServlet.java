@@ -78,6 +78,8 @@ public class ReduceProductAmountServlet extends HttpServlet {
         if(source != null){
             if(source.equals("allProduct")){
                 getServletContext().getRequestDispatcher("/AllProduct").forward(request, response);
+            }else if(source.equals("backupProduct")){
+                getServletContext().getRequestDispatcher("/AllProduct?source=backupProduct").forward(request, response);
             }
         }else{
             getServletContext().getRequestDispatcher("/Editallpage.jsp").forward(request, response);

@@ -120,10 +120,13 @@ public class AllProductServlet extends HttpServlet {
         // searchByName / id / 
         
         String source = request.getParameter("source");
-        if(source!=null){
+        if(source!=null){            
             System.out.println("------source!=null-----");
             if(source.equalsIgnoreCase("backupUpdate")){
                 getServletContext().getRequestDispatcher("/backupUpdateCancel.jsp").forward(request, response);
+            }
+            if(source.equalsIgnoreCase("backupProduct")){
+                getServletContext().getRequestDispatcher("/backupProduct.jsp").forward(request, response);
             }
         }
         
