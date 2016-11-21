@@ -66,18 +66,18 @@ public class UpdateAlertServlet extends HttpServlet {
         session.setAttribute("amount", amountNew);        
         List<Product> products = Product.getAlertProduct(companyId);
         
-        if(products == null || products.size()==0){
-            message = "There is no ALERT PRODUCT";
-        }else{
+        if(products != null){
             message = "All ALERT Product(s)";
-            for(Product p : products){
-            System.out.println(p+"\n");
-            }
+            session.setAttribute("productsAlert", products);
+        }else{            
+            message = "There is no ALERT Product";
+            session.removeAttribute("productsAlert");
+            System.out.println("in alert = null");
         }
         
         request.setAttribute("message", message);
         request.setAttribute("messageJa", messageJa);
-        session.setAttribute("productsAlert", products);
+        
         
         getServletContext().getRequestDispatcher("/TestAlert.jsp").forward(request, response);
     }
