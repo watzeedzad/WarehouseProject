@@ -200,6 +200,10 @@
         <servlet-name>UndoCancelServlet</servlet-name>
         <url-pattern>/UndoCancel</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/AddUser</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

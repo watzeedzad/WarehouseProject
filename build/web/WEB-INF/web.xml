@@ -101,8 +101,8 @@
         <servlet-class>int303.project.controller.UpdateAlertServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UndoCancelServlet</servlet-name>
-        <servlet-class>int303.project.controller.UndoCancelServlet</servlet-class>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>int303.project.controller.AddUserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -199,6 +199,10 @@
     <servlet-mapping>
         <servlet-name>UndoCancelServlet</servlet-name>
         <url-pattern>/UndoCancel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/AddUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
