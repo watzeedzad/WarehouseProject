@@ -9,6 +9,7 @@ import int303.project.model.Product;
 import int303.project.model.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Praewhubb
  */
-public class UpdateProductServlet extends HttpServlet {
+public class UndoCancelServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,46 +43,37 @@ public class UpdateProductServlet extends HttpServlet {
             log("NULLLL");
         }
 
+        int companyId = user.getCompanyId();
         String message = "";
-        String[] deletes = request.getParameterValues("delete");
+        String messageJa = "";
         String[] cancels = request.getParameterValues("cancel");
-        boolean success1 = false;
-        boolean success2 = false;
 
-        if (deletes == null && cancels == null) {
-            message = "Please select Product to CANCEL OR DELETE";
+        if (cancels == null) {
+            message = "Please select Product to UNDO CANCEL";
         } else {
-            if (deletes != null) {
-                for (String idStr : deletes) {
-                    long id = Long.parseLong(idStr);
-                    success1 = Product.deleteProduct(id);
-                }
-                if (success1) {
-                    message = "DELETE product(s) SUCCESS";
-                } else {
-                    message = "FAILED to DELETE product(s)";
-                }
+            for (String idStr : cancels) {
+                long id = Long.parseLong(idStr);
+                Product.undoCancelProduct(id);
             }
-            if (cancels != null) {
-                for (String idStr : cancels) {
-                    long id = Long.parseLong(idStr);
-                    success2 = Product.cancelProduct(id);
-                }
-                if (success2) {
-                    message += "\n CANCEL product(s) SUCCESS";
-                } else {
-                    message = "FAILED to CANCEL product(s)";
-                }
-            }
+
+            message = "UNDO cancel Product SUCCESS";
         }
 
-        request.setAttribute("messageJa", message);
-        String source = request.getParameter("source");
-        System.out.println("SOURCE IN update product");        
-        request.setAttribute("source", source);
-              
+        List<Product> products = Product.getCancelProduct(companyId);
+        if (products != null) {
+            messageJa = "ALL cancel Product";
+            session.setAttribute("products", products);
+        } else {
+            messageJa = "There is no cancel Product";
+            if (session.getAttribute("products") != null) {
+                session.removeAttribute("products");
+            }
+        }
         
-        getServletContext().getRequestDispatcher("/AllProduct").forward(request, response);
+        request.setAttribute("message", message);
+        request.setAttribute("messageJa", messageJa);
+        getServletContext().getRequestDispatcher("/UndoCancelProduct.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

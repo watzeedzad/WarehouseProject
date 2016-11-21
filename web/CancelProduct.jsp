@@ -104,7 +104,7 @@
                             <c:if test="${message!=null}">
                                 <tr>
                                     <td colspan="10" style="text-align: center;font-size:large"> <c:out value="${message}" ></c:out> </td>
-                                </tr>
+                                    </tr>
                             </c:if>
                             <tr class="bg-dark">
                                 <td>Item no</td>
@@ -132,6 +132,11 @@
             <div class="col-sm-2">
 
             </div>
-        </div>   
+
+        </div>  
+        
+        <div class="row text-center">  
+            <a href="UndoCancelProduct.jsp"><button class="btn btn-success" >UNDO cancel</button></a>
+        </div> 
     </body>
 </html>

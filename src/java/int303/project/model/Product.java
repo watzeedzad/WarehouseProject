@@ -653,6 +653,28 @@ public class Product {
 
         return x > 0;
     }
+    
+     public static boolean undoCancelProduct(long prodId) {
+        int x = 0;
+
+        try {
+            Connection con = ConnectionBuilder.getConn();
+
+            String sql = "UPDATE `PRODUCT_STATUS` SET cancle_status = ? "
+                    + "WHERE PROD_ID = ? ;";
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setBoolean(1, false);
+            pstm.setLong(2, prodId);
+            x = pstm.executeUpdate();
+
+            //con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return x > 0;
+    }
 
     public static List<Product> getCancelProduct(int companyId) {
         List<Product> products = null;

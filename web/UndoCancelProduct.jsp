@@ -45,7 +45,7 @@
 
         </div>
         <div class="col-sm-8">
-            <div class="container-fluid" style="margin-top: -20px;">
+            <div class="container-fluid" style="margin-top: -40px;">
                 <form id="update" action="UndoCancel" method="POST">                     
                     <table class="table table-inverse">
                         <!--<center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>-->
@@ -63,31 +63,6 @@
 
                                     </tr>                            
                             </c:if>
-                            <c:if test="${messageJa1!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa1}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if> 
-                            <c:if test="${messageJa2!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa2}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if> 
-                            <c:if test="${messageJa3!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa3}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if>  
-                            <c:if test="${messageJa4!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa4}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if>      
-
 
                             <c:if test="${products != null}">
                                 <!-------------------------àËÅ×ÍãÊè¿ÍÃìÁÊÓËÃÑº cancel >>>> DELETE-------------------------------------->
@@ -135,11 +110,13 @@
     </div> 
             
     <div class="row text-center">  
-        <input type="submit" class="btn btn-success" value="UPDATE" onclick="submit()">
+        <a href="CancelProduct.jsp"><button class="btn btn-success" >BACK</button></a>
+        <input type="submit" class="btn btn-success" value="UPDATE" onclick="submit()">        
     </div>  
 
-
-
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
   
 
 </body>

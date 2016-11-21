@@ -32,6 +32,7 @@
 
 
     <form id="search" class="form-inline" action="AllProduct" method="GET">
+        <input type="hidden" name="source" value="backupUpdate">
         <center>
             <input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam" value="${param.searchParam}">
             <input type="submit" value="SEARCH" form="search" class="btn btn-success">
@@ -39,108 +40,109 @@
     </form>        
 
 
+    <form action="UpdateProduct">
+        <input type="hidden" name="source" value="backupUpdate">
+        <div class="row">            
+            <div class="col-sm-2">
 
-    <div class="row">            
-        <div class="col-sm-2">
-
-        </div>
-        <div class="col-sm-8">
-            <div class="container-fluid" style="margin-top: -20px;">
-                <form id="update" action="UpdateProduct" method="POST">                     
-                    <table class="table table-inverse">
-                        <!--<center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>-->
-                        <thead>
-
-                            <c:if test="${message!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if>
-                            <c:if test="${messageJa!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if>
-                            <c:if test="${messageJa1!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa1}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if> 
-                            <c:if test="${messageJa2!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa2}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if> 
-                            <c:if test="${messageJa3!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa3}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if>  
-                            <c:if test="${messageJa4!=null}">
-                                <tr>
-                                    <td colspan="16" style="text-align: center;"> <c:out value="${messageJa4}" ></c:out> </td>
-
-                                    </tr>                            
-                            </c:if>      
-
-
-                            <c:if test="${products != null}">
-                                <!-------------------------àËÅ×ÍãÊè¿ÍÃìÁÊÓËÃÑº cancel >>>> DELETE-------------------------------------->
-                                <!--<form action="UpdateProduct"></form>-->
-                                <tr class="bg-dark text-white">
-                                    <th colspan="3">Item no</th>
-                                    <th>ID</th>
-                                    <th colspan="5">Name</th>
-                                    <th>Price</th>
-                                    <th class="center" style="text-align: center;">Amount</th>
-                                    <th>Cancel</th>
-                                    <th>Delete</th>
-                                    <th colspan="3">Branch name</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:set var="bgRed" value=" style='background-color: red;' "></c:set>
-                                <c:forEach items="${products}" var="p" varStatus="vs">                       
-                                    <tr>
-                                        <td colspan="3">${vs.count}</td>
-                                        <td > ${p.prod_id}</td>
-                                        <td colspan="5"><a href="EditProduct?prod_id=${p.prod_id}&source=product.jsp">${p.prod_name}</a> </td>
-                                        <td> ${p.price}</td>
-                                        <td>
-                                            <input type="number" ${p.amount<alertAmount? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
-                                        </td>
-                                       
-                                       
-                                        <td><input type="checkbox" name="cancel" form="update" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
-                                        <td><input type="checkbox" name="delete" form="update" value="${p.prod_id}"></td>
-                                        <td> ${p.branch.branch_name}</td>
-                                    </tr>                   
-                                </c:forEach> 
-
-                            </tbody>                        
-                        </c:if>
-                    </table>
-                </form>
             </div>
-        </div>    
+            <div class="col-sm-8">
+                <div class="container-fluid" style="margin-top: -20px;">
+                    <form id="update" action="UpdateProduct" method="POST">                     
+                        <table class="table table-inverse">
+                            <!--<center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>-->
+                            <thead>
 
-        <div class="col-sm-2">
+                                <c:if test="${message!=null}">
+                                    <tr>
+                                        <td colspan="16" style="text-align: center;"> <c:out value="${message}" ></c:out> </td>
 
-        </div>
+                                        </tr>                            
+                                </c:if>
+                                <c:if test="${messageJa!=null}">
+                                    <tr>
+                                        <td colspan="16" style="text-align: center;"> <c:out value="${messageJa}" ></c:out> </td>
 
-    </div> 
-    <div class="row text-center">  
-        <input type="submit" class="btn btn-success" value="UPDATE" onclick="submit()">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
-    </div>  
+                                        </tr>                            
+                                </c:if>
+                                <c:if test="${messageJa1!=null}">
+                                    <tr>
+                                        <td colspan="16" style="text-align: center;"> <c:out value="${messageJa1}" ></c:out> </td>
 
+                                        </tr>                            
+                                </c:if> 
+                                <c:if test="${messageJa2!=null}">
+                                    <tr>
+                                        <td colspan="16" style="text-align: center;"> <c:out value="${messageJa2}" ></c:out> </td>
+
+                                        </tr>                            
+                                </c:if> 
+                                <c:if test="${messageJa3!=null}">
+                                    <tr>
+                                        <td colspan="16" style="text-align: center;"> <c:out value="${messageJa3}" ></c:out> </td>
+
+                                        </tr>                            
+                                </c:if>  
+                                <c:if test="${messageJa4!=null}">
+                                    <tr>
+                                        <td colspan="16" style="text-align: center;"> <c:out value="${messageJa4}" ></c:out> </td>
+
+                                        </tr>                            
+                                </c:if>      
+
+
+                                <c:if test="${products != null}">
+                                    <!-------------------------àËÅ×ÍãÊè¿ÍÃìÁÊÓËÃÑº cancel >>>> DELETE-------------------------------------->
+                                    <!--<form action="UpdateProduct"></form>-->
+                                    <tr class="bg-dark text-white">
+                                        <th colspan="3">Item no</th>
+                                        <th>ID</th>
+                                        <th colspan="5">Name</th>
+                                        <th>Price</th>
+                                        <th class="center" style="text-align: center;">Amount</th>
+                                        <th>Cancel</th>
+                                        <th>Delete</th>
+                                        <th colspan="3">Branch name</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:set var="bgRed" value=" style='background-color: red;' "></c:set>
+                                    <c:forEach items="${products}" var="p" varStatus="vs">                       
+                                        <tr>
+                                            <td colspan="3">${vs.count}</td>
+                                            <td > ${p.prod_id}</td>
+                                            <td colspan="5"><a href="EditProduct?prod_id=${p.prod_id}&source=product.jsp">${p.prod_name}</a> </td>
+                                            <td> ${p.price}</td>
+                                            <td>
+                                                <input type="number" ${p.amount<alertAmount? "style='background-color: red;width: 100px; text-align: center'":""} class="black "value="${p.amount}" min="1" style="width: 100px; text-align: center" name="prodAmount" readonly="">
+                                            </td>
+
+
+                                            <td><input type="checkbox" name="cancel" form="update" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
+                                            <td><input type="checkbox" name="delete" form="update" value="${p.prod_id}"></td>
+                                            <td> ${p.branch.branch_name}</td>
+                                        </tr>                   
+                                    </c:forEach> 
+
+                                </tbody>                        
+                            </c:if>
+                        </table>
+                    </form>
+                </div>
+            </div>    
+
+            <div class="col-sm-2">
+
+            </div>
+
+        </div> 
+        <div class="row text-center">  
+            <input type="submit" class="btn btn-success" value="UPDATE" onclick="submit()">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
+        </div>  
+    </form>
 
 
     <!--add product ----------------------------------------------------------------------------------------------------------------->

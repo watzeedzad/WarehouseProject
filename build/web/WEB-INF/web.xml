@@ -100,6 +100,10 @@
         <servlet-name>UpdateAlertServlet</servlet-name>
         <servlet-class>int303.project.controller.UpdateAlertServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UndoCancelServlet</servlet-name>
+        <servlet-class>int303.project.controller.UndoCancelServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>OrderByTimeRangeServlet</servlet-name>
         <url-pattern>/OrderByTime</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UndoCancelServlet</servlet-name>
+        <url-pattern>/UndoCancel</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

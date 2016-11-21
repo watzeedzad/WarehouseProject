@@ -63,10 +63,8 @@ public class AllProductServlet extends HttpServlet {
                 int alertAmount = Product.getShareAlertFromDB(companyId);
                 session.setAttribute("products", products);
                 session.setAttribute("alertAmount", alertAmount);
-            } catch (SQLException ex) {
-                request.setAttribute("error", ex);
-                System.err.println(ex);
-                request.getServletContext().getRequestDispatcher("/watcherror").forward(request, response);
+            } catch (SQLException ex) {                
+                System.err.println(ex);                
             }
         }else if(searchParam != null){            
             String search = searchParam.trim();
@@ -120,6 +118,15 @@ public class AllProductServlet extends HttpServlet {
 
         // โดย default getAllproduct
         // searchByName / id / 
+        
+        String source = request.getParameter("source");
+        if(source!=null){
+            System.out.println("------source!=null-----");
+            if(source.equalsIgnoreCase("backupUpdate")){
+                getServletContext().getRequestDispatcher("/backupUpdateCancel.jsp").forward(request, response);
+            }
+        }
+        
         
         request.setAttribute("message", message);
         getServletContext().getRequestDispatcher(target).forward(request, response);
