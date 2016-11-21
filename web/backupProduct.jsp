@@ -201,7 +201,7 @@
 
     </div> 
     <div class="row text-center">  
-        <a href="AllProduct?source=backupUpdate"><button type="button" class="btn btn-success">UPDATE</button></a>
+        <a href="AllProduct?source=backupUpdate"><button type="button" class="btn btn-success">UPDATE Cancel</button></a>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
     </div>  
