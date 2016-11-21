@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>::ALL PRODUCT::</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,7 +33,7 @@
 
     <form id="search" class="form-inline" action="AllProduct" method="GET">
         <center>
-            
+            <input type="hidden" name="source" value="backupProduct">
             <input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam" value="${param.searchParam}">
             <input type="submit" value="SEARCH" form="search" class="btn btn-success">
         </center>
@@ -201,7 +201,7 @@
 
     </div> 
     <div class="row text-center">  
-<!--        <input type="submit" class="btn btn-success" value="UPDATE" onclick="submit()">-->
+        <a href="AllProduct?source=backupUpdate"><button type="button" class="btn btn-success">UPDATE</button></a>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
     </div>  
