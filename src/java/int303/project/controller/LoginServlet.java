@@ -61,7 +61,10 @@ public class LoginServlet extends HttpServlet {
             if (allBranch != null) {
                 getServletContext().setAttribute("allBranch", allBranch);
             }
-
+            if (user.equalsIgnoreCase("admin")) {
+                getServletContext().getRequestDispatcher("/AddUser").forward(request, response);
+                return;
+            }
             String targetJa = (String) getServletContext().getAttribute("targetJa");
             System.out.println(targetJa);
             if (targetJa == null || target.trim().length() == 0) {

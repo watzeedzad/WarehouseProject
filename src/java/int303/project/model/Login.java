@@ -85,4 +85,20 @@ public class Login {
         }
         return id;
     }
+
+    public static boolean addNewUser(String username, String password, int staffId) {
+        int x = 0;
+        try {
+            Connection conn = ConnectionBuilder.getConn();
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO `ACCOUNTS` (`ID`, `USERNAME`, `PASSWORD`, `STAFF_ID`) "
+                    + "VALUES (NULL, ?, ?, ?);");
+            pstm.setString(1, username);
+            pstm.setString(2, password);
+            pstm.setInt(3, staffId);
+            x = pstm.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return x > 0;
+    }
 }
