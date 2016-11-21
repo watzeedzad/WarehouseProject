@@ -73,8 +73,11 @@ public class LoginServlet extends HttpServlet {
                 return;
             } else {
                 System.out.println("--- LOG IN >>> TARGETJA = " + targetJa);
-                //getServletContext().getRequestDispatcher(targetJa).forward(request, response);
-                response.sendRedirect("http://localhost:8080/WarehouseProject" + targetJa);
+                if (targetJa.equalsIgnoreCase("/")) {
+                    targetJa = "/TestHome.jsp";
+                }
+                getServletContext().getRequestDispatcher(targetJa).forward(request, response);
+                //response.sendRedirect("http://localhost:8080/WarehouseProject" + targetJa);
                 return;
             }
             //log("test in log in");
