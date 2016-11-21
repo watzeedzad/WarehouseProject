@@ -182,7 +182,8 @@ public class Branch {
         Branch b = null;
         
          Connection con = ConnectionBuilder.getConn();
-         String sql = "SELECT B.BRANCH_ID,B.BRANCH_NAME,B.location,B.MAX_AMOUNT,B.MAX_AMOUNT-SUM(P.AMOUNT) " 
+         String sql = "SELECT B.BRANCH_ID,B.BRANCH_NAME,B.location,B.MAX_AMOUNT, "
+                    + " B.MAX_AMOUNT-SUM(P.AMOUNT) AS \"REMAIN\" " 
                     + " FROM PRODUCTS P " 
                     + " JOIN BRANCH B ON P.BRANCH_ID = B.BRANCH_ID  " 
                     + " GROUP BY B.BRANCH_ID,B.BRANCH_NAME " 
@@ -201,7 +202,7 @@ public class Branch {
                 b.setBranch_name(rs.getString("B.BRANCH_NAME"));
                 b.setLocation(rs.getString("B.location"));
                 b.setMax_amount(rs.getInt("B.MAX_AMOUNT"));
-                b.setAmountProduct(rs.getInt("B.MAX_AMOUNT-SUM(P.AMOUNT)"));
+                b.setAmountProduct(rs.getInt(5));
                 branches.add(b);
             }
             pstm.close();

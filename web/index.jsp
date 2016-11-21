@@ -3,7 +3,7 @@
 <html >
     <head>
         <meta charset="UTF-8">
-        <title>Elastic Login Form</title>
+        <title>WAREHOUSE LOGIN</title>
         <link rel="stylesheet" href="css/style.css">
        
     </head>

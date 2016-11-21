@@ -24,7 +24,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">  
-                        <li><a href="#home">${staffData.company.company_name}</a></li>
+                        <li><a href="ViewAmountBranch">${staffData.company.company_name}</a></li>
                         <li><a href="#product">PRODUCT</a></li>
                         <li><a href="#edit">EDIT</a></li>
                         <li><a href="#view">VIEW</a></li>

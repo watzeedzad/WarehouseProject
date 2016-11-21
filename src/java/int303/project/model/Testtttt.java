@@ -7,6 +7,7 @@ package int303.project.model;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -181,10 +182,14 @@ public class Testtttt {
         for(Branch b:branchPerCompany){
             System.out.println(b);
         }
+        
         System.out.println("\n\n-------------------------------------------------\n\n");
         List<Branch> branchRamin = Branch.viewRemainPerBranch();
-        for(Branch b:branchPerCompany){
-            System.out.println(b);
+        
+        for(Branch b:branchRamin){
+            
         }
+        List<Branch> result = new ArrayList<>();
+        
     }
 }
