@@ -33,48 +33,48 @@ public class UpdateProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Staff user = (Staff)session.getAttribute("staffData");
-       
-        if(user == null){
+        Staff user = (Staff) session.getAttribute("staffData");
+
+        if (user == null) {
 //            log(session.toString());
             request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
-            log("USER = "+user); 
+            log("USER = " + user);
             log("NULLLL");
         }
-        
+
         String message = "";
         String[] deletes = request.getParameterValues("delete");
         String[] cancels = request.getParameterValues("cancel");
         boolean success1 = false;
         boolean success2 = false;
-        
-        if((deletes==null&&cancels==null) || (deletes.length==0&&cancels.length==0)){
+
+        if (deletes == null && cancels == null) {
             message = "Please select Product to CANCEL OR DELETE";
-        }else{                    
-            if(deletes!=null){
-                for(String idStr : deletes){
+        } else {
+            if (deletes != null) {
+                for (String idStr : deletes) {
                     long id = Long.parseLong(idStr);
                     success1 = Product.deleteProduct(id);
                 }
-                if(success1){
+                if (success1) {
                     message = "DELETE product(s) SUCCESS";
-                }else{
+                } else {
                     message = "FAILED to DELETE product(s)";
                 }
             }
-            if(cancels!=null){
-                for(String idStr : cancels){
+            if (cancels != null) {
+                for (String idStr : cancels) {
                     long id = Long.parseLong(idStr);
                     success2 = Product.cancelProduct(id);
                 }
-                if(success2){
+                if (success2) {
                     message += "\n CANCEL product(s) SUCCESS";
-                }else{
+                } else {
                     message = "FAILED to CANCEL product(s)";
                 }
             }
         }
-        
+
         request.setAttribute("messageJa", message);
         getServletContext().getRequestDispatcher("/AllProduct").forward(request, response);
     }

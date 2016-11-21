@@ -31,10 +31,10 @@
     <center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>
 
 
-    <form class="form-inline" action="AllProduct" method="GET">
+    <form id="search" class="form-inline" action="AllProduct" method="GET">
         <center>
             <input style="width: 150;" type="text" class="form-control" size="50" placeholder="SEARCH PRODUCT" name="searchParam" value="${param.searchParam}">
-            <input type="submit" value="SEARCH" class="btn btn-success">
+            <input type="submit" value="SEARCH" form="search" class="btn btn-success">
         </center>
     </form>        
 
@@ -46,7 +46,7 @@
         </div>
         <div class="col-sm-8">
             <div class="container-fluid" style="margin-top: -20px;">
-                <form action="UpdateProduct" method="GET">                     
+                <form id="update" action="UpdateProduct" method="POST">                     
                     <table class="table table-inverse">
                         <!--<center><h1><span class="black"><b>{</b></span><span class="yellow">ALL PRODUCT<span class="black"><b>}</b></span></h1><br></center>-->
                         <thead>
@@ -128,7 +128,7 @@
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             <h2 class="modal-title">INCREASE Amount</h2>
                                                         </div>
-                                                        <form action="AddProductAmount">
+                                                        <form action="AddProductAmount" id="add">
                                                             <input type="hidden" name="source" value="allProduct">
                                                             <div class="modal-body">
                                                                 <table class="add-pro black">
@@ -163,7 +163,7 @@
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             <h2 class="modal-title">REDUCE Amount</h2>
                                                         </div>
-                                                        <form action="ReduceProductAmount">
+                                                        <form action="ReduceProductAmount" id="reduce">
                                                             <input type="hidden" name="source" value="allProduct">
                                                             <div class="modal-body">
                                                                 <table class="add-pro black">
@@ -185,11 +185,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </td>
-                                        <td><input type="checkbox" name="cancel" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
-                                        <td><input type="checkbox" name="delete" value="${p.prod_id}"></td>
+                                        <td><input type="checkbox" name="cancel" form="update" value="${p.prod_id}" ${p.cancelStatus==true? 'disabled':''}></td>
+                                        <td><input type="checkbox" name="delete" form="update" value="${p.prod_id}"></td>
                                         <td> ${p.branch.branch_name}</td>
                                     </tr>                   
                                 </c:forEach> 
@@ -197,9 +195,6 @@
                             </tbody>                        
                         </c:if>
                     </table>
-                    <div class="row text-center">
-                        <input type="submit" class="btn btn-success" value="UPDATE">
-                    </div>
                 </form>
             </div>
         </div>    
@@ -210,7 +205,7 @@
 
     </div> 
     <div class="row text-center">  
-        <br>
+        <input type="submit" class="btn btn-success" value="UPDATE" onclick="submit()">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD New Product</button> 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">REMOVE Product</button><br><br>
     </div>  
@@ -310,7 +305,9 @@
 </div>
 </body>
 <script>
-
+    function submit() {
+        document.forms['update'].submit();
+    }
     function myFunction() {
         confirm("Are you sure to cancel and delete product(s)");
     }
