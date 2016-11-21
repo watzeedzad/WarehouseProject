@@ -61,7 +61,7 @@ public class OutOfStockServlet extends HttpServlet {
             System.out.println(ex);
         }
         
-        session.setAttribute("message", message);
+        request.setAttribute("message", message);
         getServletContext().getRequestDispatcher("/OutOfStock.jsp").forward(request, response);
         
     }
