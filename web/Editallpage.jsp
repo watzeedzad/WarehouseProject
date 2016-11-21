@@ -101,13 +101,13 @@
                                             <td><input type="text" class="form-control" name="prodType"></td>
                                         </tr>
                                         <tr>
-                                            <td>Branch ID</td>
+                                            <td>Branch ID &nbsp;&nbsp;&nbsp;&nbsp;</td>
                                             <c:if test="${allBranch==null}">
-                                                <td><input type="text" class="form-control" name="branchId" required></td>
+                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" name="branchId" required></td>
                                             </c:if>
                                             <c:if test="${allBranch!=null}">
-                                                <td>
-                                                    <select name="branchId">
+                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <select name="branchId" class="form-control">
                                                         <c:forEach items="${allBranch}" var="b" >
                                                             <option value="${b.branch_id}">${b.branch_name}</option>
                                                         </c:forEach>
