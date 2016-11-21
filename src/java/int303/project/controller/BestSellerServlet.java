@@ -40,10 +40,12 @@ public class BestSellerServlet extends HttpServlet {
         if (staff == null) {
             request.getServletContext().getRequestDispatcher("/logout").forward(request, response);
         }
+        
         int companyId = staff.getCompanyId();
         List<BestSeller> bestSeller = Order.statBestSeller(companyId);
+        
         request.setAttribute("bestSeller", bestSeller);
-        getServletContext().getRequestDispatcher("/BestSeller.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/BestSellerJa.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

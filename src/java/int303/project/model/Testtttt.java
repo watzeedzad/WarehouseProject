@@ -178,18 +178,23 @@ public class Testtttt {
 //            Staff st = Staff.viewStaffData(10002);
 //            System.out.println(st.getCompany().getCompany_name());
             
-        List<Branch> branchPerCompany = Branch.viewAmountPerBranch(2);
-        for(Branch b:branchPerCompany){
-            System.out.println(b);
-        }
+//        List<Branch> branchPerCompany = Branch.viewAmountPerBranch(2);
+//        for(Branch b:branchPerCompany){
+//            System.out.println(b);
+//        }
+//        
+//        System.out.println("\n\n-------------------------------------------------\n\n");
+//        List<Branch> branchRamin = Branch.viewRemainPerBranch();
+//        
+//        for(Branch b:branchRamin){
+//            
+//        }
+//        List<Branch> result = new ArrayList<>();
         
-        System.out.println("\n\n-------------------------------------------------\n\n");
-        List<Branch> branchRamin = Branch.viewRemainPerBranch();
-        
-        for(Branch b:branchRamin){
-            
+        List<BestSeller> bestSeller = Order.statBestSeller(2);
+        for(BestSeller b:bestSeller){
+            System.out.println(b.getProdAmount());
         }
-        List<Branch> result = new ArrayList<>();
         
     }
 }
