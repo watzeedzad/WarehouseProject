@@ -99,7 +99,7 @@
                                     <th>Price</th>
                                     <th colspan="3" class="center" style="text-align: center;">Amount</th>
                                     <th>Cancel</th>
-                                    <th>Delete</th>
+                                    <th>Remove</th>
                                     <th colspan="3">Branch name</th>
 
                                 </tr>

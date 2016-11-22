@@ -101,9 +101,10 @@
         </style>    
 
     </head>
-    <body>
+    <body onload="cat()">
         <jsp:include page="/WEB-INF/jsp/Tagnavigation_other.jsp"/><br><br><br>
         <form action="OrderByTime" method="GET">
+            
 
             <div class="col-sm-2">
 
@@ -115,7 +116,7 @@
                     <tr><center>
                         <td><center><h4>Category :</h4></center></td> 
 
-                            <td><select name="range" id="category" class="select_join green" onchange="cat()" style="width: 150px;">
+                    <td><select name="range" id="category" class="select_join green" onchange="cat()" onclick="cat()" style="width: 150px;">
                                 <option value="monthandyear" ${param.range=='monthandyear' ? 'selected': ''}>Month and Year</option>
                                 <option value="month" ${param.range=='month' ? 'selected': ''}>Month</option>
                                 <option value="year" ${param.range=='year' ? 'selected': ''}>Year</option>                                
@@ -166,7 +167,7 @@
                                 <option value="all" ${param.viewBy=='all' ? 'selected': ''}>ALL</option>
                             </select></td>
                      
-                            <td>&nbsp;&nbsp;&nbsp;<input type="submit" value="SEARCH" class="btn-default semi-square"/>&nbsp;</td>
+                            <td>&nbsp;&nbsp;&nbsp;<input type="submit" value="SEARCH" onclick="cat1()" class="btn-default semi-square" id="seah"/>&nbsp;</td>
                             
                             <input type="hidden" name="range" value="${param.range}">
                             <input type="hidden" name="range" value="${param.range}">
@@ -220,11 +221,14 @@
             <div class="col-sm-2">
 
             </div>
+                        <input type="hidden" name="range" value="${param.range}" id="category2" >
         </form>
     </body>
     <script>
         function cat() {
             var x = document.getElementById("category");
+//            var y = document.getElementById("category2"); 
+            
             if (x.value == "month") {
                 document.getElementById("ye").style.visibility = "hidden";
                 document.getElementById("year").style.visibility = "hidden";
@@ -246,7 +250,9 @@
                 document.getElementById("year").style.visibility = "visible";
 //                document.getElementById("month").disabled = false;
 //                document.getElementById("year").disabled = false;
-            }
+            }            
+            
         }
+       
     </script>
 </html>

@@ -113,13 +113,13 @@
                             </tr>
         <c:if test="${branchPerCompany!=null}">                    
                             <tr class="bg-dark ">
-                                <td>Item no</td>
+                                <td>No</td>
                                 <td>Branch ID</td>
                                 <td>Branch Name</td>
                                 <td>Location</td>
-                                <td colspan="2">MAX Amount</td>
-                                <td>Amount</td>
-                                <td>REMAIN Amount</td>
+                                <td colspan="3">MAXIMUM Space</td>
+                                <td colspan="2">Your Product</td>
+                                <td colspan="2">AVAILABLE</td>
                                 <!--<td>Cancel</td>-->
                             </tr>
                             
@@ -129,9 +129,9 @@
                                     <td> ${b1.branch_id}</td>
                                     <td> ${b1.branch_name}</td>
                                     <td> ${b1.location}</td>
-                                    <td colspan="2"> ${b1.max_amount}</td>
-                                    <td > ${b1.amountProduct}</td>                                    
-                                    <td> ${b1.remain}</td>
+                                    <td colspan="3"> ${b1.max_amount}</td>
+                                    <td colspan="2"> ${b1.amountProduct}</td>                                    
+                                    <td colspan="2"> ${b1.remain}</td>
                                     <!--<td><input type="checkbox" ></input></td>-->
                                 </tr>                   
                             </c:forEach> 
